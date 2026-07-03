@@ -1,0 +1,162 @@
+---
+const currentYear = new Date().getFullYear();
+
+const footerLinks = [
+  { label: "主页", href: "/" },
+  { label: "AI导航", href: "/tools/" },
+  { label: "AI教程", href: "/tutorials/" },
+  { label: "关于我们", href: "/about/" },
+];
+
+const socialLinks = [
+  { label: "Twitter/X", href: "https://x.com/toolman_ai", icon: "𝕏" },
+  { label: "YouTube", href: "https://www.youtube.com/@toolman-ai", icon: "▶" },
+  { label: "Telegram", href: "https://t.me/toolman_ai", icon: "✈" },
+];
+---
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-section">
+      <a class="brand" href="/" aria-label="工具人AI导航主页">
+        <img src="/logo-32.png" alt="" class="brand-logo" width="32" height="32" />
+        <span class="brand-name">工具人AI导航</span>
+      </a>
+      <p class="footer-desc">精选 AI 工具、实用教程和工作流指南</p>
+    </div>
+
+    <div class="footer-section">
+      <h3 class="footer-title">快速链接</h3>
+      <nav class="footer-nav" aria-label="页脚导航">
+        {footerLinks.map((link) => (
+          <a href={link.href}>{link.label}</a>
+        ))}
+      </nav>
+    </div>
+
+    <div class="footer-section">
+      <h3 class="footer-title">关注我们</h3>
+      <div class="footer-social">
+        {socialLinks.map((link) => (
+          <a href={link.href} title={link.label} target="_blank" rel="noopener noreferrer" aria-label={link.label}>
+            <span class="social-icon">{link.icon}</span>
+            <span class="social-label">{link.label}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© {currentYear} 工具人AI导航</span>
+      <span class="footer-divider">|</span>
+      <a href="/sitemap.xml">Sitemap</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--border);
+    padding: 48px 0 32px;
+    background: var(--surface);
+  }
+
+  .footer-inner {
+    width: min(100%, 1440px);
+    margin: 0 auto;
+    padding: 0 28px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+  }
+
+  .footer-section .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .footer-desc {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 240px;
+  }
+
+  .footer-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 16px;
+  }
+
+  .footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .footer-nav a,
+  .footer-social a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+
+  .footer-nav a:hover,
+  .footer-social a:hover {
+    color: var(--primary);
+  }
+
+  .footer-social {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .footer-social a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .social-icon {
+    font-size: 16px;
+  }
+
+  .footer-bottom {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .footer-bottom a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .footer-bottom a:hover {
+    color: var(--primary);
+  }
+
+  .footer-divider {
+    color: var(--subtle);
+  }
+
+  @media (max-width: 768px) {
+    .footer-inner {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+</style>

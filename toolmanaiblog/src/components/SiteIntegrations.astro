@@ -1,0 +1,46 @@
+---
+const clean = (value) => String(value || "").trim();
+const jsString = (value) => JSON.stringify(value);
+
+const googleSiteVerification = clean(import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION);
+const bingSiteVerification = clean(import.meta.env.PUBLIC_BING_SITE_VERIFICATION);
+const baiduSiteVerification = clean(import.meta.env.PUBLIC_BAIDU_SITE_VERIFICATION);
+const googleAnalyticsId = clean(import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID);
+const baiduTongjiId = clean(import.meta.env.PUBLIC_BAIDU_TONGJI_ID);
+
+const googleAnalyticsScript = googleAnalyticsId
+  ? `
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag("js", new Date());
+gtag("config", ${jsString(googleAnalyticsId)});
+`
+  : "";
+
+const baiduTongjiScript = baiduTongjiId
+  ? `
+window._hmt = window._hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?" + ${jsString(baiduTongjiId)};
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+`
+  : "";
+---
+
+{googleSiteVerification ? <meta name="google-site-verification" content={googleSiteVerification} /> : null}
+{bingSiteVerification ? <meta name="msvalidate.01" content={bingSiteVerification} /> : null}
+{baiduSiteVerification ? <meta name="baidu-site-verification" content={baiduSiteVerification} /> : null}
+
+{
+  googleAnalyticsId ? (
+    <>
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}></script>
+      <script is:inline set:html={googleAnalyticsScript} />
+    </>
+  ) : null
+}
+
+{baiduTongjiId ? <script is:inline set:html={baiduTongjiScript} /> : null}

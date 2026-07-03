@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "test": "node tests/static-site.test.cjs"
+  },
+  "dependencies": {
+    "astro": "latest",
+    "sharp": "^0.35.3"
+  }
+}

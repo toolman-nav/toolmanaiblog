@@ -1,0 +1,74 @@
+---
+import site from "../../../../../data/site.mjs";
+import ToolSidebar from "../../../../../components/ToolSidebar.astro";
+import ToolTile from "../../../../../components/ToolTile.astro";
+import SiteLayout from "../../../../../layouts/SiteLayout.astro";
+import { matchRouteValue, toolCategoryPath, toolDetailPath, toolSubcategoryPath } from "../../../../../lib/routes.mjs";
+import { collectionPageSchema } from "../../../../../lib/seo.mjs";
+
+export function getStaticPaths() {
+  return site.categories.flatMap((category) =>
+    category.subcategories.map((subcategory) => ({
+      params: { category: category.name, subcategory },
+      props: { category, subcategory },
+    })),
+  );
+}
+
+const { category, subcategory } = Astro.props;
+const activeCategory = matchRouteValue(Astro.params.category, site.categories.map((item) => item.name)) || category.name;
+const activeSubcategory = matchRouteValue(Astro.params.subcategory, category.subcategories) || subcategory;
+const tools = site.tools.filter((tool) => tool.category === category.name && tool.subcategory === subcategory);
+const sectionId = `tool-subcategory-${category.name}-${subcategory}`;
+const title = `${subcategory} - ${category.name}工具 - 工具人AI导航`;
+const description = `浏览${category.name}分类下的${subcategory} AI 工具，快速找到适合当前场景的工具。`;
+const canonical = toolSubcategoryPath(category.name, subcategory);
+const structuredData = collectionPageSchema({
+  name: `${subcategory}工具`,
+  description,
+  path: canonical,
+  items: tools.map((tool) => ({ name: tool.name, url: toolDetailPath(tool) })),
+});
+---
+
+<SiteLayout activeNav="tools" title={title} description={description} canonical={canonical} structuredData={structuredData}>
+  <section class="directory-shell" aria-labelledby="toolsSubcategoryTitle">
+    <div class="tool-directory-layout">
+      <ToolSidebar categories={site.categories} activeCategory={activeCategory} activeSubcategory={activeSubcategory} />
+      <div class="tool-directory-main">
+        <div class="category-strip" role="tablist" aria-label="AI工具分类">
+          {
+            site.categories.map((item) => (
+              <a class={`category-button ${item.name === category.name ? "is-active" : ""}`} href={toolCategoryPath(item.name)} data-tool-category={item.name}>
+                {item.name}
+              </a>
+            ))
+          }
+        </div>
+        <label class="search-field tool-search-field">
+          <span class="field-search-icon" aria-hidden="true"></span>
+          <input id="toolSearch" type="search" placeholder={`在「${subcategory}」中搜索`} data-client-search="tools" />
+        </label>
+
+        <section id={sectionId} class="directory-section" aria-labelledby="toolsSubcategoryTitle" data-tool-sections>
+          <div class="section-head">
+            <h1 id="toolsSubcategoryTitle" class="section-title">{subcategory}</h1>
+          </div>
+          <div class="subtab-row">
+            {
+              category.subcategories.map((sub) => (
+                <a class={`subtab ${sub === subcategory ? "is-active" : ""}`} href={toolSubcategoryPath(category.name, sub)} data-tool-subcategory={sub}>
+                  {sub}
+                </a>
+              ))
+            }
+          </div>
+          <div class="tool-grid">
+            {tools.map((tool) => <ToolTile tool={tool} />)}
+          </div>
+        </section>
+        <div class="empty-state panel" data-empty-search hidden>没有找到匹配的 AI 工具</div>
+      </div>
+    </div>
+  </section>
+</SiteLayout>

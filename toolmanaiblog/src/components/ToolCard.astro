@@ -1,0 +1,12 @@
+---
+import { toolDetailPath } from "../lib/routes.mjs";
+
+const { tool } = Astro.props;
+---
+
+<a class="panel tool-card" href={toolDetailPath(tool)} data-tool-id={tool.id} aria-label={`查看 ${tool.name} 详情`}>
+  <div class="tool-icon" style={`--accent:${tool.accent}`}>{tool.iconText}</div>
+  <h3>{tool.name}</h3>
+  <p>{tool.description}</p>
+  <span class="small-button">查看详情</span>
+</a>

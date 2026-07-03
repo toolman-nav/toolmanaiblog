@@ -1,0 +1,45 @@
+---
+import { toolCategoryPath, toolSubcategoryPath } from "../lib/routes.mjs";
+
+const { categories, activeCategory = "AI 工具", activeSubcategory = "AI 对话助手" } = Astro.props;
+const sidebarIconPaths = {
+  "AI 工具": '<path d="M12 3 4 7v10l8 4 8-4V7Z"/><path d="M12 3v18"/><path d="m4 7 8 4 8-4"/>',
+  海外数字服务: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a13 13 0 0 1 0 18"/><path d="M12 3a13 13 0 0 0 0 18"/>',
+  default: '<circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 3"/>',
+};
+---
+
+<aside class="tool-sidebar" aria-label="AI工具侧边分类">
+  {
+    categories.map((category) => {
+      const isExpanded = category.name === activeCategory;
+      const iconPath = sidebarIconPaths[category.name] || sidebarIconPaths.default;
+      return (
+        <section class={`sidebar-category ${isExpanded ? "is-active" : ""}`}>
+          <a class="sidebar-category-button" href={toolCategoryPath(category.name)} data-tool-category={category.name} aria-expanded={isExpanded}>
+            <span class="sidebar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false" set:html={iconPath}></svg>
+            </span>
+            <span class="sidebar-category-label">{category.name}</span>
+            <span class="sidebar-arrow" aria-hidden="true"></span>
+          </a>
+          {
+            isExpanded && (
+              <div class="sidebar-subcategories">
+                {category.subcategories.map((sub) => (
+                  <a
+                    class={`sidebar-subcategory ${sub === activeSubcategory ? "is-active" : ""}`}
+                    href={toolSubcategoryPath(category.name, sub)}
+                    data-tool-subcategory={sub}
+                  >
+                    {sub}
+                  </a>
+                ))}
+              </div>
+            )
+          }
+        </section>
+      );
+    })
+  }
+</aside>

@@ -1,0 +1,44 @@
+---
+import { getCollection } from "astro:content";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import TutorialCard from "../../components/TutorialCard.astro";
+import { postsToArticles } from "../../lib/posts.mjs";
+import { tutorialCategoryPath, tutorialDetailPath } from "../../lib/routes.mjs";
+import { collectionPageSchema } from "../../lib/seo.mjs";
+
+const githubPosts = await getCollection("posts", ({ data }) => !data.draft);
+const tutorials = postsToArticles(githubPosts);
+const tutorialCategories = [...new Set(tutorials.map((article) => article.category))];
+const githubTitleSmokeTest = "Claude Code国内使用指南";
+const title = "AI教程 - 工具人AI导航";
+const description = "系统学习 AI 工具、提示词、办公、绘画、编程和自动化工作流教程。";
+const structuredData = collectionPageSchema({
+  name: "AI教程",
+  description,
+  path: "/tutorials/",
+  items: tutorials.map((article) => ({ name: article.title, url: tutorialDetailPath(article) })),
+});
+---
+
+<SiteLayout activeNav="tutorials" title={title} description={description} canonical="/tutorials/" structuredData={structuredData}>
+  <section class="tutorial-page" aria-labelledby="tutorialTitle">
+    <h1 id="tutorialTitle" class="section-title">AI 学习教程</h1>
+    <label class="search-field tutorial-search-field">
+      <span class="field-search-icon" aria-hidden="true"></span>
+      <input id="tutorialSearch" type="search" placeholder="在「AI教程」中搜索" data-client-search="tutorials" />
+    </label>
+    <div class="chip-row tutorial-category-row" aria-label="教程分类">
+      {
+        tutorialCategories.map((category) => (
+          <a class="chip" href={tutorialCategoryPath(category)}>
+            {category}
+          </a>
+        ))
+      }
+    </div>
+    <div class="tutorial-list" data-tutorial-list>
+      {tutorials.map((article) => <TutorialCard article={article} />)}
+    </div>
+    <div class="empty-state panel" data-empty-search hidden>没有找到匹配的教程</div>
+  </section>
+</SiteLayout>

@@ -1,0 +1,107 @@
+---
+import SiteIntegrations from "../components/SiteIntegrations.astro";
+import Footer from "../components/Footer.astro";
+import { absoluteUrl, jsonLdScript, SITE_NAME } from "../lib/seo.mjs";
+
+const {
+  title = "工具人AI导航 - AI工具与教程导航站",
+  description = "工具人AI导航是一个面向中文用户的 AI 工具与教程导航站，帮助你更快发现工具、学习方法、形成工作流。",
+  activeNav = "home",
+  canonical,
+  image,
+  pageType = "website",
+  robots = "index, follow",
+  structuredData = [],
+} = Astro.props;
+const canonicalUrl = absoluteUrl(canonical || Astro.url.pathname);
+const imageUrl = image ? absoluteUrl(image) : "";
+const structuredDataItems = Array.isArray(structuredData) ? structuredData : [structuredData];
+
+const navItems = [
+  { id: "home", href: "/", label: "主页" },
+  { id: "tools", href: "/tools/", label: "AI导航" },
+  { id: "tutorials", href: "/tutorials/", label: "AI教程" },
+  { id: "about", href: "/about/", label: "关于我们" },
+];
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta name="google-site-verification" content="6AQOneCJdfTYHniCuIJc9J1MXxGoDaJ-5XpiGjUV4Vo" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={pageType} />
+    <meta property="og:url" content={canonicalUrl} />
+    {imageUrl ? <meta property="og:image" content={imageUrl} /> : null}
+    <meta name="twitter:card" content={imageUrl ? "summary_large_image" : "summary"} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {imageUrl ? <meta name="twitter:image" content={imageUrl} /> : null}
+    <link rel="alternate" type="application/rss+xml" title="工具人AI导航 RSS" href={absoluteUrl("/rss.xml")} />
+    {
+      structuredDataItems.filter(Boolean).map((item) => (
+        <script type="application/ld+json" set:html={jsonLdScript(item)} />
+      ))
+    }
+    <SiteIntegrations />
+    <title>{title}</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/logo-32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/logo-128.png" sizes="128x128" />
+    <link rel="icon" type="image/png" href="/logo-192.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/logo-256.png" />
+    <link rel="stylesheet" href="/styles.css" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4K8676ZVL"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G4K8676ZVL');
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="/" aria-label="工具人AI导航主页">
+          <img src="/logo-32.png" alt="" class="brand-logo" width="32" height="32" />
+          <span class="brand-name">工具人AI导航</span>
+        </a>
+
+        <nav class="top-nav" aria-label="主导航">
+          {
+            navItems.map((item) => (
+              <a class={`nav-link ${activeNav === item.id ? "is-active" : ""}`} href={item.href}>
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+
+        <form class="header-actions" data-global-search role="search" aria-label="全站搜索" action="/tools/" method="get">
+          <label class="header-search">
+            <span class="search-icon" aria-hidden="true"></span>
+            <input id="globalSearch" name="q" type="search" placeholder="搜索文章、工具和教程" />
+          </label>
+          <button class="search-submit-button" type="submit">搜索</button>
+        </form>
+      </div>
+    </header>
+
+    <main id="app" class="app-shell" tabindex="-1">
+      <slot />
+    </main>
+
+    <Footer />
+
+    <script src="/site.js" defer></script>
+  </body>
+</html>
