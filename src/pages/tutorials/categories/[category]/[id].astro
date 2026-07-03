@@ -1,16 +1,19 @@
 ---
 import { getCollection, render } from "astro:content";
-import ArticleVisual from "../../components/ArticleVisual.astro";
-import TutorialCard from "../../components/TutorialCard.astro";
-import SiteLayout from "../../layouts/SiteLayout.astro";
-import { postToArticle, postsToArticles } from "../../lib/posts.mjs";
-import { tutorialDetailPath } from "../../lib/routes.mjs";
-import { articleSchema } from "../../lib/seo.mjs";
+import ArticleVisual from "../../../../components/ArticleVisual.astro";
+import TutorialCard from "../../../../components/TutorialCard.astro";
+import SiteLayout from "../../../../layouts/SiteLayout.astro";
+import { postToArticle, postsToArticles } from "../../../../lib/posts.mjs";
+import { tutorialCategoryPath, tutorialDetailPath } from "../../../../lib/routes.mjs";
+import { articleSchema } from "../../../../lib/seo.mjs";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts", ({ data }) => !data.draft);
   return posts.map((entry) => ({
-    params: { id: entry.id.replace(/\.md$/, "") },
+    params: {
+      category: entry.data.category || "AI教程",
+      id: entry.id.replace(/\.md$/, ""),
+    },
     props: { entry, posts },
   }));
 }
@@ -24,7 +27,7 @@ const structuredData = articleSchema({ ...article, url: tutorialDetailPath(artic
 
 <SiteLayout activeNav="tutorials" title={`${article.title} - 工具人AI导航`} description={article.summary} canonical={tutorialDetailPath(article)} image={article.image} pageType="article" structuredData={structuredData}>
   <section class="panel tutorial-detail" aria-labelledby="tutorialDetailTitle">
-    <a class="detail-back" href="/tutorials/">‹ 返回教程列表</a>
+    <a class="detail-back" href={tutorialCategoryPath(article.category)}>‹ 返回{article.category}</a>
     <div class="detail-hero">
       <ArticleVisual article={article} />
       <div>

@@ -10,8 +10,16 @@ export function toolSubcategoryPath(category, subcategory) {
   return `/tools/categories/${routeSegment(category)}/${routeSegment(subcategory)}/`;
 }
 
+export function toolDetailPath(tool) {
+  return `/tools/categories/${routeSegment(tool.category)}/${routeSegment(tool.subcategory)}/${routeSegment(tool.id)}/`;
+}
+
 export function tutorialCategoryPath(category) {
   return `/tutorials/categories/${routeSegment(category)}/`;
+}
+
+export function tutorialDetailPath(article) {
+  return `/tutorials/categories/${routeSegment(article.category)}/${routeSegment(article.id)}/`;
 }
 
 export function matchRouteValue(value, candidates) {

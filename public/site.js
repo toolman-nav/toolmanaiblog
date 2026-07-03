@@ -73,12 +73,5 @@
     }
   });
 
-  document.addEventListener("click", function (event) {
-    var action = event.target.closest("[data-action]");
-    if (action && action.dataset.action === "more-categories") {
-      showToast("更多分类正在整理中");
-    }
-  });
-
   syncSearchFromUrl();
 })();

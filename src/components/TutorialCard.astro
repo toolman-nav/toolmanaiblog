@@ -1,12 +1,13 @@
 ---
 import ArticleInfoPanel from "./ArticleInfoPanel.astro";
 import ArticleVisual from "./ArticleVisual.astro";
+import { tutorialDetailPath } from "../lib/routes.mjs";
 
 const { article, compact = false } = Astro.props;
 const className = compact ? "panel article-row" : "panel tutorial-card";
 ---
 
-<a class={className} href={`/tutorials/${article.id}/`} data-tutorial-id={article.id}>
+<a class={className} href={tutorialDetailPath(article)} data-tutorial-id={article.id}>
   {
     compact ? (
       <div class="thumb" data-cover={article.coverType}>

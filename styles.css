@@ -347,6 +347,11 @@ button {
 }
 
 .article-row,
+.tutorial-card {
+  text-decoration: none;
+}
+
+.article-row,
 .tool-card,
 .tool-tile,
 .tutorial-featured,
@@ -536,8 +541,7 @@ button {
 
 .tool-sidebar {
   position: sticky;
-  top: calc(50vh + 32px);
-  transform: translateY(-50%);
+  top: 112px;
   max-height: calc(100vh - 96px);
   overflow: auto;
   padding: 8px 6px;

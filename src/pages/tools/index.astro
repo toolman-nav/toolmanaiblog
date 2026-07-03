@@ -3,38 +3,26 @@ import site from "../../data/site.mjs";
 import ToolSidebar from "../../components/ToolSidebar.astro";
 import ToolTile from "../../components/ToolTile.astro";
 import SiteLayout from "../../layouts/SiteLayout.astro";
-import { toolCategoryPath, toolSubcategoryPath } from "../../lib/routes.mjs";
+import { toolCategoryPath, toolDetailPath, toolSubcategoryPath } from "../../lib/routes.mjs";
+import { collectionPageSchema } from "../../lib/seo.mjs";
 
 const toolSections = site.getToolSections();
-const hotKeywords = [
-  "AI写作工具",
-  "AI小红书文案",
-  "AI小说",
-  "AI论文写作",
-  "AI图片优化修复",
-  "AI图片背景移除",
-  "AI图片插画生成",
-  "AI编程工具",
-  "AI开源项目",
-  "AI PPT",
-  "AI文档工具",
-  "AI思维导图",
-  "AI表格数据处理",
-  "AI语言翻译",
-  "AI会议工具",
-  "AI效率提升",
-  "AI法律助手",
-  "AI智能体",
-  "AI音频音乐",
-  "AI应用",
-];
+const hotKeywords = ["AI 对话助手", "AI 音乐生成", "AI 编程工具", "流媒体娱乐"];
 const subcategoryLinks = new Map(
   site.categories.flatMap((category) => category.subcategories.map((sub) => [sub, toolSubcategoryPath(category.name, sub)])),
 );
 const keywordHref = (keyword) => subcategoryLinks.get(keyword) || `/tools/?q=${encodeURIComponent(keyword)}`;
+const title = "AI导航 - 工具人AI导航";
+const description = "按 AI 工具与海外数字服务浏览常用工具，先从少量精选入口开始。";
+const structuredData = collectionPageSchema({
+  name: "AI工具导航",
+  description,
+  path: "/tools/",
+  items: site.tools.map((tool) => ({ name: tool.name, url: toolDetailPath(tool) })),
+});
 ---
 
-<SiteLayout activeNav="tools" title="AI导航 - 工具人AI导航" description="按写作、图像、办公、开发、智能体等场景浏览 AI 工具，发现适合你的 AI 工作流。">
+<SiteLayout activeNav="tools" title={title} description={description} canonical="/tools/" structuredData={structuredData}>
   <section class="directory-shell" aria-labelledby="toolsTitle">
     <div class="tool-directory-layout">
       <ToolSidebar categories={site.categories} />
@@ -47,7 +35,6 @@ const keywordHref = (keyword) => subcategoryLinks.get(keyword) || `/tools/?q=${e
               </a>
             ))
           }
-          <button class="category-button" type="button" data-action="more-categories">...</button>
         </div>
         <label class="search-field tool-search-field">
           <span class="field-search-icon" aria-hidden="true"></span>
@@ -73,7 +60,7 @@ const keywordHref = (keyword) => subcategoryLinks.get(keyword) || `/tools/?q=${e
                 <div class="subtab-row">
                   {
                     section.subcategories.map((sub) => (
-                      <a class={`subtab ${section.name === "AI写作" && sub === "AI写作工具" ? "is-active" : ""}`} href={toolSubcategoryPath(section.name, sub)} data-tool-subcategory={sub}>
+                      <a class={`subtab ${section.name === "AI 工具" && sub === "AI 对话助手" ? "is-active" : ""}`} href={toolSubcategoryPath(section.name, sub)} data-tool-subcategory={sub}>
                         {sub}
                       </a>
                     ))

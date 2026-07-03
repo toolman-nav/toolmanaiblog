@@ -30,6 +30,12 @@ assert.ok(
 assert.ok(fs.existsSync(path.join(root, "src/pages/about.astro")), "Astro should statically render the about page");
 assert.ok(fs.existsSync(path.join(root, "src/data/site.mjs")), "Astro should import legacy site data through an ESM wrapper");
 assert.ok(fs.existsSync(path.join(root, "src/lib/routes.mjs")), "Astro should centralize SEO route generation");
+assert.ok(fs.existsSync(path.join(root, "src/lib/seo.mjs")), "Astro should centralize SEO metadata and structured data helpers");
+assert.ok(fs.existsSync(path.join(root, "src/pages/sitemap.xml.js")), "Astro should generate an XML sitemap");
+assert.ok(fs.existsSync(path.join(root, "src/pages/robots.txt.js")), "Astro should generate robots.txt");
+assert.ok(fs.existsSync(path.join(root, "src/pages/rss.xml.js")), "Astro should generate an RSS feed");
+assert.ok(fs.existsSync(path.join(root, "src/components/SiteIntegrations.astro")), "Astro should centralize search and analytics integrations");
+assert.ok(fs.existsSync(path.join(root, ".env.example")), "Project should document search and analytics environment variables");
 assert.ok(fs.existsSync(path.join(root, "src/content.config.ts")), "Astro should define a content collection for GitHub tutorial posts");
 assert.ok(
   fs.existsSync(path.join(root, "src/content/posts/claudecode-jiaocheng.md")),
@@ -47,22 +53,80 @@ assert.equal(packageJson.scripts?.build, "astro build", "build script should gen
 assert.equal(packageJson.scripts?.test, "node tests/static-site.test.cjs", "test script should run the project assertions");
 
 const layoutSource = read("src/layouts/SiteLayout.astro");
+const siteIntegrations = read("src/components/SiteIntegrations.astro");
+const envExample = read(".env.example");
 assert.ok(layoutSource.includes('href: "/tools/"'), "site layout should link to the real AI navigation route");
 assert.ok(layoutSource.includes('href: "/tutorials/"'), "site layout should link to the real tutorial route");
 assert.ok(layoutSource.includes('href: "/about/"'), "site layout should link to the real about route");
 assert.ok(layoutSource.includes('data-global-search'), "site layout should keep a global search form");
+assert.ok(layoutSource.includes("<SiteIntegrations />"), "site layout should include search and analytics integrations in head");
+assert.ok(siteIntegrations.includes('name="google-site-verification"'), "integrations should support Google Search Console verification");
+assert.ok(siteIntegrations.includes('name="msvalidate.01"'), "integrations should support Bing Webmaster verification");
+assert.ok(siteIntegrations.includes('name="baidu-site-verification"'), "integrations should support Baidu resource platform verification");
+assert.ok(siteIntegrations.includes("googletagmanager.com/gtag/js"), "integrations should support Google Analytics gtag");
+assert.ok(siteIntegrations.includes("hm.baidu.com/hm.js"), "integrations should support Baidu Tongji statistics");
+for (const envName of [
+  "PUBLIC_GOOGLE_SITE_VERIFICATION",
+  "PUBLIC_BING_SITE_VERIFICATION",
+  "PUBLIC_BAIDU_SITE_VERIFICATION",
+  "PUBLIC_GOOGLE_ANALYTICS_ID",
+  "PUBLIC_BAIDU_TONGJI_ID",
+]) {
+  assert.ok(envExample.includes(envName), `.env.example should document ${envName}`);
+}
 
 const astroHome = read("src/pages/index.astro");
 const astroTools = read("src/pages/tools/index.astro");
 const astroToolDetail = read("src/pages/tools/[id].astro");
+const astroToolCategory = read("src/pages/tools/categories/[category]/index.astro");
+const astroToolSubcategory = read("src/pages/tools/categories/[category]/[subcategory]/index.astro");
+const astroToolHierarchicalDetail = read("src/pages/tools/categories/[category]/[subcategory]/[id].astro");
 const astroTutorials = read("src/pages/tutorials/index.astro");
 const astroTutorialDetail = read("src/pages/tutorials/[id].astro");
+const astroTutorialCategory = read("src/pages/tutorials/categories/[category]/index.astro");
+const astroTutorialHierarchicalDetail = read("src/pages/tutorials/categories/[category]/[id].astro");
 const articleVisual = read("src/components/ArticleVisual.astro");
 const tutorialCard = read("src/components/TutorialCard.astro");
+const toolTile = read("src/components/ToolTile.astro");
+const toolCard = read("src/components/ToolCard.astro");
+const routeUtils = read("src/lib/routes.mjs");
 const postsLib = read("src/lib/posts.mjs");
+const seoLib = read("src/lib/seo.mjs");
+const sitemapEndpoint = read("src/pages/sitemap.xml.js");
+const robotsEndpoint = read("src/pages/robots.txt.js");
+const rssEndpoint = read("src/pages/rss.xml.js");
+assert.ok(seoLib.includes('SITE_URL = "https://toolmanai.com"'), "SEO helpers should use the official Toolman AI domain");
+assert.ok(seoLib.includes("absoluteUrl"), "SEO helpers should expose absolute URL generation");
+assert.ok(seoLib.includes("websiteSchema"), "SEO helpers should generate WebSite structured data");
+assert.ok(seoLib.includes("collectionPageSchema"), "SEO helpers should generate CollectionPage structured data");
+assert.ok(seoLib.includes("articleSchema"), "SEO helpers should generate Article structured data");
+assert.ok(seoLib.includes("softwareApplicationSchema"), "SEO helpers should generate SoftwareApplication structured data");
+assert.ok(layoutSource.includes('property="og:title"'), "site layout should render Open Graph titles");
+assert.ok(layoutSource.includes('property="og:url"'), "site layout should render Open Graph canonical URLs");
+assert.ok(layoutSource.includes('name="twitter:card"'), "site layout should render Twitter card metadata");
+assert.ok(layoutSource.includes('name="robots"'), "site layout should render robots indexing metadata");
+assert.ok(layoutSource.includes('application/ld+json'), "site layout should render JSON-LD structured data");
+assert.ok(layoutSource.includes("absoluteUrl"), "site layout should normalize SEO URLs to the official domain");
+assert.ok(
+  robotsEndpoint.includes('absoluteUrl("/sitemap.xml")') || robotsEndpoint.includes("https://toolmanai.com/sitemap.xml"),
+  "robots.txt should point crawlers to the official sitemap URL",
+);
+assert.ok(sitemapEndpoint.includes("toolDetailPath"), "sitemap should include canonical tool detail routes");
+assert.ok(sitemapEndpoint.includes("tutorialDetailPath"), "sitemap should include canonical tutorial detail routes");
+assert.ok(rssEndpoint.includes("application/rss+xml"), "RSS endpoint should emit RSS XML");
+assert.ok(rssEndpoint.includes("tutorialDetailPath"), "RSS feed should link to canonical tutorial detail routes");
 assert.ok(astroHome.includes('getCollection("posts"'), "Astro home should render GitHub posts at build time");
 assert.ok(astroHome.includes("Claude Code国内使用指南"), "Astro home should include the GitHub tutorial titles");
-assert.ok(astroHome.includes("getPopularTools(10)"), "Astro home should render two rows of popular tools at build time");
+assert.ok(astroHome.includes("getPopularTools(8)"), "Astro home should render the current curated tool set at build time");
+assert.ok(astroHome.includes("websiteSchema"), "Astro home should describe the site with WebSite structured data");
+assert.ok(astroHome.includes("collectionPageSchema"), "Astro home should describe home recommendations with CollectionPage structured data");
+assert.ok(astroTools.includes("collectionPageSchema"), "Astro tools index should describe the tool directory as structured data");
+assert.ok(astroToolDetail.includes("softwareApplicationSchema"), "Tool detail pages should describe each tool with SoftwareApplication structured data");
+assert.ok(astroToolHierarchicalDetail.includes("softwareApplicationSchema"), "Hierarchical tool detail pages should describe each tool with SoftwareApplication structured data");
+assert.ok(astroTutorials.includes("collectionPageSchema"), "Tutorial listing should describe tutorial collections as structured data");
+assert.ok(astroTutorialCategory.includes("collectionPageSchema"), "Tutorial category pages should describe category collections as structured data");
+assert.ok(astroTutorialDetail.includes("articleSchema"), "Tutorial detail pages should describe posts with Article structured data");
+assert.ok(astroTutorialHierarchicalDetail.includes("articleSchema"), "Hierarchical tutorial detail pages should describe posts with Article structured data");
 assert.ok(postsLib.includes("normalizePostImage"), "GitHub post image paths should be normalized for local rendering");
 assert.ok(postsLib.includes("const image = normalizePostImage"), "Mapped tutorial articles should expose GitHub cover images");
 assert.ok(postsLib.includes("firstMarkdownImage"), "Mapped tutorial articles should fall back to the first Markdown image as cover");
@@ -72,13 +136,36 @@ assert.ok(articleVisual.includes("{article.title}"), "Gradient article placehold
 assert.ok(tutorialCard.includes("article.image ? <img"), "Compact home article cards should render GitHub cover images");
 assert.ok(tutorialCard.includes("<span class=\"visual-label\">{article.title}</span>"), "Compact article placeholders should use the article title");
 assert.ok(astroTools.includes("getToolSections"), "Astro tools page should render full tool sections at build time");
-assert.ok(read("src/components/ToolTile.astro").includes('href={`/tools/${tool.id}/`}'), "Tool cards should link to indexable detail routes");
+assert.ok(routeUtils.includes("toolCategoryPath"), "Tool category URLs should be generated from a shared route helper");
+assert.ok(routeUtils.includes("toolSubcategoryPath"), "Tool subcategory URLs should be generated from a shared route helper");
+assert.ok(routeUtils.includes("toolDetailPath"), "Tool detail URLs should include category and subcategory hierarchy");
+assert.ok(routeUtils.includes("tutorialCategoryPath"), "Tutorial category URLs should be generated from a shared route helper");
+assert.ok(routeUtils.includes("tutorialDetailPath"), "Tutorial detail URLs should include topic hierarchy");
+assert.ok(toolTile.includes("toolDetailPath(tool)"), "Tool directory cards should link to hierarchical detail routes");
+assert.ok(toolCard.includes("toolDetailPath(tool)"), "Home tool cards should link to hierarchical detail routes");
+assert.ok(tutorialCard.includes("tutorialDetailPath(article)"), "Tutorial cards should link to hierarchical detail routes");
+assert.ok(astroTools.includes("toolCategoryPath"), "AI navigation category strip should link to category routes");
+assert.ok(astroTools.includes("toolSubcategoryPath"), "AI navigation subcategory tabs should link to subcategory routes");
+assert.ok(!astroTools.includes('href={`#tool-section-${index}`}'), "AI navigation category strip should not rely on hash-only category URLs");
+assert.ok(!read("src/components/ToolSidebar.astro").includes('href={`#tool-section-'), "AI navigation sidebar should not rely on hash-only category URLs");
+assert.ok(astroToolCategory.includes("getStaticPaths"), "Tool category pages should generate static category paths");
+assert.ok(astroToolSubcategory.includes("getStaticPaths"), "Tool subcategory pages should generate static subcategory paths");
+assert.ok(astroToolCategory.includes("toolCategoryPath"), "Tool category pages should preserve category navigation links");
+assert.ok(astroToolSubcategory.includes("toolSubcategoryPath"), "Tool subcategory pages should preserve subcategory navigation links");
 assert.ok(astroToolDetail.includes("getStaticPaths"), "Tool detail page should generate static paths");
+assert.ok(astroToolDetail.includes("canonical={toolDetailPath(tool)}"), "Legacy tool detail pages should canonicalize to hierarchical routes");
+assert.ok(astroToolHierarchicalDetail.includes("getStaticPaths"), "Hierarchical tool detail pages should generate static tool paths");
+assert.ok(astroToolHierarchicalDetail.includes("toolSubcategoryPath"), "Hierarchical tool detail pages should link back to their subcategory");
 assert.ok(astroToolDetail.includes("renderToolContent"), "Tool detail page should render source markdown content");
 assert.ok(astroTutorials.includes('getCollection("posts"'), "Tutorial listing should render GitHub post content at build time");
 assert.ok(astroTutorials.includes("Claude Code国内使用指南"), "Tutorial listing should include the GitHub tutorial titles");
-assert.ok(read("src/components/TutorialCard.astro").includes('href={`/tutorials/${article.id}/`}'), "Tutorial cards should link to indexable detail routes");
+assert.ok(astroTutorials.includes("tutorialCategoryPath"), "Tutorial listing should link to indexable tutorial category routes");
+assert.ok(astroTutorialCategory.includes("getStaticPaths"), "Tutorial category pages should generate static topic paths");
+assert.ok(astroTutorialCategory.includes("tutorialCategoryPath"), "Tutorial category pages should keep category navigation indexable");
 assert.ok(astroTutorialDetail.includes("getStaticPaths"), "Tutorial detail page should generate static paths");
+assert.ok(astroTutorialDetail.includes("canonical={tutorialDetailPath(article)}"), "Legacy tutorial detail pages should canonicalize to hierarchical routes");
+assert.ok(astroTutorialHierarchicalDetail.includes("getStaticPaths"), "Hierarchical tutorial detail pages should generate static article paths");
+assert.ok(astroTutorialHierarchicalDetail.includes("tutorialCategoryPath(article.category)"), "Hierarchical tutorial detail pages should link back to their category");
 assert.ok(astroTutorialDetail.includes("render(entry)"), "Tutorial detail page should render Markdown post bodies");
 
 const html = read("index.html");
@@ -92,6 +179,7 @@ const app = require(path.join(root, "app.js"));
 const appSource = read("app.js");
 const cssSource = read("styles.css");
 const publicCssSource = read("public/styles.css");
+const publicSiteSource = read("public/site.js");
 
 assert.ok(!appSource.includes('class="bookmark"'), "home recommendation cards should not render bookmark icons");
 assert.ok(!cssSource.includes(".bookmark"), "bookmark styles should be removed with the icon");
@@ -126,6 +214,7 @@ const articleRowStyle = cssSource.match(/\.article-row\s*\{[^}]+\}/)?.[0] || "";
 const articleThumbStyle = cssSource.match(/\.thumb\s*\{[^}]+\}/)?.[0] || "";
 const publicArticleVisualStyle = publicCssSource.match(/\.article-visual\s*\{[^}]+\}/)?.[0] || "";
 const publicArticleThumbStyle = publicCssSource.match(/\.thumb\s*\{[^}]+\}/)?.[0] || "";
+const publicArticleCardLinkStyle = publicCssSource.match(/\.article-row,\n\.tutorial-card\s*\{[^}]+\}/)?.[0] || "";
 const visualLabelStyle = publicCssSource.match(/\.visual-label\s*\{[^}]+\}/)?.[0] || "";
 const compactArticlePanelStyle = cssSource.match(/\.article-row \.article-info-panel\s*\{[^}]+\}/)?.[0] || "";
 const compactArticleTitleStyle = cssSource.match(/\.article-row \.article-info-title\s*\{[^}]+\}/)?.[0] || "";
@@ -157,6 +246,7 @@ assert.ok(articleThumbStyle.includes("min-height: 84px"), "home article thumbnai
 assert.ok(publicArticleVisualStyle.includes("align-items: center"), "gradient article placeholders should center their title vertically");
 assert.ok(publicArticleVisualStyle.includes("justify-content: center"), "gradient article placeholders should center their title horizontally");
 assert.ok(publicArticleThumbStyle.includes("place-items: center"), "compact gradient placeholders should center their title");
+assert.ok(publicArticleCardLinkStyle.includes("text-decoration: none"), "article card links should not underline nested placeholder text");
 assert.ok(visualLabelStyle.includes("-webkit-line-clamp: 3"), "gradient placeholder text should be clamped to three lines");
 assert.ok(visualLabelStyle.includes("max-height: calc(1.35em * 3)"), "gradient placeholder text should keep a hard three-line height limit");
 assert.ok(visualLabelStyle.includes("text-decoration: none"), "gradient placeholder titles should not look like text links");
@@ -187,35 +277,66 @@ assert.ok(!cssSource.includes(".mock-window"), "removed about mock preview style
 assert.ok(!appSource.includes("沪ICP备19026706号-6"), "about page footer should not render the removed ICP text");
 
 assert.ok(app.tutorials.length >= 20, "tutorial dataset should include at least twenty articles");
-assert.ok(app.tools.length >= 50, "tool dataset should include at least fifty tools");
-for (const category of [
-  "AI写作",
-  "AI图像",
-  "AI视频创作",
-  "AI办公",
-  "AI开发平台",
-  "AI智能体",
-  "AI聊天对话",
-  "AI音频音乐",
-  "AI商业设计",
-  "AI大模型",
-  "AI学习平台",
-  "AI搜索引擎",
-  "AI内容检测",
-  "AI应用",
-]) {
-  assert.ok(app.categories.some((item) => item.name === category), `AI navigation should include ${category}`);
-}
+assert.equal(app.tools.length, 8, "tool dataset should stay focused on the initial curated set");
+assert.deepEqual(
+  app.categories,
+  [
+    { name: "AI 工具", subcategories: ["AI 对话助手", "AI 音乐生成", "AI 编程工具"] },
+    { name: "海外数字服务", subcategories: ["流媒体娱乐"] },
+  ],
+  "AI navigation should match the compact taxonomy from the reference image",
+);
+assert.deepEqual(
+  app.tools.map((tool) => [tool.name, tool.category, tool.subcategory]),
+  [
+    ["Claude", "AI 工具", "AI 对话助手"],
+    ["ChatGPT", "AI 工具", "AI 对话助手"],
+    ["Poe", "AI 工具", "AI 对话助手"],
+    ["Google AI Studio", "AI 工具", "AI 对话助手"],
+    ["NotebookLM", "AI 工具", "AI 对话助手"],
+    ["Suno", "AI 工具", "AI 音乐生成"],
+    ["Claude Code", "AI 工具", "AI 编程工具"],
+    ["Spotify", "海外数字服务", "流媒体娱乐"],
+  ],
+  "AI navigation tools should follow the reference image grouping",
+);
+const toolTree = app.categories.map((category) => ({
+  name: category.name,
+  children: category.subcategories.map((subcategory) => ({
+    name: subcategory,
+    tools: app.tools.filter((tool) => tool.category === category.name && tool.subcategory === subcategory).map((tool) => tool.name),
+  })),
+}));
+assert.deepEqual(
+  toolTree,
+  [
+    {
+      name: "AI 工具",
+      children: [
+        { name: "AI 对话助手", tools: ["Claude", "ChatGPT", "Poe", "Google AI Studio", "NotebookLM"] },
+        { name: "AI 音乐生成", tools: ["Suno"] },
+        { name: "AI 编程工具", tools: ["Claude Code"] },
+      ],
+    },
+    {
+      name: "海外数字服务",
+      children: [{ name: "流媒体娱乐", tools: ["Spotify"] }],
+    },
+  ],
+  "AI navigation tree should exactly match the provided reference image",
+);
 
 assert.equal(typeof app.getToolSections, "function", "AI navigation should expose full directory sections");
 const toolSections = app.getToolSections();
-assert.ok(toolSections.length >= 14, "AI navigation should render all major directory sections");
+assert.equal(toolSections.length, 2, "AI navigation should render the two top-level sections from the reference image");
 assert.ok(toolSections.every((section) => section.tools.length > 0), "each directory section should have visible tools");
 assert.ok(appSource.includes('class="directory-shell"'), "AI navigation should render a plain directory shell");
 assert.ok(appSource.includes('class="tool-directory-layout"'), "AI navigation should render a sidebar and content layout");
 assert.ok(appSource.includes('class="tool-sidebar"'), "AI navigation should include a category sidebar");
 assert.ok(appSource.includes("renderToolSidebar"), "AI navigation sidebar should be generated from category data");
 assert.ok(appSource.includes("sidebar-subcategory"), "AI navigation sidebar should include category subitems");
+assert.ok(!appSource.includes('data-action="more-categories"'), "AI navigation should not show a placeholder for extra categories");
+assert.ok(!publicSiteSource.includes("more-categories"), "client script should not keep the removed extra-category action");
 assert.ok(appSource.includes("expandedToolCategory"), "AI navigation sidebar should track expanded state separately from selected category");
 assert.ok(appSource.includes("renderSidebarIcon"), "AI navigation sidebar categories should render left-side icons");
 assert.ok(appSource.includes("sidebar-arrow"), "AI navigation sidebar categories should render arrow icons");
@@ -232,10 +353,15 @@ assert.ok(!appSource.includes("⌄"), "AI navigation category tabs should not re
 assert.ok(!cssSource.includes(".category-caret"), "unused category caret styles should be removed");
 const toolLayoutStyle = cssSource.match(/\.tool-directory-layout\s*\{[^}]+\}/)?.[0] || "";
 const toolSidebarStyle = cssSource.match(/\.tool-sidebar\s*\{[^}]+\}/)?.[0] || "";
+const publicToolSidebarStyle = publicCssSource.match(/\.tool-sidebar\s*\{[^}]+\}/)?.[0] || "";
 assert.ok(toolLayoutStyle.includes("grid-template-columns: 196px minmax(0, 1fr)"), "AI navigation layout should reserve a narrower left sidebar");
 assert.ok(toolSidebarStyle.includes("position: sticky"), "AI navigation sidebar should stay visible while scrolling");
-assert.ok(toolSidebarStyle.includes("top: calc(50vh + 32px)"), "AI navigation sidebar should be vertically centered below the header");
-assert.ok(toolSidebarStyle.includes("transform: translateY(-50%)"), "AI navigation sidebar should center itself around the sticky anchor");
+assert.ok(toolSidebarStyle.includes("top: 112px"), "AI navigation sidebar should use a fixed sticky offset below the header");
+assert.ok(!toolSidebarStyle.includes("calc(50vh"), "AI navigation sidebar should not use viewport-centered positioning");
+assert.ok(!toolSidebarStyle.includes("translateY(-50%)"), "AI navigation sidebar should not vertically center itself around the sticky anchor");
+assert.ok(publicToolSidebarStyle.includes("top: 112px"), "published AI navigation sidebar should use a fixed sticky offset below the header");
+assert.ok(!publicToolSidebarStyle.includes("calc(50vh"), "published AI navigation sidebar should not use viewport-centered positioning");
+assert.ok(!publicToolSidebarStyle.includes("translateY(-50%)"), "published AI navigation sidebar should not vertically center itself around the sticky anchor");
 assert.ok(toolSidebarStyle.includes("max-height: calc(100vh - 96px)"), "AI navigation sidebar should fit within the viewport");
 const sidebarCategoryButtonStyle = cssSource.match(/\.sidebar-category-button\s*\{[^}]+\}/)?.[0] || "";
 const sidebarActiveCategoryButtonStyle = cssSource.match(/\.sidebar-category\.is-active \.sidebar-category-button\s*\{[^}]+\}/)?.[0] || "";
@@ -308,46 +434,35 @@ assert.equal(typeof app.getToolById, "function", "tool click interactions should
 assert.equal(app.getToolById("chatgpt").name, "ChatGPT", "tool lookup should return the clicked tool");
 assert.equal(typeof app.getToolUrl, "function", "tool cards should expose a jump link resolver");
 assert.equal(
-  app.getToolUrl("spark"),
-  "https://ai.codefather.cn/tool/1983423688002134045",
-  "tool jump links should mirror the source directory detail links when available",
+  app.getToolUrl("claude-code"),
+  "https://www.anthropic.com/claude-code",
+  "tool jump links should resolve current curated tools when available",
 );
 assert.ok(
   app.tools.every((tool) => /^https?:\/\//.test(tool.url)),
   "every tool should have a real HTTP jump link",
 );
 assert.equal(typeof app.getToolDetail, "function", "tool detail lookup should be exposed");
-const musetDetail = app.getToolDetail("muset");
-assert.equal(musetDetail.externalUrl, "https://www.muset.ai/", "tool detail should keep the source official link");
-assert.ok(musetDetail.cover.includes("pic.code-nav.cn"), "tool detail should use cover data from the source directory");
-assert.equal(musetDetail.viewCount, "576", "tool detail should keep source view count data");
+const notebookDetail = app.getToolDetail("notebooklm");
+assert.equal(notebookDetail.externalUrl, "https://notebooklm.google.com/", "NotebookLM detail should keep the official link");
 assert.ok(
-  musetDetail.content.includes("Muset是一款基于人工智能的智能创作工作空间"),
-  "Muset detail content should match the source directory markdown",
+  notebookDetail.content.includes("NotebookLM 是 AI 工具 场景下的 AI 工具"),
+  "NotebookLM should render the local detail template",
 );
 assert.ok(
-  musetDetail.content.includes("上下文感知的共同创作代理"),
-  "Muset source detail should keep the original feature sections",
+  notebookDetail.content.includes("AI 对话助手"),
+  "NotebookLM detail should include its compact subcategory",
 );
-const xiaoinDetail = app.getToolDetail("xiaoin");
-assert.equal(xiaoinDetail.externalUrl, "https://xiaoin.com.cn/create", "万能小in should keep the source official link");
-assert.equal(xiaoinDetail.viewCount, "108", "万能小in should keep source view count data");
+const spotifyDetail = app.getToolDetail("spotify");
+assert.equal(spotifyDetail.externalUrl, "https://www.spotify.com/", "Spotify detail should keep the official link");
 assert.ok(
-  xiaoinDetail.content.includes("## 智能写作助手：万能小in"),
-  "万能小in should render source detail content instead of the local generic template",
+  spotifyDetail.content.includes("海外数字服务"),
+  "Spotify detail should include the overseas digital service category",
 );
 assert.ok(
-  xiaoinDetail.content.includes("实习报告一键生成"),
-  "万能小in source detail should keep feature bullets",
+  spotifyDetail.content.includes("流媒体娱乐"),
+  "Spotify detail should include its compact subcategory",
 );
-const sparkDetail = app.getToolDetail("spark");
-assert.equal(sparkDetail.externalUrl, "https://xinghuo.xfyun.cn/desk", "讯飞星火 should keep the source official link");
-assert.equal(sparkDetail.viewCount, "174", "讯飞星火 should keep source view count data");
-assert.ok(
-  sparkDetail.content.includes("## 讯飞星火：智能时代的全能AI助手"),
-  "讯飞星火 should render source detail content instead of the local generic template",
-);
-assert.ok(sparkDetail.content.includes("多模态交互"), "讯飞星火 source detail should keep core advantage content");
 assert.ok(appSource.includes("tool-detail-numbered"), "tool detail markdown renderer should support numbered source lists");
 assert.ok(appSource.includes("renderToolDetail"), "AI navigation should render a local tool detail view");
 assert.ok(appSource.includes("selectedToolId"), "tool item clicks should open a selected tool detail state");
@@ -364,7 +479,7 @@ assert.ok(appSource.includes('target="_blank"'), "tool detail external actions s
 assert.ok(appSource.includes('rel="noopener noreferrer"'), "external tool links should use safe link attributes");
 assert.ok(!appSource.includes("data-tool-link"), "tool cards should use direct anchor navigation instead of placeholder actions");
 assert.equal(typeof app.searchEverywhere, "function", "global search should expose a shared search helper");
-const searchResult = app.searchEverywhere("Paperpal");
+const searchResult = app.searchEverywhere("Claude Code");
 assert.equal(searchResult.preferredTab, "tools", "global search should prefer tool results when tools match");
 assert.equal(searchResult.tools.length, 1, "global search should return matching tools");
 assert.ok(html.includes('data-tab-target="home"'), "brand click should return to the home tab");
@@ -415,7 +530,10 @@ assert.ok(tutorialSearchStyle.includes("width: min(253px, 100%)"), "AI tutorial 
 assert.ok(tutorialSearchStyle.includes("height: 44px"), "AI tutorial search should be ten pixels shorter than the default search field");
 assert.ok(tutorialSearchStyle.includes("padding: 2px 12px 2px 6px"), "AI tutorial search should keep the icon aligned at the shorter height");
 const tutorialListStyle = cssSource.match(/\.tutorial-list\s*\{[^}]+\}/)?.[0] || "";
-const tutorialCardStyle = cssSource.match(/\.tutorial-card\s*\{[^}]+\}/)?.[0] || "";
+const tutorialCardStyle =
+  [...cssSource.matchAll(/\.tutorial-card\s*\{[^}]+\}/g)]
+    .map((match) => match[0])
+    .find((rule) => rule.includes("grid-template-columns")) || "";
 const tutorialCardVisualStyle = cssSource.match(/\.tutorial-card \.article-visual\s*\{[^}]+\}/)?.[0] || "";
 const tutorialArticlePanelStyle = cssSource.match(/\.tutorial-card \.article-info-panel\s*\{[^}]+\}/)?.[0] || "";
 const tutorialArticleTitleStyle = cssSource.match(/\.tutorial-card \.article-info-title\s*\{[^}]+\}/)?.[0] || "";
@@ -452,7 +570,6 @@ assert.ok(!cssSource.includes(".site-toast::before"), "toast should not include 
 for (const marker of [
   "data-tool-id",
   "data-tutorial-id",
-  "data-action=\"more-categories\"",
   "showToast",
   "applyGlobalSearch",
 ]) {
@@ -468,22 +585,23 @@ assert.equal(
 );
 
 const featuredTools = app.getFeaturedTools();
-assert.ok(featuredTools.length >= 15, "featured tool helper should keep the curated subset available");
+assert.ok(featuredTools.length > 0, "featured tool helper should keep a visible curated subset available");
+assert.ok(featuredTools.length < app.tools.length, "featured tool helper should stay smaller than the compact tool set");
 assert.ok(featuredTools.every((tool) => tool.featured), "featured tool helper should return only featured tools");
 
 assert.equal(typeof app.getPopularTools, "function", "home should expose a popular tools helper");
-const popularTools = app.getPopularTools(10);
-assert.equal(popularTools.length, 10, "home should render two rows of five popular tools");
-assert.ok(new Set(popularTools.map((tool) => tool.id)).size === 10, "popular tools should not contain duplicates");
+const popularTools = app.getPopularTools(8);
+assert.equal(popularTools.length, 8, "home should render the current curated tool set");
+assert.ok(new Set(popularTools.map((tool) => tool.id)).size === 8, "popular tools should not contain duplicates");
 assert.ok(
-  new Set(popularTools.map((tool) => tool.category)).size > 5,
-  "popular tools should come from the full tool library instead of one category",
+  new Set(popularTools.map((tool) => tool.category)).size === 2,
+  "popular tools should cover both top-level navigation categories",
 );
-assert.ok(appSource.includes("getPopularTools(10)"), "home recommended tools should request ten popular tools");
+assert.ok(appSource.includes("getPopularTools(8)"), "home recommended tools should request the current curated tool count");
 
-const writingTools = app.filterTools({ category: "AI写作", subcategory: "AI论文写作", query: "Paperpal" });
-assert.equal(writingTools.length, 1, "AI navigation should filter by category, subcategory, and query");
-assert.equal(writingTools[0].name, "Paperpal");
+const conversationTools = app.filterTools({ category: "AI 工具", subcategory: "AI 对话助手", query: "NotebookLM" });
+assert.equal(conversationTools.length, 1, "AI navigation should filter by category, subcategory, and query");
+assert.equal(conversationTools[0].name, "NotebookLM");
 
 const codingTutorials = app.filterTutorials({ category: "AI编程", query: "研发" });
 assert.equal(codingTutorials.length, 1, "tutorials should filter by category and keyword");

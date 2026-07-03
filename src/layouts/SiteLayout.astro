@@ -1,9 +1,20 @@
 ---
+import SiteIntegrations from "../components/SiteIntegrations.astro";
+import { absoluteUrl, jsonLdScript, SITE_NAME } from "../lib/seo.mjs";
+
 const {
   title = "工具人AI导航 - AI工具与教程导航站",
   description = "工具人AI导航是一个面向中文用户的 AI 工具与教程导航站，帮助你更快发现工具、学习方法、形成工作流。",
   activeNav = "home",
+  canonical,
+  image,
+  pageType = "website",
+  robots = "index, follow",
+  structuredData = [],
 } = Astro.props;
+const canonicalUrl = absoluteUrl(canonical || Astro.url.pathname);
+const imageUrl = image ? absoluteUrl(image) : "";
+const structuredDataItems = Array.isArray(structuredData) ? structuredData : [structuredData];
 
 const navItems = [
   { id: "home", href: "/", label: "主页" },
@@ -19,6 +30,25 @@ const navItems = [
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={pageType} />
+    <meta property="og:url" content={canonicalUrl} />
+    {imageUrl ? <meta property="og:image" content={imageUrl} /> : null}
+    <meta name="twitter:card" content={imageUrl ? "summary_large_image" : "summary"} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {imageUrl ? <meta name="twitter:image" content={imageUrl} /> : null}
+    <link rel="alternate" type="application/rss+xml" title="工具人AI导航 RSS" href={absoluteUrl("/rss.xml")} />
+    {
+      structuredDataItems.filter(Boolean).map((item) => (
+        <script type="application/ld+json" set:html={jsonLdScript(item)} />
+      ))
+    }
+    <SiteIntegrations />
     <title>{title}</title>
     <link
       rel="icon"

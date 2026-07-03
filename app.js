@@ -10,47 +10,10 @@
 })(typeof window !== "undefined" ? window : globalThis, function () {
   const categories = [
     {
-      name: "AI写作",
-      subcategories: [
-        "AI写作工具",
-        "AI小红书文案",
-        "AI小说",
-        "AI论文写作",
-        "AI总结摘要",
-        "AI提示词",
-        "AIGC检测",
-        "AI公文",
-        "AI标书写作",
-        "AI论文查重",
-        "AI阅读",
-        "降AIGC率",
-      ],
+      name: "AI 工具",
+      subcategories: ["AI 对话助手", "AI 音乐生成", "AI 编程工具"],
     },
-    {
-      name: "AI图像",
-      subcategories: [
-        "常用AI图像工具",
-        "AI图片优化修复",
-        "AI图片背景移除",
-        "AI图片无损放大",
-        "AI 3D模型生成",
-        "AI商品图生成",
-        "AI图片插画生成",
-        "AI图片物体抹除",
-      ],
-    },
-    { name: "AI视频创作", subcategories: ["AI视频生成", "AI数字人", "AI剪辑", "AI字幕"] },
-    { name: "AI办公", subcategories: ["AI PPT", "AI文档工具", "AI思维导图", "AI表格数据处理"] },
-    { name: "AI开发平台", subcategories: ["AI编程工具", "AI开源项目", "低代码开发", "MCP工具"] },
-    { name: "AI智能体", subcategories: ["智能体平台", "工作流自动化", "Agent应用"] },
-    { name: "AI聊天对话", subcategories: ["通用助手", "角色聊天", "知识问答"] },
-    { name: "AI音频音乐", subcategories: ["AI配音", "AI音乐", "语音转文字"] },
-    { name: "AI商业设计", subcategories: ["电商设计", "品牌设计", "营销素材"] },
-    { name: "AI大模型", subcategories: ["国产大模型", "开源模型", "模型评测"] },
-    { name: "AI学习平台", subcategories: ["AI课程", "训练营", "学习社区"] },
-    { name: "AI搜索引擎", subcategories: ["AI搜索", "学术搜索", "知识库搜索"] },
-    { name: "AI内容检测", subcategories: ["AIGC检测", "AI论文查重", "AI内容审核", "降AIGC率"] },
-    { name: "AI应用", subcategories: ["AI应用商店", "AI效率提升", "AI法律助手", "AI生活助手"] },
+    { name: "海外数字服务", subcategories: ["流媒体娱乐"] },
   ];
 
   const tutorials = [
@@ -305,6 +268,7 @@
     "xmind-ai": "https://xmind.ai/",
     "feishu-minutes": "https://www.feishu.cn/product/minutes",
     "excel-ai": "https://www.boloforms.com/sheetgod/",
+    "claude-code": "https://www.anthropic.com/claude-code",
     cursor: "https://www.cursor.com/",
     "github-copilot": "https://ai.codefather.cn/tool/1965402622869528590",
     codeium: "https://codeium.com/",
@@ -326,6 +290,7 @@
     huggingface: "https://huggingface.co/",
     shengshu: "https://www.shengshu-ai.com/",
     "google-ai": "https://aistudio.google.com/",
+    notebooklm: "https://notebooklm.google.com/",
     "openai-academy": "https://ai.codefather.cn/tool/1965402623578365960",
     perplexity: "https://www.perplexity.ai/",
     metaso: "https://metaso.cn/",
@@ -336,6 +301,7 @@
     futurepedia: "https://www.futurepedia.io/",
     theresanaiforthat: "https://theresanaiforthat.com/",
     "notion-ai": "https://www.notion.com/product/ai",
+    spotify: "https://www.spotify.com/",
   };
 
   const toolDetails = {
@@ -455,116 +421,24 @@ Muset能够读取用户的素材库（如笔记、文档），在创作过程中
   };
 
   const tools = [
-    tool("youdao", "有道写作", "结合有道词典APP,手写英文习作拍照上传,快速批改", "AI写作", "AI写作工具", "有", "#ff4d5f"),
-    tool("spark", "讯飞星火", "高性能AI语言模型，具备多模态理解和生成能力。", "AI写作", "AI写作工具", "星", "#28b8e8"),
-    tool("xinwen", "心文AI", "提供 AI 智能写作服务的平台，帮助快速生成高质量内容。", "AI写作", "AI写作工具", "心", "#6d5dfc"),
-    tool("paperpal", "Paperpal", "英文论文写作助手 免费写作及润色AI工具。", "AI写作", "AI论文写作", "P", "#2563eb", true),
-    tool("muset", "Muset", "帮助深度创作者保持心流状态。", "AI写作", "AI写作工具", "M", "#111827", true),
-    tool("stable-copy", "稳定AI文案", "满血版DeepSeek驱动，将设计从专业技能转化为语言表达。", "AI写作", "AI小红书文案", "稳", "#075fff"),
-    tool("xiaoin", "万能小in一键论文", "3分钟4万字130+应用，只需标题快速生成论文资料。", "AI写作", "AI论文写作", "in", "#2f5fd0"),
-    tool("biling", "笔灵AI写作", "全能型AI写作工具，覆盖文章、论文、小说与降重。", "AI写作", "AI写作工具", "笔", "#34c759"),
-    tool("kuxuan", "酷宣AI", "快速生成高颜值文章，多平台同步。", "AI写作", "AI写作工具", "酷", "#06b6d4"),
-    tool("mohu", "墨狐AI写小说", "DeepSeek写小说，5分钟生成万字。", "AI写作", "AI小说", "墨", "#673ab7"),
-    tool("wancai", "万彩AI", "强大的AI内容创作工具合集。", "AI写作", "AI写作工具", "AI", "#6366f1"),
-    tool("chengpian", "橙篇", "百度推出的全新的综合AI应用。", "AI写作", "AI总结摘要", "橙", "#f97316"),
-    tool("wenxiaobai", "满血DeepSeek-问小白", "免费无限量使用DeepSeek R1模型，支持联网搜索。", "AI写作", "AI写作工具", "问", "#4f46e5"),
-    tool("wawa", "蛙蛙写作", "创作各种类型、风格、主题的小说。", "AI写作", "AI小说", "蛙", "#22c55e"),
-    tool("xunfei-doc", "讯飞文书 – 免费体验", "国产大模型AI公文写作工具。", "AI写作", "AI公文", "文", "#ef4444"),
-    tool("xieyi", "析易-AI论文_数据分析", "AI论文辅助、文献综述、SCI高清作图。", "AI写作", "AI论文写作", "析", "#3b82f6"),
-    tool("aipaper", "AI论文-高质量(包过查重)", "10秒大纲，3分钟万字论文。", "AI写作", "AI论文写作", "66", "#06b6d4"),
-    tool("qianbi", "千笔AI论文-AIPaperPass", "AI论文写作与查重辅助平台。", "AI写作", "AI论文写作", "千", "#60a5fa"),
-    tool("xunfei-write", "讯飞绘文", "选题、配图、成文，一站式创作。", "AI写作", "AI写作工具", "绘", "#a78bfa"),
-    tool("maomao", "茅茅虫AI论文助手", "帮助用户生成论文灵感、提供论文开题思路。", "AI写作", "AI论文写作", "茅", "#84cc16"),
-    tool("paperfake", "PaperFake AI写论文", "一键AI生成3万字论文，查重率、aigc率双重担保。", "AI写作", "AI论文写作", "PF", "#6b7280"),
-    tool("xiaoyu", "小鱼AI写作 – 免费", "满足自媒体人和办公人写作创作的在线智能AI写作平台。", "AI写作", "AI写作工具", "鱼", "#38bdf8"),
-    tool("content-butler", "AI内容管家-免费100篇", "AI驱动的SEO挖词、写作、发布工具。", "AI写作", "AI写作工具", "管", "#3b82f6"),
-    tool("huiyan", "慧言AI", "一站式AI解决方案，全能聚合平台。", "AI写作", "AI写作工具", "慧", "#111827"),
-    tool("doubao-write", "豆包AI写作助手", "字节跳动推出的 AI 助手，灵活高效的智能对话。", "AI写作", "AI写作工具", "豆", "#f87171"),
-    tool("chatgpt", "ChatGPT", "强大的对话模型，回答问题、写作创作、编程助手。", "AI聊天对话", "通用助手", "GPT", "#10a37f", true),
-    tool("midjourney", "Midjourney", "AI 图像生成工具，创造精美的艺术作品。", "AI图像", "AI图片插画生成", "MJ", "#7c3aed", true),
-    tool("kimi", "Kimi", "超长上下文 AI 助手，擅长阅读与资料整理。", "AI聊天对话", "通用助手", "K", "#111827", true),
-    tool("doubao", "豆包", "字节跳动推出的 AI 助手，灵活高效的智能对话。", "AI聊天对话", "通用助手", "豆", "#f59e0b", true),
-    tool("qwen", "通义千问", "阿里通义大模型，支持多模态理解与创作。", "AI大模型", "国产大模型", "通", "#6d5dfc", true),
-    tool("miaohua", "妙话AI", "专为创作者打造的创意图片生成工具。", "AI图像", "常用AI图像工具", "妙", "#facc15"),
-    tool("miaohui", "秒绘AI", "一键生成爆款图文，免费发布小红书。", "AI图像", "常用AI图像工具", "秒", "#111827"),
-    tool("vision", "视觉工厂", "AI视觉创作工具，一键生成图片与视频。", "AI图像", "常用AI图像工具", "视", "#6d5dfc"),
-    tool("katu", "咖图AI", "搭载NanoBanana Pro模型的智能图像设计平台。", "AI图像", "AI商品图生成", "咖", "#a16207"),
-    tool("miguo", "米粿AI", "专为画师打造的日系二次元渐进式分层绘画助手。", "AI图像", "AI图片插画生成", "米", "#60a5fa"),
-    tool("wuli", "呜哩", "阿里推出的AIGC创意生产力平台。", "AI图像", "常用AI图像工具", "呜", "#0f172a"),
-    tool("kling", "可灵AI", "快手推出的AI图像和视频创作平台。", "AI图像", "AI图片插画生成", "可", "#2563eb"),
-    tool("liblib", "LiblibAI·哩布哩布AI", "国内领先的AI图像创作平台和模型社区。", "AI图像", "AI图片插画生成", "哩", "#8b5cf6"),
-    tool("vivago", "vivago.ai", "免费AI视频与图像生成平台。", "AI视频创作", "AI视频生成", "V", "#2563eb"),
-    tool("a2e", "A2E", "一站式AI视频生成平台。", "AI视频创作", "AI视频生成", "A2", "#7c3aed"),
-    tool("komiko", "KomikoAI", "一站式AI动漫创作平台。", "AI视频创作", "AI视频生成", "K", "#ec4899"),
-    tool("nextcut", "NextCut AI", "AI驱动的视频创作平台，融合智能工作流与多轨剪辑。", "AI视频创作", "AI剪辑", "N", "#14b8a6"),
-    tool("huasheng", "花生AI", "B站推出的AI视频创作工具。", "AI视频创作", "AI视频生成", "花", "#f59e0b"),
-    tool("gamma", "Gamma", "用 AI 快速生成演示文稿和网页。", "AI办公", "AI PPT", "G", "#6d5dfc"),
-    tool("tome", "Tome", "AI 演示文稿创作工具，从大纲到成稿。", "AI办公", "AI PPT", "T", "#111827"),
-    tool("xmind-ai", "XMind AI", "AI 思维导图与头脑风暴工具。", "AI办公", "AI思维导图", "X", "#f97316"),
-    tool("feishu-minutes", "飞书妙记", "会议转写、纪要整理与协作沉淀。", "AI办公", "AI会议工具", "飞", "#2563eb"),
-    tool("excel-ai", "SheetGod", "AI 表格公式、数据处理和自动化助手。", "AI办公", "AI表格数据处理", "S", "#16a34a"),
-    tool("cursor", "Cursor", "面向开发者的 AI 代码编辑器。", "AI开发平台", "AI编程工具", "C", "#111827", true),
-    tool("github-copilot", "GitHub Copilot", "代码补全、问答和工程协作助手。", "AI开发平台", "AI编程工具", "GH", "#24292f", true),
-    tool("codeium", "Codeium", "免费的 AI 编程助手和代码搜索工具。", "AI开发平台", "AI编程工具", "Co", "#06b6d4"),
-    tool("dify", "Dify", "开源 LLM 应用开发平台。", "AI开发平台", "AI开源项目", "D", "#2563eb"),
-    tool("coze", "扣子", "字节跳动推出的智能体搭建平台。", "AI智能体", "智能体平台", "扣", "#1677ff", true),
-    tool("fastgpt", "FastGPT", "知识库问答与工作流编排平台。", "AI智能体", "工作流自动化", "F", "#14b8a6", true),
-    tool("flowith", "Flowith", "AI 工作流与智能体协作平台。", "AI智能体", "工作流自动化", "Fl", "#8b5cf6"),
-    tool("poe", "Poe", "聚合多模型的 AI 聊天平台。", "AI聊天对话", "通用助手", "Poe", "#111827"),
-    tool("claude", "Claude", "长文本理解与写作协作助手。", "AI聊天对话", "通用助手", "C", "#d97706", true),
-    tool("perplexity-chat", "Perplexity", "带引用来源的 AI 问答助手。", "AI聊天对话", "知识问答", "P", "#0f766e"),
-    tool("suno", "Suno", "AI 音乐生成与歌曲创作工具。", "AI音频音乐", "AI音乐", "S", "#f97316", true),
-    tool("udio", "Udio", "AI 歌曲创作与音乐生成平台。", "AI音频音乐", "AI音乐", "U", "#7c3aed"),
-    tool("elevenlabs", "ElevenLabs", "高质量 AI 配音与声音克隆工具。", "AI音频音乐", "AI配音", "11", "#111827"),
-    tool("canva-ai", "Canva AI", "面向营销与设计的 AI 创意工具。", "AI商业设计", "品牌设计", "C", "#00c4cc", true),
-    tool("chuangkit", "创客贴AI", "在线营销设计与智能海报生成工具。", "AI商业设计", "营销素材", "创", "#2563eb"),
-    tool("gaoding-design", "稿定设计AI", "电商图、营销图和品牌物料生成平台。", "AI商业设计", "电商设计", "稿", "#14b8a6"),
-    tool("deepseek", "DeepSeek", "国产高性能大模型与推理模型。", "AI大模型", "国产大模型", "DS", "#1d4ed8", true),
-    tool("zhipu", "智谱清言", "基于 GLM 的国产大模型助手。", "AI大模型", "国产大模型", "智", "#2563eb"),
-    tool("huggingface", "Hugging Face", "开源模型、数据集与应用社区。", "AI大模型", "开源模型", "HF", "#facc15"),
-    tool("shengshu", "生数科技课程", "系统学习 AIGC 与多模态应用。", "AI学习平台", "AI课程", "学", "#16a34a"),
-    tool("google-ai", "Google AI Studio", "模型实验、提示词调试与学习平台。", "AI学习平台", "AI课程", "G", "#4285f4"),
-    tool("openai-academy", "OpenAI Academy", "AI 应用和模型能力学习资源。", "AI学习平台", "训练营", "OA", "#10a37f"),
-    tool("perplexity", "Perplexity AI", "联网 AI 搜索与答案聚合引擎。", "AI搜索引擎", "AI搜索", "P", "#0f766e", true),
-    tool("metaso", "秘塔AI搜索", "中文 AI 搜索和资料整理工具。", "AI搜索引擎", "AI搜索", "秘", "#2563eb"),
-    tool("consensus", "Consensus", "面向论文和研究的 AI 学术搜索。", "AI搜索引擎", "学术搜索", "C", "#7c3aed"),
-    tool("gptzero", "GPTZero", "AI 生成内容检测工具。", "AI内容检测", "AIGC检测", "GZ", "#111827"),
-    tool("zerogpt", "ZeroGPT", "文本 AIGC 检测与内容分析。", "AI内容检测", "AIGC检测", "Z", "#2563eb"),
-    tool("turnitin", "Turnitin", "论文查重和 AI 写作检测服务。", "AI内容检测", "AI论文查重", "T", "#ef4444"),
-    tool("futurepedia", "Futurepedia", "AI 应用、工具和产品目录。", "AI应用", "AI应用商店", "F", "#7c3aed"),
-    tool("theresanaiforthat", "There's An AI For That", "按任务发现 AI 应用的工具库。", "AI应用", "AI应用商店", "AI", "#2563eb"),
-    tool("notion-ai", "Notion AI", "知识管理、写作和团队协作 AI 应用。", "AI应用", "AI效率提升", "N", "#111827"),
+    tool("claude", "Claude", "长文本理解与写作协作助手。", "AI 工具", "AI 对话助手", "C", "#d97706", true),
+    tool("chatgpt", "ChatGPT", "强大的对话模型，回答问题、写作创作、编程助手。", "AI 工具", "AI 对话助手", "GPT", "#10a37f", true),
+    tool("poe", "Poe", "聚合多模型的 AI 聊天平台。", "AI 工具", "AI 对话助手", "Poe", "#111827"),
+    tool("google-ai", "Google AI Studio", "模型实验、提示词调试与多模态应用平台。", "AI 工具", "AI 对话助手", "G", "#4285f4"),
+    tool("notebooklm", "NotebookLM", "基于资料的 AI 笔记、问答与知识整理助手。", "AI 工具", "AI 对话助手", "N", "#0f766e", true),
+    tool("suno", "Suno", "AI 音乐生成与歌曲创作工具。", "AI 工具", "AI 音乐生成", "S", "#f97316", true),
+    tool("claude-code", "Claude Code", "面向开发者的命令行 AI 编程助手。", "AI 工具", "AI 编程工具", "CC", "#111827", true),
+    tool("spotify", "Spotify", "海外流媒体音乐播放与 Premium 订阅服务。", "海外数字服务", "流媒体娱乐", "S", "#1db954", true),
   ];
 
   const tutorialCategories = ["全部", "入门指南", "提示词工程", "AI绘画", "AI办公", "AI编程", "自动化工作流", "行业案例"];
-  const hotKeywords = [
-    "AI写作工具",
-    "AI小红书文案",
-    "AI小说",
-    "AI论文写作",
-    "AI图片优化修复",
-    "AI图片背景移除",
-    "AI图片插画生成",
-    "AI编程工具",
-    "AI开源项目",
-    "AI PPT",
-    "AI文档工具",
-    "AI思维导图",
-    "AI表格数据处理",
-    "AI语言翻译",
-    "AI会议工具",
-    "AI效率提升",
-    "AI法律助手",
-    "AI智能体",
-    "AI音频音乐",
-    "AI应用",
-  ];
+  const hotKeywords = ["AI 对话助手", "AI 音乐生成", "AI 编程工具", "流媒体娱乐"];
 
   const state = {
     tab: "home",
-    toolCategory: "AI写作",
-    toolSubcategory: "AI写作工具",
-    expandedToolCategory: "AI写作",
+    toolCategory: "AI 工具",
+    toolSubcategory: "AI 对话助手",
+    expandedToolCategory: "AI 工具",
     toolQuery: "",
     tutorialCategory: "全部",
     tutorialQuery: "",
@@ -573,20 +447,8 @@ Muset能够读取用户的素材库（如笔记、文档），在创作过程中
   };
 
   const sidebarIconPaths = {
-    AI写作: '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/>',
-    AI图像: '<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="m21 15-5-5L5 21"/>',
-    AI视频创作: '<path d="m16 13 5 3V8l-5 3z"/><rect x="3" y="6" width="13" height="12" rx="2"/>',
-    AI办公: '<path d="M3 7h7l2 3h9v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M3 7V5a2 2 0 0 1 2-2h5l2 4"/>',
-    AI开发平台: '<path d="m8 9-4 3 4 3"/><path d="m16 9 4 3-4 3"/><path d="m14 5-4 14"/>',
-    AI智能体: '<path d="M9 3a3 3 0 0 0-3 3v1a3 3 0 0 0 0 6v1a3 3 0 0 0 3 3"/><path d="M15 3a3 3 0 0 1 3 3v1a3 3 0 0 1 0 6v1a3 3 0 0 1-3 3"/><path d="M9 3v18"/><path d="M15 3v18"/>',
-    AI聊天对话: '<path d="M21 12a8 8 0 0 1-8 8H7l-4 3 1.5-5A8 8 0 1 1 21 12Z"/>',
-    AI音频音乐: '<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',
-    AI商业设计: '<circle cx="12" cy="12" r="9"/><path d="M7 10h10"/><path d="M8 15h8"/><path d="M10 6h4"/>',
-    AI大模型: '<path d="M12 3 4 7v10l8 4 8-4V7Z"/><path d="M12 3v18"/><path d="m4 7 8 4 8-4"/>',
-    AI学习平台: '<path d="m22 10-10-5-10 5 10 5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/>',
-    AI搜索引擎: '<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',
-    AI内容检测: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-5"/>',
-    AI应用: '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
+    "AI 工具": '<path d="M12 3 4 7v10l8 4 8-4V7Z"/><path d="M12 3v18"/><path d="m4 7 8 4 8-4"/>',
+    海外数字服务: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a13 13 0 0 1 0 18"/><path d="M12 3a13 13 0 0 0 0 18"/>',
     default: '<circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 3"/>',
   };
 
@@ -786,7 +648,7 @@ Muset能够读取用户的素材库（如笔记、文档），在创作过程中
 
   function renderHome() {
     const homeArticles = getRecommendedTutorials(8);
-    const popularTools = getPopularTools(10);
+    const popularTools = getPopularTools(8);
     return `
       <div class="home-layout">
         <section class="home-articles" aria-labelledby="homeArticlesTitle">
@@ -817,8 +679,8 @@ Muset能够读取用户的素材库（如笔记、文档），在创作过程中
         <section class="home-tools" aria-labelledby="homeToolsTitle">
           <div class="section-head">
             <div>
-              <h2 id="homeToolsTitle" class="section-title">推荐工具</h2>
-              <p class="section-copy">全站最热门 10 个 AI 工具，提升效率与创造力</p>
+          <h2 id="homeToolsTitle" class="section-title">推荐工具</h2>
+              <p class="section-copy">先从这 8 个常用工具开始，提升效率与创造力</p>
             </div>
             <button class="text-link" type="button" data-tab-target="tools">查看全部工具 ›</button>
           </div>
@@ -876,7 +738,6 @@ Muset能够读取用户的素材库（如笔记、文档），在创作过程中
                   `,
                 )
                 .join("")}
-              <button class="category-button" type="button" data-action="more-categories">...</button>
             </div>
             <label class="search-field tool-search-field">
               <span class="field-search-icon" aria-hidden="true"></span>
@@ -1287,10 +1148,6 @@ Muset能够读取用户的素材库（如笔记、文档），在创作过程中
       const actionButton = event.target.closest("[data-action]");
       if (actionButton) {
         const action = actionButton.dataset.action;
-        if (action === "more-categories") {
-          showToast("更多分类正在整理中");
-          return;
-        }
         if (action === "show-all-tutorials") {
           selectTutorialCategory("全部");
           return;

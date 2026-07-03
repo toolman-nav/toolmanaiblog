@@ -3,7 +3,8 @@ import { getCollection } from "astro:content";
 import SiteLayout from "../../../../layouts/SiteLayout.astro";
 import TutorialCard from "../../../../components/TutorialCard.astro";
 import { postsToArticles } from "../../../../lib/posts.mjs";
-import { matchRouteValue, tutorialCategoryPath } from "../../../../lib/routes.mjs";
+import { matchRouteValue, tutorialCategoryPath, tutorialDetailPath } from "../../../../lib/routes.mjs";
+import { collectionPageSchema } from "../../../../lib/seo.mjs";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts", ({ data }) => !data.draft);
@@ -22,9 +23,16 @@ const activeCategory = matchRouteValue(Astro.params.category, tutorialCategories
 const matched = tutorials.filter((article) => article.category === activeCategory);
 const title = `${activeCategory}教程 - AI教程 - 工具人AI导航`;
 const description = `系统整理${activeCategory}相关 AI 教程，适合按主题持续学习和内容运营。`;
+const canonical = tutorialCategoryPath(activeCategory);
+const structuredData = collectionPageSchema({
+  name: `${activeCategory}教程`,
+  description,
+  path: canonical,
+  items: matched.map((article) => ({ name: article.title, url: tutorialDetailPath(article) })),
+});
 ---
 
-<SiteLayout activeNav="tutorials" title={title} description={description}>
+<SiteLayout activeNav="tutorials" title={title} description={description} canonical={canonical} structuredData={structuredData}>
   <section class="tutorial-page" aria-labelledby="tutorialCategoryTitle">
     <h1 id="tutorialCategoryTitle" class="section-title">{activeCategory}教程</h1>
     <label class="search-field tutorial-search-field">

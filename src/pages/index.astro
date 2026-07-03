@@ -5,14 +5,30 @@ import SiteLayout from "../layouts/SiteLayout.astro";
 import ToolCard from "../components/ToolCard.astro";
 import TutorialCard from "../components/TutorialCard.astro";
 import { postsToArticles } from "../lib/posts.mjs";
+import { toolDetailPath, tutorialDetailPath } from "../lib/routes.mjs";
+import { collectionPageSchema, websiteSchema } from "../lib/seo.mjs";
 
 const githubPosts = await getCollection("posts", ({ data }) => !data.draft);
 const homeArticles = postsToArticles(githubPosts).slice(0, 8);
-const popularTools = site.getPopularTools(10);
+const popularTools = site.getPopularTools(8);
 const githubTitleSmokeTest = "Claude Code国内使用指南";
+const title = "工具人AI导航 - AI工具与教程导航站";
+const description = "工具人AI导航精选 AI 工具、实用教程和数字服务指南，帮助中文用户更快找到工具、学会方法、搭建工作流。";
+const structuredData = [
+  websiteSchema(),
+  collectionPageSchema({
+    name: "工具人AI导航推荐内容",
+    description,
+    path: "/",
+    items: [
+      ...homeArticles.map((article) => ({ name: article.title, url: tutorialDetailPath(article) })),
+      ...popularTools.map((tool) => ({ name: tool.name, url: toolDetailPath(tool) })),
+    ],
+  }),
+];
 ---
 
-<SiteLayout activeNav="home">
+<SiteLayout activeNav="home" title={title} description={description} canonical="/" structuredData={structuredData}>
   <div class="home-layout">
     <section class="home-articles" aria-labelledby="homeArticlesTitle">
       <div class="section-head">
@@ -34,7 +50,7 @@ const githubTitleSmokeTest = "Claude Code国内使用指南";
       <div class="section-head">
         <div>
           <h2 id="homeToolsTitle" class="section-title">推荐工具</h2>
-          <p class="section-copy">全站最热门 10 个 AI 工具，提升效率与创造力</p>
+          <p class="section-copy">先从这 8 个常用工具开始，提升效率与创造力</p>
         </div>
         <a class="text-link" href="/tools/">查看全部工具 ›</a>
       </div>

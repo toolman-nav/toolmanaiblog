@@ -1,19 +1,23 @@
 ---
-import site from "../../data/site.mjs";
-import SiteLayout from "../../layouts/SiteLayout.astro";
-import { toolDetailPath } from "../../lib/routes.mjs";
-import { softwareApplicationSchema } from "../../lib/seo.mjs";
-import { renderToolContent } from "../../lib/site-utils.mjs";
+import site from "../../../../../data/site.mjs";
+import SiteLayout from "../../../../../layouts/SiteLayout.astro";
+import { toolDetailPath, toolSubcategoryPath } from "../../../../../lib/routes.mjs";
+import { softwareApplicationSchema } from "../../../../../lib/seo.mjs";
+import { renderToolContent } from "../../../../../lib/site-utils.mjs";
 
 export function getStaticPaths() {
   return site.tools.map((tool) => ({
-    params: { id: tool.id },
+    params: {
+      category: tool.category,
+      subcategory: tool.subcategory,
+      id: tool.id,
+    },
     props: { tool },
   }));
 }
 
 const { tool } = Astro.props;
-const title = `${tool.name} - AI工具详情 - 工具人AI导航`;
+const title = `${tool.name} - ${tool.subcategory} - 工具人AI导航`;
 const description = `${tool.name}：${tool.description}`;
 const structuredData = softwareApplicationSchema({ ...tool, url: toolDetailPath(tool) });
 ---
@@ -21,7 +25,7 @@ const structuredData = softwareApplicationSchema({ ...tool, url: toolDetailPath(
 <SiteLayout activeNav="tools" title={title} description={description} canonical={toolDetailPath(tool)} image={tool.cover} structuredData={structuredData}>
   <section class="tool-detail-layout" aria-labelledby="toolDetailTitle">
     <article class="panel tool-detail-main">
-      <a class="detail-back" href="/tools/">‹ 返回 AI导航</a>
+      <a class="detail-back" href={toolSubcategoryPath(tool.category, tool.subcategory)}>‹ 返回 {tool.subcategory}</a>
       <div class="tool-detail-hero">
         <div class="tool-detail-cover" style={`--accent:${tool.accent}`}>
           {

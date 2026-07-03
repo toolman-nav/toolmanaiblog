@@ -3,7 +3,8 @@ import site from "../../../../../data/site.mjs";
 import ToolSidebar from "../../../../../components/ToolSidebar.astro";
 import ToolTile from "../../../../../components/ToolTile.astro";
 import SiteLayout from "../../../../../layouts/SiteLayout.astro";
-import { matchRouteValue, toolCategoryPath, toolSubcategoryPath } from "../../../../../lib/routes.mjs";
+import { matchRouteValue, toolCategoryPath, toolDetailPath, toolSubcategoryPath } from "../../../../../lib/routes.mjs";
+import { collectionPageSchema } from "../../../../../lib/seo.mjs";
 
 export function getStaticPaths() {
   return site.categories.flatMap((category) =>
@@ -21,9 +22,16 @@ const tools = site.tools.filter((tool) => tool.category === category.name && too
 const sectionId = `tool-subcategory-${category.name}-${subcategory}`;
 const title = `${subcategory} - ${category.name}工具 - 工具人AI导航`;
 const description = `浏览${category.name}分类下的${subcategory} AI 工具，快速找到适合当前场景的工具。`;
+const canonical = toolSubcategoryPath(category.name, subcategory);
+const structuredData = collectionPageSchema({
+  name: `${subcategory}工具`,
+  description,
+  path: canonical,
+  items: tools.map((tool) => ({ name: tool.name, url: toolDetailPath(tool) })),
+});
 ---
 
-<SiteLayout activeNav="tools" title={title} description={description}>
+<SiteLayout activeNav="tools" title={title} description={description} canonical={canonical} structuredData={structuredData}>
   <section class="directory-shell" aria-labelledby="toolsSubcategoryTitle">
     <div class="tool-directory-layout">
       <ToolSidebar categories={site.categories} activeCategory={activeCategory} activeSubcategory={activeSubcategory} />
@@ -36,7 +44,6 @@ const description = `浏览${category.name}分类下的${subcategory} AI 工具�
               </a>
             ))
           }
-          <button class="category-button" type="button" data-action="more-categories">...</button>
         </div>
         <label class="search-field tool-search-field">
           <span class="field-search-icon" aria-hidden="true"></span>

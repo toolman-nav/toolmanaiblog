@@ -3,7 +3,8 @@ import site from "../../../../data/site.mjs";
 import ToolSidebar from "../../../../components/ToolSidebar.astro";
 import ToolTile from "../../../../components/ToolTile.astro";
 import SiteLayout from "../../../../layouts/SiteLayout.astro";
-import { matchRouteValue, toolCategoryPath, toolSubcategoryPath } from "../../../../lib/routes.mjs";
+import { matchRouteValue, toolCategoryPath, toolDetailPath, toolSubcategoryPath } from "../../../../lib/routes.mjs";
+import { collectionPageSchema } from "../../../../lib/seo.mjs";
 
 export function getStaticPaths() {
   return site.categories.map((category) => ({
@@ -18,9 +19,16 @@ const sectionId = `tool-category-${category.name}`;
 const activeCategory = matchRouteValue(Astro.params.category, site.categories.map((item) => item.name)) || category.name;
 const title = `${category.name}工具 - AI工具分类 - 工具人AI导航`;
 const description = `按${category.name}分类浏览 AI 工具，覆盖${category.subcategories.join("、")}等场景。`;
+const canonical = toolCategoryPath(category.name);
+const structuredData = collectionPageSchema({
+  name: `${category.name}工具`,
+  description,
+  path: canonical,
+  items: tools.map((tool) => ({ name: tool.name, url: toolDetailPath(tool) })),
+});
 ---
 
-<SiteLayout activeNav="tools" title={title} description={description}>
+<SiteLayout activeNav="tools" title={title} description={description} canonical={canonical} structuredData={structuredData}>
   <section class="directory-shell" aria-labelledby="toolsCategoryTitle">
     <div class="tool-directory-layout">
       <ToolSidebar categories={site.categories} activeCategory={activeCategory} activeSubcategory="" />
@@ -33,7 +41,6 @@ const description = `按${category.name}分类浏览 AI 工具，覆盖${categor
               </a>
             ))
           }
-          <button class="category-button" type="button" data-action="more-categories">...</button>
         </div>
         <label class="search-field tool-search-field">
           <span class="field-search-icon" aria-hidden="true"></span>
