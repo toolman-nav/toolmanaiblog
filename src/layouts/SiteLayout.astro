@@ -1,5 +1,6 @@
 ---
 import SiteIntegrations from "../components/SiteIntegrations.astro";
+import Footer from "../components/Footer.astro";
 import { absoluteUrl, jsonLdScript, SITE_NAME } from "../lib/seo.mjs";
 
 const {
@@ -28,6 +29,7 @@ const navItems = [
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
+    <meta name="google-site-verification" content="6AQOneCJdfTYHniCuIJc9J1MXxGoDaJ-5XpiGjUV4Vo" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="robots" content={robots} />
@@ -50,17 +52,24 @@ const navItems = [
     }
     <SiteIntegrations />
     <title>{title}</title>
-    <link
-      rel="icon"
-      href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="%231677ff"/><text x="32" y="42" font-size="34" text-anchor="middle" font-family="Arial" font-weight="800" fill="white">A</text></svg>'
-    />
+    <link rel="icon" type="image/png" sizes="32x32" href="/logo-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/logo-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/logo-256.png" />
     <link rel="stylesheet" href="/styles.css" />
+    <!-- Google Analytics -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-G4K8676ZVL"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G4K8676ZVL');
+    </script>
   </head>
   <body>
     <header class="site-header">
       <div class="header-inner">
         <a class="brand" href="/" aria-label="工具人AI导航主页">
-          <span class="brand-mark" aria-hidden="true">A</span>
+          <img src="/logo-32.png" alt="" class="brand-logo" width="32" height="32" />
           <span class="brand-name">工具人AI导航</span>
         </a>
 
@@ -88,6 +97,7 @@ const navItems = [
       <slot />
     </main>
 
+    <Footer />
     <script src="/site.js" defer></script>
   </body>
 </html>
