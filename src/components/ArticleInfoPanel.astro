@@ -1,0 +1,31 @@
+---
+import { articleReadingStats, articleTags } from "../lib/site-utils.mjs";
+
+const { article } = Astro.props;
+const tags = articleTags(article).join(", ");
+const stats = articleReadingStats(article);
+---
+
+<div class="article-info-panel">
+  <h3 class="article-info-title">{article.title}</h3>
+  <div class="article-info-meta" aria-label="文章信息">
+    <span class="article-info-chip">
+      <span class="article-info-icon article-info-icon-calendar" aria-hidden="true"></span>
+      {article.date}
+    </span>
+    <span class="article-info-chip">
+      <span class="article-info-icon article-info-icon-book" aria-hidden="true"></span>
+      {article.category}教程
+    </span>
+    <span class="article-info-chip">
+      <span class="article-info-icon article-info-icon-hash" aria-hidden="true"></span>
+      {tags}
+    </span>
+  </div>
+  <p class="article-info-summary">{article.summary}</p>
+  <div class="article-info-stats">
+    <span>{stats.words} 字</span>
+    <span>|</span>
+    <span>{stats.minutes}分钟</span>
+  </div>
+</div>

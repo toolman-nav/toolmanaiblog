@@ -1,0 +1,13 @@
+---
+const { article } = Astro.props;
+---
+
+<div class="article-visual" data-cover={article.coverType}>
+  {
+    article.image ? (
+      <img src={article.image} alt={`${article.title} 封面`} loading="lazy" />
+    ) : (
+      <span class="visual-label">{article.title}</span>
+    )
+  }
+</div>

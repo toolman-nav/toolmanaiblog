@@ -1,0 +1,64 @@
+---
+import site from "../../../../data/site.mjs";
+import ToolSidebar from "../../../../components/ToolSidebar.astro";
+import ToolTile from "../../../../components/ToolTile.astro";
+import SiteLayout from "../../../../layouts/SiteLayout.astro";
+import { matchRouteValue, toolCategoryPath, toolSubcategoryPath } from "../../../../lib/routes.mjs";
+
+export function getStaticPaths() {
+  return site.categories.map((category) => ({
+    params: { category: category.name },
+    props: { category },
+  }));
+}
+
+const { category } = Astro.props;
+const tools = site.tools.filter((tool) => tool.category === category.name);
+const sectionId = `tool-category-${category.name}`;
+const activeCategory = matchRouteValue(Astro.params.category, site.categories.map((item) => item.name)) || category.name;
+const title = `${category.name}工具 - AI工具分类 - 工具人AI导航`;
+const description = `按${category.name}分类浏览 AI 工具，覆盖${category.subcategories.join("、")}等场景。`;
+---
+
+<SiteLayout activeNav="tools" title={title} description={description}>
+  <section class="directory-shell" aria-labelledby="toolsCategoryTitle">
+    <div class="tool-directory-layout">
+      <ToolSidebar categories={site.categories} activeCategory={activeCategory} activeSubcategory="" />
+      <div class="tool-directory-main">
+        <div class="category-strip" role="tablist" aria-label="AI工具分类">
+          {
+            site.categories.map((item) => (
+              <a class={`category-button ${item.name === category.name ? "is-active" : ""}`} href={toolCategoryPath(item.name)} data-tool-category={item.name}>
+                {item.name}
+              </a>
+            ))
+          }
+          <button class="category-button" type="button" data-action="more-categories">...</button>
+        </div>
+        <label class="search-field tool-search-field">
+          <span class="field-search-icon" aria-hidden="true"></span>
+          <input id="toolSearch" type="search" placeholder={`在「${category.name}」中搜索`} data-client-search="tools" />
+        </label>
+
+        <section id={sectionId} class="directory-section" aria-labelledby="toolsCategoryTitle" data-tool-sections>
+          <div class="section-head">
+            <h1 id="toolsCategoryTitle" class="section-title">{category.name}</h1>
+          </div>
+          <div class="subtab-row">
+            {
+              category.subcategories.map((sub) => (
+                <a class="subtab" href={toolSubcategoryPath(category.name, sub)} data-tool-subcategory={sub}>
+                  {sub}
+                </a>
+              ))
+            }
+          </div>
+          <div class="tool-grid">
+            {tools.map((tool) => <ToolTile tool={tool} />)}
+          </div>
+        </section>
+        <div class="empty-state panel" data-empty-search hidden>没有找到匹配的 AI 工具</div>
+      </div>
+    </div>
+  </section>
+</SiteLayout>

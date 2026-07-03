@@ -1,0 +1,46 @@
+---
+import site from "../../data/site.mjs";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { renderToolContent } from "../../lib/site-utils.mjs";
+
+export function getStaticPaths() {
+  return site.tools.map((tool) => ({
+    params: { id: tool.id },
+    props: { tool },
+  }));
+}
+
+const { tool } = Astro.props;
+const title = `${tool.name} - AI工具详情 - 工具人AI导航`;
+const description = `${tool.name}：${tool.description}`;
+---
+
+<SiteLayout activeNav="tools" title={title} description={description}>
+  <section class="tool-detail-layout" aria-labelledby="toolDetailTitle">
+    <article class="panel tool-detail-main">
+      <a class="detail-back" href="/tools/">‹ 返回 AI导航</a>
+      <div class="tool-detail-hero">
+        <div class="tool-detail-cover" style={`--accent:${tool.accent}`}>
+          {
+            tool.cover ? (
+              <img src={tool.cover} alt={`${tool.name} 封面`} loading="lazy" />
+            ) : (
+              <span>{tool.iconText}</span>
+            )
+          }
+        </div>
+        <div class="tool-detail-summary">
+          <div class="tag-cloud tool-detail-tags">
+            {tool.tags.map((tag) => <span class="tag">{tag}</span>)}
+          </div>
+          <h1 id="toolDetailTitle">{tool.name}</h1>
+          <p>{tool.description}</p>
+          <div class="tool-detail-actions">
+            <a class="primary-link-button" href={tool.externalUrl} target="_blank" rel="noopener noreferrer">访问官网</a>
+          </div>
+        </div>
+      </div>
+      <div class="tool-detail-content" set:html={renderToolContent(tool.content)} />
+    </article>
+  </section>
+</SiteLayout>

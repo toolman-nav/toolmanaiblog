@@ -1,0 +1,93 @@
+---
+import site from "../../data/site.mjs";
+import ToolSidebar from "../../components/ToolSidebar.astro";
+import ToolTile from "../../components/ToolTile.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { toolCategoryPath, toolSubcategoryPath } from "../../lib/routes.mjs";
+
+const toolSections = site.getToolSections();
+const hotKeywords = [
+  "AI写作工具",
+  "AI小红书文案",
+  "AI小说",
+  "AI论文写作",
+  "AI图片优化修复",
+  "AI图片背景移除",
+  "AI图片插画生成",
+  "AI编程工具",
+  "AI开源项目",
+  "AI PPT",
+  "AI文档工具",
+  "AI思维导图",
+  "AI表格数据处理",
+  "AI语言翻译",
+  "AI会议工具",
+  "AI效率提升",
+  "AI法律助手",
+  "AI智能体",
+  "AI音频音乐",
+  "AI应用",
+];
+const subcategoryLinks = new Map(
+  site.categories.flatMap((category) => category.subcategories.map((sub) => [sub, toolSubcategoryPath(category.name, sub)])),
+);
+const keywordHref = (keyword) => subcategoryLinks.get(keyword) || `/tools/?q=${encodeURIComponent(keyword)}`;
+---
+
+<SiteLayout activeNav="tools" title="AI导航 - 工具人AI导航" description="按写作、图像、办公、开发、智能体等场景浏览 AI 工具，发现适合你的 AI 工作流。">
+  <section class="directory-shell" aria-labelledby="toolsTitle">
+    <div class="tool-directory-layout">
+      <ToolSidebar categories={site.categories} />
+      <div class="tool-directory-main">
+        <div class="category-strip" role="tablist" aria-label="AI工具分类">
+          {
+            site.categories.map((category, index) => (
+              <a class={`category-button ${index === 0 ? "is-active" : ""}`} href={toolCategoryPath(category.name)} data-tool-category={category.name}>
+                {category.name}
+              </a>
+            ))
+          }
+          <button class="category-button" type="button" data-action="more-categories">...</button>
+        </div>
+        <label class="search-field tool-search-field">
+          <span class="field-search-icon" aria-hidden="true"></span>
+          <input id="toolSearch" type="search" placeholder="在「AI工具」中搜索" data-client-search="tools" />
+        </label>
+        <div class="chip-row">
+          {
+            hotKeywords.map((keyword, index) => (
+              <a class={`chip ${index === 0 ? "is-active" : ""}`} href={keywordHref(keyword)} data-tool-chip={keyword}>
+                {keyword}
+              </a>
+            ))
+          }
+        </div>
+
+        <div class="directory-sections" data-tool-sections>
+          {
+            toolSections.map((section) => (
+              <section id={section.id} class="directory-section" aria-labelledby={`${section.id}Title`} data-section-search-text={`${section.name} ${section.subcategories.join(" ")}`}>
+                <div class="section-head">
+                  <h1 id={`${section.id}Title`} class="section-title">{section.name}</h1>
+                </div>
+                <div class="subtab-row">
+                  {
+                    section.subcategories.map((sub) => (
+                      <a class={`subtab ${section.name === "AI写作" && sub === "AI写作工具" ? "is-active" : ""}`} href={toolSubcategoryPath(section.name, sub)} data-tool-subcategory={sub}>
+                        {sub}
+                      </a>
+                    ))
+                  }
+                </div>
+                <div class="tool-grid">
+                  {section.tools.map((tool) => <ToolTile tool={tool} />)}
+                </div>
+              </section>
+            ))
+          }
+        </div>
+        <div class="empty-state panel" data-empty-search hidden>没有找到匹配的 AI 工具</div>
+      </div>
+    </div>
+  </section>
+</SiteLayout>

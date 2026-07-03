@@ -1,0 +1,48 @@
+---
+import { getCollection } from "astro:content";
+import SiteLayout from "../../../../layouts/SiteLayout.astro";
+import TutorialCard from "../../../../components/TutorialCard.astro";
+import { postsToArticles } from "../../../../lib/posts.mjs";
+import { matchRouteValue, tutorialCategoryPath } from "../../../../lib/routes.mjs";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts", ({ data }) => !data.draft);
+  const tutorials = postsToArticles(posts);
+  const categories = [...new Set(tutorials.map((article) => article.category))];
+  return categories.map((category) => ({
+    params: { category },
+    props: { category, posts },
+  }));
+}
+
+const { category, posts } = Astro.props;
+const tutorials = postsToArticles(posts);
+const tutorialCategories = [...new Set(tutorials.map((article) => article.category))];
+const activeCategory = matchRouteValue(Astro.params.category, tutorialCategories) || category;
+const matched = tutorials.filter((article) => article.category === activeCategory);
+const title = `${activeCategory}教程 - AI教程 - 工具人AI导航`;
+const description = `系统整理${activeCategory}相关 AI 教程，适合按主题持续学习和内容运营。`;
+---
+
+<SiteLayout activeNav="tutorials" title={title} description={description}>
+  <section class="tutorial-page" aria-labelledby="tutorialCategoryTitle">
+    <h1 id="tutorialCategoryTitle" class="section-title">{activeCategory}教程</h1>
+    <label class="search-field tutorial-search-field">
+      <span class="field-search-icon" aria-hidden="true"></span>
+      <input id="tutorialSearch" type="search" placeholder={`在「${activeCategory}」中搜索`} data-client-search="tutorials" />
+    </label>
+    <div class="chip-row tutorial-category-row" aria-label="教程分类">
+      {
+        tutorialCategories.map((item) => (
+          <a class={`chip ${item === activeCategory ? "is-active" : ""}`} href={tutorialCategoryPath(item)}>
+            {item}
+          </a>
+        ))
+      }
+    </div>
+    <div class="tutorial-list" data-tutorial-list>
+      {matched.map((article) => <TutorialCard article={article} />)}
+    </div>
+    <div class="empty-state panel" data-empty-search hidden>没有找到匹配的教程</div>
+  </section>
+</SiteLayout>
