@@ -19,6 +19,7 @@ export function getStaticPaths() {
 const { tool } = Astro.props;
 const title = `${tool.name} - ${tool.subcategory} - 工具人AI导航`;
 const description = `${tool.name}：${tool.description}`;
+const detailVisual = tool.icon || tool.cover;
 const structuredData = softwareApplicationSchema({ ...tool, url: toolDetailPath(tool) });
 ---
 
@@ -27,10 +28,10 @@ const structuredData = softwareApplicationSchema({ ...tool, url: toolDetailPath(
     <article class="panel tool-detail-main">
       <a class="detail-back" href={toolSubcategoryPath(tool.category, tool.subcategory)}>‹ 返回 {tool.subcategory}</a>
       <div class="tool-detail-hero">
-        <div class="tool-detail-cover" style={`--accent:${tool.accent}`}>
+        <div class:list={["tool-detail-cover", detailVisual && "tool-detail-cover-icon"]} style={`--accent:${tool.accent}`}>
           {
-            tool.cover ? (
-              <img src={tool.cover} alt={`${tool.name} 封面`} loading="lazy" />
+            detailVisual ? (
+              <img src={detailVisual} alt={`${tool.name} 图标`} loading="lazy" />
             ) : (
               <span>{tool.iconText}</span>
             )

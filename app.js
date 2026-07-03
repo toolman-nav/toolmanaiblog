@@ -245,7 +245,7 @@
     "content-butler": "https://ai.codefather.cn/tool/1965402622970191895",
     huiyan: "https://ai.codefather.cn/tool/1965402622970191894",
     "doubao-write": "https://ai.codefather.cn/tool/1965402622970191893",
-    chatgpt: "https://ai.codefather.cn/tool/1965402623628697615",
+    chatgpt: "https://chatgpt.com/",
     midjourney: "https://ai.codefather.cn/tool/1965402623569977353",
     kimi: "https://kimi.moonshot.cn/",
     doubao: "https://www.doubao.com/chat/",
@@ -268,7 +268,7 @@
     "xmind-ai": "https://xmind.ai/",
     "feishu-minutes": "https://www.feishu.cn/product/minutes",
     "excel-ai": "https://www.boloforms.com/sheetgod/",
-    "claude-code": "https://www.anthropic.com/claude-code",
+    "claude-code": "https://claude.com/product/claude-code",
     cursor: "https://www.cursor.com/",
     "github-copilot": "https://ai.codefather.cn/tool/1965402622869528590",
     codeium: "https://codeium.com/",
@@ -276,10 +276,10 @@
     coze: "https://www.coze.cn/",
     fastgpt: "https://fastgpt.cn/",
     flowith: "https://flowith.io/",
-    poe: "https://ai.codefather.cn/tool/1965402623624503315",
-    claude: "https://ai.codefather.cn/tool/1965402623628697614",
+    poe: "https://poe.com/",
+    claude: "https://claude.ai/",
     "perplexity-chat": "https://ai.codefather.cn/tool/1965402623586754568",
-    suno: "https://ai.codefather.cn/tool/1965402623603531780",
+    suno: "https://suno.com/",
     udio: "https://www.udio.com/",
     elevenlabs: "https://ai.codefather.cn/tool/1965402623603531777",
     "canva-ai": "https://www.canva.com/ai/",
@@ -305,6 +305,324 @@
   };
 
   const toolDetails = {
+    claude: {
+      tags: ["AI聊天对话"],
+      cover: "https://pic.code-nav.cn/post_cover/1610518142000300034/TrLNaZp7npstLcYd.png",
+      externalUrl: "https://claude.ai/",
+      viewCount: "1018",
+      viewNum: 2464,
+      thumbNum: 0,
+      favourNum: 0,
+      commentNum: 0,
+      author: "编程导航",
+      sourceUrl: "https://ai.codefather.cn/tool/1965402623628697614",
+      sourceId: "1965402623628697614",
+      content: `## Claude：新一代智能AI助手
+
+Claude是Anthropic公司倾力打造的智能对话系统，基于前沿的人工智能技术构建。这套先进的AI解决方案包含Claude 3 Haiku、Claude 3 Sonnet和Claude 3 Opus三大子模型，每个版本都针对特定使用场景进行了深度优化，为用户提供从轻量级到专业级的全方位AI服务。
+
+## 核心优势
+
+- **多模态处理能力**：不仅能理解文字内容，还能解读图片、图表等视觉信息，实现真正的立体交互体验
+- **超长文本处理**：单次可处理15万词以上的文档，轻松应对长篇报告、复杂论文等专业需求
+- **实时信息获取**：支持联网检索最新资讯，确保提供的知识和建议与时俱进
+- **企业级集成应用**：与Google Workspace无缝对接，可智能管理邮件、文档和日程安排
+- **安全可靠**：采用"宪法AI"设计理念，在功能强大的同时确保内容合规性
+
+## 智能应用场景
+
+**内容创作领域**  
+助力自媒体创作者高效产出优质文案，从标题构思到全文撰写，提供全方位的创作支持
+
+**企业办公助手**
+
+- 智能客服系统：7×24小时响应客户咨询，保持对话连贯性
+- 文档管理专家：快速定位企业知识库中的关键信息
+- 会议纪要生成：自动总结讨论要点，提升工作效率
+
+**教育科研应用**
+
+- 个性化学习辅导：解答学科问题，提供针对性学习建议
+- 研究资料分析：快速梳理文献要点，辅助学术写作
+- 编程教学助手：解释代码逻辑，帮助调试程序错误
+
+## 使用方式
+
+**个人用户**
+
+1. 访问官网完成注册
+2. 根据需求选择合适的模型版本
+3. 通过网页或移动端应用开始智能对话
+
+**开发者接入**
+
+- 获取API密钥实现系统集成
+- 利用开发者工具进行二次开发
+- 构建定制化AI解决方案
+
+Claude持续进化的人工智能技术，正在重塑人机交互的未来。无论是个人用户还是企业客户，都能通过这套智能系统获得专业、高效的服务体验。`,
+    },
+    chatgpt: {
+      tags: ["AI聊天对话"],
+      cover: "https://pic.code-nav.cn/post_cover/1610518142000300034/l0JUfg8D7vYACjA1.png",
+      externalUrl: "https://chatgpt.com/",
+      viewCount: "570",
+      viewNum: 2006,
+      thumbNum: 0,
+      favourNum: 0,
+      commentNum: 0,
+      author: "编程导航",
+      sourceUrl: "https://ai.codefather.cn/tool/1965402623628697615",
+      sourceId: "1965402623628697615",
+      content: `## ChatGPT：您的智能对话助手
+
+ChatGPT是OpenAI研发的一款革命性AI对话系统，基于前沿的Transformer神经网络架构打造。这款智能助手能够理解并生成接近人类水平的文本内容，实现自然流畅的对话交流，同时具备回答问题、创作文章、编写代码等多种语言处理能力。
+
+## 技术原理
+
+ChatGPT采用生成式预训练转换器(GPT)架构，通过两个关键阶段获得卓越表现：
+
+- **海量数据预训练**：模型在包含各种主题的庞大文本库中学习语言规律
+- **人类反馈强化学习(RLHF)**：通过专业训练师的数据标注和反馈优化对话质量
+
+尽管功能强大，我们仍需注意其知识更新存在滞后性，部分回答可能存在误差，使用时建议结合其他信息来源进行验证。
+
+## 核心特点
+
+作为大型语言模型(LLM)的代表作，ChatGPT与传统聊天机器人的本质区别在于：
+
+- 深层次的语义理解能力
+- 上下文相关的多轮对话体验
+- 创造性内容生成潜力
+- 多领域知识应用广度
+
+## 开发背景
+
+OpenAI作为人工智能领域的开拓者，致力于推动通用人工智能(AGI)的安全发展。ChatGPT是其GPT系列模型在对话系统领域的重要应用成果，标志着人机交互的新里程碑。
+
+## 功能概览
+
+ChatGPT提供全方位的智能服务：
+
+- **知识问答**：解答各类学科问题
+- **创意写作**：生成文章、故事、诗歌等
+- **语言服务**：支持多语种翻译与学习
+- **编程辅助**：代码编写与调试
+- **信息处理**：文本摘要与提炼
+- **生活助手**：日程规划与建议
+
+## 使用指南
+
+开启智能对话只需简单几步：
+
+- 访问官网创建账户
+- 选择适合的使用场景
+- 输入您的需求或问题
+- 获取系统生成的响应
+- 通过优化提问获得更精准结果
+
+## 服务方案
+
+我们提供多层级服务选择：
+
+- **基础版**：免费体验核心功能
+- **增强版**($20/月)：扩展使用权限
+- **专业版**($200/月)：无限制访问高级功能
+
+## 应用场景
+
+ChatGPT已在多个领域展现价值：
+
+- 客户服务自动化
+- 市场营销内容创作
+- 教育辅助与个性化学习
+- 软件开发效率提升
+- 商业分析与决策支持
+
+## 价值与局限
+
+**核心优势**
+
+- 显著提升工作效率
+- 促进教育资源共享
+- 激发创意与创新思维
+- 革新信息获取方式
+
+**当前局限**
+
+- 知识更新存在延迟
+- 可能产生不准确信息
+- 缺乏真正的情感理解
+
+ChatGPT代表了人工智能技术的重要突破，不仅改变了人机交互方式，更为未来智能社会发展提供了无限可能。我们建议用户结合自身需求，合理利用这一强大工具，同时保持对生成内容的审慎态度。`,
+    },
+    poe: {
+      tags: ["AI聊天对话"],
+      cover: "https://pic.code-nav.cn/post_cover/1610518142000300034/iDxGs0YbB5k1hs1H.png",
+      externalUrl: "https://poe.com/",
+      viewCount: "0",
+      viewNum: 0,
+      thumbNum: 0,
+      favourNum: 0,
+      commentNum: 0,
+      author: "编程导航",
+      sourceUrl: "https://ai.codefather.cn/tool/1965402623624503315",
+      sourceId: "1965402623624503315",
+      content: `## Poe AI：智能对话体验新选择
+
+作为Quora推出的创新AI平台，Poe AI重新定义了人机交互方式。在这里，用户可以自由提问、获取即时解答，并与不同性格的AI进行深度对话交流。
+
+## 多元智能助手任您选择
+
+我们精心整合了四款各具特色的智能机器人，满足您的多样化需求：
+
+- **Claude** - 创意写作领域的专家，在文学创作、故事构思方面表现优异，但会保持严谨的态度筛选问题
+- **Sage与ChatGPT** - 多语言处理能手，特别擅长编程和技术类问题解答
+- **Dragonfly** - 简明高效的应答者，善于根据示例快速理解并执行指令
+
+## 前沿技术支持
+
+平台融合了目前最先进的自然语言处理技术：
+
+- Sage和ChatGPT基于OpenAI的GPT-3.5 Turbo模型
+- Dragonfly采用text-davinci-003引擎
+- Claude则搭载Anthropic的尖端AI系统
+
+特别值得一提的是，我们为每位用户提供每日一次的GPT-4体验机会，让您免费感受最强大的AI对话体验。
+
+## 个性化交互体验
+
+每个AI助手都拥有独特的"性格"特征，随着交流的深入，您会发现它们各具特色的对话风格。我们鼓励您尝试与不同AI互动，探索最适合您需求的智能伙伴。
+
+无论是寻求知识解答、创意启发，还是简单的陪伴交流，Poe AI都能为您提供专业、贴心的智能服务。现在就开启您的AI对话之旅，体验科技带来的无限可能。`,
+    },
+    notebooklm: {
+      tags: ["AI音频音乐"],
+      cover: "https://pic.code-nav.cn/post_cover/1610518142000300034/KKj2Jc4esMPVEsTR.png",
+      externalUrl: "https://notebooklm.google.com/",
+      viewCount: "0",
+      viewNum: 0,
+      thumbNum: 0,
+      favourNum: 0,
+      commentNum: 0,
+      author: "编程导航",
+      sourceUrl: "https://ai.codefather.cn/tool/1965402623599337488",
+      sourceId: "1965402623599337488",
+      content: `## 智能笔记助手NotebookLM
+
+NotebookLM是谷歌研发的一款革命性AI笔记工具，它运用前沿的大型语言模型技术，重新定义了信息管理方式。这款智能应用不仅能帮助用户高效整理各类文档，更能深度理解内容并生成有价值的见解。
+
+## 核心功能亮点
+
+**智能文档处理**
+
+- 自动解析PDF、TXT、Google文档等多种格式
+- 生成精准的内容摘要和关键点提炼
+- 根据文档创建结构化的学习指南和时间线
+
+**深度交互体验**
+
+- 针对文档内容进行Q&A式智能问答
+- 支持多轮对话深入探讨主题
+- 提供可靠的引用来源确保信息准确性
+
+**创意激发工具**
+
+- 为写作和头脑风暴提供灵感启发
+- 自动生成内容大纲和创作建议
+- 将枯燥文档转化为生动的播客节目
+
+**个性化知识管理**
+
+- 构建专属的智能知识库
+- 跨设备同步所有笔记内容
+- 支持团队协作共享笔记本
+
+## 使用指南
+
+- **快速开始**：访问notebooklm.google官网，使用Google账号登录创建个人笔记本
+- **内容导入**：上传研究论文、会议记录、读书笔记等各种文档资料
+- **智能处理**：系统自动分析内容，生成可视化摘要和关键见解
+- **深度交互**：向AI助手提问获取针对性回答，或要求生成创意方案
+- **内容输出**：将处理结果导出为音频播客、视频简报或结构化文档
+
+## 适用人群
+
+**学术研究者**
+
+- 快速消化大量文献资料
+- 自动生成研究综述
+- 辅助论文写作与修改
+
+**内容创作者**
+
+- 获取创作灵感和素材
+- 自动生成内容框架
+- 制作播客节目的脚本
+
+**企业专业人士**
+
+- 高效处理商业报告
+- 智能分析市场数据
+- 自动生成演示材料
+
+**终身学习者**
+
+- 构建个人知识体系
+- 制作学习笔记卡片
+- 生成复习测验题目
+
+NotebookLM目前在全球200多个国家和地区提供服务，支持多种语言操作，让知识管理变得前所未有的简单高效。无论是个人学习还是团队协作，这款AI助手都能显著提升您的工作效率。`,
+    },
+    suno: {
+      tags: ["AI音频音乐"],
+      cover: "https://pic.code-nav.cn/post_cover/1610518142000300034/yM14ZYMk2CtjmiLi.png",
+      externalUrl: "https://suno.com/",
+      viewCount: "0",
+      viewNum: 0,
+      thumbNum: 0,
+      favourNum: 0,
+      commentNum: 0,
+      author: "编程导航",
+      sourceUrl: "https://ai.codefather.cn/tool/1965402623603531780",
+      sourceId: "1965402623603531780",
+      content: `## 音乐创作新纪元：Suno AI
+
+Suno AI重新定义了音乐创作方式，这款革命性的AI音乐生成平台让每个人都能轻松成为音乐制作人。无需专业设备或乐理知识，只需输入想法，就能获得完整的人声歌曲作品。由Meta、TikTok等顶尖科技公司前成员打造，Suno已与微软达成战略合作，用户可直接通过Copilot调用其音乐生成功能。
+
+## 核心优势
+
+- **智能创作引擎**：基于自研Chirp v3模型，可生成长达2分钟的高质量音乐作品
+- **全流程创作**：从歌词创作到编曲制作一站式完成，支持50+语言输入输出
+- **风格多元化**：涵盖流行、电子、嘻哈、摇滚等主流音乐类型，满足不同创作需求
+- **协作生态**：与微软Copilot深度整合，拓展创作场景和应用可能性
+
+## 创作无限可能
+
+- **灵感即刻变现**：简单描述你的音乐想法，AI自动生成完整作品
+- **风格自由切换**：轻松尝试不同音乐流派，发现独特创作方向
+- **全球语言支持**：突破语言障碍，用母语创作国际水准的音乐作品
+- **专业级输出**：媲美录音室品质的人声和编曲效果
+
+## 会员服务体系
+
+- **入门体验**：免费用户每日可生成10首作品，适合个人兴趣创作
+- **专业创作**：8美元/月起(年付)，每月500首商用授权作品，支持10个并发任务
+- **商业级方案**：24美元/月起(年付)，每月2000首商用作品，满足专业音乐人需求
+
+## 常见问题解答
+
+**Q：Suno的音乐生成技术有何独特之处？**  
+A：采用自主研发的Chirp v3模型，专注于音乐创作领域，在人声自然度和编曲质量上具有明显优势。
+
+**Q：商业用途需要注意什么？**  
+A：付费会员享有完整商用授权，免费版作品仅限个人使用。建议商业用户选择专业版或高级版。
+
+**Q：能否模仿特定艺人风格？**  
+A：出于版权保护考虑，Suno不支持特定艺人风格的模仿创作，但提供丰富的音乐类型选择。
+
+Suno正在改变音乐创作的游戏规则，让创意不再受技术限制。无论你是音乐爱好者还是专业创作者，都能在这里找到属于自己的声音。立即体验，开启你的音乐创作之旅！`,
+    },
     spark: {
       cover: "https://pic.code-nav.cn/post_cover/1610518142000300034/E4fvFKAWN4mNj6au.webp",
       externalUrl: "https://xinghuo.xfyun.cn/desk",
@@ -420,13 +738,24 @@ Muset能够读取用户的素材库（如笔记、文档），在创作过程中
     },
   };
 
+  const toolIcons = {
+    claude: "/tool-icons/claude.ico",
+    chatgpt: "/tool-icons/chatgpt.svg",
+    poe: "/tool-icons/poe.ico",
+    "google-ai": "/tool-icons/google-ai-studio.svg",
+    notebooklm: "/tool-icons/notebooklm.svg",
+    suno: "/tool-icons/suno.ico",
+    "claude-code": "/tool-icons/claude-code.ico",
+    spotify: "/tool-icons/spotify.ico",
+  };
+
   const tools = [
-    tool("claude", "Claude", "长文本理解与写作协作助手。", "AI 工具", "AI 对话助手", "C", "#d97706", true),
-    tool("chatgpt", "ChatGPT", "强大的对话模型，回答问题、写作创作、编程助手。", "AI 工具", "AI 对话助手", "GPT", "#10a37f", true),
-    tool("poe", "Poe", "聚合多模型的 AI 聊天平台。", "AI 工具", "AI 对话助手", "Poe", "#111827"),
+    tool("claude", "Claude", "Anthropic公司推出的对话式AI智能助手", "AI 工具", "AI 对话助手", "C", "#d97706", true),
+    tool("chatgpt", "ChatGPT", "OpenAI 推出的AI聊天机器人", "AI 工具", "AI 对话助手", "GPT", "#10a37f", true),
+    tool("poe", "Poe", "问答社区Quora推出的问答机器人工具", "AI 工具", "AI 对话助手", "Poe", "#111827"),
     tool("google-ai", "Google AI Studio", "模型实验、提示词调试与多模态应用平台。", "AI 工具", "AI 对话助手", "G", "#4285f4"),
-    tool("notebooklm", "NotebookLM", "基于资料的 AI 笔记、问答与知识整理助手。", "AI 工具", "AI 对话助手", "N", "#0f766e", true),
-    tool("suno", "Suno", "AI 音乐生成与歌曲创作工具。", "AI 工具", "AI 音乐生成", "S", "#f97316", true),
+    tool("notebooklm", "NotebookLM", "谷歌推出的AI笔记应用，5分钟生成一段对话播客", "AI 工具", "AI 对话助手", "N", "#0f766e", true),
+    tool("suno", "Suno", "高质量的AI音乐创作平台", "AI 工具", "AI 音乐生成", "S", "#f97316", true),
     tool("claude-code", "Claude Code", "面向开发者的命令行 AI 编程助手。", "AI 工具", "AI 编程工具", "CC", "#111827", true),
     tool("spotify", "Spotify", "海外流媒体音乐播放与 Premium 订阅服务。", "海外数字服务", "流媒体娱乐", "S", "#1db954", true),
   ];
@@ -470,7 +799,18 @@ Muset能够读取用户的素材库（如笔记、文档），在创作过程中
 
   function tool(id, name, description, category, subcategory, iconText, accent, featured = false) {
     const detail = toolDetails[id] || {};
-    const base = { id, name, description, category, subcategory, featured, iconText, accent, url: toolUrls[id] || fallbackToolUrl(id) };
+    const base = {
+      id,
+      name,
+      description,
+      category,
+      subcategory,
+      featured,
+      iconText,
+      icon: toolIcons[id] || "",
+      accent,
+      url: toolUrls[id] || fallbackToolUrl(id),
+    };
     return {
       ...base,
       tags: detail.tags || [subcategory, category],
@@ -485,6 +825,13 @@ Muset能够读取用户的素材库（如笔记、文档），在创作过程中
       author: detail.author || "工具人AI导航团队",
       content: detail.content || defaultToolContent(base),
     };
+  }
+
+  function renderBrandIcon(item, className) {
+    const content = item.icon
+      ? `<img src="${escapeHtml(item.icon)}" alt="" loading="lazy" aria-hidden="true" />`
+      : escapeHtml(item.iconText);
+    return `<div class="${className}" style="--accent:${item.accent}">${content}</div>`;
   }
 
   function compareTutorials(a, b) {
@@ -695,7 +1042,7 @@ Muset能够读取用户的素材库（如笔记、文档），在创作过程中
   function renderToolCard(item) {
     return `
       <article class="panel tool-card" data-tool-id="${escapeHtml(item.id)}" role="button" tabindex="0" aria-label="查看 ${escapeHtml(item.name)} 详情">
-        <div class="tool-icon" style="--accent:${item.accent}">${escapeHtml(item.iconText)}</div>
+        ${renderBrandIcon(item, "tool-icon")}
         <h3>${escapeHtml(item.name)}</h3>
         <p>${escapeHtml(item.description)}</p>
         <span class="small-button">查看详情</span>
@@ -706,7 +1053,7 @@ Muset能够读取用户的素材库（如笔记、文档），在创作过程中
   function renderToolTile(item) {
     return `
       <article class="panel tool-tile" data-tool-id="${escapeHtml(item.id)}" role="button" tabindex="0" aria-label="查看 ${escapeHtml(item.name)} 详情">
-        <div class="tile-icon" style="--accent:${item.accent}">${escapeHtml(item.iconText)}</div>
+        ${renderBrandIcon(item, "tile-icon")}
         <div>
           <h3>${escapeHtml(item.name)}</h3>
           <p>${escapeHtml(item.description)}</p>
@@ -865,15 +1212,16 @@ Muset能够读取用户的素材库（如笔记、文档），在创作过程中
   }
 
   function renderToolDetail(tool) {
+    const detailVisual = tool.icon || tool.cover;
     return `
       <section class="tool-detail-layout" aria-labelledby="toolDetailTitle">
         <article class="panel tool-detail-main">
           <button class="detail-back" type="button" data-tool-back>‹ 返回 AI导航</button>
           <div class="tool-detail-hero">
-            <div class="tool-detail-cover" style="--accent:${tool.accent}">
+            <div class="tool-detail-cover${detailVisual ? " tool-detail-cover-icon" : ""}" style="--accent:${tool.accent}">
               ${
-                tool.cover
-                  ? `<img src="${escapeHtml(tool.cover)}" alt="${escapeHtml(tool.name)} 封面" loading="lazy" />`
+                detailVisual
+                  ? `<img src="${escapeHtml(detailVisual)}" alt="${escapeHtml(tool.name)} 图标" loading="lazy" />`
                   : `<span>${escapeHtml(tool.iconText)}</span>`
               }
             </div>

@@ -435,7 +435,7 @@ assert.equal(app.getToolById("chatgpt").name, "ChatGPT", "tool lookup should ret
 assert.equal(typeof app.getToolUrl, "function", "tool cards should expose a jump link resolver");
 assert.equal(
   app.getToolUrl("claude-code"),
-  "https://www.anthropic.com/claude-code",
+  "https://claude.com/product/claude-code",
   "tool jump links should resolve current curated tools when available",
 );
 assert.ok(
@@ -443,15 +443,29 @@ assert.ok(
   "every tool should have a real HTTP jump link",
 );
 assert.equal(typeof app.getToolDetail, "function", "tool detail lookup should be exposed");
+assert.deepEqual(
+  Object.fromEntries(app.tools.map((tool) => [tool.id, tool.externalUrl])),
+  {
+    claude: "https://claude.ai/",
+    chatgpt: "https://chatgpt.com/",
+    poe: "https://poe.com/",
+    "google-ai": "https://aistudio.google.com/",
+    notebooklm: "https://notebooklm.google.com/",
+    suno: "https://suno.com/",
+    "claude-code": "https://claude.com/product/claude-code",
+    spotify: "https://www.spotify.com/",
+  },
+  "curated tool detail buttons should go directly to official websites",
+);
 const notebookDetail = app.getToolDetail("notebooklm");
 assert.equal(notebookDetail.externalUrl, "https://notebooklm.google.com/", "NotebookLM detail should keep the official link");
 assert.ok(
-  notebookDetail.content.includes("NotebookLM 是 AI 工具 场景下的 AI 工具"),
-  "NotebookLM should render the local detail template",
+  notebookDetail.content.includes("智能笔记助手NotebookLM"),
+  "NotebookLM should render the synced Codefather detail content",
 );
 assert.ok(
-  notebookDetail.content.includes("AI 对话助手"),
-  "NotebookLM detail should include its compact subcategory",
+  notebookDetail.sourceUrl.includes("ai.codefather.cn/tool/1965402623599337488"),
+  "NotebookLM detail should include the matched Codefather source",
 );
 const spotifyDetail = app.getToolDetail("spotify");
 assert.equal(spotifyDetail.externalUrl, "https://www.spotify.com/", "Spotify detail should keep the official link");
