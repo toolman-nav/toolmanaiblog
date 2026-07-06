@@ -29,6 +29,24 @@ assert.ok(!allDistText.includes("pic.code-nav.cn"), "dist should not reference p
 assert.ok(!/(?:my\.)?feishu\.cn|larksuite\.com/i.test(allDistText), "dist should not reference Feishu/Lark images");
 assert.ok(!allDistText.includes("12.8k"), "dist should not contain fake read counts");
 
+// Internal review notes must never be visible to users (HTML comments are tolerated).
+for (const file of htmlFiles) {
+  const visible = fs.readFileSync(file, "utf8").replace(/<!--[\s\S]*?-->/g, "");
+  for (const phrase of ["需人工核实", "人工复核", "人工补充", "需人工"]) {
+    assert.ok(!visible.includes(phrase), `${path.relative(dist, file)} leaks internal note "${phrase}" into visible content`);
+  }
+}
+
+// og:image must be a real share image, never a favicon-sized icon.
+for (const file of htmlFiles) {
+  const og = fs.readFileSync(file, "utf8").match(/property="og:image" content="([^"]+)"/)?.[1] || "";
+  assert.ok(og && !/\.(ico|svg)$/i.test(og), `${path.relative(dist, file)} og:image must not be a favicon/icon (got "${og}")`);
+}
+
+assert.ok(fs.existsSync(path.join(dist, "404.html")), "dist must contain 404.html so the host stops serving index.html with 200 for unknown paths");
+assert.ok(fs.existsSync(path.join(dist, "_redirects")), "dist must contain the Cloudflare Pages _redirects file");
+assert.ok(!fs.existsSync(path.join(dist, "tutorials")), "dist must not contain the legacy /tutorials/ tree");
+
 for (const file of [path.join(dist, "index.html"), path.join(dist, "blog/claude-code-guide/index.html")]) {
   const html = fs.readFileSync(file, "utf8");
   const h1Count = (html.match(/<h1\b/gi) || []).length;

@@ -64,7 +64,7 @@ assert.ok(!siteData.includes('require(path.join(process.cwd(), "app.js"))'), "As
 assert.ok(siteData.includes("categories"), "site data should export category data");
 assert.ok(siteData.includes("slug:"), "site categories and tools should include explicit slugs");
 assert.ok(siteData.includes("lastReviewed"), "tools should include lastReviewed dates");
-assert.ok(siteData.includes("⚠️ 需人工核实"), "unverified tool facts should be flagged");
+assert.ok(!siteData.includes("需人工核实"), "internal review notes must not leak into rendered tool content");
 assert.ok(!siteData.includes("pic.code-nav.cn"), "tool images should not use pic.code-nav.cn");
 assert.ok(!siteData.includes("Claude 3 Haiku"), "known stale Claude model copy should be removed");
 assert.ok(!siteData.includes("重塑人机交互的未来"), "empty marketing copy should be removed");
@@ -85,6 +85,10 @@ for (const file of postFiles) {
   }
   assert.ok(!source.match(/!\[[^\]]*]\(https?:\/\/[^)]*(feishu|larksuite)[^)]*\)/i), `${file} should not render Feishu/Lark image embeds`);
   assert.ok(!source.includes("12.8k 阅读"), `${file} should not contain fake reads`);
+  const frontmatter = source.split("---")[1] || "";
+  for (const phrase of ["需人工核实", "人工复核", "人工补充", "这篇教程适合谁阅读"]) {
+    assert.ok(!frontmatter.includes(phrase), `${file} FAQ must be article-specific, not internal template copy (found ${phrase})`);
+  }
   if (source.match(/relatedTools:\s*\[\s*]/)) relatedToolsEmpty.push(file);
 }
 
@@ -129,6 +133,13 @@ assert.ok(exists("src/components/FAQBlock.astro"), "FAQ component should exist")
 assert.ok(exists("src/components/RelatedTools.astro"), "article related tools component should exist");
 assert.ok(exists("src/components/RelatedTutorials.astro"), "tool related tutorials component should exist");
 assert.ok(exists("src/pages/about/authors/index.astro"), "author page should exist");
+assert.ok(!read("src/pages/about/authors/index.astro").includes("需人工"), "author page must not expose internal placeholders");
+assert.ok(exists("src/pages/404.astro"), "404 page must exist so Cloudflare Pages disables the SPA fallback");
+assert.ok(exists("public/_redirects"), "Cloudflare Pages _redirects file must exist for legacy 301s");
+const cfRedirects = read("public/_redirects");
+assert.ok(cfRedirects.includes("/tutorials/claudecode-jiaocheng/ /blog/claude-code-guide/ 301"), "_redirects should map legacy tutorial URLs");
+assert.ok(cfRedirects.includes("/tutorials/* /blog/ 301"), "_redirects should catch remaining legacy tutorial paths");
+assert.ok(cfRedirects.includes("/sitemap.xml /sitemap-index.xml 301"), "_redirects should map legacy sitemap URL");
 assert.ok(exists("public/robots.txt"), "static robots.txt should exist");
 assert.ok(exists("public/llms.txt"), "llms.txt should exist");
 assert.ok(exists("public/og-default.png"), "default OG image should exist");

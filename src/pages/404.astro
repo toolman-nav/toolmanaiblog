@@ -1,0 +1,23 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+
+// 该页面的存在会让 Cloudflare Pages 关闭 SPA 回退：
+// 未匹配到任何静态文件或 301 规则的路径将返回真实的 404，而不是用首页兜底返回 200。
+const title = "页面不存在 - 工具人AI导航";
+const description = "你访问的页面不存在或已被移动，请从教程列表或工具导航继续浏览。";
+---
+
+<SiteLayout activeNav="home" title={title} description={description} canonical="/404/" robots="noindex, follow">
+  <section class="panel tutorial-detail" aria-labelledby="notFoundTitle">
+    <h1 id="notFoundTitle">404：页面不存在</h1>
+    <div class="detail-body markdown-body">
+      <p>你访问的地址不存在，或者内容已经迁移到了新的链接。</p>
+      <p>可以从下面的入口继续浏览：</p>
+      <ul>
+        <li><a href="/blog/">全部教程</a></li>
+        <li><a href="/tools/">AI 工具导航</a></li>
+        <li><a href="/">返回首页</a></li>
+      </ul>
+    </div>
+  </section>
+</SiteLayout>

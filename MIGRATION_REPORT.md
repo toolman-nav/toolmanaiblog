@@ -66,7 +66,22 @@
 - 失效图片：飞书/飞书 AI 临时图片已移除渲染并留下补图注释，需要人工补回本地图片。
 - relatedTools 空缺：`ai-ppt-tools-guide`、`us-apple-id-guide`、`google-play-install-guide`、`ai-mindmap-guide` 暂无明确工具关联，已保留空数组。
 - npm 验证：当前 Codex 环境没有 `npm/npx` 可执行文件，本次使用 `pnpm` 执行安装、测试和构建验证。
-- Vercel 301：已生成 `vercel.json`，上线后仍需用生产域名抽样验证 301。
+
+## 2026-07-06 复盘修复：301 从未生效（双站并存）
+
+- 实测结论：生产站点由 Cloudflare Pages 托管（响应头 `server: cloudflare`、无 `x-vercel-*`），`vercel.json` 的 301 规则从未被执行。
+- 症状：构建产物无 `404.html` 时 Cloudflare Pages 进入 SPA 回退模式，任意未知路径（含全部旧 `/tutorials/`、旧 `/tools/categories/` URL）都以 200 返回 `index.html`，形成大规模可索引重复内容。
+- 修复：
+  - 新增 `public/_redirects`（Cloudflare Pages 原生格式），覆盖全部旧文章、旧分类、旧工具 URL（含中文百分号编码与未编码两种形式）及 `/tutorials/*` 兜底，全部 301 到新地址。注意：`/tools/categories/` 下不能加 splat 兜底，因为新站的分类页也在该前缀下，Pages 的 redirect 优先于静态文件，会误伤新页面；该前缀只保留精确匹配和三段式详情页占位符规则。
+  - 新增 `src/pages/404.astro`，构建产出 `404.html`，关闭 SPA 回退，未知路径返回真实 404（noindex）。
+  - `vercel.json` 保留，仅在迁回 Vercel 时生效。
+- 上线验收：`curl -I "https://toolmanai.com/tutorials/categories/AI%E6%95%99%E7%A8%8B/claudecode-jiaocheng/"` 必须返回 `301` 且 `Location: /blog/claude-code-guide/`；`curl -I https://toolmanai.com/nonexistent/` 必须返回 `404`。
+
+## 2026-07-06 复盘修复：内部话术泄漏到线上
+
+- 移除工具页正文 8 处“⚠️ 需人工核实”提示、作者页“⚠️ 需人工补充”占位段落。
+- 13 篇文章的通用模板 FAQ（“教程中的价格和权益是否固定？”等）全部重写为基于各文章正文的特定问答，FAQPage 结构化数据随之更新。
+- `pnpm test` 与 `pnpm run verify:seo` 新增反向断言：源码 FAQ 不得含模板话术；构建产物的可见内容（剔除 HTML 注释后）不得出现“需人工”类内部标注；`dist` 必须含 `404.html` 与 `_redirects`，且不得再出现 `/tutorials/` 目录。
 
 ## robots.txt 最终内容
 

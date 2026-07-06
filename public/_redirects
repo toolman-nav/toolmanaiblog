@@ -1,0 +1,131 @@
+# Cloudflare Pages redirects — legacy /tutorials/ and /tools/categories/ URLs → new flat URLs
+# Static HTML for these paths no longer exists in the build; these rules must answer with 301.
+
+/sitemap.xml /sitemap-index.xml 301
+
+# Legacy tutorial detail pages (direct form)
+/tutorials/poe-jiaocheng/ /blog/poe-subscription-guide/ 301
+/tutorials/poe-jiaocheng /blog/poe-subscription-guide/ 301
+/tutorials/sunoai-jiaocheng/ /blog/suno-ai-music-guide/ 301
+/tutorials/sunoai-jiaocheng /blog/suno-ai-music-guide/ 301
+/tutorials/spotify-jiaocheng/ /blog/spotify-premium-guide/ 301
+/tutorials/spotify-jiaocheng /blog/spotify-premium-guide/ 301
+/tutorials/chatgpt-plus-shengji-jiaocheng/ /blog/chatgpt-plus-subscription-guide/ 301
+/tutorials/chatgpt-plus-shengji-jiaocheng /blog/chatgpt-plus-subscription-guide/ 301
+/tutorials/aippt-jiaocheng/ /blog/ai-ppt-tools-guide/ 301
+/tutorials/aippt-jiaocheng /blog/ai-ppt-tools-guide/ 301
+/tutorials/notebooklm-jiaocheng/ /blog/notebooklm-guide/ 301
+/tutorials/notebooklm-jiaocheng /blog/notebooklm-guide/ 301
+/tutorials/%E5%85%8D%E8%B4%B9%E8%BF%98%E5%A5%BD%E7%94%A8google-ai-studio%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/ /blog/google-ai-studio-guide/ 301
+/tutorials/%E5%85%8D%E8%B4%B9%E8%BF%98%E5%A5%BD%E7%94%A8google-ai-studio%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B /blog/google-ai-studio-guide/ 301
+/tutorials/免费还好用google-ai-studio保姆级教程/ /blog/google-ai-studio-guide/ 301
+/tutorials/免费还好用google-ai-studio保姆级教程 /blog/google-ai-studio-guide/ 301
+/tutorials/claude-fable-5-%E6%9D%A5%E4%BA%86%E5%BC%BA%E6%98%AF%E7%9C%9F%E5%BC%BA%E4%BD%86%E8%8B%9F%E4%B9%9F%E6%98%AF%E7%9C%9F%E8%8B%9F%E9%99%84%E5%9B%BD%E5%86%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/ /blog/claude-fable-5-review/ 301
+/tutorials/claude-fable-5-%E6%9D%A5%E4%BA%86%E5%BC%BA%E6%98%AF%E7%9C%9F%E5%BC%BA%E4%BD%86%E8%8B%9F%E4%B9%9F%E6%98%AF%E7%9C%9F%E8%8B%9F%E9%99%84%E5%9B%BD%E5%86%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B /blog/claude-fable-5-review/ 301
+/tutorials/claude-fable-5-来了强是真强但苟也是真苟附国内使用教程/ /blog/claude-fable-5-review/ 301
+/tutorials/claude-fable-5-来了强是真强但苟也是真苟附国内使用教程 /blog/claude-fable-5-review/ 301
+/tutorials/claudecode-jiaocheng/ /blog/claude-code-guide/ 301
+/tutorials/claudecode-jiaocheng /blog/claude-code-guide/ 301
+/tutorials/meiqu-appleid-jiaocheng/ /blog/us-apple-id-guide/ 301
+/tutorials/meiqu-appleid-jiaocheng /blog/us-apple-id-guide/ 301
+/tutorials/google-play-jiaocheng/ /blog/google-play-install-guide/ 301
+/tutorials/google-play-jiaocheng /blog/google-play-install-guide/ 301
+/tutorials/ai-siweidaotu-jiaocheng/ /blog/ai-mindmap-guide/ 301
+/tutorials/ai-siweidaotu-jiaocheng /blog/ai-mindmap-guide/ 301
+/tutorials/claude-shengji-jiaocheng/ /blog/claude-subscription-guide/ 301
+/tutorials/claude-shengji-jiaocheng /blog/claude-subscription-guide/ 301
+
+# Legacy tutorial detail pages (nested under Chinese category segment)
+/tutorials/categories/:category/poe-jiaocheng/ /blog/poe-subscription-guide/ 301
+/tutorials/categories/:category/poe-jiaocheng /blog/poe-subscription-guide/ 301
+/tutorials/categories/:category/sunoai-jiaocheng/ /blog/suno-ai-music-guide/ 301
+/tutorials/categories/:category/sunoai-jiaocheng /blog/suno-ai-music-guide/ 301
+/tutorials/categories/:category/spotify-jiaocheng/ /blog/spotify-premium-guide/ 301
+/tutorials/categories/:category/spotify-jiaocheng /blog/spotify-premium-guide/ 301
+/tutorials/categories/:category/chatgpt-plus-shengji-jiaocheng/ /blog/chatgpt-plus-subscription-guide/ 301
+/tutorials/categories/:category/chatgpt-plus-shengji-jiaocheng /blog/chatgpt-plus-subscription-guide/ 301
+/tutorials/categories/:category/aippt-jiaocheng/ /blog/ai-ppt-tools-guide/ 301
+/tutorials/categories/:category/aippt-jiaocheng /blog/ai-ppt-tools-guide/ 301
+/tutorials/categories/:category/notebooklm-jiaocheng/ /blog/notebooklm-guide/ 301
+/tutorials/categories/:category/notebooklm-jiaocheng /blog/notebooklm-guide/ 301
+/tutorials/categories/:category/%E5%85%8D%E8%B4%B9%E8%BF%98%E5%A5%BD%E7%94%A8google-ai-studio%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/ /blog/google-ai-studio-guide/ 301
+/tutorials/categories/:category/%E5%85%8D%E8%B4%B9%E8%BF%98%E5%A5%BD%E7%94%A8google-ai-studio%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B /blog/google-ai-studio-guide/ 301
+/tutorials/categories/:category/免费还好用google-ai-studio保姆级教程/ /blog/google-ai-studio-guide/ 301
+/tutorials/categories/:category/免费还好用google-ai-studio保姆级教程 /blog/google-ai-studio-guide/ 301
+/tutorials/categories/:category/claude-fable-5-%E6%9D%A5%E4%BA%86%E5%BC%BA%E6%98%AF%E7%9C%9F%E5%BC%BA%E4%BD%86%E8%8B%9F%E4%B9%9F%E6%98%AF%E7%9C%9F%E8%8B%9F%E9%99%84%E5%9B%BD%E5%86%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/ /blog/claude-fable-5-review/ 301
+/tutorials/categories/:category/claude-fable-5-%E6%9D%A5%E4%BA%86%E5%BC%BA%E6%98%AF%E7%9C%9F%E5%BC%BA%E4%BD%86%E8%8B%9F%E4%B9%9F%E6%98%AF%E7%9C%9F%E8%8B%9F%E9%99%84%E5%9B%BD%E5%86%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B /blog/claude-fable-5-review/ 301
+/tutorials/categories/:category/claude-fable-5-来了强是真强但苟也是真苟附国内使用教程/ /blog/claude-fable-5-review/ 301
+/tutorials/categories/:category/claude-fable-5-来了强是真强但苟也是真苟附国内使用教程 /blog/claude-fable-5-review/ 301
+/tutorials/categories/:category/claudecode-jiaocheng/ /blog/claude-code-guide/ 301
+/tutorials/categories/:category/claudecode-jiaocheng /blog/claude-code-guide/ 301
+/tutorials/categories/:category/meiqu-appleid-jiaocheng/ /blog/us-apple-id-guide/ 301
+/tutorials/categories/:category/meiqu-appleid-jiaocheng /blog/us-apple-id-guide/ 301
+/tutorials/categories/:category/google-play-jiaocheng/ /blog/google-play-install-guide/ 301
+/tutorials/categories/:category/google-play-jiaocheng /blog/google-play-install-guide/ 301
+/tutorials/categories/:category/ai-siweidaotu-jiaocheng/ /blog/ai-mindmap-guide/ 301
+/tutorials/categories/:category/ai-siweidaotu-jiaocheng /blog/ai-mindmap-guide/ 301
+/tutorials/categories/:category/claude-shengji-jiaocheng/ /blog/claude-subscription-guide/ 301
+/tutorials/categories/:category/claude-shengji-jiaocheng /blog/claude-subscription-guide/ 301
+
+# Legacy tutorial category listings
+/tutorials/categories/AI%E6%95%99%E7%A8%8B/ /blog/categories/ai-tutorials/ 301
+/tutorials/categories/AI%E6%95%99%E7%A8%8B /blog/categories/ai-tutorials/ 301
+/tutorials/categories/AI教程/ /blog/categories/ai-tutorials/ 301
+/tutorials/categories/AI教程 /blog/categories/ai-tutorials/ 301
+/tutorials/categories/AI%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/ /blog/categories/ai-practical-tools/ 301
+/tutorials/categories/AI%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7 /blog/categories/ai-practical-tools/ 301
+/tutorials/categories/AI实用工具/ /blog/categories/ai-practical-tools/ 301
+/tutorials/categories/AI实用工具 /blog/categories/ai-practical-tools/ 301
+/tutorials/categories/%E6%B5%B7%E5%A4%96AI%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/ /blog/categories/overseas-ai-guides/ 301
+/tutorials/categories/%E6%B5%B7%E5%A4%96AI%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B /blog/categories/overseas-ai-guides/ 301
+/tutorials/categories/海外AI使用教程/ /blog/categories/overseas-ai-guides/ 301
+/tutorials/categories/海外AI使用教程 /blog/categories/overseas-ai-guides/ 301
+/tutorials/categories/%E6%B5%B7%E5%A4%96%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/ /blog/categories/overseas-service-guides/ 301
+/tutorials/categories/%E6%B5%B7%E5%A4%96%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B /blog/categories/overseas-service-guides/ 301
+/tutorials/categories/海外工具使用教程/ /blog/categories/overseas-service-guides/ 301
+/tutorials/categories/海外工具使用教程 /blog/categories/overseas-service-guides/ 301
+
+# Legacy tutorial fallbacks
+/tutorials/categories/:category/:old/ /blog/:old/ 301
+/tutorials/categories/:category/:old /blog/:old/ 301
+/tutorials/ /blog/ 301
+/tutorials /blog/ 301
+/tutorials/* /blog/ 301
+
+# Legacy tool detail pages (google-ai was renamed to google-ai-studio)
+/tools/categories/:category/:subcategory/google-ai/ /tools/google-ai-studio/ 301
+/tools/categories/:category/:subcategory/google-ai /tools/google-ai-studio/ 301
+
+# Legacy tool subcategory listings
+/tools/categories/AI%20%E5%B7%A5%E5%85%B7/AI%20%E5%AF%B9%E8%AF%9D%E5%8A%A9%E6%89%8B/ /tools/categories/ai-tools/ai-chat/ 301
+/tools/categories/AI%20%E5%B7%A5%E5%85%B7/AI%20%E5%AF%B9%E8%AF%9D%E5%8A%A9%E6%89%8B /tools/categories/ai-tools/ai-chat/ 301
+/tools/categories/AI%20工具/AI%20对话助手/ /tools/categories/ai-tools/ai-chat/ 301
+/tools/categories/AI%20工具/AI%20对话助手 /tools/categories/ai-tools/ai-chat/ 301
+/tools/categories/AI%20%E5%B7%A5%E5%85%B7/AI%20%E9%9F%B3%E4%B9%90%E7%94%9F%E6%88%90/ /tools/categories/ai-tools/ai-music/ 301
+/tools/categories/AI%20%E5%B7%A5%E5%85%B7/AI%20%E9%9F%B3%E4%B9%90%E7%94%9F%E6%88%90 /tools/categories/ai-tools/ai-music/ 301
+/tools/categories/AI%20工具/AI%20音乐生成/ /tools/categories/ai-tools/ai-music/ 301
+/tools/categories/AI%20工具/AI%20音乐生成 /tools/categories/ai-tools/ai-music/ 301
+/tools/categories/AI%20%E5%B7%A5%E5%85%B7/AI%20%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/ /tools/categories/ai-tools/ai-coding/ 301
+/tools/categories/AI%20%E5%B7%A5%E5%85%B7/AI%20%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7 /tools/categories/ai-tools/ai-coding/ 301
+/tools/categories/AI%20工具/AI%20编程工具/ /tools/categories/ai-tools/ai-coding/ 301
+/tools/categories/AI%20工具/AI%20编程工具 /tools/categories/ai-tools/ai-coding/ 301
+/tools/categories/%E6%B5%B7%E5%A4%96%E6%95%B0%E5%AD%97%E6%9C%8D%E5%8A%A1/%E6%B5%81%E5%AA%92%E4%BD%93%E5%A8%B1%E4%B9%90/ /tools/categories/overseas-services/streaming/ 301
+/tools/categories/%E6%B5%B7%E5%A4%96%E6%95%B0%E5%AD%97%E6%9C%8D%E5%8A%A1/%E6%B5%81%E5%AA%92%E4%BD%93%E5%A8%B1%E4%B9%90 /tools/categories/overseas-services/streaming/ 301
+/tools/categories/海外数字服务/流媒体娱乐/ /tools/categories/overseas-services/streaming/ 301
+/tools/categories/海外数字服务/流媒体娱乐 /tools/categories/overseas-services/streaming/ 301
+
+# Legacy tool category listings
+/tools/categories/AI%20%E5%B7%A5%E5%85%B7/ /tools/categories/ai-tools/ 301
+/tools/categories/AI%20%E5%B7%A5%E5%85%B7 /tools/categories/ai-tools/ 301
+/tools/categories/AI%20工具/ /tools/categories/ai-tools/ 301
+/tools/categories/AI%20工具 /tools/categories/ai-tools/ 301
+/tools/categories/%E6%B5%B7%E5%A4%96%E6%95%B0%E5%AD%97%E6%9C%8D%E5%8A%A1/ /tools/categories/overseas-services/ 301
+/tools/categories/%E6%B5%B7%E5%A4%96%E6%95%B0%E5%AD%97%E6%9C%8D%E5%8A%A1 /tools/categories/overseas-services/ 301
+/tools/categories/海外数字服务/ /tools/categories/overseas-services/ 301
+/tools/categories/海外数字服务 /tools/categories/overseas-services/ 301
+
+# Legacy tool fallbacks
+# NOTE: no "/tools/categories/*" catch-all here — the new site serves live pages under
+# /tools/categories/{slug}/, and Pages redirects run before assets, so a splat would shadow them.
+/tools/categories/:category/:subcategory/:id/ /tools/:id/ 301
+/tools/categories/:category/:subcategory/:id /tools/:id/ 301
