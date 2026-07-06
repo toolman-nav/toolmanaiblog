@@ -103,7 +103,9 @@ const allSourceText = allSource.map((file) => read(file)).join("\n");
 for (const file of allSource) {
   assert.ok(!read(file).match(/!\[[^\]]*]\(https?:\/\/[^)]*(feishu|larksuite)[^)]*\)/i), `${file} should not render Feishu/Lark images`);
 }
-assert.ok(!allSourceText.includes("localStorage"), "SEO-related source should not use localStorage");
+for (const file of ["src/lib/seo.mjs", "src/pages/rss.xml.js", ...postFiles]) {
+  assert.ok(!read(file).includes("localStorage"), `${file} should remain static and not use localStorage`);
+}
 assert.ok(!allSourceText.includes("pic.code-nav.cn"), "source should not reference pic.code-nav.cn");
 assert.ok(!allSourceText.includes("12.8k 阅读"), "fake read count copy should be gone");
 
@@ -112,6 +114,18 @@ assert.ok(layout.includes("/og-default.png"), "layout should fall back to defaul
 assert.ok(layout.includes('summary_large_image'), "Twitter card should always be large image");
 assert.ok(layout.includes('href={absoluteUrl("/rss.xml")}'), "head should expose RSS");
 assert.ok(layout.includes("<JsonLd"), "layout should use unified JSON-LD component");
+assert.ok(layout.includes('localStorage.getItem("toolman-theme")'), "layout should bootstrap saved theme before CSS loads");
+assert.ok(layout.includes('data-theme-toggle'), "layout should render the header theme toggle");
+
+const siteScript = read("public/site.js");
+assert.ok(siteScript.includes('THEME_STORAGE_KEY = "toolman-theme"'), "site script should define the theme storage key");
+assert.ok(siteScript.includes('prefers-color-scheme: dark'), "site script should read the system dark preference");
+assert.ok(siteScript.includes("matchMedia"), "site script should listen for system theme changes");
+
+const styles = read("public/styles.css");
+assert.ok(styles.includes('color-scheme: light'), "light theme should declare its color scheme");
+assert.ok(styles.includes('html[data-theme="dark"]'), "styles should include dark theme token overrides");
+assert.ok(styles.includes(".theme-toggle"), "styles should include the header theme toggle");
 
 const home = read("src/pages/index.astro");
 assert.ok(home.includes("工具人AI导航：AI 工具评测与国内使用教程"), "home H1 should include brand and value proposition");

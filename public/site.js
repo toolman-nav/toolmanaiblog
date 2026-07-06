@@ -1,6 +1,70 @@
 (function () {
+  var THEME_STORAGE_KEY = "toolman-theme";
+  var darkMediaQuery = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+
   function normalize(value) {
     return String(value || "").trim().toLowerCase();
+  }
+
+  function getSavedTheme() {
+    try {
+      var savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+      return savedTheme === "light" || savedTheme === "dark" ? savedTheme : null;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function saveTheme(theme) {
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, theme);
+    } catch (error) {
+      return;
+    }
+  }
+
+  function getSystemTheme() {
+    return darkMediaQuery && darkMediaQuery.matches ? "dark" : "light";
+  }
+
+  function syncThemeToggle(theme) {
+    var toggle = document.querySelector("[data-theme-toggle]");
+    if (!toggle) return;
+    var isDark = theme === "dark";
+    var label = isDark ? "切换为亮色模式" : "切换为暗黑模式";
+    toggle.setAttribute("aria-label", label);
+    toggle.setAttribute("aria-pressed", String(isDark));
+    toggle.setAttribute("title", label);
+    toggle.dataset.themeState = theme;
+  }
+
+  function applyTheme(theme) {
+    var nextTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.dataset.theme = nextTheme;
+    document.documentElement.style.colorScheme = nextTheme;
+    syncThemeToggle(nextTheme);
+  }
+
+  function initTheme() {
+    applyTheme(getSavedTheme() || getSystemTheme());
+    document.addEventListener("click", function (event) {
+      var toggle = event.target.closest("[data-theme-toggle]");
+      if (!toggle) return;
+      var currentTheme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+      var nextTheme = currentTheme === "dark" ? "light" : "dark";
+      saveTheme(nextTheme);
+      applyTheme(nextTheme);
+    });
+
+    if (!darkMediaQuery) return;
+    var onSystemThemeChange = function () {
+      if (!getSavedTheme()) applyTheme(getSystemTheme());
+    };
+    if (darkMediaQuery.addEventListener) {
+      darkMediaQuery.addEventListener("change", onSystemThemeChange);
+    } else if (darkMediaQuery.addListener) {
+      darkMediaQuery.addListener(onSystemThemeChange);
+    }
   }
 
   function showToast(message) {
@@ -73,5 +137,6 @@
     }
   });
 
+  initTheme();
   syncSearchFromUrl();
 })();

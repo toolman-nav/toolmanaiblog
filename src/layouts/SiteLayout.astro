@@ -17,7 +17,7 @@ const {
 const canonicalUrl = absoluteUrl(canonical || Astro.url.pathname);
 const imageUrl = absoluteUrl(image || "/og-default.png");
 const structuredDataItems = [websiteSchema(), organizationSchema(), ...(Array.isArray(structuredData) ? structuredData : [structuredData])];
-const assetVersion = "20260706-3";
+const assetVersion = "20260706-dark-1";
 
 const navItems = [
   { id: "home", href: "/", label: "主页" },
@@ -53,6 +53,18 @@ const navItems = [
     <link rel="icon" type="image/png" sizes="32x32" href="/logo-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/logo-16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/logo-256.png" />
+    <script is:inline>
+      (() => {
+        try {
+          const savedTheme = localStorage.getItem("toolman-theme");
+          const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+          const theme = savedTheme === "light" || savedTheme === "dark" ? savedTheme : systemTheme;
+          document.documentElement.dataset.theme = theme;
+        } catch (error) {
+          document.documentElement.dataset.theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+      })();
+    </script>
     <link rel="stylesheet" href={`/styles.css?v=${assetVersion}`} />
     <!-- Google Analytics -->
     <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-G4K8676ZVL"></script>
@@ -81,13 +93,18 @@ const navItems = [
           }
         </nav>
 
-        <form class="header-actions" data-global-search role="search" aria-label="全站搜索" action="/tools/" method="get">
-          <label class="header-search">
-            <span class="search-icon" aria-hidden="true"></span>
-            <input id="globalSearch" name="q" type="search" placeholder="搜索文章、工具和教程" />
-          </label>
-          <button class="search-submit-button" type="submit">搜索</button>
-        </form>
+        <div class="header-actions">
+          <form class="global-search-form" data-global-search role="search" aria-label="全站搜索" action="/tools/" method="get">
+            <label class="header-search">
+              <span class="search-icon" aria-hidden="true"></span>
+              <input id="globalSearch" name="q" type="search" placeholder="搜索文章、工具和教程" />
+            </label>
+            <button class="search-submit-button" type="submit">搜索</button>
+          </form>
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换为暗黑模式" aria-pressed="false">
+            <span class="theme-toggle-icon" aria-hidden="true"></span>
+          </button>
+        </div>
       </div>
     </header>
 
