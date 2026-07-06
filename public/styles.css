@@ -1241,8 +1241,10 @@ button {
   line-height: 1.2;
   display: -webkit-box;
   overflow: hidden;
-  -webkit-line-clamp: 1;
+  max-height: calc(2 * 1.2em);
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  word-break: break-word;
 }
 
 .tutorial-card .article-info-summary {
@@ -1250,7 +1252,12 @@ button {
   color: #5f6f85;
   font-size: 13px;
   line-height: 1.45;
-  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  overflow: hidden;
+  max-height: calc(2 * 1.45em);
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
 }
 
 .tutorial-card .article-info-panel {

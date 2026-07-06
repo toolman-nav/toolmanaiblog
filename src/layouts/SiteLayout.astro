@@ -17,7 +17,7 @@ const {
 const canonicalUrl = absoluteUrl(canonical || Astro.url.pathname);
 const imageUrl = absoluteUrl(image || "/og-default.png");
 const structuredDataItems = [websiteSchema(), organizationSchema(), ...(Array.isArray(structuredData) ? structuredData : [structuredData])];
-const assetVersion = "20260706-2";
+const assetVersion = "20260706-3";
 
 const navItems = [
   { id: "home", href: "/", label: "主页" },
