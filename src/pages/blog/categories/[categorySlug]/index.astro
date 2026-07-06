@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import SiteLayout from "../../../../layouts/SiteLayout.astro";
 import TutorialCard from "../../../../components/TutorialCard.astro";
 import { postsToArticles } from "../../../../lib/posts.mjs";
-import { matchRouteValue, tutorialCategoryPath, tutorialDetailPath } from "../../../../lib/routes.mjs";
+import { blogCategoryPath, blogDetailPath, categorySlug, matchRouteValue } from "../../../../lib/routes.mjs";
 import { collectionPageSchema } from "../../../../lib/seo.mjs";
 
 export async function getStaticPaths() {
@@ -11,7 +11,7 @@ export async function getStaticPaths() {
   const tutorials = postsToArticles(posts);
   const categories = [...new Set(tutorials.map((article) => article.category))];
   return categories.map((category) => ({
-    params: { category },
+    params: { categorySlug: categorySlug(category) },
     props: { category, posts },
   }));
 }
@@ -19,16 +19,16 @@ export async function getStaticPaths() {
 const { category, posts } = Astro.props;
 const tutorials = postsToArticles(posts);
 const tutorialCategories = [...new Set(tutorials.map((article) => article.category))];
-const activeCategory = matchRouteValue(Astro.params.category, tutorialCategories) || category;
+const activeCategory = matchRouteValue(Astro.params.categorySlug, tutorialCategories) || category;
 const matched = tutorials.filter((article) => article.category === activeCategory);
 const title = `${activeCategory}教程 - AI教程 - 工具人AI导航`;
 const description = `系统整理${activeCategory}相关 AI 教程，适合按主题持续学习和内容运营。`;
-const canonical = tutorialCategoryPath(activeCategory);
+const canonical = blogCategoryPath(activeCategory);
 const structuredData = collectionPageSchema({
   name: `${activeCategory}教程`,
   description,
   path: canonical,
-  items: matched.map((article) => ({ name: article.title, url: tutorialDetailPath(article) })),
+  items: matched.map((article) => ({ name: article.title, url: blogDetailPath(article) })),
 });
 ---
 
@@ -42,7 +42,7 @@ const structuredData = collectionPageSchema({
     <div class="chip-row tutorial-category-row" aria-label="教程分类">
       {
         tutorialCategories.map((item) => (
-          <a class={`chip ${item === activeCategory ? "is-active" : ""}`} href={tutorialCategoryPath(item)}>
+          <a class={`chip ${item === activeCategory ? "is-active" : ""}`} href={blogCategoryPath(item)}>
             {item}
           </a>
         ))

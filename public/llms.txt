@@ -1,0 +1,16 @@
+# 工具人AI导航
+
+工具人AI导航是面向中文用户的 AI 工具评测与国内使用教程站，整理常用 AI 工具、订阅充值、海外数字服务和实践教程，帮助用户更快找到可用入口并完成上手。
+
+Toolman AI Navigation is a Chinese AI tools and tutorials directory focused on practical reviews, local usage guides, subscriptions, and workflows for AI products and overseas digital services.
+
+- [首页](https://toolmanai.com/): AI 工具评测与国内使用教程入口。
+- [AI 教程](https://toolmanai.com/blog/): 所有教程文章的新列表页。
+- [AI 工具导航](https://toolmanai.com/tools/): 常用 AI 工具与海外数字服务目录。
+- [Claude Code 国内使用教程](https://toolmanai.com/blog/claude-code-guide/): 安装 Claude Code 并接入国产模型的教程。
+- [Claude 国内使用教程](https://toolmanai.com/blog/claude-subscription-guide/): Claude 注册、订阅与国内使用方式。
+- [ChatGPT Plus 国内订阅教程](https://toolmanai.com/blog/chatgpt-plus-subscription-guide/): ChatGPT Plus 订阅和支付方案整理。
+- [Google AI Studio 教程](https://toolmanai.com/blog/google-ai-studio-guide/): Google AI Studio 基础与进阶玩法。
+- [NotebookLM 国内使用教程](https://toolmanai.com/blog/notebooklm-guide/): 使用 NotebookLM 做资料问答和摘要。
+- [Suno AI 音乐教程](https://toolmanai.com/blog/suno-ai-music-guide/): Suno 注册、创作和提示词入门。
+- [Spotify 国内使用教程](https://toolmanai.com/blog/spotify-premium-guide/): Spotify 注册和 Premium 订阅说明。

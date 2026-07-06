@@ -1,12 +1,21 @@
 ---
-title: 免费还好用！Google AI Studio保姆级教程
+title: "免费还好用！Google AI Studio保姆级教程"
+seoTitle: "Google AI Studio 教程 2026：免费体验"
+slug: google-ai-studio-guide
 published: 2026-01-17
-description: 详解Google AI Studio新版界面与7大进阶玩法。从模型选择到零代码开发应用，教你免费体验Gemini 3 Pro及Nano Banana AI修图神器。
-image: ''
-category: 海外AI使用教程
-tags:
-  - Google AI Studio, Gemini 3, Nano Banana, AI开发, 免费AI工具
-draft: false
+dateModified: 2026-01-17
+description: "详解Google AI Studio新版界面与7大进阶玩法。从模型选择到零代码开发应用，教你免费体验Gemini 3 Pro及Nano Banana AI修图神器。"
+image: ""
+tags: ["Google AI Studio, Gemini 3, Nano Banana, AI开发, 免费AI工具"]
+category: "海外AI使用教程"
+relatedTools: ["google-ai"]
+faq:
+  - q: "这篇教程适合谁阅读？"
+    a: "适合想了解海外AI使用教程使用流程、注册入口和常见注意事项的中文用户。"
+  - q: "教程中的价格和权益是否固定？"
+    a: "不固定。涉及价格、套餐和额度的内容发布前仍需人工复核官方页面。"
+  - q: "遇到页面访问或支付失败怎么办？"
+    a: "先检查地区、账号和支付方式限制，再参考文中替代方案或等待人工补充。"
 ---
 今天就给大家分享一下宝藏工具——
 
@@ -45,7 +54,7 @@ draft: false
 - **模型选择及微调：**选择不同的模型及对模型参数进行调整。
 - **对话输入框：**输入提示词就能直接对话。
 
-![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=YjA2MzZhYzYxZDI0ODc1OTYwOWFmYTYyNWE1N2ZkMzVfMlNKdXdndGk5bjBBV1NyVTgyMUV1eHdVSEh3WmMyVFlfVG9rZW46WlUyaWI2RzB2b3VLNDR4RFFWTGNVRmU4bkRjXzE3NjgyODg5NDg6MTc2ODI5MjU0OF9WNA)
+<!-- ⚠️ 需人工补图：原图已失效 -->
 
 \*\*\*
 
@@ -64,7 +73,7 @@ draft: false
 
 以及还有Video（视频生成）和Audio（语音生成）模型，可以说十分全面！
 
-![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=MDk0ODZlMWQzM2I4NDQ5MDQwOWQ4NjQ4MDAzZTE0YTBfbGdjR2JJenRCV1lVSW9pRDUySXI0MDByTk5pbTN1cjNfVG9rZW46UzRhMGJIZWdHbzlsMVV4VDlmamNDZHJSbllkXzE3NjgyODg5NDg6MTc2ODI5MjU0OF9WNA)
+<!-- ⚠️ 需人工补图：原图已失效 -->
 
 ## 四、7 个进阶玩法
 
@@ -88,7 +97,7 @@ draft: false
 
 然后它会像个助教一样，实时给你指导。
 
-![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=Y2Q4ODU3MzRkNDg1ZWVhZGJiYTM3ZWM0ODMwNjhjYTRfamRxWWM3MldMTlRCWUpKQjluaVgyTDgwRlpWR3VodktfVG9rZW46RWFCQmJVU0Rkb0IzTk94REl2S2M0VTRCbjNjXzE3NjgyODg5NDg6MTc2ODI5MjU0OF9WNA)
+<!-- ⚠️ 需人工补图：原图已失效 -->
 
 #### 2.精准生成图片，尺寸分辨率随心控
 
@@ -100,7 +109,7 @@ draft: false
 - **Aspect Ratio**: 自由选择长宽比，比如 **16:9** 的横图或 **9:16** 的竖图。
 - **Resolution**: 最高可选 **2K** 高清分辨率。
 
-![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=MGIyZjliYmY3MjhhMGNiNTc4MjFlNmMxZWZkOTJkOWFfdWl0ZkxRYkkxRUVMZ2ZoOHozcEdxRTVrYTN4eU1CTmtfVG9rZW46R1JETWIwUjA4b3hxaUh4b245RWM2TjRzbkZjXzE3NjgyODg5NDg6MTc2ODI5MjU0OF9WNA)
+<!-- ⚠️ 需人工补图：原图已失效 -->
 
 #### 3.不开 PS 也能 P 图
 
@@ -116,7 +125,7 @@ Nano Banana的强大相信大家没用过也听过了吧？
 
 AI 就能一键帮你修改图片，效果非常惊艳！
 
-![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=MzAxZTRiNzQxYjMyMjU4NmZmYjc2NTIyNmNhZGE2NWZfaUFXVThXdFVkN2w3NUpCRHBvOXhmZDB1WXhxMTdhWDRfVG9rZW46WDRpUmJpOU9sb2xyZTV4TXdYUmN5bldPbllTXzE3NjgyODg5NDg6MTc2ODI5MjU0OF9WNA)
+<!-- ⚠️ 需人工补图：原图已失效 -->
 
 #### 4.语音实时对话，请个英语口语老师
 
@@ -128,7 +137,7 @@ AI 就能一键帮你修改图片，效果非常惊艳！
 
 比如跟它练习你的英语口语等，你还可以在右侧“`Voice`”下选择不同的音色。
 
-![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=MDQ0MzYxYmRlMmUxMmU5OWFmNWVlYjYwYzAzYzUzYjdfZFNMRXNzTHpBcmlEaXIxeW5SRXoyQURrQnNRd3lHQTZfVG9rZW46VG1mWmJ5V2R4b2FTNHB4cWhHWWNjS3JGbnViXzE3NjgyODg5NDg6MTc2ODI5MjU0OF9WNA)
+<!-- ⚠️ 需人工补图：原图已失效 -->
 
 #### 5.模型对比，看看哪个模型效果好
 
@@ -136,7 +145,7 @@ AI 就能一键帮你修改图片，效果非常惊艳！
 
 然后选择不同的模型，输入同样的提示词，直观看哪个模型更适合处理哪些工作。
 
-![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=ZGU3NzhlMGI5MjNkZmM3MWRhMDgwMDg2NDVhMDM4MTdfZ08xTkRkNXE1UFZ3VTdHekdDdjNFakN5cUZ2a3FpY3ZfVG9rZW46TkRIU2I4anF4b1F5aDN4blJNcWNEYnZ3bkZjXzE3NjgyODg5NDg6MTc2ODI5MjU0OF9WNA)
+<!-- ⚠️ 需人工补图：原图已失效 -->
 
 #### 6.自定义系统指令，打造你的专属AI
 
@@ -151,7 +160,7 @@ AI 就能一键帮你修改图片，效果非常惊艳！
 设置好后，在这个聊天里的所有对话，AI 都会严格遵守你的指令进行回答。
 简单讲就相当于Gemini的“Gem”或者ChatGPT的“GPTs”功能。
 
-![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=ZTE1ZGE4ODBhZDA0OTM3NGQ4Y2UxZjgyN2M2YzRhNjRfUkxwa2drUUNCVnU4U1hBOUtoR1B3dEs1eEtQUkhzM1pfVG9rZW46UzBodWJYbDY0b0U0N1N4T1NpVWNEdGE1bkNjXzE3NjgyODg5NDg6MTc2ODI5MjU0OF9WNA)
+<!-- ⚠️ 需人工补图：原图已失效 -->
 
 #### 7.一句话开发一个AI应用
 
@@ -161,6 +170,6 @@ AI 就能一键帮你修改图片，效果非常惊艳！
 
 而且这里现在调用的就是最新的Gemini 3 Pro！
 
-![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=NTY1YTU1OWNlMjBhY2QyZDkzZGNiNmRmYTIyNmI0YTdfdEJSRk1KeE84RVNSemVEcHNpMFFhZHBiZ3lrQ1lSdlVfVG9rZW46WklrZmJGa3pUb1lMSHN4c2xxMGMyWm96bkNoXzE3NjgyODg5NDg6MTc2ODI5MjU0OF9WNA)![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=YTlkMmQwNGU1MWVmOWNmMTI2ZmE5MWViZmQ5MDdhZTBfdFhESWZPZ0dBc2dtaGNaRHBGcHVSWGJOZThNdXROS2dfVG9rZW46RGFwNGJHUkxUb3RFd2t4d1I2amNwRWFTbmZmXzE3NjgyODg5NDg6MTc2ODI5MjU0OF9WNA)
+<!-- ⚠️ 需人工补图：原图已失效 --><!-- ⚠️ 需人工补图：原图已失效 -->
 
 好了今天的分享就到这儿，有不懂或者更多玩法，有欢迎大家来讨论交流！

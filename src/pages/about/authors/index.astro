@@ -1,0 +1,22 @@
+---
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+import { breadcrumbSchema } from "../../../lib/seo.mjs";
+
+const title = "作者团队 - 工具人AI导航";
+const description = "工具人AI导航作者与编辑团队说明。";
+const structuredData = breadcrumbSchema([
+  { name: "首页", url: "/" },
+  { name: "关于我们", url: "/about/" },
+  { name: "作者团队", url: "/about/authors/" },
+]);
+---
+
+<SiteLayout activeNav="about" title={title} description={description} canonical="/about/authors/" structuredData={structuredData}>
+  <section class="panel tutorial-detail" aria-labelledby="authorsTitle">
+    <h1 id="authorsTitle">工具人AI导航作者团队</h1>
+    <div class="detail-body markdown-body">
+      <p>工具人AI导航团队负责整理 AI 工具评测、国内使用教程、订阅充值和海外数字服务相关内容。</p>
+      <p>⚠️ 需人工补充：作者真实姓名、头像、从业资历、社交账号和内容审核流程。</p>
+    </div>
+  </section>
+</SiteLayout>

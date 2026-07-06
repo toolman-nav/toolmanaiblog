@@ -27,6 +27,7 @@ const structuredData = collectionPageSchema({
     <div class="tool-directory-layout">
       <ToolSidebar categories={site.categories} />
       <div class="tool-directory-main">
+        <h1 class="section-title">AI 工具导航</h1>
         <div class="category-strip" role="tablist" aria-label="AI工具分类">
           {
             site.categories.map((category, index) => (
@@ -55,7 +56,7 @@ const structuredData = collectionPageSchema({
             toolSections.map((section) => (
               <section id={section.id} class="directory-section" aria-labelledby={`${section.id}Title`} data-section-search-text={`${section.name} ${section.subcategories.join(" ")}`}>
                 <div class="section-head">
-                  <h1 id={`${section.id}Title`} class="section-title">{section.name}</h1>
+                  <h2 id={`${section.id}Title`} class="section-title">{section.name}</h2>
                 </div>
                 <div class="subtab-row">
                   {

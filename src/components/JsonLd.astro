@@ -1,0 +1,12 @@
+---
+import { jsonLdScript } from "../lib/seo.mjs";
+
+const { items = [] } = Astro.props;
+const structuredDataItems = Array.isArray(items) ? items : [items];
+---
+
+{
+  structuredDataItems.filter(Boolean).map((item) => (
+    <script type="application/ld+json" set:html={jsonLdScript(item)} />
+  ))
+}

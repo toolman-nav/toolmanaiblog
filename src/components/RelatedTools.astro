@@ -1,0 +1,30 @@
+---
+import { toolDetailPath } from "../lib/routes.mjs";
+
+const { tools = [] } = Astro.props;
+---
+
+{
+  tools.length ? (
+    <section class="related-block" aria-labelledby="relatedToolsTitle">
+      <div class="section-head">
+        <h2 id="relatedToolsTitle" class="section-title">相关工具</h2>
+        <a class="text-link" href="/tools/">查看全部工具 ›</a>
+      </div>
+      <div class="related-tool-grid">
+        {tools.map((tool) => (
+          <a class="panel related-tool-card" href={toolDetailPath(tool)}>
+            <div class="tile-icon" style={`--accent:${tool.accent}`}>
+              {tool.icon ? <img src={tool.icon} alt="" loading="lazy" aria-hidden="true" /> : tool.iconText}
+            </div>
+            <div class="related-tool-body">
+              <h3>{tool.name}</h3>
+              <p>{tool.description}</p>
+            </div>
+            <span class="related-tool-arrow" aria-hidden="true">›</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  ) : null
+}

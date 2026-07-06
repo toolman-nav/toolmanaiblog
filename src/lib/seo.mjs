@@ -1,6 +1,8 @@
 export const SITE_URL = "https://toolmanai.com";
 export const SITE_NAME = "工具人AI导航";
-export const SITE_DESCRIPTION = "工具人AI导航是一个面向中文用户的 AI 工具与教程导航站，帮助你更快发现工具、学习方法、形成工作流。";
+export const SITE_DESCRIPTION = "工具人AI导航是一个面向中文用户的 AI 工具评测与国内使用教程站，帮助你更快发现工具、学习方法、形成工作流。";
+export const SITE_LOGO = "/logo-512.png";
+export const DEFAULT_OG_IMAGE = "/og-default.png";
 
 const trimTrailingSlash = (value) => String(value || "").replace(/\/+$/, "");
 
@@ -19,28 +21,13 @@ export function jsonLdScript(value) {
   return JSON.stringify(value).replace(/</g, "\\u003c");
 }
 
-function organizationSchema() {
+export function organizationSchema() {
   return {
+    "@context": "https://schema.org",
     "@type": "Organization",
     name: SITE_NAME,
     url: absoluteUrl("/"),
-  };
-}
-
-function imageList(image) {
-  if (!image) return undefined;
-  return [absoluteUrl(image)];
-}
-
-function itemList(items = []) {
-  return {
-    "@type": "ItemList",
-    itemListElement: items.map((item, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: item.name || item.title,
-      url: absoluteUrl(item.url || item.path || "/"),
-    })),
+    logo: absoluteUrl(SITE_LOGO),
   };
 }
 
@@ -60,6 +47,18 @@ export function websiteSchema() {
   };
 }
 
+function itemList(items = []) {
+  return {
+    "@type": "ItemList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name || item.title,
+      url: absoluteUrl(item.url || item.path || "/"),
+    })),
+  };
+}
+
 export function collectionPageSchema({ name, description, path, items = [] }) {
   return {
     "@context": "https://schema.org",
@@ -76,22 +75,33 @@ export function collectionPageSchema({ name, description, path, items = [] }) {
   };
 }
 
-export function itemListSchema(items = []) {
+export function breadcrumbSchema(items = []) {
   return {
     "@context": "https://schema.org",
-    ...itemList(items),
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: absoluteUrl(item.url),
+    })),
   };
 }
 
 export function articleSchema(article) {
   return {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: article.title,
     description: article.summary,
-    image: imageList(article.image),
+    image: [absoluteUrl(article.image || DEFAULT_OG_IMAGE)],
     datePublished: article.date,
-    author: organizationSchema(),
+    dateModified: article.dateModified || article.date,
+    author: {
+      "@type": "Organization",
+      name: "工具人AI导航团队",
+      url: absoluteUrl("/about/authors/"),
+    },
     publisher: organizationSchema(),
     mainEntityOfPage: absoluteUrl(article.url || article.path || "/"),
   };
@@ -104,9 +114,25 @@ export function softwareApplicationSchema(tool) {
     name: tool.name,
     description: tool.description,
     url: absoluteUrl(tool.url || tool.path || "/"),
-    image: tool.cover ? absoluteUrl(tool.cover) : undefined,
+    image: absoluteUrl(tool.icon || DEFAULT_OG_IMAGE),
     applicationCategory: tool.subcategory || tool.category,
     operatingSystem: "Web",
     publisher: organizationSchema(),
+  };
+}
+
+export function faqPageSchema(faq = []) {
+  if (!faq.length) return null;
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.a,
+      },
+    })),
   };
 }

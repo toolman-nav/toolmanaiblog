@@ -1,0 +1,24 @@
+---
+const { faq = [] } = Astro.props;
+---
+
+{
+  faq.length ? (
+    <section class="faq-block" aria-labelledby="faqTitle">
+      <h2 id="faqTitle" class="section-title">常见问题</h2>
+      <div class="faq-list">
+        {faq.map((item) => (
+          <details class="faq-item">
+            <summary>
+              <span class="faq-question">{item.q}</span>
+              <span class="faq-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-answer">
+              <p>{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+  ) : null
+}

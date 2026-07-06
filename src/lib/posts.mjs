@@ -32,15 +32,19 @@ export function postToArticle(entry, index = 0) {
   const image = normalizePostImage(entry.data.image) || normalizePostImage(firstMarkdownImage(entry.body), { allowRemote: false });
   return {
     id: entry.id.replace(/\.md$/, ""),
+    slug: entry.data.slug,
     title: entry.data.title,
-    summary: entry.data.description || "来自工具人AI导航博客的实用教程。",
+    seoTitle: entry.data.seoTitle || entry.data.title,
+    summary: entry.data.description,
     category: entry.data.category || "AI教程",
     date: formatPostDate(entry.data.published),
-    reads: `${Math.max(2.4, 12.8 - index * 0.6).toFixed(1)}k`,
+    dateModified: formatPostDate(entry.data.dateModified || entry.data.updated || entry.data.published),
     featured: index === 0,
     coverType: coverTypes[index % coverTypes.length],
     image,
     tags: entry.data.tags,
+    relatedTools: entry.data.relatedTools || [],
+    faq: entry.data.faq || [],
     entry,
   };
 }

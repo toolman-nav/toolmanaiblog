@@ -1,0 +1,70 @@
+---
+import { getCollection, render } from "astro:content";
+import site from "../../data/site.mjs";
+import ArticleVisual from "../../components/ArticleVisual.astro";
+import FAQBlock from "../../components/FAQBlock.astro";
+import RelatedTools from "../../components/RelatedTools.astro";
+import TutorialCard from "../../components/TutorialCard.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { postToArticle, postsToArticles } from "../../lib/posts.mjs";
+import { blogCategoryPath, blogDetailPath } from "../../lib/routes.mjs";
+import { articleSchema, breadcrumbSchema, faqPageSchema } from "../../lib/seo.mjs";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts", ({ data }) => !data.draft);
+  return posts.map((entry) => ({
+    params: { slug: entry.data.slug },
+    props: { entry, posts },
+  }));
+}
+
+const { entry, posts } = Astro.props;
+const article = postToArticle(entry, 0);
+const { Content } = await render(entry);
+const related = postsToArticles(posts).filter((item) => item.slug !== article.slug).slice(0, 3);
+const relatedTools = site.tools.filter((tool) => article.relatedTools.includes(tool.slug || tool.id));
+const canonical = blogDetailPath(article);
+const structuredData = [
+  articleSchema({ ...article, url: canonical }),
+  breadcrumbSchema([
+    { name: "首页", url: "/" },
+    { name: "AI教程", url: "/blog/" },
+    { name: article.category, url: blogCategoryPath(article.category) },
+    { name: article.title, url: canonical },
+  ]),
+  faqPageSchema(article.faq),
+];
+---
+
+<SiteLayout activeNav="tutorials" title={`${article.seoTitle} - 工具人AI导航`} description={article.summary} canonical={canonical} image={article.image} pageType="article" structuredData={structuredData}>
+  <section class="panel tutorial-detail" aria-labelledby="tutorialDetailTitle">
+    <a class="detail-back" href="/blog/">‹ 返回教程列表</a>
+    <div class="detail-hero">
+      <ArticleVisual article={article} />
+      <div>
+        <span class="badge">{article.category}</span>
+        <h1 id="tutorialDetailTitle">{article.title}</h1>
+        <p>{article.summary}</p>
+        <div class="meta-row">
+          <a href="/about/authors/">工具人AI导航团队</a>
+          <span>{article.date}</span>
+          <span>更新于 {article.dateModified}</span>
+        </div>
+      </div>
+    </div>
+    <div class="detail-body markdown-body">
+      <Content />
+    </div>
+    <FAQBlock faq={article.faq} />
+    <RelatedTools tools={relatedTools} />
+    <div class="related-block">
+      <div class="section-head">
+        <h2 class="section-title">继续阅读</h2>
+        <a class="text-link" href="/blog/">查看全部教程 ›</a>
+      </div>
+      <div class="related-grid">
+        {related.map((item) => <TutorialCard article={item} />)}
+      </div>
+    </div>
+  </section>
+</SiteLayout>

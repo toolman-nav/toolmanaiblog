@@ -3,21 +3,21 @@ import site from "../../../../../data/site.mjs";
 import ToolSidebar from "../../../../../components/ToolSidebar.astro";
 import ToolTile from "../../../../../components/ToolTile.astro";
 import SiteLayout from "../../../../../layouts/SiteLayout.astro";
-import { matchRouteValue, toolCategoryPath, toolDetailPath, toolSubcategoryPath } from "../../../../../lib/routes.mjs";
+import { categorySlug, matchRouteValue, toolCategoryPath, toolDetailPath, toolSubcategoryPath } from "../../../../../lib/routes.mjs";
 import { collectionPageSchema } from "../../../../../lib/seo.mjs";
 
 export function getStaticPaths() {
   return site.categories.flatMap((category) =>
     category.subcategories.map((subcategory) => ({
-      params: { category: category.name, subcategory },
+      params: { categorySlug: categorySlug(category.name), subcategorySlug: categorySlug(subcategory) },
       props: { category, subcategory },
     })),
   );
 }
 
 const { category, subcategory } = Astro.props;
-const activeCategory = matchRouteValue(Astro.params.category, site.categories.map((item) => item.name)) || category.name;
-const activeSubcategory = matchRouteValue(Astro.params.subcategory, category.subcategories) || subcategory;
+const activeCategory = matchRouteValue(Astro.params.categorySlug, site.categories.map((item) => item.name)) || category.name;
+const activeSubcategory = matchRouteValue(Astro.params.subcategorySlug, category.subcategories) || subcategory;
 const tools = site.tools.filter((tool) => tool.category === category.name && tool.subcategory === subcategory);
 const sectionId = `tool-subcategory-${category.name}-${subcategory}`;
 const title = `${subcategory} - ${category.name}工具 - 工具人AI导航`;

@@ -1533,6 +1533,11 @@ button {
   border-top: 1px solid var(--border);
 }
 
+.faq-block + .related-block {
+  margin-top: 38px;
+  padding-top: 32px;
+}
+
 .related-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1541,6 +1546,379 @@ button {
 
 .related-grid .tutorial-card {
   grid-template-columns: 1fr;
+}
+
+.related-tool-grid,
+.related-tutorial-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.related-tool-card,
+.related-tutorial-card {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.related-tool-card {
+  position: relative;
+  display: grid;
+  min-height: 96px;
+  gap: 16px;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  overflow: hidden;
+  padding: 18px 56px 18px 20px;
+  border-color: #dbe5ef;
+  background:
+    linear-gradient(135deg, rgba(20, 184, 166, 0.07), rgba(255, 255, 255, 0) 44%),
+    #fff;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.related-tool-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(180deg, #14b8a6, #1677ff);
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.related-tool-card:hover,
+.related-tool-card:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(20, 184, 166, 0.38);
+  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.1);
+}
+
+.related-tool-card:hover::before,
+.related-tool-card:focus-visible::before {
+  opacity: 1;
+}
+
+.related-tool-card:focus-visible {
+  outline: 3px solid rgba(20, 184, 166, 0.22);
+  outline-offset: 3px;
+}
+
+.related-tool-card .tile-icon {
+  width: 48px;
+  height: 48px;
+  font-size: 14px;
+}
+
+.related-tool-body {
+  min-width: 0;
+}
+
+.related-tutorial-card {
+  position: relative;
+  display: flex;
+  min-height: 154px;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px 54px 18px 20px;
+  overflow: hidden;
+  border-color: #dbe5ef;
+  background:
+    linear-gradient(135deg, rgba(22, 119, 255, 0.08), rgba(255, 255, 255, 0) 42%),
+    #fff;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.related-tutorial-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(180deg, #1677ff, #14b8a6);
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.related-tutorial-card:hover,
+.related-tutorial-card:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(22, 119, 255, 0.38);
+  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.1);
+}
+
+.related-tutorial-card:hover::before,
+.related-tutorial-card:focus-visible::before {
+  opacity: 1;
+}
+
+.related-tutorial-card:focus-visible {
+  outline: 3px solid rgba(22, 119, 255, 0.22);
+  outline-offset: 3px;
+}
+
+.related-tool-card h3 {
+  margin: 0 0 7px;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.related-tool-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.related-tool-arrow {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #d8e5f3;
+  border-radius: 50%;
+  color: var(--primary);
+  background: rgba(255, 255, 255, 0.86);
+  font-size: 22px;
+  font-weight: 750;
+  line-height: 1;
+  transform: translateY(-50%);
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.related-tool-card:hover .related-tool-arrow,
+.related-tool-card:focus-visible .related-tool-arrow {
+  transform: translate(2px, -50%);
+  border-color: #14b8a6;
+  background: #14b8a6;
+  color: #fff;
+}
+
+.related-tutorial-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: #667085;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.related-tutorial-meta span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 3px 9px;
+  border: 1px solid #e4edf7;
+  border-radius: 999px;
+  background: rgba(248, 250, 252, 0.86);
+}
+
+.related-tutorial-content {
+  display: grid;
+  gap: 10px;
+}
+
+.related-tutorial-card h3 {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  color: #101828;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.35;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.related-tutorial-card p {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  color: #667085;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.65;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.related-tutorial-arrow {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 1px solid #dbe5ef;
+  border-radius: 999px;
+  background: #fff;
+  color: #1677ff;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1;
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.related-tutorial-card:hover .related-tutorial-arrow,
+.related-tutorial-card:focus-visible .related-tutorial-arrow {
+  transform: translateX(2px);
+  border-color: #1677ff;
+  background: #1677ff;
+  color: #fff;
+}
+
+.faq-block {
+  margin-top: 26px;
+  padding-top: 26px;
+  border-top: 1px solid var(--border);
+}
+
+.faq-block .section-title {
+  margin-bottom: 18px;
+}
+
+.faq-list {
+  display: grid;
+  gap: 12px;
+}
+
+.faq-item {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #dbe5ef;
+  border-radius: 10px;
+  background:
+    linear-gradient(135deg, rgba(22, 119, 255, 0.06), rgba(255, 255, 255, 0) 38%),
+    #fff;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.045);
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+}
+
+.faq-item::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(180deg, #1677ff, #14b8a6);
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.faq-item:hover,
+.faq-item[open] {
+  border-color: rgba(22, 119, 255, 0.34);
+  box-shadow: 0 16px 38px rgba(15, 23, 42, 0.085);
+}
+
+.faq-item[open]::before {
+  opacity: 1;
+}
+
+.faq-item summary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 62px;
+  padding: 18px 18px 18px 22px;
+  cursor: pointer;
+  list-style: none;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-question {
+  color: #101828;
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+.faq-toggle {
+  position: relative;
+  display: inline-grid;
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border: 1px solid #dbe5ef;
+  border-radius: 999px;
+  background: #fff;
+  color: #1677ff;
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease;
+}
+
+.faq-toggle::before,
+.faq-toggle::after {
+  content: "";
+  position: absolute;
+  width: 13px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.faq-toggle::after {
+  transform: rotate(90deg);
+  transition: transform 0.18s ease;
+}
+
+.faq-item[open] .faq-toggle {
+  transform: rotate(180deg);
+  border-color: #1677ff;
+  background: #1677ff;
+  color: #fff;
+}
+
+.faq-item[open] .faq-toggle::after {
+  transform: rotate(0deg);
+}
+
+.faq-answer {
+  padding: 0 22px 18px;
+}
+
+.faq-answer p {
+  margin: 0;
+  padding: 14px 16px;
+  border-radius: 8px;
+  background: rgba(248, 250, 252, 0.92);
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.75;
 }
 
 .pagination {
@@ -1878,8 +2256,37 @@ button {
   .tool-rail,
   .tutorial-grid,
   .related-grid,
+  .related-tool-grid,
+  .related-tutorial-list,
   .about-grid {
     grid-template-columns: 1fr;
+  }
+
+  .related-tutorial-card {
+    min-height: 0;
+    padding: 16px 48px 16px 16px;
+  }
+
+  .related-tool-card {
+    min-height: 88px;
+    padding: 16px 50px 16px 16px;
+  }
+
+  .related-tool-card .tile-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .related-tool-card h3 {
+    font-size: 18px;
+  }
+
+  .related-tool-arrow {
+    right: 16px;
+  }
+
+  .related-tutorial-card h3 {
+    font-size: 18px;
   }
 
   .category-strip {

@@ -1,7 +1,8 @@
 ---
 import SiteIntegrations from "../components/SiteIntegrations.astro";
 import Footer from "../components/Footer.astro";
-import { absoluteUrl, jsonLdScript, SITE_NAME } from "../lib/seo.mjs";
+import JsonLd from "../components/JsonLd.astro";
+import { absoluteUrl, SITE_NAME, websiteSchema, organizationSchema } from "../lib/seo.mjs";
 
 const {
   title = "工具人AI导航 - AI工具与教程导航站",
@@ -14,13 +15,13 @@ const {
   structuredData = [],
 } = Astro.props;
 const canonicalUrl = absoluteUrl(canonical || Astro.url.pathname);
-const imageUrl = image ? absoluteUrl(image) : "";
-const structuredDataItems = Array.isArray(structuredData) ? structuredData : [structuredData];
+const imageUrl = absoluteUrl(image || "/og-default.png");
+const structuredDataItems = [websiteSchema(), organizationSchema(), ...(Array.isArray(structuredData) ? structuredData : [structuredData])];
 
 const navItems = [
   { id: "home", href: "/", label: "主页" },
   { id: "tools", href: "/tools/", label: "AI导航" },
-  { id: "tutorials", href: "/tutorials/", label: "AI教程" },
+  { id: "tutorials", href: "/blog/", label: "AI教程" },
   { id: "about", href: "/about/", label: "关于我们" },
 ];
 ---
@@ -39,17 +40,13 @@ const navItems = [
     <meta property="og:description" content={description} />
     <meta property="og:type" content={pageType} />
     <meta property="og:url" content={canonicalUrl} />
-    {imageUrl ? <meta property="og:image" content={imageUrl} /> : null}
-    <meta name="twitter:card" content={imageUrl ? "summary_large_image" : "summary"} />
+    <meta property="og:image" content={imageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    {imageUrl ? <meta name="twitter:image" content={imageUrl} /> : null}
+    <meta name="twitter:image" content={imageUrl} />
     <link rel="alternate" type="application/rss+xml" title="工具人AI导航 RSS" href={absoluteUrl("/rss.xml")} />
-    {
-      structuredDataItems.filter(Boolean).map((item) => (
-        <script type="application/ld+json" set:html={jsonLdScript(item)} />
-      ))
-    }
+    <JsonLd items={structuredDataItems} />
     <SiteIntegrations />
     <title>{title}</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/logo-32.png" />

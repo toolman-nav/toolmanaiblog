@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import TutorialCard from "../../components/TutorialCard.astro";
 import { postsToArticles } from "../../lib/posts.mjs";
-import { tutorialCategoryPath, tutorialDetailPath } from "../../lib/routes.mjs";
+import { blogCategoryPath, blogDetailPath } from "../../lib/routes.mjs";
 import { collectionPageSchema } from "../../lib/seo.mjs";
 
 const githubPosts = await getCollection("posts", ({ data }) => !data.draft);
@@ -15,12 +15,12 @@ const description = "系统学习 AI 工具、提示词、办公、绘画、编�
 const structuredData = collectionPageSchema({
   name: "AI教程",
   description,
-  path: "/tutorials/",
-  items: tutorials.map((article) => ({ name: article.title, url: tutorialDetailPath(article) })),
+  path: "/blog/",
+  items: tutorials.map((article) => ({ name: article.title, url: blogDetailPath(article) })),
 });
 ---
 
-<SiteLayout activeNav="tutorials" title={title} description={description} canonical="/tutorials/" structuredData={structuredData}>
+<SiteLayout activeNav="tutorials" title={title} description={description} canonical="/blog/" structuredData={structuredData}>
   <section class="tutorial-page" aria-labelledby="tutorialTitle">
     <h1 id="tutorialTitle" class="section-title">AI 学习教程</h1>
     <label class="search-field tutorial-search-field">
@@ -30,7 +30,7 @@ const structuredData = collectionPageSchema({
     <div class="chip-row tutorial-category-row" aria-label="教程分类">
       {
         tutorialCategories.map((category) => (
-          <a class="chip" href={tutorialCategoryPath(category)}>
+          <a class="chip" href={blogCategoryPath(category)}>
             {category}
           </a>
         ))

@@ -1,0 +1,31 @@
+---
+import { blogDetailPath } from "../lib/routes.mjs";
+
+const { articles = [] } = Astro.props;
+---
+
+{
+  articles.length ? (
+    <section class="related-block" aria-labelledby="relatedTutorialsTitle">
+      <div class="section-head">
+        <h2 id="relatedTutorialsTitle" class="section-title">相关教程</h2>
+        <a class="text-link" href="/blog/">查看全部教程 ›</a>
+      </div>
+      <div class="related-tutorial-list">
+        {articles.map((article) => (
+          <a class="panel related-tutorial-card" href={blogDetailPath(article)}>
+            <div class="related-tutorial-meta">
+              <span>{article.category}</span>
+              <span>{article.date}</span>
+            </div>
+            <div class="related-tutorial-content">
+              <h3>{article.title}</h3>
+              <p>{article.summary}</p>
+            </div>
+            <span class="related-tutorial-arrow" aria-hidden="true">›</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  ) : null
+}

@@ -1,14 +1,22 @@
 ---
 title: "AI怎么做思维导图？教你一招搞定！（保姆级教程）"
+seoTitle: "AI 思维导图教程 2026：文档转导图"
+slug: ai-mindmap-guide
 published: 2026-01-15
+dateModified: 2026-01-15
 description: "还在为整理笔记头秃？教你用AI一键把文档转成思维导图！涵盖WPS AI、NotebookLM及Markmap神级用法，告别手动排版，工作学习效率翻倍。"
 image: ""
-tags: [AI思维导图, 知识管理, Markdown教程, DeepSeek用法, 学习效率]
+tags: ["AI思维导图", "知识管理", "Markdown教程", "DeepSeek用法", "学习效率"]
 category: "AI实用工具"
-draft: false 
-lang: ''
+relatedTools: []
+faq:
+  - q: "这篇教程适合谁阅读？"
+    a: "适合想了解AI实用工具使用流程、注册入口和常见注意事项的中文用户。"
+  - q: "教程中的价格和权益是否固定？"
+    a: "不固定。涉及价格、套餐和额度的内容发布前仍需人工复核官方页面。"
+  - q: "遇到页面访问或支付失败怎么办？"
+    a: "先检查地区、账号和支付方式限制，再参考文中替代方案或等待人工补充。"
 ---
-
 今天分享两种用 AI 帮你做思维导图的思路。
 
 不管你是想“一键偷懒”，还是想“深度整理”，这篇教程都能救你！
@@ -39,7 +47,7 @@ lang: ''
 
 具体使用可以看之前这篇：
 
-[NotebookLM国内如何使用？93%的人还不知道的谷歌免费工具](https://toolmanai.com/posts/notebooklm-jiaocheng/)
+[NotebookLM国内如何使用？93%的人还不知道的谷歌免费工具](https://toolmanai.com/blog/notebooklm-guide/)
 
 ***
 

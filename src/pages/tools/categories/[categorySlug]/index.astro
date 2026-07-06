@@ -3,12 +3,12 @@ import site from "../../../../data/site.mjs";
 import ToolSidebar from "../../../../components/ToolSidebar.astro";
 import ToolTile from "../../../../components/ToolTile.astro";
 import SiteLayout from "../../../../layouts/SiteLayout.astro";
-import { matchRouteValue, toolCategoryPath, toolDetailPath, toolSubcategoryPath } from "../../../../lib/routes.mjs";
+import { categorySlug, matchRouteValue, toolCategoryPath, toolDetailPath, toolSubcategoryPath } from "../../../../lib/routes.mjs";
 import { collectionPageSchema } from "../../../../lib/seo.mjs";
 
 export function getStaticPaths() {
   return site.categories.map((category) => ({
-    params: { category: category.name },
+    params: { categorySlug: categorySlug(category.name) },
     props: { category },
   }));
 }
@@ -16,7 +16,7 @@ export function getStaticPaths() {
 const { category } = Astro.props;
 const tools = site.tools.filter((tool) => tool.category === category.name);
 const sectionId = `tool-category-${category.name}`;
-const activeCategory = matchRouteValue(Astro.params.category, site.categories.map((item) => item.name)) || category.name;
+const activeCategory = matchRouteValue(Astro.params.categorySlug, site.categories.map((item) => item.name)) || category.name;
 const title = `${category.name}工具 - AI工具分类 - 工具人AI导航`;
 const description = `按${category.name}分类浏览 AI 工具，覆盖${category.subcategories.join("、")}等场景。`;
 const canonical = toolCategoryPath(category.name);

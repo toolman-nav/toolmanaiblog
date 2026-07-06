@@ -1,25 +1,39 @@
 ---
+import { getCollection } from "astro:content";
 import site from "../../data/site.mjs";
 import SiteLayout from "../../layouts/SiteLayout.astro";
+import RelatedTutorials from "../../components/RelatedTutorials.astro";
+import { postsToArticles } from "../../lib/posts.mjs";
 import { toolDetailPath } from "../../lib/routes.mjs";
-import { softwareApplicationSchema } from "../../lib/seo.mjs";
+import { breadcrumbSchema, softwareApplicationSchema } from "../../lib/seo.mjs";
 import { renderToolContent } from "../../lib/site-utils.mjs";
 
 export function getStaticPaths() {
   return site.tools.map((tool) => ({
-    params: { id: tool.id },
+    params: { id: tool.slug || tool.id },
     props: { tool },
   }));
 }
 
 const { tool } = Astro.props;
+const posts = await getCollection("posts", ({ data }) => !data.draft);
+const relatedTutorials = postsToArticles(posts).filter((article) => article.relatedTools.includes(tool.slug || tool.id));
 const title = `${tool.name} - AI工具详情 - 工具人AI导航`;
 const description = `${tool.name}：${tool.description}`;
 const detailVisual = tool.icon || tool.cover;
-const structuredData = softwareApplicationSchema({ ...tool, url: toolDetailPath(tool) });
+const canonical = toolDetailPath(tool);
+const softwareType = "SoftwareApplication";
+const structuredData = [
+  { ...softwareApplicationSchema({ ...tool, url: canonical }), "@type": softwareType },
+  breadcrumbSchema([
+    { name: "首页", url: "/" },
+    { name: "AI导航", url: "/tools/" },
+    { name: tool.name, url: canonical },
+  ]),
+];
 ---
 
-<SiteLayout activeNav="tools" title={title} description={description} canonical={toolDetailPath(tool)} image={tool.cover} structuredData={structuredData}>
+<SiteLayout activeNav="tools" title={title} description={description} canonical={canonical} image={tool.cover || tool.icon} structuredData={structuredData}>
   <section class="tool-detail-layout" aria-labelledby="toolDetailTitle">
     <article class="panel tool-detail-main">
       <a class="detail-back" href="/tools/">‹ 返回 AI导航</a>
@@ -45,6 +59,7 @@ const structuredData = softwareApplicationSchema({ ...tool, url: toolDetailPath(
         </div>
       </div>
       <div class="tool-detail-content" set:html={renderToolContent(tool.content)} />
+      <RelatedTutorials articles={relatedTutorials} />
     </article>
   </section>
 </SiteLayout>
