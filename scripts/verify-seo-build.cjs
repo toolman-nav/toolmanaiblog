@@ -4,6 +4,7 @@ const path = require("node:path");
 
 const root = path.resolve(__dirname, "..");
 const dist = path.join(root, "dist");
+const indexNow = require("../indexnow.config.cjs");
 
 function read(file) {
   return fs.readFileSync(path.join(root, file), "utf8");
@@ -52,6 +53,7 @@ for (const file of htmlFiles) {
 
 assert.ok(fs.existsSync(path.join(dist, "404.html")), "dist must contain 404.html so the host stops serving index.html with 200 for unknown paths");
 assert.ok(fs.existsSync(path.join(dist, "_redirects")), "dist must contain the Cloudflare Pages _redirects file");
+assert.ok(fs.existsSync(path.join(dist, "_headers")), "dist must contain the Cloudflare Pages _headers file");
 assert.ok(!fs.existsSync(path.join(dist, "tutorials")), "dist must not contain the legacy /tutorials/ tree");
 
 const redirectEntries = read("dist/_redirects")
@@ -74,6 +76,7 @@ for (const { source, destination } of redirectEntries) {
 const sitemapXml = read("dist/sitemap-0.xml");
 const sitemapUrls = [...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
 assert.ok(sitemapUrls.length > 0, "sitemap must contain final public URLs");
+assert.ok(!sitemapUrls.includes("https://toolmanai.com/deployment.json"), "sitemap must exclude the deployment marker");
 assert.equal(new Set(sitemapUrls).size, sitemapUrls.length, "sitemap URLs must be unique");
 for (const url of sitemapUrls) {
   const pathname = new URL(url).pathname;
@@ -120,5 +123,10 @@ for (const line of ["User-agent: GPTBot", "User-agent: ClaudeBot", "User-agent: 
 assert.ok(fs.existsSync(path.join(dist, "llms.txt")), "llms.txt should exist in dist");
 assert.ok(fs.existsSync(path.join(dist, "rss.xml")), "rss.xml should exist in dist");
 assert.ok(fs.existsSync(path.join(dist, "sitemap-index.xml")), "sitemap-index.xml should exist in dist");
+const deploymentMarker = JSON.parse(read("dist/deployment.json"));
+assert.ok(deploymentMarker.commit, "deployment marker must contain a commit identifier");
+const indexNowKeyFile = path.join(dist, indexNow.keyFileName);
+assert.ok(fs.existsSync(indexNowKeyFile), "dist must contain the IndexNow ownership key file");
+assert.equal(fs.readFileSync(indexNowKeyFile, "utf8").trim(), indexNow.key, "built IndexNow key file must match configuration");
 
 console.log(`SEO build verification passed for ${htmlFiles.length} HTML files`);

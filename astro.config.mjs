@@ -7,6 +7,9 @@ export default defineConfig({
   trailingSlash: "always",
   integrations: [
     sitemap({
+      filter(page) {
+        return page !== "https://toolmanai.com/deployment.json";
+      },
       serialize(item) {
         if (item.url === "https://toolmanai.com/sitemap.xml") {
           item.url = "https://toolmanai.com/sitemap-index.xml";

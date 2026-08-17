@@ -21,9 +21,18 @@ for (const [name, version] of Object.entries(packageJson.dependencies)) {
 }
 assert.ok(packageJson.dependencies["@astrojs/sitemap"], "official Astro sitemap integration should be installed");
 assert.ok(packageJson.dependencies["@astrojs/rss"], "official Astro RSS package should be installed");
-assert.equal(packageJson.scripts.test, "node tests/static-site.test.cjs", "test script should run source assertions");
+assert.ok(packageJson.scripts.test.includes("tests/static-site.test.cjs"), "test script should run source assertions");
+assert.ok(packageJson.scripts.test.includes("tests/indexnow.test.cjs"), "test script should run IndexNow assertions");
 assert.ok(packageJson.scripts["check:tool-reviews"], "tool review script should be wired");
 assert.ok(packageJson.scripts["verify:seo"], "SEO build verifier should be wired");
+assert.ok(packageJson.scripts.indexnow, "IndexNow submission script should be wired");
+assert.ok(packageJson.scripts["indexnow:all"], "full-sitemap IndexNow submission should be wired");
+assert.ok(packageJson.scripts["indexnow:remote"], "production-sitemap IndexNow submission should be wired");
+assert.ok(exists(".github/workflows/indexnow.yml"), "post-deployment IndexNow workflow should exist");
+assert.ok(exists("src/pages/deployment.json.js"), "Cloudflare deployment marker endpoint should exist");
+assert.ok(read("src/pages/deployment.json.js").includes("CF_PAGES_COMMIT_SHA"), "deployment marker should use Cloudflare's commit SHA");
+assert.ok(exists("public/_headers"), "Cloudflare headers file should exist");
+assert.ok(read("public/_headers").includes("/deployment.json"), "deployment marker should disable caching");
 
 assert.ok(!exists("index.html"), "legacy root index.html should be archived");
 assert.ok(!exists("app.js"), "legacy root app.js should be archived");
@@ -35,6 +44,7 @@ assert.ok(exists("_archive/legacy-spa/styles.css"), "legacy SPA styles should be
 const astroConfig = read("astro.config.mjs");
 assert.ok(astroConfig.includes("@astrojs/sitemap"), "astro config should import sitemap integration");
 assert.ok(astroConfig.includes("sitemap("), "astro config should enable sitemap integration");
+assert.ok(astroConfig.includes('page !== "https://toolmanai.com/deployment.json"'), "sitemap should exclude the deployment marker");
 assert.ok(astroConfig.includes('output: "static"'), "Astro output must stay static");
 assert.ok(astroConfig.includes('trailingSlash: "always"'), "trailing slash should stay enabled");
 
@@ -227,6 +237,9 @@ assert.ok(exists("public/llms.txt"), "llms.txt should exist");
 assert.ok(exists("public/og-default.png"), "default OG image should exist");
 assert.ok(exists("scripts/check-tool-reviews.cjs"), "tool review scanner should exist");
 assert.ok(exists("scripts/verify-seo-build.cjs"), "SEO build verifier should exist");
+assert.ok(exists("scripts/submit-indexnow.cjs"), "IndexNow submission script should exist");
+assert.ok(exists("scripts/collect-indexnow-urls.cjs"), "IndexNow change detector should exist");
+assert.ok(exists("scripts/wait-for-deployment.cjs"), "Cloudflare deployment waiter should exist");
 assert.ok(exists("README.md"), "README should exist");
 assert.ok(exists("MIGRATION_REPORT.md"), "migration report should exist");
 

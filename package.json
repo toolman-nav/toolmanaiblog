@@ -5,9 +5,12 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "test": "node tests/static-site.test.cjs",
+    "test": "node tests/static-site.test.cjs && node tests/indexnow.test.cjs",
     "check:tool-reviews": "node scripts/check-tool-reviews.cjs",
-    "verify:seo": "node scripts/verify-seo-build.cjs"
+    "verify:seo": "node scripts/verify-seo-build.cjs",
+    "indexnow": "node scripts/submit-indexnow.cjs",
+    "indexnow:all": "node scripts/submit-indexnow.cjs --all",
+    "indexnow:remote": "node scripts/submit-indexnow.cjs --remote"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
