@@ -161,7 +161,7 @@ faq:
 
 还不知道如何获取谷歌应用商店的可以看这篇：
 
-1
+[最新安卓手机安装Google Play保姆级教程（含谷歌三件套下载）](https://toolmanai.com/blog/google-play-install-guide/)
 
 ---
 ## 方法三：国内直连使用
