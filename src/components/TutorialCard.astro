@@ -1,6 +1,7 @@
 ---
 import ArticleInfoPanel from "./ArticleInfoPanel.astro";
 import ArticleVisual from "./ArticleVisual.astro";
+import DeferredCover from "./DeferredCover.astro";
 import { blogDetailPath } from "../lib/routes.mjs";
 
 const { article, compact = false } = Astro.props;
@@ -11,7 +12,7 @@ const className = compact ? "panel article-row" : "panel tutorial-card";
   {
     compact ? (
       <div class="thumb" data-cover={article.coverType}>
-        {article.image ? <img src={article.image} alt={`${article.title} 封面`} loading="lazy" /> : <span class="visual-label">{article.title}</span>}
+        {article.image ? <DeferredCover src={article.image} alt={`${article.title} 封面`} width={640} /> : <span class="visual-label">{article.title}</span>}
       </div>
     ) : (
       <ArticleVisual article={article} />

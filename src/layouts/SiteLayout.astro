@@ -2,7 +2,7 @@
 import SiteIntegrations from "../components/SiteIntegrations.astro";
 import Footer from "../components/Footer.astro";
 import JsonLd from "../components/JsonLd.astro";
-import { absoluteUrl, SITE_NAME, websiteSchema, organizationSchema } from "../lib/seo.mjs";
+import { absoluteUrl, imageSrc, SITE_NAME, websiteSchema, organizationSchema } from "../lib/seo.mjs";
 
 const {
   title = "工具人AI导航 - AI工具与教程导航站",
@@ -15,9 +15,9 @@ const {
   structuredData = [],
 } = Astro.props;
 const canonicalUrl = canonical === false ? null : absoluteUrl(canonical || Astro.url.pathname);
-const imageUrl = absoluteUrl(image || "/og-default.png");
+const imageUrl = absoluteUrl(imageSrc(image) || "/og-default.png");
 const structuredDataItems = [websiteSchema(), organizationSchema(), ...(Array.isArray(structuredData) ? structuredData : [structuredData])];
-const assetVersion = "20260706-dark-1";
+const assetVersion = "20260817-defer-2";
 
 const navItems = [
   { id: "home", href: "/", label: "主页" },
@@ -66,14 +66,6 @@ const navItems = [
       })();
     </script>
     <link rel="stylesheet" href={`/styles.css?v=${assetVersion}`} />
-    <!-- Google Analytics -->
-    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-G4K8676ZVL"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-G4K8676ZVL');
-    </script>
   </head>
   <body>
     <header class="site-header">
@@ -113,6 +105,28 @@ const navItems = [
     </main>
 
     <Footer />
-    <script src="/site.js" defer></script>
+    <noscript>
+      <style>
+        img[data-defer-src] {
+          display: none !important;
+        }
+      </style>
+    </noscript>
+    <script is:inline>
+      (() => {
+        const hydrateDeferredImages = () => {
+          document.querySelectorAll("img[data-defer-src]").forEach((img) => {
+            const src = img.getAttribute("data-defer-src");
+            if (!src) return;
+            img.removeAttribute("srcset");
+            img.src = src;
+            img.removeAttribute("data-defer-src");
+          });
+        };
+        if (document.readyState === "complete") hydrateDeferredImages();
+        else window.addEventListener("load", hydrateDeferredImages);
+      })();
+    </script>
+    <script src={`/site.js?v=${assetVersion}`} defer></script>
   </body>
 </html>

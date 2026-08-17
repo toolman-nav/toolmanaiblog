@@ -1,0 +1,25 @@
+---
+import { getImage } from "astro:assets";
+
+const PLACEHOLDER = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+const { src, alt = "", width = 640 } = Astro.props;
+
+let deferredSrc = "";
+if (src && typeof src === "object") {
+  const optimized = await getImage({ src, width, format: "webp", quality: 70 });
+  deferredSrc = optimized.src;
+} else if (typeof src === "string" && src.trim() && !src.startsWith("data:")) {
+  deferredSrc = src.trim();
+}
+---
+
+{
+  deferredSrc ? (
+    <>
+      <img src={PLACEHOLDER} data-defer-src={deferredSrc} alt={alt} decoding="async" />
+      <noscript>
+        <img src={deferredSrc} alt={alt} decoding="async" />
+      </noscript>
+    </>
+  ) : null
+}

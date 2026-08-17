@@ -85,10 +85,15 @@ for (const url of sitemapUrls) {
   assert.ok(fs.existsSync(outputFileForUrl(url)), `sitemap URL must exist in build output: ${url}`);
 }
 
+const parserInsertedGtag = /<script\b[^>]*\bsrc=["']https:\/\/www\.googletagmanager\.com\/gtag\/js[^"']*["']/;
+const blockingCoverSrc = /<img\b[^>]*\ssrc="\/_astro\/[^"]+"/;
 for (const file of htmlFiles) {
   const html = fs.readFileSync(file, "utf8");
+  const htmlForLoad = html.replace(/<noscript>[\s\S]*?<\/noscript>/gi, "");
   const internalHrefs = [...html.matchAll(/href="((?:https:\/\/toolmanai\.com)?\/(?:posts|tutorials)\/[^\"]*)"/g)].map((match) => match[1]);
   assert.deepEqual(internalHrefs, [], `${path.relative(dist, file)} must not link to legacy post or tutorial URLs`);
+  assert.ok(!parserInsertedGtag.test(html), `${path.relative(dist, file)} must not parser-insert gtag.js`);
+  assert.ok(!blockingCoverSrc.test(htmlForLoad), `${path.relative(dist, file)} must not put optimized covers in img src before load`);
 }
 
 const notFoundHtml = read("dist/404.html");

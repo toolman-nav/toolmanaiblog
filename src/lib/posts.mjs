@@ -2,7 +2,6 @@ const coverTypes = ["deep", "blue", "green", "red", "code"];
 const postImageModules = import.meta.glob("../assets/images/**/*.{jpg,jpeg,png,webp,gif}", {
   eager: true,
   import: "default",
-  query: "?url",
 });
 
 export function normalizePostImage(image, { allowRemote = true } = {}) {

@@ -45,6 +45,7 @@ const astroConfig = read("astro.config.mjs");
 assert.ok(astroConfig.includes("@astrojs/sitemap"), "astro config should import sitemap integration");
 assert.ok(astroConfig.includes("sitemap("), "astro config should enable sitemap integration");
 assert.ok(astroConfig.includes('page !== "https://toolmanai.com/deployment.json"'), "sitemap should exclude the deployment marker");
+assert.ok(astroConfig.includes("defer-astro-images"), "build should defer hashed images so they do not block window.load");
 assert.ok(astroConfig.includes('output: "static"'), "Astro output must stay static");
 assert.ok(astroConfig.includes('trailingSlash: "always"'), "trailing slash should stay enabled");
 
@@ -131,6 +132,30 @@ assert.ok(layout.includes('href={absoluteUrl("/rss.xml")}'), "head should expose
 assert.ok(layout.includes("<JsonLd"), "layout should use unified JSON-LD component");
 assert.ok(layout.includes('localStorage.getItem("toolman-theme")'), "layout should bootstrap saved theme before CSS loads");
 assert.ok(layout.includes('data-theme-toggle'), "layout should render the header theme toggle");
+assert.ok(layout.includes("`/site.js?v=${assetVersion}`"), "site script should be cache-busted");
+assert.ok(layout.includes('img[data-defer-src]'), "layout should hide deferred placeholders when JavaScript is disabled");
+assert.ok(layout.includes('querySelectorAll("img[data-defer-src]")'), "layout should hydrate deferred images without waiting on site.js");
+assert.ok(layout.includes('window.addEventListener("load", hydrateDeferredImages)'), "deferred images must wait for window.load so the tab spinner can stop");
+assert.ok(
+  !layout.match(/<script[^>]+src=["']https:\/\/www\.googletagmanager\.com\/gtag\/js/),
+  "layout must not parser-insert Google Analytics; a blocked gtag.js keeps the tab spinner spinning",
+);
+
+const integrations = read("src/components/SiteIntegrations.astro");
+assert.ok(
+  !integrations.match(/<script[^>]+src=\{?`?https:\/\/www\.googletagmanager\.com\/gtag\/js/),
+  "integrations must not parser-insert Google Analytics",
+);
+assert.ok(integrations.includes('window.addEventListener("load", inject)'), "Google Analytics must load after window.load");
+assert.ok(integrations.includes("document.createElement"), "analytics scripts should be injected dynamically");
+
+const deferredCover = read("src/components/DeferredCover.astro");
+assert.ok(deferredCover.includes("data-defer-src"), "cover images must not use a real src until after window.load");
+assert.ok(deferredCover.includes("<noscript>"), "cover images must remain visible when JavaScript is disabled");
+assert.ok(deferredCover.includes('format: "webp"'), "local covers should be resized to webp");
+assert.ok(read("src/components/TutorialCard.astro").includes("DeferredCover"), "tutorial cards should use deferred covers");
+assert.ok(read("src/components/ArticleVisual.astro").includes("DeferredCover"), "article visuals should use deferred covers");
+assert.ok(!read("src/lib/posts.mjs").includes('query: "?url"'), "post images should stay ImageMetadata so Astro can optimize them");
 
 const siteScript = read("public/site.js");
 assert.ok(siteScript.includes('THEME_STORAGE_KEY = "toolman-theme"'), "site script should define the theme storage key");

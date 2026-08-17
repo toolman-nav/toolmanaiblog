@@ -6,9 +6,18 @@ export const DEFAULT_OG_IMAGE = "/og-default.png";
 
 const trimTrailingSlash = (value) => String(value || "").replace(/\/+$/, "");
 
+export function imageSrc(image) {
+  if (!image) return "";
+  if (typeof image === "string") return image.trim();
+  if (typeof image === "object" && typeof image.src === "string") return image.src;
+  return "";
+}
+
 export function absoluteUrl(path = "/") {
-  const value = String(path || "/").trim();
+  const value = imageSrc(path) || String(path || "/").trim();
+  if (!value || value === "[object Object]") return absoluteUrl(DEFAULT_OG_IMAGE);
   if (/^https?:\/\//.test(value)) return value;
+  if (value.startsWith("data:")) return value;
   const normalizedPath = value.startsWith("/") ? value : `/${value}`;
   return `${trimTrailingSlash(SITE_URL)}${normalizedPath}`;
 }
@@ -94,7 +103,7 @@ export function articleSchema(article) {
     "@type": "BlogPosting",
     headline: article.title,
     description: article.summary,
-    image: [absoluteUrl(article.image || DEFAULT_OG_IMAGE)],
+    image: [absoluteUrl(imageSrc(article.image) || DEFAULT_OG_IMAGE)],
     datePublished: article.date,
     dateModified: article.dateModified || article.date,
     author: {
