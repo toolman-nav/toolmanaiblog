@@ -3,9 +3,11 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "node scripts/generate-llms.mjs",
     "build": "astro build",
     "preview": "astro preview",
-    "test": "node tests/static-site.test.cjs && node tests/indexnow.test.cjs",
+    "test": "node tests/static-site.test.cjs && node tests/indexnow.test.cjs && node scripts/generate-llms.mjs --check",
+    "generate:llms": "node scripts/generate-llms.mjs",
     "check:tool-reviews": "node scripts/check-tool-reviews.cjs",
     "verify:seo": "node scripts/verify-seo-build.cjs",
     "indexnow": "node scripts/submit-indexnow.cjs",

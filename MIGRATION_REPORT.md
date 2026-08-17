@@ -69,12 +69,12 @@
 
 ## 2026-07-06 复盘修复：301 从未生效（双站并存）
 
-- 实测结论：生产站点由 Cloudflare Pages 托管（响应头 `server: cloudflare`、无 `x-vercel-*`），`vercel.json` 的 301 规则从未被执行。
+- 实测结论：生产站点由 Cloudflare Pages 托管（响应头 `server: cloudflare`、无 `x-vercel-*`），历史 `vercel.json` 的 301 规则从未被执行。
 - 症状：构建产物无 `404.html` 时 Cloudflare Pages 进入 SPA 回退模式，任意未知路径（含全部旧 `/tutorials/`、旧 `/tools/categories/` URL）都以 200 返回 `index.html`，形成大规模可索引重复内容。
 - 修复：
   - 新增 `public/_redirects`（Cloudflare Pages 原生格式），覆盖全部旧文章、旧分类、旧工具 URL（含中文百分号编码与未编码两种形式）及 `/tutorials/*` 兜底，全部 301 到新地址。注意：`/tools/categories/` 下不能加 splat 兜底，因为新站的分类页也在该前缀下，Pages 的 redirect 优先于静态文件，会误伤新页面；该前缀只保留精确匹配和三段式详情页占位符规则。
   - 新增 `src/pages/404.astro`，构建产出 `404.html`，关闭 SPA 回退，未知路径返回真实 404（noindex）。
-  - `vercel.json` 保留，仅在迁回 Vercel 时生效。
+  - 删除 `vercel.json`；Cloudflare Pages 是唯一部署平台，`public/_redirects` 是唯一重定向配置源。
 - 上线验收：`curl -I "https://toolmanai.com/tutorials/categories/AI%E6%95%99%E7%A8%8B/claudecode-jiaocheng/"` 必须返回 `301` 且 `Location: /blog/claude-code-guide/`；`curl -I https://toolmanai.com/nonexistent/` 必须返回 `404`。
 
 ## 2026-07-06 复盘修复：内部话术泄漏到线上

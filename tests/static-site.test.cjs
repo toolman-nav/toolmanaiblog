@@ -33,6 +33,7 @@ assert.ok(exists("src/pages/deployment.json.js"), "Cloudflare deployment marker 
 assert.ok(read("src/pages/deployment.json.js").includes("CF_PAGES_COMMIT_SHA"), "deployment marker should use Cloudflare's commit SHA");
 assert.ok(exists("public/_headers"), "Cloudflare headers file should exist");
 assert.ok(read("public/_headers").includes("/deployment.json"), "deployment marker should disable caching");
+assert.ok(!exists("vercel.json"), "Cloudflare Pages must be the only deployment and redirect configuration source");
 
 assert.ok(!exists("index.html"), "legacy root index.html should be archived");
 assert.ok(!exists("app.js"), "legacy root app.js should be archived");
@@ -48,16 +49,6 @@ assert.ok(astroConfig.includes('page !== "https://toolmanai.com/deployment.json"
 assert.ok(astroConfig.includes("defer-astro-images"), "build should defer hashed images so they do not block window.load");
 assert.ok(astroConfig.includes('output: "static"'), "Astro output must stay static");
 assert.ok(astroConfig.includes('trailingSlash: "always"'), "trailing slash should stay enabled");
-
-const redirects = read("vercel.json");
-const vercelRedirects = JSON.parse(redirects).redirects;
-const hasVercelRedirect = (source, destination) =>
-  vercelRedirects.some((redirect) => redirect.source === source && redirect.destination === destination && redirect.statusCode === 301);
-assert.ok(redirects.includes('"statusCode": 301'), "redirects should use 301");
-assert.ok(redirects.includes("/tutorials/categories/"), "legacy tutorial category/detail redirects should be covered");
-assert.ok(redirects.includes("/tools/categories/"), "legacy tool category/detail redirects should be covered");
-assert.ok(redirects.includes("/sitemap.xml"), "legacy sitemap URL should redirect");
-assert.ok(redirects.includes("/sitemap-index.xml"), "sitemap redirect destination should be sitemap-index.xml");
 
 assert.ok(!exists("src/pages/sitemap.xml.js"), "custom sitemap endpoint should be removed");
 assert.ok(!exists("src/pages/robots.txt.js"), "robots should be a static public file");
@@ -142,6 +133,13 @@ assert.ok(
 );
 
 const integrations = read("src/components/SiteIntegrations.astro");
+const integrationConfig = read("src/config/integrations.mjs");
+assert.ok(integrations.includes("getIntegrationConfig"), "site integrations should read one centralized config source");
+assert.ok(!layout.includes('name="google-site-verification"'), "layout must not inject a second Google verification tag");
+assert.equal((walk("src").map(read).join("\n").match(/6AQOneCJdfTYHniCuIJc9J1MXxGoDaJ-5XpiGjUV4Vo/g) || []).length, 1, "Google verification default must have one source");
+assert.equal((walk("src").map(read).join("\n").match(/G-G4K8676ZVL/g) || []).length, 1, "Google Analytics default must have one source");
+assert.ok(integrationConfig.includes("PUBLIC_GOOGLE_SITE_VERIFICATION"), "Google verification should support a Cloudflare environment override");
+assert.ok(integrationConfig.includes("PUBLIC_GOOGLE_ANALYTICS_ID"), "Google Analytics should support a Cloudflare environment override");
 assert.ok(
   !integrations.match(/<script[^>]+src=\{?`?https:\/\/www\.googletagmanager\.com\/gtag\/js/),
   "integrations must not parser-insert Google Analytics",
@@ -207,7 +205,6 @@ const cfRedirectEntries = cfRedirects
     return { source, destination };
   });
 assert.equal(new Set(cfRedirectEntries.map(({ source }) => source)).size, cfRedirectEntries.length, "_redirects sources must be unique");
-assert.equal(new Set(vercelRedirects.map(({ source }) => source)).size, vercelRedirects.length, "vercel.json sources must be unique");
 assert.ok(cfRedirects.includes("/tutorials/claudecode-jiaocheng/ /blog/claude-code-guide/ 301"), "_redirects should map legacy tutorial URLs");
 const legacyPostMappings = {
   "poe-jiaocheng": "poe-subscription-guide",
@@ -232,7 +229,6 @@ for (const [oldSlug, newSlug] of Object.entries(legacyPostMappings)) {
       cfRedirects.includes(`${source} ${destination} 301`),
       `_redirects should map ${source}`,
     );
-    assert.ok(hasVercelRedirect(source, destination), `vercel.json should map ${source}`);
   }
 }
 const legacyToolMappings = {
@@ -250,19 +246,16 @@ for (const [oldSlug, newSlug] of Object.entries(legacyToolMappings)) {
     const source = `/tools/categories/:category/:subcategory/${oldSlug}${suffix}`;
     const destination = `/tools/${newSlug}/`;
     assert.ok(cfRedirects.includes(`${source} ${destination} 301`), `_redirects should map ${source}`);
-    assert.ok(hasVercelRedirect(source, destination), `vercel.json should map ${source}`);
   }
 }
 assert.ok(!cfRedirects.includes("/posts/*"), "unknown legacy post URLs should remain 404");
 assert.ok(!cfRedirects.includes("/tutorials/* /blog/ 301"), "unknown legacy tutorial URLs should remain 404");
 assert.ok(!cfRedirects.includes(":old/ /blog/:old/ 301"), "redirects must not guess current article slugs");
 assert.ok(!cfRedirects.includes(":id/ /tools/:id/ 301"), "redirects must not guess current tool slugs");
-assert.ok(!vercelRedirects.some(({ source }) => source.startsWith("/posts/") && source.includes(":")), "Vercel must not wildcard legacy posts");
-assert.ok(!vercelRedirects.some(({ source }) => source.includes("/tutorials/categories/:category/:old")), "Vercel must not guess article slugs");
-assert.ok(!vercelRedirects.some(({ source }) => source.endsWith("/:id") || source.endsWith("/:id/")), "Vercel must not guess tool slugs");
 assert.ok(cfRedirects.includes("/sitemap.xml /sitemap-index.xml 301"), "_redirects should map legacy sitemap URL");
 assert.ok(exists("public/robots.txt"), "static robots.txt should exist");
 assert.ok(exists("public/llms.txt"), "llms.txt should exist");
+assert.ok(exists("scripts/generate-llms.mjs"), "llms.txt generator should exist");
 assert.ok(exists("public/og-default.png"), "default OG image should exist");
 assert.ok(exists("scripts/check-tool-reviews.cjs"), "tool review scanner should exist");
 assert.ok(exists("scripts/verify-seo-build.cjs"), "SEO build verifier should exist");

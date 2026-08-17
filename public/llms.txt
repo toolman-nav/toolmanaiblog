@@ -4,13 +4,39 @@
 
 Toolman AI Navigation is a Chinese AI tools and tutorials directory focused on practical reviews, local usage guides, subscriptions, and workflows for AI products and overseas digital services.
 
-- [首页](https://toolmanai.com/): AI 工具评测与国内使用教程入口。
-- [AI 教程](https://toolmanai.com/blog/): 所有教程文章的新列表页。
-- [AI 工具导航](https://toolmanai.com/tools/): 常用 AI 工具与海外数字服务目录。
-- [Claude Code 国内使用教程](https://toolmanai.com/blog/claude-code-guide/): 安装 Claude Code 并接入国产模型的教程。
-- [Claude 国内使用教程](https://toolmanai.com/blog/claude-subscription-guide/): Claude 注册、订阅与国内使用方式。
-- [ChatGPT Plus 国内订阅教程](https://toolmanai.com/blog/chatgpt-plus-subscription-guide/): ChatGPT Plus 订阅和支付方案整理。
-- [Google AI Studio 教程](https://toolmanai.com/blog/google-ai-studio-guide/): Google AI Studio 基础与进阶玩法。
-- [NotebookLM 国内使用教程](https://toolmanai.com/blog/notebooklm-guide/): 使用 NotebookLM 做资料问答和摘要。
-- [Suno AI 音乐教程](https://toolmanai.com/blog/suno-ai-music-guide/): Suno 注册、创作和提示词入门。
-- [Spotify 国内使用教程](https://toolmanai.com/blog/spotify-premium-guide/): Spotify 注册和 Premium 订阅说明。
+## 主要入口
+
+- [首页](https://toolmanai.com/): 站点首页与精选内容。
+- [AI 教程](https://toolmanai.com/blog/): 全部教程与指南。
+- [AI 工具导航](https://toolmanai.com/tools/): 工具目录与分类。
+- [关于我们](https://toolmanai.com/about/): 站点定位与编辑说明。
+- [RSS](https://toolmanai.com/rss.xml): 最新文章订阅源。
+- [Sitemap](https://toolmanai.com/sitemap-index.xml): 全站 XML 站点地图。
+
+## 教程文章
+
+- [Claude国内使用教程：3种使用方法+Claude Pro充值订阅+防封指南](https://toolmanai.com/blog/claude-china-guide-2026/): 2026最新Claude国内使用教程，详细介绍Claude官网、Poe、OpenRouter及国内第三方3种使用方法，并讲解Claude Pro/Max充值订阅、国内支付以及Claude账号稳定使用和防封注意事项，新手也能看懂。
+- [Claude Fable 5 来了！强是真强，但苟也是真苟（附国内使用教程）](https://toolmanai.com/blog/claude-fable-5-review/): Claude Fable 5是当下你能摸到的最强模型，没有之一，附上国内使用教程，快来看看！
+- [免费还好用！Google AI Studio保姆级教程](https://toolmanai.com/blog/google-ai-studio-guide/): 详解Google AI Studio新版界面与7大进阶玩法。从模型选择到零代码开发应用，教你免费体验Gemini 3 Pro及Nano Banana AI修图神器。
+- [AI怎么做思维导图？教你一招搞定！（保姆级教程）](https://toolmanai.com/blog/ai-mindmap-guide/): 还在为整理笔记头秃？教你用AI一键把文档转成思维导图！涵盖WPS AI、NotebookLM及Markmap神级用法，告别手动排版，工作学习效率翻倍。
+- [Suno ai怎么使用？从入门到进阶(详细教程)](https://toolmanai.com/blog/suno-ai-music-guide/): 零基础也能用AI写歌！本文详解Suno AI的国内注册登录、充值订阅渠道及保姆级创作教程。涵盖Simple与Custom模式详解及Meta Tags进阶技巧，助你通过AI音乐变现。
+- [Claude Code国内使用指南：从安装到接入国产模型，手把手教学](https://toolmanai.com/blog/claude-code-guide/): 手把手带你用国产模型丝滑替代，快速拿下这款当前最强 AI 编程神器 —— Claude Code
+- [Spotify注册及使用指南：3种方法解锁Premium会员!](https://toolmanai.com/blog/spotify-premium-guide/): 详解国内如何注册Spotify及订阅Premium会员。深度对比免费版与会员权益，提供官网直充、礼品卡及第三方代充三种稳定渠道，畅享全球无损音乐。
+- [Poe国内如何订阅和使用？手把手教你|Poe国内订阅充值办法](https://toolmanai.com/blog/poe-subscription-guide/): 详解Poe四大优势、API调用方法及国内订阅全攻略，原生体验Sora2和Veo3.1视频生成。低风险、不降智，国内用户最佳的AI替代方案，支持API调用。
+- [NotebookLM国内如何使用？93%的人还不知道的谷歌免费工具](https://toolmanai.com/blog/notebooklm-guide/): 谷歌最强免费AI笔记工具NotebookLM国内实用教程，不仅免费，还能把枯燥资料变成生动的音频播客！绝不胡编乱造，学生党与打工人必备的效率救星！
+- [3款免费AI PPT工具：3分钟搞定麦肯锡级汇报！（保姆级教程）](https://toolmanai.com/blog/ai-ppt-tools-guide/): 3款被低估的免费AI神器，无需付费，不限次数，一键生成专业级演示文稿与可视化图表。立即查看教程！
+- [最新安卓手机安装Google Play保姆级教程（含谷歌三件套下载）](https://toolmanai.com/blog/google-play-install-guide/): 解决安卓手机无法使用谷歌商店的痛点！详解三种安装谷歌三件套的方法（系统自带/一键安装/手动下载），附Gmail注册及接码技巧，亲测有效。立即查看！
+- [最新美区Apple ID注册及充值保姆级教程，3分钟丝滑拿下！](https://toolmanai.com/blog/us-apple-id-guide/): 亲测有效！手把手教你注册美区苹果账号，只需国内手机号+邮箱。全流程图文解析，无需海外信用卡，轻松下载chatgpt等海外应用，立即查看！
+- [最新超详细Claude国内使用攻略（含订阅+白嫖方法）](https://toolmanai.com/blog/claude-subscription-guide/): Claude Pro国内充值订阅和使用教程，手把手教你如何注册Claude账号，以及使用Cursor、OpenRouter和Poe等第三方平台访问Claude模型的详细对比。附国内支付及API调用指南。
+- [最新ChatGPT Plus国内升级订阅和使用方法盘点，超全！](https://toolmanai.com/blog/chatgpt-plus-subscription-guide/): 教你3招轻松搞定ChatGPT Plus订阅！无需国外信用卡，支持国内支付方式，安全稳定不踩雷。立即查看详细步骤！
+
+## 工具目录
+
+- [ChatGPT](https://toolmanai.com/tools/chatgpt/): OpenAI 推出的通用 AI 助手，适合问答、写作、代码、数据分析和多模态任务。
+- [Claude](https://toolmanai.com/tools/claude/): Anthropic 推出的对话式 AI 助手，适合长文本理解、写作、分析和代码协作。
+- [Claude Code](https://toolmanai.com/tools/claude-code/): 面向开发者的命令行 AI 编程助手，可在终端中理解项目并协助修改代码。
+- [Google AI Studio](https://toolmanai.com/tools/google-ai-studio/): Google 的模型实验与提示词调试平台，适合体验 Gemini 与构建原型。
+- [NotebookLM](https://toolmanai.com/tools/notebooklm/): Google 的 AI 笔记与资料理解工具，适合基于文档做问答、摘要和音频概览。
+- [Poe](https://toolmanai.com/tools/poe/): Quora 推出的多模型 AI 对话平台，可在一个入口体验多种主流模型。
+- [Spotify](https://toolmanai.com/tools/spotify/): 海外流媒体音乐服务，提供曲库播放、歌单管理和 Premium 订阅。
+- [Suno](https://toolmanai.com/tools/suno/): AI 音乐生成工具，可根据歌词、风格和描述生成歌曲草稿。
