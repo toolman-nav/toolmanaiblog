@@ -1598,7 +1598,8 @@ html[data-theme="dark"] .theme-toggle-icon::before {
 .markdown-body ul,
 .markdown-body ol,
 .markdown-body blockquote,
-.markdown-body pre {
+.markdown-body pre,
+.markdown-body table {
   margin: 0 0 16px;
 }
 
@@ -1644,6 +1645,31 @@ html[data-theme="dark"] .theme-toggle-icon::before {
   padding: 0;
   background: transparent;
   color: inherit;
+}
+
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.markdown-body th,
+.markdown-body td {
+  border: 1px solid var(--border-strong);
+  padding: 10px 14px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.markdown-body th {
+  background: var(--surface-soft);
+  color: var(--text);
+  font-weight: 600;
+}
+
+.markdown-body tbody tr:nth-child(even) {
+  background: var(--surface-soft);
 }
 
 .related-block {

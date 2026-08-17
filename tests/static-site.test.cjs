@@ -166,6 +166,10 @@ const styles = read("public/styles.css");
 assert.ok(styles.includes('color-scheme: light'), "light theme should declare its color scheme");
 assert.ok(styles.includes('html[data-theme="dark"]'), "styles should include dark theme token overrides");
 assert.ok(styles.includes(".theme-toggle"), "styles should include the header theme toggle");
+assert.ok(styles.includes(".markdown-body table"), "markdown tables should have grid styles");
+assert.ok(styles.includes(".markdown-body th"), "markdown table headers should be styled");
+assert.ok(styles.includes(".markdown-body td"), "markdown table cells should be styled");
+assert.ok(styles.includes("border-collapse: collapse"), "markdown tables should collapse borders into a visible grid");
 
 const home = read("src/pages/index.astro");
 assert.ok(home.includes("工具人AI导航：AI 工具评测与国内使用教程"), "home H1 should include brand and value proposition");
