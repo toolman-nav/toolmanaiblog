@@ -9,7 +9,7 @@ const walk = (dir) => {
   const absolute = path.join(root, dir);
   if (!fs.existsSync(absolute)) return [];
   return fs.readdirSync(absolute, { withFileTypes: true }).flatMap((entry) => {
-    const relative = path.join(dir, entry.name);
+    const relative = path.join(dir, entry.name).split(path.sep).join("/");
     return entry.isDirectory() ? walk(relative) : [relative];
   });
 };
@@ -39,6 +39,9 @@ assert.ok(astroConfig.includes('output: "static"'), "Astro output must stay stat
 assert.ok(astroConfig.includes('trailingSlash: "always"'), "trailing slash should stay enabled");
 
 const redirects = read("vercel.json");
+const vercelRedirects = JSON.parse(redirects).redirects;
+const hasVercelRedirect = (source, destination) =>
+  vercelRedirects.some((redirect) => redirect.source === source && redirect.destination === destination && redirect.statusCode === 301);
 assert.ok(redirects.includes('"statusCode": 301'), "redirects should use 301");
 assert.ok(redirects.includes("/tutorials/categories/"), "legacy tutorial category/detail redirects should be covered");
 assert.ok(redirects.includes("/tools/categories/"), "legacy tool category/detail redirects should be covered");
@@ -84,6 +87,7 @@ for (const file of postFiles) {
     assert.ok(source.includes(field), `${file} should include ${field}`);
   }
   assert.ok(!source.match(/!\[[^\]]*]\(https?:\/\/[^)]*(feishu|larksuite)[^)]*\)/i), `${file} should not render Feishu/Lark image embeds`);
+  assert.ok(!source.match(/!\[\s*]\(/), `${file} content images must have descriptive alt text`);
   assert.ok(!source.includes("12.8k 阅读"), `${file} should not contain fake reads`);
   const frontmatter = source.split("---")[1] || "";
   for (const phrase of ["需人工核实", "人工复核", "人工补充", "这篇教程适合谁阅读"]) {
@@ -111,6 +115,7 @@ assert.ok(!allSourceText.includes("12.8k 阅读"), "fake read count copy should 
 
 const layout = read("src/layouts/SiteLayout.astro");
 assert.ok(layout.includes("/og-default.png"), "layout should fall back to default OG image");
+assert.ok(layout.includes("canonical === false"), "layout should allow noindex error pages to omit canonical URLs");
 assert.ok(layout.includes('summary_large_image'), "Twitter card should always be large image");
 assert.ok(layout.includes('href={absoluteUrl("/rss.xml")}'), "head should expose RSS");
 assert.ok(layout.includes("<JsonLd"), "layout should use unified JSON-LD component");
@@ -149,10 +154,73 @@ assert.ok(exists("src/components/RelatedTutorials.astro"), "tool related tutoria
 assert.ok(exists("src/pages/about/authors/index.astro"), "author page should exist");
 assert.ok(!read("src/pages/about/authors/index.astro").includes("需人工"), "author page must not expose internal placeholders");
 assert.ok(exists("src/pages/404.astro"), "404 page must exist so Cloudflare Pages disables the SPA fallback");
+assert.ok(read("src/pages/404.astro").includes("canonical={false}"), "404 page must not canonicalize every missing URL to /404/");
 assert.ok(exists("public/_redirects"), "Cloudflare Pages _redirects file must exist for legacy 301s");
 const cfRedirects = read("public/_redirects");
+const cfRedirectEntries = cfRedirects
+  .split(/\r?\n/)
+  .map((line) => line.trim())
+  .filter((line) => line && !line.startsWith("#"))
+  .map((line) => {
+    const [source, destination, status, ...extra] = line.split(/\s+/);
+    assert.deepEqual(extra, [], `_redirects line must contain exactly three fields: ${line}`);
+    assert.equal(status, "301", `_redirects must use permanent redirects: ${line}`);
+    return { source, destination };
+  });
+assert.equal(new Set(cfRedirectEntries.map(({ source }) => source)).size, cfRedirectEntries.length, "_redirects sources must be unique");
+assert.equal(new Set(vercelRedirects.map(({ source }) => source)).size, vercelRedirects.length, "vercel.json sources must be unique");
 assert.ok(cfRedirects.includes("/tutorials/claudecode-jiaocheng/ /blog/claude-code-guide/ 301"), "_redirects should map legacy tutorial URLs");
-assert.ok(cfRedirects.includes("/tutorials/* /blog/ 301"), "_redirects should catch remaining legacy tutorial paths");
+const legacyPostMappings = {
+  "poe-jiaocheng": "poe-subscription-guide",
+  "claude-shengji-jiaocheng": "claude-subscription-guide",
+  "notebooklm-jiaocheng": "notebooklm-guide",
+  "免费还好用google-ai-studio保姆级教程": "google-ai-studio-guide",
+  "claude-fable-5-来了强是真强但苟也是真苟附国内使用教程": "claude-fable-5-review",
+  "sunoai-jiaocheng": "suno-ai-music-guide",
+  "ai-siweidaotu-jiaocheng": "ai-mindmap-guide",
+  "claudecode-jiaocheng": "claude-code-guide",
+  "google-play-jiaocheng": "google-play-install-guide",
+  "spotify-jiaocheng": "spotify-premium-guide",
+  "aippt-jiaocheng": "ai-ppt-tools-guide",
+  "chatgpt-plus-shengji-jiaocheng": "chatgpt-plus-subscription-guide",
+  "meiqu-appleid-jiaocheng": "us-apple-id-guide",
+};
+for (const [oldSlug, newSlug] of Object.entries(legacyPostMappings)) {
+  for (const suffix of ["", "/"]) {
+    const source = `/posts/${oldSlug}${suffix}`;
+    const destination = `/blog/${newSlug}/`;
+    assert.ok(
+      cfRedirects.includes(`${source} ${destination} 301`),
+      `_redirects should map ${source}`,
+    );
+    assert.ok(hasVercelRedirect(source, destination), `vercel.json should map ${source}`);
+  }
+}
+const legacyToolMappings = {
+  claude: "claude",
+  chatgpt: "chatgpt",
+  poe: "poe",
+  "google-ai": "google-ai-studio",
+  notebooklm: "notebooklm",
+  suno: "suno",
+  "claude-code": "claude-code",
+  spotify: "spotify",
+};
+for (const [oldSlug, newSlug] of Object.entries(legacyToolMappings)) {
+  for (const suffix of ["", "/"]) {
+    const source = `/tools/categories/:category/:subcategory/${oldSlug}${suffix}`;
+    const destination = `/tools/${newSlug}/`;
+    assert.ok(cfRedirects.includes(`${source} ${destination} 301`), `_redirects should map ${source}`);
+    assert.ok(hasVercelRedirect(source, destination), `vercel.json should map ${source}`);
+  }
+}
+assert.ok(!cfRedirects.includes("/posts/*"), "unknown legacy post URLs should remain 404");
+assert.ok(!cfRedirects.includes("/tutorials/* /blog/ 301"), "unknown legacy tutorial URLs should remain 404");
+assert.ok(!cfRedirects.includes(":old/ /blog/:old/ 301"), "redirects must not guess current article slugs");
+assert.ok(!cfRedirects.includes(":id/ /tools/:id/ 301"), "redirects must not guess current tool slugs");
+assert.ok(!vercelRedirects.some(({ source }) => source.startsWith("/posts/") && source.includes(":")), "Vercel must not wildcard legacy posts");
+assert.ok(!vercelRedirects.some(({ source }) => source.includes("/tutorials/categories/:category/:old")), "Vercel must not guess article slugs");
+assert.ok(!vercelRedirects.some(({ source }) => source.endsWith("/:id") || source.endsWith("/:id/")), "Vercel must not guess tool slugs");
 assert.ok(cfRedirects.includes("/sitemap.xml /sitemap-index.xml 301"), "_redirects should map legacy sitemap URL");
 assert.ok(exists("public/robots.txt"), "static robots.txt should exist");
 assert.ok(exists("public/llms.txt"), "llms.txt should exist");

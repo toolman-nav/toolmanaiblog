@@ -17,6 +17,13 @@ function walk(dir) {
   });
 }
 
+function outputFileForUrl(url) {
+  const pathname = new URL(url, "https://toolmanai.com").pathname;
+  if (pathname === "/") return path.join(dist, "index.html");
+  if (path.extname(pathname)) return path.join(dist, pathname.replace(/^\//, ""));
+  return path.join(dist, pathname.replace(/^\//, ""), "index.html");
+}
+
 assert.ok(fs.existsSync(dist), "dist must exist; run pnpm build first");
 
 const htmlFiles = walk(dist).filter((file) => file.endsWith(".html"));
@@ -46,6 +53,44 @@ for (const file of htmlFiles) {
 assert.ok(fs.existsSync(path.join(dist, "404.html")), "dist must contain 404.html so the host stops serving index.html with 200 for unknown paths");
 assert.ok(fs.existsSync(path.join(dist, "_redirects")), "dist must contain the Cloudflare Pages _redirects file");
 assert.ok(!fs.existsSync(path.join(dist, "tutorials")), "dist must not contain the legacy /tutorials/ tree");
+
+const redirectEntries = read("dist/_redirects")
+  .split(/\r?\n/)
+  .map((line) => line.trim())
+  .filter((line) => line && !line.startsWith("#"))
+  .map((line) => {
+    const parts = line.split(/\s+/);
+    assert.equal(parts.length, 3, `redirect line must have source, destination and status: ${line}`);
+    const [source, destination, status] = parts;
+    assert.equal(status, "301", `redirect must be permanent: ${line}`);
+    return { source, destination };
+  });
+const redirectSources = new Set(redirectEntries.map(({ source }) => source));
+for (const { source, destination } of redirectEntries) {
+  assert.ok(fs.existsSync(outputFileForUrl(destination)), `${source} redirects to missing build output ${destination}`);
+  assert.ok(!redirectSources.has(destination), `${source} creates a redirect chain through ${destination}`);
+}
+
+const sitemapXml = read("dist/sitemap-0.xml");
+const sitemapUrls = [...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+assert.ok(sitemapUrls.length > 0, "sitemap must contain final public URLs");
+assert.equal(new Set(sitemapUrls).size, sitemapUrls.length, "sitemap URLs must be unique");
+for (const url of sitemapUrls) {
+  const pathname = new URL(url).pathname;
+  assert.ok(!pathname.startsWith("/posts/") && !pathname.startsWith("/tutorials/"), `sitemap must not include legacy URL ${url}`);
+  assert.ok(!redirectSources.has(pathname), `sitemap URL must not redirect: ${url}`);
+  assert.ok(fs.existsSync(outputFileForUrl(url)), `sitemap URL must exist in build output: ${url}`);
+}
+
+for (const file of htmlFiles) {
+  const html = fs.readFileSync(file, "utf8");
+  const internalHrefs = [...html.matchAll(/href="((?:https:\/\/toolmanai\.com)?\/(?:posts|tutorials)\/[^\"]*)"/g)].map((match) => match[1]);
+  assert.deepEqual(internalHrefs, [], `${path.relative(dist, file)} must not link to legacy post or tutorial URLs`);
+}
+
+const notFoundHtml = read("dist/404.html");
+assert.ok(notFoundHtml.includes('name="robots" content="noindex, follow"'), "404 page must be noindex");
+assert.ok(!notFoundHtml.includes('rel="canonical"'), "static 404 page must not canonicalize unrelated missing URLs");
 
 for (const file of [path.join(dist, "index.html"), path.join(dist, "blog/claude-code-guide/index.html")]) {
   const html = fs.readFileSync(file, "utf8");

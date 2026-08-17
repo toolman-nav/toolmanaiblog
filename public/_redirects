@@ -3,6 +3,38 @@
 
 /sitemap.xml /sitemap-index.xml 301
 
+# Legacy /posts/ article URLs (Bing-indexed URLs before the site migration)
+/posts/poe-jiaocheng/ /blog/poe-subscription-guide/ 301
+/posts/poe-jiaocheng /blog/poe-subscription-guide/ 301
+/posts/claude-shengji-jiaocheng/ /blog/claude-subscription-guide/ 301
+/posts/claude-shengji-jiaocheng /blog/claude-subscription-guide/ 301
+/posts/notebooklm-jiaocheng/ /blog/notebooklm-guide/ 301
+/posts/notebooklm-jiaocheng /blog/notebooklm-guide/ 301
+/posts/%E5%85%8D%E8%B4%B9%E8%BF%98%E5%A5%BD%E7%94%A8google-ai-studio%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/ /blog/google-ai-studio-guide/ 301
+/posts/%E5%85%8D%E8%B4%B9%E8%BF%98%E5%A5%BD%E7%94%A8google-ai-studio%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B /blog/google-ai-studio-guide/ 301
+/posts/免费还好用google-ai-studio保姆级教程/ /blog/google-ai-studio-guide/ 301
+/posts/免费还好用google-ai-studio保姆级教程 /blog/google-ai-studio-guide/ 301
+/posts/claude-fable-5-%E6%9D%A5%E4%BA%86%E5%BC%BA%E6%98%AF%E7%9C%9F%E5%BC%BA%E4%BD%86%E8%8B%9F%E4%B9%9F%E6%98%AF%E7%9C%9F%E8%8B%9F%E9%99%84%E5%9B%BD%E5%86%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/ /blog/claude-fable-5-review/ 301
+/posts/claude-fable-5-%E6%9D%A5%E4%BA%86%E5%BC%BA%E6%98%AF%E7%9C%9F%E5%BC%BA%E4%BD%86%E8%8B%9F%E4%B9%9F%E6%98%AF%E7%9C%9F%E8%8B%9F%E9%99%84%E5%9B%BD%E5%86%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B /blog/claude-fable-5-review/ 301
+/posts/claude-fable-5-来了强是真强但苟也是真苟附国内使用教程/ /blog/claude-fable-5-review/ 301
+/posts/claude-fable-5-来了强是真强但苟也是真苟附国内使用教程 /blog/claude-fable-5-review/ 301
+/posts/sunoai-jiaocheng/ /blog/suno-ai-music-guide/ 301
+/posts/sunoai-jiaocheng /blog/suno-ai-music-guide/ 301
+/posts/ai-siweidaotu-jiaocheng/ /blog/ai-mindmap-guide/ 301
+/posts/ai-siweidaotu-jiaocheng /blog/ai-mindmap-guide/ 301
+/posts/claudecode-jiaocheng/ /blog/claude-code-guide/ 301
+/posts/claudecode-jiaocheng /blog/claude-code-guide/ 301
+/posts/google-play-jiaocheng/ /blog/google-play-install-guide/ 301
+/posts/google-play-jiaocheng /blog/google-play-install-guide/ 301
+/posts/spotify-jiaocheng/ /blog/spotify-premium-guide/ 301
+/posts/spotify-jiaocheng /blog/spotify-premium-guide/ 301
+/posts/aippt-jiaocheng/ /blog/ai-ppt-tools-guide/ 301
+/posts/aippt-jiaocheng /blog/ai-ppt-tools-guide/ 301
+/posts/chatgpt-plus-shengji-jiaocheng/ /blog/chatgpt-plus-subscription-guide/ 301
+/posts/chatgpt-plus-shengji-jiaocheng /blog/chatgpt-plus-subscription-guide/ 301
+/posts/meiqu-appleid-jiaocheng/ /blog/us-apple-id-guide/ 301
+/posts/meiqu-appleid-jiaocheng /blog/us-apple-id-guide/ 301
+
 # Legacy tutorial detail pages (direct form)
 /tutorials/poe-jiaocheng/ /blog/poe-subscription-guide/ 301
 /tutorials/poe-jiaocheng /blog/poe-subscription-guide/ 301
@@ -86,15 +118,26 @@
 /tutorials/categories/海外工具使用教程 /blog/categories/overseas-service-guides/ 301
 
 # Legacy tutorial fallbacks
-/tutorials/categories/:category/:old/ /blog/:old/ 301
-/tutorials/categories/:category/:old /blog/:old/ 301
 /tutorials/ /blog/ 301
 /tutorials /blog/ 301
-/tutorials/* /blog/ 301
 
-# Legacy tool detail pages (google-ai was renamed to google-ai-studio)
+# Legacy tool detail pages (known one-to-one mappings only)
+/tools/categories/:category/:subcategory/claude/ /tools/claude/ 301
+/tools/categories/:category/:subcategory/claude /tools/claude/ 301
+/tools/categories/:category/:subcategory/chatgpt/ /tools/chatgpt/ 301
+/tools/categories/:category/:subcategory/chatgpt /tools/chatgpt/ 301
+/tools/categories/:category/:subcategory/poe/ /tools/poe/ 301
+/tools/categories/:category/:subcategory/poe /tools/poe/ 301
 /tools/categories/:category/:subcategory/google-ai/ /tools/google-ai-studio/ 301
 /tools/categories/:category/:subcategory/google-ai /tools/google-ai-studio/ 301
+/tools/categories/:category/:subcategory/notebooklm/ /tools/notebooklm/ 301
+/tools/categories/:category/:subcategory/notebooklm /tools/notebooklm/ 301
+/tools/categories/:category/:subcategory/suno/ /tools/suno/ 301
+/tools/categories/:category/:subcategory/suno /tools/suno/ 301
+/tools/categories/:category/:subcategory/claude-code/ /tools/claude-code/ 301
+/tools/categories/:category/:subcategory/claude-code /tools/claude-code/ 301
+/tools/categories/:category/:subcategory/spotify/ /tools/spotify/ 301
+/tools/categories/:category/:subcategory/spotify /tools/spotify/ 301
 
 # Legacy tool subcategory listings
 /tools/categories/AI%20%E5%B7%A5%E5%85%B7/AI%20%E5%AF%B9%E8%AF%9D%E5%8A%A9%E6%89%8B/ /tools/categories/ai-tools/ai-chat/ 301
@@ -124,8 +167,4 @@
 /tools/categories/海外数字服务/ /tools/categories/overseas-services/ 301
 /tools/categories/海外数字服务 /tools/categories/overseas-services/ 301
 
-# Legacy tool fallbacks
-# NOTE: no "/tools/categories/*" catch-all here — the new site serves live pages under
-# /tools/categories/{slug}/, and Pages redirects run before assets, so a splat would shadow them.
-/tools/categories/:category/:subcategory/:id/ /tools/:id/ 301
-/tools/categories/:category/:subcategory/:id /tools/:id/ 301
+# Unknown legacy tool URLs intentionally remain 404 instead of redirecting to a guessed target.

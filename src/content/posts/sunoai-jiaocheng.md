@@ -19,7 +19,7 @@ faq:
 ---
 最近B站、抖音等大火西游人物唱歌你有没有刷到过？
 
-![](../../assets/images/sunoai-jiaocheng/01.png)
+![西游人物 AI 翻唱短视频效果示例](../../assets/images/sunoai-jiaocheng/01.png)
 
 这些歌其实一点难度都没有，30秒就能搞定！
 
@@ -52,7 +52,7 @@ faq:
 
 就这么简单！
 
-![](../../assets/images/sunoai-jiaocheng/02.png)
+![Suno 官网注册登录入口](../../assets/images/sunoai-jiaocheng/02.png)
 ***
 
 
@@ -89,7 +89,7 @@ faq:
 
 * 批量创作必备
 
-![](../../assets/images/sunoai-jiaocheng/03.png)
+![Suno Pro 与 Premier 订阅方案对比](../../assets/images/sunoai-jiaocheng/03.png)
 
 
 ### 具体充值方法
@@ -104,7 +104,7 @@ Suno订阅界面显示支持银联/visa等，有双币卡的可以试试。
 
 **传送门：[http://acceboyaibot.acceboy.com/](http://acceboyaibot.acceboy.com/)**
 
-![](../../assets/images/sunoai-jiaocheng/04.png)
+![Suno 第三方订阅服务页面](../../assets/images/sunoai-jiaocheng/04.png)
 
 2. **自行订阅**
 
@@ -134,7 +134,7 @@ Suno订阅界面显示支持银联/visa等，有双币卡的可以试试。
 
 * 点击生成，等30秒
 
-![](../../assets/images/sunoai-jiaocheng/05.png)
+![Suno Simple 模式的歌曲描述与生成按钮](../../assets/images/sunoai-jiaocheng/05.png)
 > **小技巧**：勾选"Instrumental"按钮，就能生成纯音乐（无歌词）
 
 
@@ -173,7 +173,7 @@ Suno订阅界面显示支持银联/visa等，有双币卡的可以试试。
 
 或者用专门的提示词生成网站，一键生成专业提示词，如**sunoprompt.com/zh。**
 
-![](../../assets/images/sunoai-jiaocheng/06.png)
+![SunoPrompt 中文提示词生成页面](../../assets/images/sunoai-jiaocheng/06.png)
 
 ***
 
@@ -183,7 +183,7 @@ Suno订阅界面显示支持银联/visa等，有双币卡的可以试试。
 
 **进入方式**：点"Custom"换
 
-![](../../assets/images/sunoai-jiaocheng/07.png)
+![Suno Custom 模式创作界面](../../assets/images/sunoai-jiaocheng/07.png)
 
 
 这个模式有**3大核心模块**，咱们一个个拆解：
@@ -247,7 +247,7 @@ Suno订阅界面显示支持银联/visa等，有双币卡的可以试试。
 
 如果你订阅了Premier版，甚至能使用它的“Studio”专业的音乐编辑功能。
 
-![](../../assets/images/sunoai-jiaocheng/08.png)
+![Suno Studio 音乐编辑功能界面](../../assets/images/sunoai-jiaocheng/08.png)
 
 
 

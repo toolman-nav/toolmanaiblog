@@ -105,7 +105,7 @@ faq:
 
 发送后，AI 会给到一串带 `#` 号的文字，那就是我们要的“原材料”。
 
-![](../../assets/images/ai-siweidaotu-jiaocheng/01.png)
+![AI 生成的 Markdown 层级大纲](../../assets/images/ai-siweidaotu-jiaocheng/01.png)
 
 
 
@@ -121,7 +121,7 @@ faq:
 
 * 然后瞬间你就会得到一张可缩放、可交互的彩色思维导图，下载就行。
 
-![](../../assets/images/ai-siweidaotu-jiaocheng/02.png)
+![Markmap 将 Markdown 转成可交互思维导图](../../assets/images/ai-siweidaotu-jiaocheng/02.png)
 
 **神器 B：XMind (最通用)**
 
@@ -131,7 +131,7 @@ faq:
 
 这样生成的图，你后续还可以随意调整颜色、加图标，非常方便复习。
 
-![](../../assets/images/ai-siweidaotu-jiaocheng/03.png)
+![XMind 导入 Markdown 后的思维导图](../../assets/images/ai-siweidaotu-jiaocheng/03.png)
 
 ***
 
