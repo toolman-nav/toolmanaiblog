@@ -203,7 +203,23 @@
     updateActiveFromScroll();
   }
 
+  function initBackToTop() {
+    var button = document.querySelector("[data-back-to-top]");
+    if (!button) return;
+
+    function syncVisibility() {
+      button.classList.toggle("is-visible", window.scrollY > 360);
+    }
+
+    button.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+    window.addEventListener("scroll", syncVisibility, { passive: true });
+    syncVisibility();
+  }
+
   initTheme();
   initArticleToc();
+  initBackToTop();
   syncSearchFromUrl();
 })();

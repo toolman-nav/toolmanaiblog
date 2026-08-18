@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import site from "../../data/site.mjs";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import RelatedTutorials from "../../components/RelatedTutorials.astro";
+import BackToTop from "../../components/BackToTop.astro";
 import { postsToArticles } from "../../lib/posts.mjs";
 import { toolDetailPath } from "../../lib/routes.mjs";
 import { breadcrumbSchema, softwareApplicationSchema } from "../../lib/seo.mjs";
@@ -61,5 +62,6 @@ const structuredData = [
       <div class="tool-detail-content" set:html={renderToolContent(tool.content)} />
       <RelatedTutorials articles={relatedTutorials} />
     </article>
+    <BackToTop />
   </section>
 </SiteLayout>
