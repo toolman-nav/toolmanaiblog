@@ -137,6 +137,73 @@
     }
   });
 
+  function initArticleToc() {
+    var toc = document.querySelector("[data-article-toc]");
+    if (!toc) return;
+
+    var toggle = toc.querySelector("[data-toc-toggle]");
+    var label = toc.querySelector("[data-toc-toggle-label]");
+    var links = Array.from(toc.querySelectorAll("[data-toc-link]"));
+    var storageKey = "toolman-article-toc-collapsed";
+    var headings = links
+      .map(function (link) {
+        return document.getElementById(link.getAttribute("data-toc-link"));
+      })
+      .filter(Boolean);
+
+    function setCollapsed(collapsed) {
+      toc.classList.toggle("is-collapsed", collapsed);
+      if (toggle) toggle.setAttribute("aria-expanded", String(!collapsed));
+      if (label) label.textContent = collapsed ? "展开" : "收起";
+      try {
+        localStorage.setItem(storageKey, collapsed ? "1" : "0");
+      } catch (error) {}
+    }
+
+    try {
+      var saved = localStorage.getItem(storageKey);
+      if (saved === "1") setCollapsed(true);
+      else if (saved === "0") setCollapsed(false);
+      else if (window.matchMedia && window.matchMedia("(max-width: 1180px)").matches) setCollapsed(true);
+    } catch (error) {
+      if (window.matchMedia && window.matchMedia("(max-width: 1180px)").matches) setCollapsed(true);
+    }
+
+    if (toggle) {
+      toggle.addEventListener("click", function () {
+        setCollapsed(!toc.classList.contains("is-collapsed"));
+      });
+    }
+
+    function setActive(id) {
+      links.forEach(function (link) {
+        var isActive = link.getAttribute("data-toc-link") === id;
+        link.classList.toggle("is-active", isActive);
+        if (isActive) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+      });
+    }
+
+    function updateActiveFromScroll() {
+      var offset = 96;
+      var current = headings[0] && headings[0].id;
+      headings.forEach(function (heading) {
+        if (heading.getBoundingClientRect().top <= offset) current = heading.id;
+      });
+      if (current) setActive(current);
+    }
+
+    toc.addEventListener("click", function (event) {
+      var link = event.target.closest("[data-toc-link]");
+      if (!link) return;
+      setActive(link.getAttribute("data-toc-link"));
+    });
+
+    window.addEventListener("scroll", updateActiveFromScroll, { passive: true });
+    updateActiveFromScroll();
+  }
+
   initTheme();
+  initArticleToc();
   syncSearchFromUrl();
 })();

@@ -159,6 +159,7 @@ const siteScript = read("public/site.js");
 assert.ok(siteScript.includes('THEME_STORAGE_KEY = "toolman-theme"'), "site script should define the theme storage key");
 assert.ok(siteScript.includes('prefers-color-scheme: dark'), "site script should read the system dark preference");
 assert.ok(siteScript.includes("matchMedia"), "site script should listen for system theme changes");
+assert.ok(siteScript.includes("[data-article-toc]"), "site script should initialize the article table of contents");
 
 const styles = read("public/styles.css");
 assert.ok(styles.includes('color-scheme: light'), "light theme should declare its color scheme");
@@ -168,6 +169,7 @@ assert.ok(styles.includes(".markdown-body table"), "markdown tables should have 
 assert.ok(styles.includes(".markdown-body th"), "markdown table headers should be styled");
 assert.ok(styles.includes(".markdown-body td"), "markdown table cells should be styled");
 assert.ok(styles.includes("border-collapse: collapse"), "markdown tables should collapse borders into a visible grid");
+assert.ok(styles.includes(".article-toc"), "styles should include the article table of contents");
 
 const home = read("src/pages/index.astro");
 assert.ok(home.includes("工具人AI导航：AI 工具评测与国内使用教程"), "home H1 should include brand and value proposition");
@@ -177,6 +179,9 @@ const blogDetail = read("src/pages/blog/[slug].astro");
 assert.ok(blogDetail.includes("seoTitle"), "article title tag should prefer seoTitle");
 assert.ok(blogDetail.includes("<RelatedTools"), "article pages should render related tool cards");
 assert.ok(blogDetail.includes("<FAQBlock"), "article pages should render FAQ blocks");
+assert.ok(blogDetail.includes("<ArticleToc"), "article pages should render a heading-based table of contents");
+assert.ok(blogDetail.includes("headings"), "article pages should collect markdown headings for the TOC");
+assert.ok(exists("src/components/ArticleToc.astro"), "article TOC component should exist");
 assert.ok(blogDetail.includes("dateModified"), "article pages should use modified dates");
 assert.ok(blogDetail.includes("/about/authors/"), "article authorship should link to author page");
 

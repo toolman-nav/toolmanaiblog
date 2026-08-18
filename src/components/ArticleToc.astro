@@ -1,0 +1,32 @@
+---
+const { items = [] } = Astro.props;
+---
+
+{
+  items.length ? (
+    <aside class="article-toc" data-article-toc>
+      <div class="article-toc-card">
+        <div class="article-toc-head">
+          <h2 class="article-toc-title">目录</h2>
+          <button class="article-toc-toggle" type="button" data-toc-toggle aria-expanded="true" aria-controls="articleTocNav">
+            <span data-toc-toggle-label>收起</span>
+            <span class="article-toc-chevron" aria-hidden="true"></span>
+          </button>
+        </div>
+        <nav id="articleTocNav" class="article-toc-nav" data-toc-nav aria-label="文章目录">
+          <ol class="article-toc-list">
+            {
+              items.map((item) => (
+                <li class={`article-toc-item is-h${item.depth}`}>
+                  <a href={`#${item.slug}`} data-toc-link={item.slug}>
+                    {item.text}
+                  </a>
+                </li>
+              ))
+            }
+          </ol>
+        </nav>
+      </div>
+    </aside>
+  ) : null
+}

@@ -71,6 +71,7 @@ html[data-theme="dark"] {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -1502,10 +1503,36 @@ html[data-theme="dark"] .theme-toggle-icon::before {
   gap: 8px;
 }
 
+.tutorial-detail-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  width: min(100%, 1120px);
+  margin-inline: auto;
+  align-items: start;
+  gap: 20px;
+}
+
+.tutorial-detail-layout:has(.article-toc) {
+  width: min(100%, 1440px);
+  grid-template-columns: minmax(0, 1120px) 300px;
+  justify-content: center;
+}
+
 .tutorial-detail {
   width: min(100%, 1120px);
   margin-inline: auto;
   padding: 32px;
+}
+
+.tutorial-detail-layout .tutorial-detail {
+  width: 100%;
+  min-width: 0;
+  margin-inline: 0;
+}
+
+.detail-body {
+  max-width: none;
+  padding: 32px 0 8px;
 }
 
 .detail-back {
@@ -1548,13 +1575,123 @@ html[data-theme="dark"] .theme-toggle-icon::before {
   font-size: 16px;
 }
 
-.detail-body {
-  max-width: 880px;
-  padding: 32px 0 8px;
-}
-
 .detail-body > :first-child {
   margin-top: 0;
+}
+
+.article-toc {
+  position: sticky;
+  top: calc(var(--header-height) + 20px);
+  z-index: 2;
+}
+
+.article-toc-card {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.article-toc-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px 12px;
+}
+
+.article-toc-title {
+  margin: 0;
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.article-toc-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.article-toc-toggle:hover {
+  color: var(--text);
+}
+
+.article-toc-chevron {
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(-135deg);
+  transition: transform 0.18s ease;
+}
+
+.article-toc.is-collapsed .article-toc-chevron {
+  transform: rotate(45deg);
+}
+
+.article-toc-nav {
+  max-height: calc(100vh - var(--header-height) - 120px);
+  overflow: auto;
+  padding: 4px 0 10px;
+  border-top: 1px solid var(--border);
+}
+
+.article-toc.is-collapsed .article-toc-nav {
+  display: none;
+}
+
+.article-toc-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.article-toc-item a {
+  position: relative;
+  display: block;
+  padding: 8px 16px 8px 16px;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.55;
+  text-decoration: none;
+}
+
+.article-toc-item.is-h3 a {
+  padding-left: 28px;
+  color: #475467;
+  font-size: 13px;
+}
+
+.article-toc-item a:hover {
+  color: var(--primary);
+}
+
+.article-toc-item a.is-active {
+  color: var(--primary);
+  font-weight: 650;
+}
+
+.article-toc-item a.is-active::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 0;
+  width: 2px;
+  background: var(--primary);
+  border-radius: 1px;
 }
 
 .detail-section + .detail-section {
@@ -1596,6 +1733,7 @@ html[data-theme="dark"] .theme-toggle-icon::before {
   color: var(--text);
   line-height: 1.3;
   letter-spacing: 0;
+  scroll-margin-top: 80px;
 }
 
 .markdown-body h1 {
@@ -2340,11 +2478,13 @@ html[data-theme="dark"] .sidebar-subcategory.is-active {
   color: var(--primary);
 }
 
-html[data-theme="dark"] .search-field,
-html[data-theme="dark"] .article-info-panel,
-html[data-theme="dark"] .site-toast {
+html[data-theme="dark"] .article-toc-card {
   background: var(--surface-raised);
   border-color: var(--border-strong);
+}
+
+html[data-theme="dark"] .article-toc-item.is-h3 a {
+  color: var(--muted);
 }
 
 html[data-theme="dark"] .field-search-icon,
@@ -2455,6 +2595,23 @@ html[data-theme="dark"] .site-toast {
 html[data-theme="dark"] .about-hero {
   border-color: var(--border-hover);
   background: linear-gradient(135deg, #111d2d, #0d1522);
+}
+
+@media (max-width: 1500px) {
+  .tutorial-detail-layout,
+  .tutorial-detail-layout:has(.article-toc) {
+    width: min(100%, 1120px);
+    grid-template-columns: 1fr;
+  }
+
+  .article-toc {
+    position: static;
+    order: -1;
+  }
+
+  .article-toc-nav {
+    max-height: 240px;
+  }
 }
 
 @media (max-width: 1180px) {

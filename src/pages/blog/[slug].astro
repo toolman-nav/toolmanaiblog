@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import site from "../../data/site.mjs";
 import ArticleVisual from "../../components/ArticleVisual.astro";
+import ArticleToc from "../../components/ArticleToc.astro";
 import FAQBlock from "../../components/FAQBlock.astro";
 import RelatedTools from "../../components/RelatedTools.astro";
 import TutorialCard from "../../components/TutorialCard.astro";
@@ -20,7 +21,15 @@ export async function getStaticPaths() {
 
 const { entry, posts } = Astro.props;
 const article = postToArticle(entry, 0);
-const { Content } = await render(entry);
+const { Content, headings } = await render(entry);
+const tocItems = headings
+  .filter((heading) => heading.depth === 2 || heading.depth === 3)
+  .map((heading) => ({
+    depth: heading.depth,
+    slug: heading.slug,
+    text: String(heading.text || "").replace(/\s+/g, " ").trim(),
+  }))
+  .filter((item) => item.slug && item.text);
 const related = postsToArticles(posts).filter((item) => item.slug !== article.slug).slice(0, 3);
 const relatedTools = site.tools.filter((tool) => article.relatedTools.includes(tool.slug || tool.id));
 const canonical = blogDetailPath(article);
@@ -37,34 +46,37 @@ const structuredData = [
 ---
 
 <SiteLayout activeNav="tutorials" title={`${article.seoTitle} - 工具人AI导航`} description={article.summary} canonical={canonical} image={article.image} pageType="article" structuredData={structuredData}>
-  <section class="panel tutorial-detail" aria-labelledby="tutorialDetailTitle">
-    <a class="detail-back" href="/blog/">‹ 返回教程列表</a>
-    <div class="detail-hero">
-      <ArticleVisual article={article} />
-      <div>
-        <span class="badge">{article.category}</span>
-        <h1 id="tutorialDetailTitle">{article.title}</h1>
-        <p>{article.summary}</p>
-        <div class="meta-row">
-          <a href="/about/authors/">工具鸽</a>
-          <span>{article.date}</span>
-          <span>更新于 {article.dateModified}</span>
+  <section class="tutorial-detail-layout">
+    <article class="panel tutorial-detail" aria-labelledby="tutorialDetailTitle">
+      <a class="detail-back" href="/blog/">‹ 返回教程列表</a>
+      <div class="detail-hero">
+        <ArticleVisual article={article} />
+        <div>
+          <span class="badge">{article.category}</span>
+          <h1 id="tutorialDetailTitle">{article.title}</h1>
+          <p>{article.summary}</p>
+          <div class="meta-row">
+            <a href="/about/authors/">工具鸽</a>
+            <span>{article.date}</span>
+            <span>更新于 {article.dateModified}</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="detail-body markdown-body">
-      <Content />
-    </div>
-    <FAQBlock faq={article.faq} />
-    <RelatedTools tools={relatedTools} />
-    <div class="related-block">
-      <div class="section-head">
-        <h2 class="section-title">继续阅读</h2>
-        <a class="text-link" href="/blog/">查看全部教程 ›</a>
+      <div class="detail-body markdown-body">
+        <Content />
       </div>
-      <div class="related-grid">
-        {related.map((item) => <TutorialCard article={item} />)}
+      <FAQBlock faq={article.faq} />
+      <RelatedTools tools={relatedTools} />
+      <div class="related-block">
+        <div class="section-head">
+          <h2 class="section-title">继续阅读</h2>
+          <a class="text-link" href="/blog/">查看全部教程 ›</a>
+        </div>
+        <div class="related-grid">
+          {related.map((item) => <TutorialCard article={item} />)}
+        </div>
       </div>
-    </div>
+    </article>
+    <ArticleToc items={tocItems} />
   </section>
 </SiteLayout>
