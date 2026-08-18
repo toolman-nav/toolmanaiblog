@@ -1025,18 +1025,20 @@ html[data-theme="dark"] .theme-toggle-icon::before {
 
 .tool-detail-layout {
   display: block;
+  width: min(100%, 1120px);
+  margin-inline: auto;
 }
 
 .tool-detail-main {
-  padding: 24px;
+  padding: 32px;
 }
 
 .tool-detail-hero {
   display: grid;
   grid-template-columns: 180px minmax(0, 1fr);
-  gap: 22px;
+  gap: 32px;
   align-items: center;
-  margin-top: 18px;
+  margin-top: 24px;
 }
 
 .tool-detail-cover {
@@ -1080,7 +1082,7 @@ html[data-theme="dark"] .theme-toggle-icon::before {
 }
 
 .tool-detail-summary h1 {
-  margin: 14px 0 10px;
+  margin: 16px 0 12px;
   font-size: 34px;
   line-height: 1.2;
 }
@@ -1100,7 +1102,7 @@ html[data-theme="dark"] .theme-toggle-icon::before {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 18px;
+  margin-top: 24px;
 }
 
 .primary-link-button,
@@ -1127,18 +1129,22 @@ html[data-theme="dark"] .theme-toggle-icon::before {
 }
 
 .tool-detail-content {
-  margin-top: 28px;
-  padding-top: 4px;
+  margin-top: 32px;
+  padding-top: 32px;
   border-top: 1px solid var(--border);
 }
 
+.tool-detail-content > :first-child {
+  margin-top: 0;
+}
+
 .tool-detail-content h2 {
-  margin: 22px 0 10px;
+  margin: 28px 0 12px;
   font-size: 22px;
 }
 
 .tool-detail-content p {
-  margin: 0 0 12px;
+  margin: 0 0 16px;
   color: #344054;
   line-height: 1.8;
 }
@@ -1497,14 +1503,16 @@ html[data-theme="dark"] .theme-toggle-icon::before {
 }
 
 .tutorial-detail {
-  padding: 26px;
+  width: min(100%, 1120px);
+  margin-inline: auto;
+  padding: 32px;
 }
 
 .detail-back {
   display: inline-flex;
   align-items: center;
   min-height: 34px;
-  margin-bottom: 18px;
+  margin-bottom: 24px;
   padding: 0 12px;
   border: 1px solid var(--border);
   border-radius: 6px;
@@ -1516,9 +1524,9 @@ html[data-theme="dark"] .theme-toggle-icon::before {
 .detail-hero {
   display: grid;
   grid-template-columns: minmax(260px, 38%) 1fr;
-  gap: 24px;
+  gap: 32px;
   align-items: center;
-  padding-bottom: 24px;
+  padding-bottom: 32px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -1528,25 +1536,29 @@ html[data-theme="dark"] .theme-toggle-icon::before {
 }
 
 .detail-hero h1 {
-  margin: 14px 0 12px;
+  margin: 16px 0 12px;
   font-size: 34px;
   line-height: 1.22;
   letter-spacing: 0;
 }
 
 .detail-hero p {
-  margin: 0 0 18px;
+  margin: 0 0 16px;
   color: #475467;
   font-size: 16px;
 }
 
 .detail-body {
   max-width: 880px;
-  padding: 24px 0 8px;
+  padding: 32px 0 8px;
+}
+
+.detail-body > :first-child {
+  margin-top: 0;
 }
 
 .detail-section + .detail-section {
-  margin-top: 24px;
+  margin-top: 32px;
 }
 
 .detail-section h2 {
@@ -1570,6 +1582,10 @@ html[data-theme="dark"] .theme-toggle-icon::before {
   color: #344054;
   font-size: 16px;
   line-height: 1.85;
+}
+
+.markdown-body > :first-child {
+  margin-top: 0;
 }
 
 .markdown-body h1,
@@ -1673,8 +1689,8 @@ html[data-theme="dark"] .theme-toggle-icon::before {
 }
 
 .related-block {
-  margin-top: 18px;
-  padding-top: 22px;
+  margin-top: 32px;
+  padding-top: 32px;
   border-top: 1px solid var(--border);
 }
 
@@ -1686,7 +1702,7 @@ html[data-theme="dark"] .theme-toggle-icon::before {
 .related-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  gap: 16px;
 }
 
 .related-grid .tutorial-card {
@@ -1935,13 +1951,13 @@ html[data-theme="dark"] .theme-toggle-icon::before {
 }
 
 .faq-block {
-  margin-top: 26px;
-  padding-top: 26px;
+  margin-top: 32px;
+  padding-top: 32px;
   border-top: 1px solid var(--border);
 }
 
 .faq-block .section-title {
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 .faq-list {
@@ -2564,9 +2580,13 @@ html[data-theme="dark"] .about-hero {
   .directory-shell,
   .tutorial-main,
   .tutorial-sidebar,
-  .tool-detail-main,
   .about-card {
     padding: 16px;
+  }
+
+  .tutorial-detail,
+  .tool-detail-main {
+    padding: 20px;
   }
 
   .tool-sidebar {
@@ -2584,6 +2604,31 @@ html[data-theme="dark"] .about-hero {
   .detail-hero,
   .tool-detail-hero {
     grid-template-columns: 1fr;
+  }
+
+  .detail-hero,
+  .tool-detail-hero {
+    gap: 20px;
+  }
+
+  .detail-hero {
+    padding-bottom: 24px;
+  }
+
+  .tool-detail-hero {
+    margin-top: 16px;
+  }
+
+  .detail-body {
+    padding-top: 24px;
+  }
+
+  .tool-detail-content,
+  .related-block,
+  .faq-block,
+  .faq-block + .related-block {
+    margin-top: 24px;
+    padding-top: 24px;
   }
 
   .article-row {
