@@ -5,7 +5,7 @@ slug: claude-subscription-guide
 published: 2025-12-17
 dateModified: 2025-12-17
 description: "Claude Pro国内充值订阅和使用教程，手把手教你如何注册Claude账号，以及使用Cursor、OpenRouter和Poe等第三方平台访问Claude模型的详细对比。附国内支付及API调用指南。"
-image: "../../assets/images/claude-jiaocheng/claude-jiaocheng-cover.png"
+image: "../../assets/images/claude-jiaocheng/claude-jiaocheng-cover.webp"
 tags: ["Claude", "Claude Pro", "教程"]
 category: "海外AI使用教程"
 relatedTools: ["claude"]
@@ -56,7 +56,7 @@ faq:
 
 
 打开Claude网站 [https://claude.ai/](https://claude.ai/)，输入你的邮箱后继续。
-![这是图片描述](../../assets/images/claude-jiaocheng/01.png)
+![这是图片描述](../../assets/images/claude-jiaocheng/01.webp)
 
 
 
@@ -64,7 +64,7 @@ faq:
 
 登录邮箱，找到Claude发送的验证邮件，点击其中的链接完成验证。
 
-![这是图片描述](../../assets/images/claude-jiaocheng/02.png)
+![这是图片描述](../../assets/images/claude-jiaocheng/02.webp)
 
 
 
@@ -72,7 +72,7 @@ faq:
 
 系统会要求输入手机号码进行验证。这里建议使用老美或英子的电话号码。
 
-![这是图片描述](../../assets/images/claude-jiaocheng/03.png)
+![这是图片描述](../../assets/images/claude-jiaocheng/03.webp)
 
 
 
@@ -82,7 +82,7 @@ faq:
 
 在平台获取号码并完成验证后，你的Claude账号就注册成功了！
 
-![这是图片描述](../../assets/images/claude-jiaocheng/04.png)
+![这是图片描述](../../assets/images/claude-jiaocheng/04.webp)
 
 ### 4. Claude Pro升级订阅
 
@@ -96,7 +96,7 @@ faq:
 
 [最新ChatGPT Plus国内升级订阅和使用方法盘点，超全！](https://toolmanai.com/blog/chatgpt-plus-subscription-guide/)
 
-![这是图片描述](../../assets/images/claude-jiaocheng/05.png)
+![这是图片描述](../../assets/images/claude-jiaocheng/05.webp)
 
 
 ---
@@ -122,7 +122,7 @@ faq:
 
 [2233](https://2233.ai/i/TOOLMAN)算是一个比较稳定的选择，它甚至提供按天使用的套餐，适合尝鲜。
 
-![这是图片描述](../../assets/images/claude-jiaocheng/06.png)
+![这是图片描述](../../assets/images/claude-jiaocheng/06.webp)
 
 
 ---
@@ -152,7 +152,7 @@ Cursor是一个专为开发者设计的AI编程工具，集成了Claude，是写
 
 * 打开[https://cursor.com/cn](https://cursor.com/cn)，在顶部选择“资源”>“文档”。
 
-![这是图片描述](../../assets/images/claude-jiaocheng/07.png)
+![这是图片描述](../../assets/images/claude-jiaocheng/07.webp)
 
 * 在跳转页面点击右侧的展开按钮。
 
@@ -162,9 +162,9 @@ Cursor是一个专为开发者设计的AI编程工具，集成了Claude，是写
 
 不过测试了一下，对比官网原版体验上是有差距的，大家按需使用吧。
 
-![这是图片描述](../../assets/images/claude-jiaocheng/08.png)
+![这是图片描述](../../assets/images/claude-jiaocheng/08.webp)
 
-![这是图片描述](../../assets/images/claude-jiaocheng/09.png)
+![这是图片描述](../../assets/images/claude-jiaocheng/09.webp)
 
 
 

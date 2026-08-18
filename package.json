@@ -6,7 +6,10 @@
     "prebuild": "node scripts/generate-llms.mjs",
     "build": "astro build",
     "preview": "astro preview",
-    "test": "node tests/static-site.test.cjs && node tests/indexnow.test.cjs && node scripts/generate-llms.mjs --check",
+    "test": "node tests/static-site.test.cjs && node tests/optimize-images.test.cjs && node scripts/optimize-images.cjs --check && node tests/indexnow.test.cjs && node scripts/generate-llms.mjs --check",
+    "post:prepare": "node scripts/optimize-images.cjs",
+    "images:optimize": "node scripts/optimize-images.cjs",
+    "images:check": "node scripts/optimize-images.cjs --check",
     "generate:llms": "node scripts/generate-llms.mjs",
     "check:tool-reviews": "node scripts/check-tool-reviews.cjs",
     "verify:seo": "node scripts/verify-seo-build.cjs",
@@ -17,7 +20,8 @@
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.3",
-    "astro": "^7.0.5",
+    "astro": "^7.2.2",
+    "picomatch": "^4.0.4",
     "sharp": "^0.35.3"
   }
 }

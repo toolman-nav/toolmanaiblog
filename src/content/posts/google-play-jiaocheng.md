@@ -5,7 +5,7 @@ slug: google-play-install-guide
 published: 2025-12-24
 dateModified: 2025-12-24
 description: "解决安卓手机无法使用谷歌商店的痛点！详解三种安装谷歌三件套的方法（系统自带/一键安装/手动下载），附Gmail注册及接码技巧，亲测有效。立即查看！"
-image: "../../assets/images/googleplay-jiaocheng/google-play-jiaocheng-cover.png"
+image: "../../assets/images/googleplay-jiaocheng/google-play-jiaocheng-cover.webp"
 tags: ["谷歌三件套", "Google Play安装", "安卓教程", "GMS框架", "Gmail注册"]
 category: "海外工具使用教程"
 relatedTools: []
@@ -50,7 +50,7 @@ faq:
 
 这种是最简单的。比如小米和红米的机型，直接打开设置，搜索谷歌，然后启用谷歌基础服务。
 
-![这是图片描述](../../assets/images/googleplay-jiaocheng/01.png)
+![这是图片描述](../../assets/images/googleplay-jiaocheng/01.webp)
 
 启用之前，前往应用商店，搜索`google play`，找到并安装就可以了。
 
@@ -76,9 +76,9 @@ faq:
 
 传送门2:[https://pan.baidu.com/s/1RqV\_OhUuBBMfBoxZAMfslg?pwd=FLYP](https://pan.baidu.com/s/1RqV\_OhUuBBMfBoxZAMfslg?pwd=FLYP)
 
-![这是图片描述](../../assets/images/googleplay-jiaocheng/02.jpg)
+![这是图片描述](../../assets/images/googleplay-jiaocheng/02.webp)
 
-![这是图片描述](../../assets/images/googleplay-jiaocheng/03.png)
+![这是图片描述](../../assets/images/googleplay-jiaocheng/03.webp)
 
 
 
@@ -90,7 +90,7 @@ faq:
 
 注意，需要先装前面两个，随后再装应用商店，要不然会打不开。
 
-![这是图片描述](../../assets/images/googleplay-jiaocheng/04.png)
+![这是图片描述](../../assets/images/googleplay-jiaocheng/04.webp)
 
 ---
 ## 二、如何下载谷歌三件套
@@ -107,7 +107,7 @@ faq:
 
 注意：通过手机的 设置 - 我的设备 - 全部参数 ，一般就能看到手机的安卓版本。
 
-![这是图片描述](../../assets/images/googleplay-jiaocheng/05.png)
+![这是图片描述](../../assets/images/googleplay-jiaocheng/05.webp)
 
 如果嫌麻烦，可以自取：
 
@@ -137,7 +137,7 @@ faq:
 
 需要注意，在年龄这块，要大于18岁。
 
-![这是图片描述](../../assets/images/googleplay-jiaocheng/06.png)
+![这是图片描述](../../assets/images/googleplay-jiaocheng/06.webp)
 
 
 

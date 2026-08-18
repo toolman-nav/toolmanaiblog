@@ -15,6 +15,7 @@
 ```bash
 pnpm install
 pnpm dev
+pnpm post:prepare
 pnpm build
 pnpm test
 pnpm run verify:seo
@@ -33,6 +34,18 @@ pnpm run check:tool-reviews
 - `public/`: 静态资源、robots、llms、OG 默认图
 - `scripts/`: SEO 构建验证和工具复查脚本
 - `_archive/legacy-spa/`: 旧 SPA 原型归档，不参与部署
+
+## 文章图片优化
+
+把新的 PNG/JPG 截图放到 `src/assets/images/` 对应文章目录后，运行：
+
+```bash
+pnpm post:prepare
+```
+
+该命令会用 Sharp（WebP quality 82、effort 6）递归转换图片，自动更新 Markdown、frontmatter 以及 Astro/JS/TS/CSS 源码中的本地引用。只有在所有旧引用都已迁移、目标 WebP 存在且图片校验通过后才会删除 PNG/JPG 原图。已有且比源图新的 WebP 会跳过；需要重新编码时可运行 `pnpm images:optimize -- --force`，需要临时保留原图时可加 `--keep-originals`。
+
+`pnpm images:check` 会检查未优化图片、缺失的本地图片和空 alt；它也已接入 `pnpm test`。`.github/workflows/quality.yml` 会在 PR 和 `website-h5` push 时运行测试与静态构建，因此 PNG/JPG 或坏引用无法进入正常发布流程。通用占位 alt（“这是图片描述”）会输出警告，便于后续逐篇完善，但暂不阻断构建。
 
 ## 部署与站点集成
 

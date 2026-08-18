@@ -5,7 +5,7 @@ slug: us-apple-id-guide
 published: 2025-12-23
 dateModified: 2025-12-23
 description: "亲测有效！手把手教你注册美区苹果账号，只需国内手机号+邮箱。全流程图文解析，无需海外信用卡，轻松下载chatgpt等海外应用，立即查看！"
-image: "../../assets/images/meiqu-appleid/meiqu-appleid-cover.png"
+image: "../../assets/images/meiqu-appleid/meiqu-appleid-cover.webp"
 tags: ["appleid", "苹果账号", "美区appleid注册", "教程"]
 category: "海外工具使用教程"
 relatedTools: []
@@ -49,7 +49,7 @@ faq:
 
 1. 打开页面，右上角点击“**创建你的Apple账户**”。
 
-![这是图片描述](../../assets/images/meiqu-appleid/01.png)
+![这是图片描述](../../assets/images/meiqu-appleid/01.webp)
 
 * **填写个人信息：**
 
@@ -60,13 +60,13 @@ faq:
   * **出生日期：** 务必设置成18岁以上。
 
   * **邮箱和密码：** 都可以，但推荐Gmail或Outlook邮箱，密码按照苹果的要求设置即可。
-![这是图片描述](../../assets/images/meiqu-appleid/02.png)
+![这是图片描述](../../assets/images/meiqu-appleid/02.webp)
 
 
 
 
 * **验证邮箱和手机：** 接下来，苹果会给你的邮箱和手机发送验证码，依次输入确认即可。到这一步，一个国区账号的“壳子”就准备好了！
-![这是图片描述](../../assets/images/meiqu-appleid/03.png)
+![这是图片描述](../../assets/images/meiqu-appleid/03.webp)
 
 
 ---
@@ -75,11 +75,11 @@ faq:
 
 
 1. 验证完后，会跳转到一个新页面。然后在左侧菜单栏找到“**个人信息**”，接着点击“**国家或地区**”。
-![这是图片描述](../../assets/images/meiqu-appleid/04.png)
-![这是图片描述](../../assets/images/meiqu-appleid/05.png)
+![这是图片描述](../../assets/images/meiqu-appleid/04.webp)
+![这是图片描述](../../assets/images/meiqu-appleid/05.webp)
 
 * 选择“**更改国家或地区**”。
-![这是图片描述](../../assets/images/meiqu-appleid/06.png)
+![这是图片描述](../../assets/images/meiqu-appleid/06.webp)
 
 
 * 在国家列表中找到“**阿美莉卡**”并选择它，或者其他你想要的区（土区尼区啥的）。
@@ -87,13 +87,13 @@ faq:
 * **填写地址：直接用地址生成器，照着填写就好。**生成器里的**街道、城市、邮编、电话**等信息，一一对应地粘贴到苹果的表单里。
 
 **传送门：** [https://www.meiguodizhi.com/usa-address/oregon](https://www.meiguodizhi.com/usa-address/oregon)
-![这是图片描述](../../assets/images/meiqu-appleid/07.png)
-![这是图片描述](../../assets/images/meiqu-appleid/08.png)
+![这是图片描述](../../assets/images/meiqu-appleid/07.webp)
+![这是图片描述](../../assets/images/meiqu-appleid/08.webp)
 
 * **重点：** 填完后，记得勾选“**拷贝账单地址**”这个选项！
 
 * 最后，点击“**更新**”，看到成功提示后就大功告成了！
-![这是图片描述](../../assets/images/meiqu-appleid/09.png)
+![这是图片描述](../../assets/images/meiqu-appleid/09.webp)
 
 > **避坑小提示：** 如果在创建或更新过程中，提示“无法创建，请联系苹果客服”，别担心，这只是说明你的操作被风控了。换个网络环境或者稍等一段时间再试一般就能解决。
 

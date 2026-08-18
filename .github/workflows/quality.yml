@@ -1,0 +1,38 @@
+name: Project quality
+
+on:
+  pull_request:
+  push:
+    branches:
+      - website-h5
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      ASTRO_TELEMETRY_DISABLED: "1"
+    steps:
+      - name: Check out the commit
+        uses: actions/checkout@v6
+
+      - name: Install pnpm, Node.js, and dependencies
+        uses: pnpm/setup@v1
+        with:
+          version: 11.19.0
+          runtime: node@24.18.1
+          cache: true
+          install: true
+
+      - name: Run source and image checks
+        run: pnpm test
+
+      - name: Build the static site
+        run: pnpm build

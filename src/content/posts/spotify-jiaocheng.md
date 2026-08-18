@@ -37,7 +37,7 @@ faq:
 
 打开 Spotify 主页，点击下方或右上角的「注册」按钮。
 
-![Spotify 首页的注册按钮](../../assets/images/spotify-jiaocheng/01.png)
+![Spotify 首页的注册按钮](../../assets/images/spotify-jiaocheng/01.webp)
 
 
 
@@ -45,7 +45,7 @@ faq:
 
 输入你的邮箱地址，按指引完成注册。
 
-![Spotify 邮箱注册页面](../../assets/images/spotify-jiaocheng/02.png)
+![Spotify 邮箱注册页面](../../assets/images/spotify-jiaocheng/02.webp)
 
 
 
@@ -152,7 +152,7 @@ Spotify支持在不同设备间无缝接力播放。
 
 Spotify显示支持银联，虽然通过概率比较低，但有双bi卡的朋友可以试一下。
 
-![Spotify Premium 订阅与银联支付界面](../../assets/images/spotify-jiaocheng/03.png)
+![Spotify Premium 订阅与银联支付界面](../../assets/images/spotify-jiaocheng/03.webp)
 
 
 
@@ -177,7 +177,7 @@ Spotify显示支持银联，虽然通过概率比较低，但有双bi卡的朋�
 账号星球：[https://acceboyaibot.acceboy.com/](https://acceboyaibot.acceboy.com/)
 
 
-![第三方 Spotify Premium 订阅服务页面](../../assets/images/spotify-jiaocheng/04.png)
+![第三方 Spotify Premium 订阅服务页面](../../assets/images/spotify-jiaocheng/04.webp)
 
 
 
@@ -202,7 +202,7 @@ Spotify显示支持银联，虽然通过概率比较低，但有双bi卡的朋�
 
 
 
-![通过 Apple 礼品卡或 Google Play 订阅 Spotify 的操作示例](../../assets/images/spotify-jiaocheng/05.png)
+![通过 Apple 礼品卡或 Google Play 订阅 Spotify 的操作示例](../../assets/images/spotify-jiaocheng/05.webp)
 
 
 

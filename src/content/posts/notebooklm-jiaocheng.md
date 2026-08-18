@@ -57,7 +57,7 @@ faq:
 
 * **你想整理的资料**：PDF、文档、网址、甚至是YouTube链接都行，它是你喂给AI的“口粮”！
 
-![NotebookLM 支持导入的资料来源类型](../../assets/images/notebooklm-jiaocheng/01.png)
+![NotebookLM 支持导入的资料来源类型](../../assets/images/notebooklm-jiaocheng/01.webp)
 
 
 
@@ -73,7 +73,7 @@ faq:
 
 登录后，点**“新建笔记”。**
 
-![NotebookLM 新建笔记按钮](../../assets/images/notebooklm-jiaocheng/02.png)
+![NotebookLM 新建笔记按钮](../../assets/images/notebooklm-jiaocheng/02.webp)
 
 
 
@@ -89,7 +89,7 @@ faq:
 
 免费版最多支持50个来源，日常绝对够用！
 
-![NotebookLM 添加 PDF、文档和网页等资料来源](../../assets/images/notebooklm-jiaocheng/03.png)
+![NotebookLM 添加 PDF、文档和网页等资料来源](../../assets/images/notebooklm-jiaocheng/03.webp)
 
 
 
@@ -101,7 +101,7 @@ faq:
 
 想不到吧！接下来，直接在下方的对话框里向它提问就行了。
 
-![NotebookLM 基于来源资料的对话问答界面](../../assets/images/notebooklm-jiaocheng/04.png)
+![NotebookLM 基于来源资料的对话问答界面](../../assets/images/notebooklm-jiaocheng/04.webp)
 
 
 
@@ -129,7 +129,7 @@ faq:
 >
 > * **生成“测验” (Quiz)**：直接生成小测验，答完还给分，告诉你错在哪。
 
-![NotebookLM 学习指南和测验生成功能](../../assets/images/notebooklm-jiaocheng/05.png)
+![NotebookLM 学习指南和测验生成功能](../../assets/images/notebooklm-jiaocheng/05.webp)
 
 
 
@@ -161,13 +161,13 @@ faq:
 
 它会把这个笔记里的所有重点，自动生成一个音频，像一集Podcast一样。
 
-![NotebookLM 音频概览生成页面](../../assets/images/notebooklm-jiaocheng/06.png)
+![NotebookLM 音频概览生成页面](../../assets/images/notebooklm-jiaocheng/06.webp)
 
 
 
 你可以还可以设置时长、语言。
 
-![NotebookLM 音频概览的语言和时长设置](../../assets/images/notebooklm-jiaocheng/07.png)
+![NotebookLM 音频概览的语言和时长设置](../../assets/images/notebooklm-jiaocheng/07.webp)
 
 然后，**你就可以在上下班开车、搭车、做家务的时候，用“听”的来学习**。
 
@@ -214,7 +214,7 @@ faq:
 
 你还可以不断点击分支，让它帮你无限延伸下去，激发你的新灵感。
 
-![NotebookLM 思维导图的分支展开效果](../../assets/images/notebooklm-jiaocheng/08.png)
+![NotebookLM 思维导图的分支展开效果](../../assets/images/notebooklm-jiaocheng/08.webp)
 
 
 
