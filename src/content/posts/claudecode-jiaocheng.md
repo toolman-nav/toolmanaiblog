@@ -17,8 +17,6 @@ faq:
   - q: "使用 Claude Code 必须订阅 Claude 官方会员吗？"
     a: "不必须。按本文用国产模型 API 接入即可使用，只需为所选平台的 API 额度充值；不想用了可执行 npm uninstall -g @anthropic-ai/claude-code 卸载。"
 ---
-> 本文部分链接含邀请码，注册可能为本站带来收益，不影响你的使用。
-
 
 还在眼馋大佬们在黑窗口里敲两行代码就能搞定项目？
 
@@ -236,4 +234,6 @@ claude
 剩下的，就请尽情跟它聊天，寻找属于你的“Wow moment”吧！
 
 有任何安装问题，咱们评论区见。
+
+<blockquote class="affiliate-disclosure">本文部分链接含邀请码，注册可能为本站带来收益，不影响你的使用。</blockquote>
 

@@ -17,8 +17,6 @@ faq:
   - q: "国内怎么用上 Fable 5？"
     a: "订阅 Claude Pro/Max（可走第三方代充或苹果礼品卡），或通过支持 Fable 5 的 API 中转站按量调用，成本更可控。"
 ---
-> 本文部分链接含邀请码，注册可能为本站带来收益，不影响你的使用。
-
 
 就在今天凌晨，**Anthropic放出了他们憋了很久的大招**——
 
@@ -134,3 +132,6 @@ Fable 5 输入每百万 token 10 美元，输出 50 美元，是 Opus 4.8 的两
 目前很多中转站都支持直接调用Fable 5了，通过这种方式来调用体验也不失为一个好方式，而且成本可控，需要的可以看云雾家的：[https://yunwu.ai/register?aff=rAj4](https://yunwu.ai/register?aff=rAj4)
 
 欢迎体验完之后回来分享你的感受！
+
+<blockquote class="affiliate-disclosure">本文部分链接含邀请码，注册可能为本站带来收益，不影响你的使用。</blockquote>
+

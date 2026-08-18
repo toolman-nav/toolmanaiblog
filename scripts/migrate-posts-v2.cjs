@@ -161,7 +161,7 @@ function migrateBody(body) {
   });
 
   if (/[?&](?:ic|code|aff|ref)=|\/37h7sn|\/i\/TOOLMAN/i.test(result) && !result.includes("本文部分链接含邀请码")) {
-    result = `> 本文部分链接含邀请码，注册可能为本站带来收益，不影响你的使用。\n\n${result}`;
+    result = `${result.trimEnd()}\n\n<blockquote class="affiliate-disclosure">本文部分链接含邀请码，注册可能为本站带来收益，不影响你的使用。</blockquote>\n`;
   }
 
   return result;

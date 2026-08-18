@@ -1641,6 +1641,15 @@ html[data-theme="dark"] .theme-toggle-icon::before {
   color: #475467;
 }
 
+.markdown-body .affiliate-disclosure {
+  margin-top: 28px;
+  margin-bottom: 0;
+  padding: 8px 12px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: #667085;
+}
+
 .markdown-body code {
   padding: 2px 5px;
   border-radius: 5px;
@@ -2360,6 +2369,7 @@ html[data-theme="dark"] .detail-hero p,
 html[data-theme="dark"] .detail-section p,
 html[data-theme="dark"] .detail-section li,
 html[data-theme="dark"] .markdown-body blockquote,
+html[data-theme="dark"] .markdown-body .affiliate-disclosure,
 html[data-theme="dark"] .related-tutorial-meta,
 html[data-theme="dark"] .related-tutorial-card p,
 html[data-theme="dark"] .faq-answer p,

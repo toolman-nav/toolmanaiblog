@@ -24,8 +24,6 @@ faq:
     a: "尽量保持固定设备、固定浏览器和稳定的日常登录环境，不要多人共享账号，也不要频繁切换登录地区或使用来源不明的共享账号。"
 ---
 
-> 本文部分链接含邀请码，注册可能为本站带来收益，不影响你的使用。
-
 Claude 怎么在国内使用？
 
 如果你最近想体验 Claude Fable 5、Claude Opus 5，或者想用 Claude Code，大概率都会碰到几个问题：
@@ -469,5 +467,7 @@ Claude Pro对魔法环境的要求更加严苛，而且现在封了不一定会�
 目前 Claude Pro 和 Max 套餐都已经能够使用 Claude Code，一个订阅同时覆盖 Claude 网页端和 Claude Code。
 
 对于程序员来说，这一点还是挺香的。
+
+<blockquote class="affiliate-disclosure">本文部分链接含邀请码，注册可能为本站带来收益，不影响你的使用。</blockquote>
 
 

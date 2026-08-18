@@ -17,8 +17,6 @@ faq:
   - q: "不注册账号能体验 Claude 吗？"
     a: "可以。Cursor 文档页内置的对话栏可免登录使用 Claude Sonnet 4.5，OpenRouter 和 Poe 也能免费体验 Claude 系列模型。"
 ---
-> 本文部分链接含邀请码，注册可能为本站带来收益，不影响你的使用。
-
 
 众所周知，Claude很好用，特别是用它来写代码和写文章，那绝对是独一档的体验。
 
@@ -185,3 +183,6 @@ Cursor是一个专为开发者设计的AI编程工具，集成了Claude，是写
 
 
 希望这份攻略能帮助到每一位想使用Claude的朋友，如果觉得内容有用，也请点个赞支持支持！
+
+<blockquote class="affiliate-disclosure">本文部分链接含邀请码，注册可能为本站带来收益，不影响你的使用。</blockquote>
+
