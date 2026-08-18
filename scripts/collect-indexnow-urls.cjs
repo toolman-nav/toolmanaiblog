@@ -36,7 +36,7 @@ function createPlan(changes, readAtRef) {
     if (paths.some((file) => GLOBAL_SOURCE_PATH.test(file) && file !== "src/pages/deployment.json.js")) {
       all = true;
     }
-    if (paths.some((file) => file === "astro.config.mjs" || file === "vercel.json" || file === "public/_redirects")) {
+    if (paths.some((file) => file === "astro.config.mjs" || file === "public/_redirects")) {
       all = true;
     }
     if (paths.some((file) => file === "indexnow.config.cjs" || file === `public/${config.keyFileName}`)) {

@@ -1,12 +1,15 @@
 ---
-const clean = (value) => String(value || "").trim();
+import { getIntegrationConfig } from "../config/integrations.mjs";
+
 const jsString = (value) => JSON.stringify(value);
 
-const googleSiteVerification = clean(import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION);
-const bingSiteVerification = clean(import.meta.env.PUBLIC_BING_SITE_VERIFICATION);
-const baiduSiteVerification = clean(import.meta.env.PUBLIC_BAIDU_SITE_VERIFICATION);
-const googleAnalyticsId = clean(import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID) || "G-G4K8676ZVL";
-const baiduTongjiId = clean(import.meta.env.PUBLIC_BAIDU_TONGJI_ID);
+const {
+  googleSiteVerification,
+  bingSiteVerification,
+  baiduSiteVerification,
+  googleAnalyticsId,
+  baiduTongjiId,
+} = getIntegrationConfig(import.meta.env);
 
 const googleAnalyticsScript = googleAnalyticsId
   ? `

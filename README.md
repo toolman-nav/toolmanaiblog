@@ -34,6 +34,12 @@ pnpm run check:tool-reviews
 - `scripts/`: SEO 构建验证和工具复查脚本
 - `_archive/legacy-spa/`: 旧 SPA 原型归档，不参与部署
 
+## 部署与站点集成
+
+- 生产环境仅使用 Cloudflare Pages；`public/_redirects` 是唯一重定向配置源，仓库不保留 Vercel 配置。
+- Google 站点验证与 Google Analytics 统一由 `src/config/integrations.mjs` 提供默认值，再由 `src/components/SiteIntegrations.astro` 注入一次。需要切换账号时，在 Cloudflare Pages 设置对应的 `PUBLIC_GOOGLE_SITE_VERIFICATION` 或 `PUBLIC_GOOGLE_ANALYTICS_ID` 环境变量覆盖默认值。
+- `public/llms.txt` 由文章 frontmatter 与工具数据自动生成。修改内容后可运行 `pnpm generate:llms`；构建前会自动更新，测试会检查文件是否同步。
+
 ## IndexNow
 
 站点在根目录发布 IndexNow 所需的所有权验证文件，并通过 `scripts/submit-indexnow.cjs` 主动通知支持 IndexNow 的搜索引擎。构建过程本身不会发送通知，避免预览构建或生产部署完成前误报 URL。
