@@ -340,6 +340,18 @@ html[data-theme="dark"] .theme-toggle-icon::before {
   box-shadow: var(--shadow);
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .section-head {
   display: flex;
   align-items: flex-start;
@@ -1230,7 +1242,7 @@ html[data-theme="dark"] .theme-toggle-icon::before {
 
 .tutorial-card p {
   margin-top: 8px;
-  color: #5f6f85;
+  color: var(--muted);
   font-size: 16px;
   line-height: 1.65;
   -webkit-line-clamp: 2;
@@ -1246,7 +1258,7 @@ html[data-theme="dark"] .theme-toggle-icon::before {
   display: grid;
   gap: 12px;
   border-radius: var(--radius);
-  background: #fff;
+  background: var(--surface);
   color: var(--text);
 }
 
@@ -1335,7 +1347,7 @@ html[data-theme="dark"] .theme-toggle-icon::before {
 
 .article-info-summary {
   margin: 0;
-  color: #5f6f85;
+  color: var(--muted);
   font-size: 16px;
   line-height: 1.6;
   font-weight: 650;
@@ -1349,7 +1361,7 @@ html[data-theme="dark"] .theme-toggle-icon::before {
   display: flex;
   align-items: center;
   gap: 14px;
-  color: #747e84;
+  color: var(--muted);
   font-size: 14px;
   line-height: 1.3;
   font-weight: 750;
@@ -1368,7 +1380,7 @@ html[data-theme="dark"] .theme-toggle-icon::before {
 
 .tutorial-card .article-info-summary {
   margin: 0;
-  color: #5f6f85;
+  color: var(--muted);
   font-size: 13px;
   line-height: 1.45;
   display: -webkit-box;
@@ -1390,7 +1402,7 @@ html[data-theme="dark"] .theme-toggle-icon::before {
 
 .tutorial-card .article-info-chip {
   gap: 5px;
-  color: #667085;
+  color: var(--muted);
   font-size: 12px;
   font-weight: 650;
 }

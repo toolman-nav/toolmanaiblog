@@ -173,10 +173,31 @@ assert.ok(styles.includes("border-collapse: collapse"), "markdown tables should 
 assert.ok(styles.includes(".article-toc"), "styles should include the article table of contents");
 assert.ok(styles.includes(".back-to-top"), "styles should include the back-to-top button");
 assert.ok(styles.includes(".markdown-body a"), "article body links should have dedicated styles");
+assert.match(
+  styles,
+  /\.article-info-panel\s*\{[^}]*background:\s*var\(--surface\)/,
+  "article info panel background should follow the theme surface token",
+);
+assert.ok(
+  !/\.article-info-panel\s*\{[^}]*background:\s*#fff/.test(styles),
+  "article info panel should not hardcode a white background that breaks dark mode contrast",
+);
+assert.match(
+  styles,
+  /\.article-info-summary\s*\{[^}]*color:\s*var\(--muted\)/,
+  "article summary text should use the muted theme token",
+);
+assert.match(
+  styles,
+  /\.article-info-stats\s*\{[^}]*color:\s*var\(--muted\)/,
+  "article stats text should use the muted theme token",
+);
 
 const home = read("src/pages/index.astro");
 assert.ok(home.includes("工具人AI导航：AI 工具评测与国内使用教程"), "home H1 should include brand and value proposition");
+assert.ok(home.includes('class="visually-hidden"'), "home H1 should stay in the document but be visually hidden");
 assert.ok(!home.includes("<h1 id=\"homeArticlesTitle\""), "recommended articles should no longer be the H1");
+assert.ok(styles.includes(".visually-hidden"), "styles should include the visually hidden utility");
 
 const blogDetail = read("src/pages/blog/[slug].astro");
 assert.ok(blogDetail.includes("seoTitle"), "article title tag should prefer seoTitle");
