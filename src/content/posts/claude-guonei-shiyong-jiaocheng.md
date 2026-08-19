@@ -5,7 +5,7 @@ slug: claude-china-guide-2026
 published: 2026-08-14
 dateModified: 2026-08-14
 description: "2026最新Claude国内使用教程，详细介绍Claude官网、Poe、OpenRouter及国内第三方3种使用方法，并讲解Claude Pro/Max充值订阅、国内支付以及Claude账号稳定使用和防封注意事项，新手也能看懂。"
-image: "../../assets/images/claude-jiaocheng/claude-jiaocheng-cover.png"
+image: "../../assets/images/claude-jiaocheng/claude-jiaocheng-cover.webp"
 tags: ["Claude", "Claude Pro", "Claude Max", "Claude Code", "教程"]
 category: "海外AI使用教程"
 relatedTools: ["claude", "claude-code"]

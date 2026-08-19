@@ -44,6 +44,17 @@ export default defineConfig({
   site: "https://toolmanai.com",
   output: "static",
   trailingSlash: "always",
+  vite: {
+    resolve: {
+      // Vite 8's Windows module runner otherwise evaluates picomatch's CommonJS entry as ESM during content sync.
+      alias: [
+        {
+          find: /^picomatch$/,
+          replacement: fileURLToPath(new URL("./scripts/picomatch-esm.mjs", import.meta.url)),
+        },
+      ],
+    },
+  },
   integrations: [
     deferAstroImagesIntegration(),
     sitemap({

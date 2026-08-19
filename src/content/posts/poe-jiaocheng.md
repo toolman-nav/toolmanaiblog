@@ -56,7 +56,7 @@ Poe，全称为“Platform of AI”，翻译过来就**“AI工具集合平台�
 
 此外，它还提供了Sora2、Veo3.1、可灵、海螺等热门视频生成模型，以及FLUX、GPT-4o、nano banana等先进的图像生成模型，为用户打造一站式的AI体验。
 
-![Poe 支持的 AI 模型与工具列表](../../assets/images/poe-jiaocheng/01.png)
+![Poe 支持的 AI 模型与工具列表](../../assets/images/poe-jiaocheng/01.webp)
 
 ---
 ## 用Poe有哪些优势
@@ -85,7 +85,7 @@ Poe，全称为“Platform of AI”，翻译过来就**“AI工具集合平台�
 
 基本上能做到原生体验。
 
-![Poe 中的 Claude Artifacts 功能界面](../../assets/images/poe-jiaocheng/02.png)
+![Poe 中的 Claude Artifacts 功能界面](../../assets/images/poe-jiaocheng/02.webp)
 
 
 
@@ -115,7 +115,7 @@ Poe，全称为“Platform of AI”，翻译过来就**“AI工具集合平台�
 
 所以如果你暂时无法直接支付OpenAI API，或许这也是一个不错的绕过方式。
 
-![Poe API 密钥页面](../../assets/images/poe-jiaocheng/03.png)
+![Poe API 密钥页面](../../assets/images/poe-jiaocheng/03.webp)
 
 
 ---
@@ -125,7 +125,7 @@ Poe，全称为“Platform of AI”，翻译过来就**“AI工具集合平台�
 
 Poe订阅界面显示支持银联，虽然通过概率比较低，但有双bi卡的朋友不妨试试。
 
-![Poe 会员订阅与银联支付界面](../../assets/images/poe-jiaocheng/04.png)
+![Poe 会员订阅与银联支付界面](../../assets/images/poe-jiaocheng/04.webp)
 
 
 
@@ -146,7 +146,7 @@ Poe订阅界面显示支持银联，虽然通过概率比较低，但有双bi卡
 传送门：[https://universalbus.cn/?s=lTVZgwUD46](https://universalbus.cn/?s=lTVZgwUD46)
 
 
-![第三方 Poe 订阅服务页面](../../assets/images/poe-jiaocheng/05.png)
+![第三方 Poe 订阅服务页面](../../assets/images/poe-jiaocheng/05.webp)
 
 
 

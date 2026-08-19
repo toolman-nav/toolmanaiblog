@@ -45,9 +45,9 @@ faq:
 
 主要是界面更简洁，图标指引啥的也更清晰。
 
-![Z.ai 国际版首页](../../assets/images/aippt-jiaocheng/01.png)
+![Z.ai 国际版首页](../../assets/images/aippt-jiaocheng/01.webp)
 
-![Z.ai 的登录入口](../../assets/images/aippt-jiaocheng/02.png)
+![Z.ai 的登录入口](../../assets/images/aippt-jiaocheng/02.webp)
 
 
 
@@ -61,7 +61,7 @@ faq:
 
 进入主界面后，找到 **AI PPT**点击。
 
-![Z.ai 主界面的 AI PPT 功能入口](../../assets/images/aippt-jiaocheng/03.png)
+![Z.ai 主界面的 AI PPT 功能入口](../../assets/images/aippt-jiaocheng/03.webp)
 
 直接输入你的需求，比如
 
@@ -75,7 +75,7 @@ faq:
 
 从构建内容到后台写代码，一步步实时生成整个PPT，科技感拉满！
 
-![Z.ai 根据提示词生成 PPT 的过程](../../assets/images/aippt-jiaocheng/04.png)
+![Z.ai 根据提示词生成 PPT 的过程](../../assets/images/aippt-jiaocheng/04.webp)
 
 
 
@@ -89,13 +89,13 @@ PPT生成后，你可以先预览，不满意的地方直接在线手动编辑�
 我想将主色调换成科技蓝（#1A73E8）和灰白色（#F5F5F5）。
 ```
 
-![在 Z.ai 中用提示词修改 PPT 配色](../../assets/images/aippt-jiaocheng/05.png)
+![在 Z.ai 中用提示词修改 PPT 配色](../../assets/images/aippt-jiaocheng/05.webp)
 
 确认无误后，点击右上角的“**分享**”按钮，选择导出PPT格式就可以。
 
 而且下载的是可编辑、无水印的PPT！
 
-![Z.ai 导出可编辑 PPT 的分享菜单](../../assets/images/aippt-jiaocheng/06.png)
+![Z.ai 导出可编辑 PPT 的分享菜单](../../assets/images/aippt-jiaocheng/06.webp)
 
 
 
@@ -115,7 +115,7 @@ PPT生成后，你可以先预览，不满意的地方直接在线手动编辑�
 
 做出来的图表堪比顶级咨询公司！
 
-![Napkin AI 生成的专业信息图表示例](../../assets/images/aippt-jiaocheng/07.png)
+![Napkin AI 生成的专业信息图表示例](../../assets/images/aippt-jiaocheng/07.webp)
 
 
 
@@ -125,7 +125,7 @@ PPT生成后，你可以先预览，不满意的地方直接在线手动编辑�
 
 粘贴或上传你自己的文档内容，或者让AI帮你写。
 
-![Napkin AI 的文档粘贴与上传界面](../../assets/images/aippt-jiaocheng/08.png)
+![Napkin AI 的文档粘贴与上传界面](../../assets/images/aippt-jiaocheng/08.webp)
 
 #### **2.一键生成图表**
 
@@ -139,9 +139,9 @@ PPT生成后，你可以先预览，不满意的地方直接在线手动编辑�
 
 视觉效果直接对标麦肯锡、波士顿！
 
-![Napkin AI 根据文字生成的信息图表方案](../../assets/images/aippt-jiaocheng/09.png)
+![Napkin AI 根据文字生成的信息图表方案](../../assets/images/aippt-jiaocheng/09.webp)
 
-![Napkin AI 生成的麦肯锡风格图表预览](../../assets/images/aippt-jiaocheng/10.png)
+![Napkin AI 生成的麦肯锡风格图表预览](../../assets/images/aippt-jiaocheng/10.webp)
 
 #### **3.在线编辑及导出PPT**
 
@@ -149,7 +149,7 @@ PPT生成后，你可以先预览，不满意的地方直接在线手动编辑�
 
 比如更换图表颜色、编辑文字等，双击就能进行操作。
 
-![Napkin AI 在线编辑图表颜色和文字](../../assets/images/aippt-jiaocheng/11.png)
+![Napkin AI 在线编辑图表颜色和文字](../../assets/images/aippt-jiaocheng/11.webp)
 
 搞定后，点击右上角的“**Share**”，选择“**Export document**”就能导出。
 
@@ -157,7 +157,7 @@ PPT生成后，你可以先预览，不满意的地方直接在线手动编辑�
 
 真的超级方便！
 
-![Napkin AI 的 PPT、PDF、PNG 和 SVG 导出菜单](../../assets/images/aippt-jiaocheng/12.png)
+![Napkin AI 的 PPT、PDF、PNG 和 SVG 导出菜单](../../assets/images/aippt-jiaocheng/12.webp)
 
 ***
 
@@ -173,7 +173,7 @@ PPT生成后，你可以先预览，不满意的地方直接在线手动编辑�
 
 操作跟Z.ai大同小异，生成之后点击最后的文档，就能在线编辑或导出。
 
-![Kimi 生成的年终述职 PPT 预览与下载入口](../../assets/images/aippt-jiaocheng/13.png)
+![Kimi 生成的年终述职 PPT 预览与下载入口](../../assets/images/aippt-jiaocheng/13.webp)
 
 
 

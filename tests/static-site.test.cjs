@@ -15,22 +15,36 @@ const walk = (dir) => {
 };
 
 const packageJson = JSON.parse(read("package.json"));
-assert.equal(packageJson.dependencies.astro, "^7.0.5", "Astro should be pinned to the measured 7.0.5 range");
+assert.equal(packageJson.dependencies.astro, "^7.2.2", "Astro should be pinned to the verified 7.2.2 range");
+assert.equal(packageJson.dependencies.picomatch, "^4.0.4", "the content-sync CommonJS bridge should use a pinned picomatch range");
 for (const [name, version] of Object.entries(packageJson.dependencies)) {
   assert.ok(!String(version).includes("latest"), `${name} should not use latest`);
 }
 assert.ok(packageJson.dependencies["@astrojs/sitemap"], "official Astro sitemap integration should be installed");
 assert.ok(packageJson.dependencies["@astrojs/rss"], "official Astro RSS package should be installed");
 assert.ok(packageJson.scripts.test.includes("tests/static-site.test.cjs"), "test script should run source assertions");
+assert.ok(packageJson.scripts.test.includes("tests/optimize-images.test.cjs"), "test script should run image optimizer regression assertions");
 assert.ok(packageJson.scripts.test.includes("tests/indexnow.test.cjs"), "test script should run IndexNow assertions");
 assert.ok(packageJson.scripts["check:tool-reviews"], "tool review script should be wired");
 assert.ok(packageJson.scripts["verify:seo"], "SEO build verifier should be wired");
+assert.equal(packageJson.scripts["post:prepare"], "node scripts/optimize-images.cjs", "post preparation should optimize images");
+assert.equal(packageJson.scripts["images:optimize"], "node scripts/optimize-images.cjs", "image optimizer command should be wired");
+assert.equal(packageJson.scripts["images:check"], "node scripts/optimize-images.cjs --check", "image check command should be wired");
+assert.ok(packageJson.scripts.test.includes("scripts/optimize-images.cjs --check"), "test should reject unoptimized or broken images");
 assert.ok(packageJson.scripts.indexnow, "IndexNow submission script should be wired");
 assert.ok(packageJson.scripts["indexnow:all"], "full-sitemap IndexNow submission should be wired");
 assert.ok(packageJson.scripts["indexnow:remote"], "production-sitemap IndexNow submission should be wired");
 assert.ok(exists(".github/workflows/indexnow.yml"), "post-deployment IndexNow workflow should exist");
+assert.ok(exists(".github/workflows/quality.yml"), "project quality workflow should exist");
+const qualityWorkflow = read(".github/workflows/quality.yml");
+assert.ok(qualityWorkflow.includes("pnpm/setup@v1"), "quality workflow should use pnpm's current v11 setup action");
+assert.ok(qualityWorkflow.includes("runtime: node@24.18.1"), "quality workflow should pin the verified Node runtime");
+assert.ok(qualityWorkflow.includes("run: pnpm test"), "quality workflow should run source and image checks");
+assert.ok(qualityWorkflow.includes("run: pnpm build"), "quality workflow should build the static site");
 assert.ok(exists("src/pages/deployment.json.js"), "Cloudflare deployment marker endpoint should exist");
 assert.ok(read("src/pages/deployment.json.js").includes("CF_PAGES_COMMIT_SHA"), "deployment marker should use Cloudflare's commit SHA");
+assert.ok(read("astro.config.mjs").includes("picomatch-esm.mjs"), "Astro should route picomatch through its ESM compatibility bridge");
+assert.ok(exists("scripts/picomatch-esm.mjs"), "the picomatch ESM compatibility bridge should exist");
 assert.ok(exists("public/_headers"), "Cloudflare headers file should exist");
 assert.ok(read("public/_headers").includes("/deployment.json"), "deployment marker should disable caching");
 assert.ok(!exists("vercel.json"), "Cloudflare Pages must be the only deployment and redirect configuration source");
@@ -291,6 +305,7 @@ assert.ok(exists("scripts/generate-llms.mjs"), "llms.txt generator should exist"
 assert.ok(exists("public/og-default.png"), "default OG image should exist");
 assert.ok(exists("scripts/check-tool-reviews.cjs"), "tool review scanner should exist");
 assert.ok(exists("scripts/verify-seo-build.cjs"), "SEO build verifier should exist");
+assert.ok(exists("scripts/optimize-images.cjs"), "local image optimizer should exist");
 assert.ok(exists("scripts/submit-indexnow.cjs"), "IndexNow submission script should exist");
 assert.ok(exists("scripts/collect-indexnow-urls.cjs"), "IndexNow change detector should exist");
 assert.ok(exists("scripts/wait-for-deployment.cjs"), "Cloudflare deployment waiter should exist");

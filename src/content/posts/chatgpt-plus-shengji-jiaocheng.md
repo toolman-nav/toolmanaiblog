@@ -5,7 +5,7 @@ slug: chatgpt-plus-subscription-guide
 published: 2025-12-14
 dateModified: 2025-12-14
 description: "教你3招轻松搞定ChatGPT Plus订阅！无需国外信用卡，支持国内支付方式，安全稳定不踩雷。立即查看详细步骤！"
-image: "../../assets/images/chatgptplus-jiaocheng/chatgptplus-jiaocheng-cover.png"
+image: "../../assets/images/chatgptplus-jiaocheng/chatgptplus-jiaocheng-cover.webp"
 tags: ["chatgpt", "chatgpt plus", "gpt", "教程"]
 category: "海外AI使用教程"
 relatedTools: ["chatgpt"]
@@ -51,7 +51,7 @@ faq:
 传送门：[https://nf.video/37h7sn](https://nf.video/37h7sn)
 
 
-![这是图片描述](../../assets/images/chatgptplus-jiaocheng/01.png)
+![这是图片描述](../../assets/images/chatgptplus-jiaocheng/01.webp)
 
 
 
@@ -63,7 +63,7 @@ faq:
 传送门：[https://universalbus.cn/?s=lTVZgwUD46](https://universalbus.cn/?s=lTVZgwUD46)
 
 
-![这是图片描述](../../assets/images/chatgptplus-jiaocheng/02.png)
+![这是图片描述](../../assets/images/chatgptplus-jiaocheng/02.webp)
 
 
 
@@ -79,7 +79,7 @@ faq:
 传送门：[**https://bewild.ai?code=TOOLMAN**](https://bewild.ai?code=TOOLMAN)
 
 
-![这是图片描述](../../assets/images/chatgptplus-jiaocheng/03.png)
+![这是图片描述](../../assets/images/chatgptplus-jiaocheng/03.webp)
 
 
 ---
@@ -117,7 +117,7 @@ faq:
 
 1
 
-![这是图片描述](../../assets/images/chatgptplus-jiaocheng/04.png)
+![这是图片描述](../../assets/images/chatgptplus-jiaocheng/04.webp)
 
 
 
@@ -147,7 +147,7 @@ faq:
 
 * **绑定卡片**：选择添加信用卡或借记卡，然后将你的卡号信息填写进去。
 
-![这是图片描述](../../assets/images/chatgptplus-jiaocheng/05.png)
+![这是图片描述](../../assets/images/chatgptplus-jiaocheng/05.webp)
 
 
 

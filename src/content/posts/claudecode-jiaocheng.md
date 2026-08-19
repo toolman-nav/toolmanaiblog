@@ -5,7 +5,7 @@ slug: claude-code-guide
 published: 2026-01-11
 dateModified: 2026-01-11
 description: "手把手带你用国产模型丝滑替代，快速拿下这款当前最强 AI 编程神器 —— Claude Code"
-image: "../../assets/images/claudecode-jiaocheng/00.png"
+image: "../../assets/images/claudecode-jiaocheng/00.webp"
 tags: ["AI工具", "教程"]
 category: "AI教程"
 relatedTools: ["claude-code", "claude"]
@@ -52,7 +52,7 @@ faq:
 
 * Mac：快捷键`“Command（⌘）+空格键”`打开搜索框，输入`“终端”`并回车。
 
-![在 macOS 中打开终端](../../assets/images/claudecode-jiaocheng/01.png)
+![在 macOS 中打开终端](../../assets/images/claudecode-jiaocheng/01.webp)
 
 ### **2.输入命令**
 
@@ -68,13 +68,13 @@ faq:
 
 如果能正常返回版本号，则代表安装无误。
 
-![终端返回 Claude Code 版本号](../../assets/images/claudecode-jiaocheng/02.png)
+![终端返回 Claude Code 版本号](../../assets/images/claudecode-jiaocheng/02.webp)
 
 接着在终端输入 `claude`。
 
 如果你看到了 Claude 的欢迎界面，恭喜你，咱们的第一步搞定了！
 
-![Claude Code 安装后的欢迎界面](../../assets/images/claudecode-jiaocheng/03.png)
+![Claude Code 安装后的欢迎界面](../../assets/images/claudecode-jiaocheng/03.webp)
 
 ***
 
@@ -114,7 +114,7 @@ DeepSeek开放平台：https://platform.deepseek.com/
 
 通过键盘上下键和回车键进行操作选择。
 
-![Claude Code 第三方模型配置助手](../../assets/images/claudecode-jiaocheng/05.png)
+![Claude Code 第三方模型配置助手](../../assets/images/claudecode-jiaocheng/05.webp)
 
 然后按照中文提示粘贴API Key 即可一键导入配置。
 
@@ -160,7 +160,7 @@ claude
 
 在Claude Code中输入`/status`确认模型状态。
 
-![Claude Code status 命令显示的模型状态](../../assets/images/claudecode-jiaocheng/06.png)
+![Claude Code status 命令显示的模型状态](../../assets/images/claudecode-jiaocheng/06.webp)
 
 
 ### 4.后续启动与使用
@@ -169,7 +169,7 @@ claude
 
 后续使用，只需要在终端里，输入`claude`，然后回车，你就能看到下面的界面了。
 
-![在终端启动后的 Claude Code 主界面](../../assets/images/claudecode-jiaocheng/07.png)
+![在终端启动后的 Claude Code 主界面](../../assets/images/claudecode-jiaocheng/07.webp)
 
 
 
