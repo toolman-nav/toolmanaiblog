@@ -15,6 +15,7 @@ Toolman AI Navigation is a Chinese AI tools and tutorials directory focused on p
 
 ## 教程文章
 
+- [【2026】真·保姆级教程！谷歌账号+海外邮箱国内注册全流程（+86手机号演示）](https://toolmanai.com/blog/google-account-email-guide/): 手把手教你注册Proton Mail等海外邮箱和谷歌账号，+86手机号演示全程可用，附Gmail注册失败解决方案和新号养号技巧，拿到海外AI通行证。
 - [OpenAI Codex国内保姆级教程：从安装、手机验证到接入DeepSeek，一篇全搞定！](https://toolmanai.com/blog/codex-china-guide-2026/): 2026最新Codex国内使用教程：从0开始安装（Win/Mac）、手机验证解决方案、Plus/Pro充值订阅、接入DeepSeek省钱方案、常见报错解决，一篇讲全，新手照做就能用。
 - [Claude国内使用教程：3种使用方法+Claude Pro充值订阅+防封指南](https://toolmanai.com/blog/claude-china-guide-2026/): 2026最新Claude国内使用教程，详细介绍Claude官网、Poe、OpenRouter及国内第三方3种使用方法，并讲解Claude Pro/Max充值订阅、国内支付以及Claude账号稳定使用和防封注意事项，新手也能看懂。
 - [Claude Fable 5 来了！强是真强，但苟也是真苟（附国内使用教程）](https://toolmanai.com/blog/claude-fable-5-review/): Claude Fable 5是当下你能摸到的最强模型，没有之一，附上国内使用教程，快来看看！
