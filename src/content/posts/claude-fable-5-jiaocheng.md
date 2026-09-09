@@ -120,16 +120,16 @@ Fable 5 输入每百万 token 10 美元，输出 50 美元，是 Opus 4.8 的两
 
 这个方法虽然步骤多一点，但胜在稳定，不用担心黑卡风险。
 
-- **第一步：**打开Apple官网的 Gift Card 页面，选择`Email`发送。传送门：[https://www.apple.com/shop/buy-giftcard/giftcard](https://www.apple.com/shop/buy-giftcard/giftcard)
-- **第二步：**下拉，然后选择或输入想要的金额（订阅ChatGPT Plus需至少20美刀），接着填写发送人和接收人的邮箱，这里可以填写同一个。最后按指引提交进入下一步。
-- **第三步：**在`“check out”`页面，可以选择以访客身份继续，接着就跳转到绑卡页面。在绑卡页面，支付方式选择`“Credit or Debit Card”`，填入有银联支持的国内信用卡或借记卡信息完成支付就可以。亲测招行的信用卡可用。
-- **第四步：**支付成功后，通常会在一小时内收到附有兑换代码的邮件。复制兑换代码，然后在App Store的个人账户页面中选择`“兑换充值卡或代码”`，即可将金额充值到你的`美区Apple ID`。之后打开ChatGPT应用即可完成订阅。
+- **第一步**：打开Apple官网的 Gift Card 页面，选择`Email`发送。传送门：[https://www.apple.com/shop/buy-giftcard/giftcard](https://www.apple.com/shop/buy-giftcard/giftcard)
+- **第二步**：下拉，然后选择或输入想要的金额（订阅Claude Pro，需至少20美刀），接着填写发送人和接收人的邮箱，这里可以填写同一个。最后按指引提交进入下一步。
+- **第三步**：在`“check out”`页面，可以选择以访客身份继续，接着就跳转到绑卡页面。在绑卡页面，支付方式选择`“Credit or Debit Card”`，填入有银联支持的国内信用卡或借记卡信息完成支付就可以。亲测招行的信用卡可用。
+- **第四步**：支付成功后，通常会在一小时内收到附有兑换代码的邮件。复制兑换代码，然后在App Store的个人账户页面中选择`“兑换充值卡或代码”`，即可将金额充值到你的`美区Apple ID`。之后打开Claude应用即可完成订阅。
 
 <!-- ⚠️ 需人工补图：原图已失效 -->
 
 ## 方法3：API调用体验
 
-目前很多中转站都支持直接调用Fable 5了，通过这种方式来调用体验也不失为一个好方式，而且成本可控，需要的可以看云雾家的：[https://yunwu.ai/register?aff=rAj4](https://yunwu.ai/register?aff=rAj4)
+目前很多中转站都支持直接调用Fable 5了，通过这种方式来调用体验也不失为一个好方式，而且成本可控，需要的可以看云雾家的：[https://gptsapi.net/](https://gptsapi.net/)
 
 欢迎体验完之后回来分享你的感受！
 
