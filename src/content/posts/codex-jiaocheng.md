@@ -82,6 +82,8 @@ Mac就丝滑多了：下载.dmg文件，拖进Applications，完事。
 
 用虚拟号码平台接收验证码。
 
+接码平台（供参考）：[SMS-Man](https://sms-man.com/cn?ref=RglYX-3PpMaE)
+
 再说两个实战小技巧：
 
 * 一个号码反复失败？**换英国或德国的号码**再试。
@@ -104,6 +106,7 @@ Mac就丝滑多了：下载.dmg文件，拖进Applications，完事。
 ChatGPT Plus约**22.99美元（约154元）**，支持Go和Pro 5x/20x套餐。
 
 Claude、Gemini、xAI的订阅也能搞定，而且有售后支持。
+
 传送门：[https://bewild.ai?code=TOOLMAN](https://bewild.ai?code=TOOLMAN)
 
 
@@ -130,15 +133,17 @@ ChatGPT Plus最低**149元**起，支持Pro 5x/20x套餐。
 
 另外还有Netflix、Spotify、Claude、POE等服务。
 
-价格会随汇率浮动，以平台实时页面为准。
-
 传送门：[https://universalbus.cn/?s=lTVZgwUD46](https://universalbus.cn/?s=lTVZgwUD46)
+
+
+
+价格会随汇率浮动，以平台实时页面为准。
 
 ---
 
 ## 五、不想花GPT的钱？接入DeepSeek使用（简单版）
 
-Codex是支持第三方模型的。不想为GPT-5.6的能力买单，可以接入DeepSeek，按API用量付费，便宜得多。
+Codex是支持第三方模型的。不想为GPT的能力买单，可以接入DeepSeek，按API用量付费，便宜得多。
 
 两种方法，推荐第一种。
 
