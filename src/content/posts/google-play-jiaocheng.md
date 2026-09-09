@@ -131,7 +131,7 @@ faq:
 
 
 
-传送门：[https://sms-activate.io/?ref=10913200](https://sms-activate.io/?ref=10913200)
+传送门：[https://sms-man.com/cn?ref=RglYX-3PpMaE](https://sms-man.com/cn?ref=RglYX-3PpMaE)
 
 
 
