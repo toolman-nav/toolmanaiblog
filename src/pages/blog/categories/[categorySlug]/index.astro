@@ -1,4 +1,5 @@
 ---
+import { isPublished } from "../../../../lib/publication.mjs";
 import { getCollection } from "astro:content";
 import SiteLayout from "../../../../layouts/SiteLayout.astro";
 import TutorialCard from "../../../../components/TutorialCard.astro";
@@ -7,7 +8,7 @@ import { blogCategoryPath, blogDetailPath, categorySlug, matchRouteValue } from 
 import { collectionPageSchema } from "../../../../lib/seo.mjs";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("posts", ({ data }) => !data.draft);
+  const posts = await getCollection("posts", ({ data }) => isPublished(data));
   const tutorials = postsToArticles(posts);
   const categories = [...new Set(tutorials.map((article) => article.category))];
   return categories.map((category) => ({

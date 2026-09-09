@@ -1,3 +1,4 @@
+import { isPublished } from "./publication.mjs";
 const coverTypes = ["deep", "blue", "green", "red", "code"];
 const postImageModules = import.meta.glob("../assets/images/**/*.{jpg,jpeg,png,webp,gif}", {
   eager: true,
@@ -19,7 +20,7 @@ export function firstMarkdownImage(body) {
 
 export function sortPosts(posts) {
   return [...posts]
-    .filter((entry) => !entry.data.draft)
+    .filter((entry) => isPublished(entry.data))
     .sort((a, b) => b.data.published.getTime() - a.data.published.getTime());
 }
 

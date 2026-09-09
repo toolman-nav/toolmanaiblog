@@ -1,0 +1,33 @@
+name: Publish scheduled posts
+
+on:
+  push:
+    branches: [website-h5]
+    paths: ['.github/workflows/scheduled-publish.yml']
+  schedule:
+    # 00:00 UTC = 08:00 Asia/Shanghai. GitHub may start scheduled jobs late.
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: scheduled-publish
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Trigger production Pages build
+        env:
+          DEPLOY_HOOK: ${{ secrets.CLOUDFLARE_PAGES_DEPLOY_HOOK }}
+        shell: bash
+        run: |
+          if [ -z "$DEPLOY_HOOK" ]; then
+            echo 'Configure CLOUDFLARE_PAGES_DEPLOY_HOOK for the website-h5 production branch.' >&2
+            exit 1
+          fi
+          curl --fail --silent --show-error --max-time 60 --retry 3 --output /dev/null --request POST "$DEPLOY_HOOK"

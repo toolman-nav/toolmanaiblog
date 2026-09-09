@@ -1,4 +1,5 @@
 ---
+import { isPublished } from "../../lib/publication.mjs";
 import { getCollection } from "astro:content";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import TutorialCard from "../../components/TutorialCard.astro";
@@ -6,7 +7,7 @@ import { postsToArticles } from "../../lib/posts.mjs";
 import { blogCategoryPath, blogDetailPath } from "../../lib/routes.mjs";
 import { collectionPageSchema } from "../../lib/seo.mjs";
 
-const githubPosts = await getCollection("posts", ({ data }) => !data.draft);
+const githubPosts = await getCollection("posts", ({ data }) => isPublished(data));
 const tutorials = postsToArticles(githubPosts);
 const tutorialCategories = [...new Set(tutorials.map((article) => article.category))];
 const githubTitleSmokeTest = "Claude Code国内使用指南";

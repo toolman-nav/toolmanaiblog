@@ -1,3 +1,4 @@
+import { isPublished } from "../src/lib/publication.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -37,7 +38,7 @@ function readPosts() {
         draft: scalar(frontmatter, "draft") === "true",
       };
     })
-    .filter((post) => !post.draft && post.title && post.slug)
+    .filter((post) => isPublished(post) && post.title && post.slug)
     .sort((a, b) => b.published.localeCompare(a.published) || a.title.localeCompare(b.title, "zh-CN"));
 }
 

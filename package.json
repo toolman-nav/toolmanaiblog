@@ -6,7 +6,7 @@
     "prebuild": "node scripts/generate-llms.mjs",
     "build": "astro build",
     "preview": "astro preview",
-    "test": "node tests/static-site.test.cjs && node tests/optimize-images.test.cjs && node scripts/optimize-images.cjs --check && node tests/indexnow.test.cjs && node scripts/generate-llms.mjs --check",
+    "test": "node tests/publication.test.mjs && node tests/static-site.test.cjs && node tests/optimize-images.test.cjs && node scripts/optimize-images.cjs --check && node tests/indexnow.test.cjs && node scripts/generate-llms.mjs --check",
     "post:prepare": "node scripts/optimize-images.cjs",
     "images:optimize": "node scripts/optimize-images.cjs",
     "images:check": "node scripts/optimize-images.cjs --check",

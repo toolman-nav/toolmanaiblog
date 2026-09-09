@@ -1,4 +1,5 @@
 ---
+import { isPublished } from "../../lib/publication.mjs";
 import { getCollection } from "astro:content";
 import site from "../../data/site.mjs";
 import SiteLayout from "../../layouts/SiteLayout.astro";
@@ -17,7 +18,7 @@ export function getStaticPaths() {
 }
 
 const { tool } = Astro.props;
-const posts = await getCollection("posts", ({ data }) => !data.draft);
+const posts = await getCollection("posts", ({ data }) => isPublished(data));
 const relatedTutorials = postsToArticles(posts).filter((article) => article.relatedTools.includes(tool.slug || tool.id));
 const title = `${tool.name} - AI工具详情 - 工具人AI导航`;
 const description = `${tool.name}：${tool.description}`;

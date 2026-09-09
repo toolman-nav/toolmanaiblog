@@ -31,6 +31,9 @@ jobs:
           cache: true
           install: true
 
+      - name: Refresh publication-dependent index
+        run: pnpm generate:llms
+
       - name: Run source and image checks
         run: pnpm test
 

@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import { isPublished, publicationTime } from '../src/lib/publication.mjs';
+const post = { published: '2026-09-10', draft: false };
+assert.equal(publicationTime(post.published), Date.parse('2026-09-10T00:00:00Z'));
+assert.equal(isPublished(post, Date.parse('2026-09-09T23:59:59.999Z')), false);
+assert.equal(isPublished(post, Date.parse('2026-09-10T00:00:00Z')), true);
+assert.equal(isPublished(post, Date.parse('2026-09-11T00:00:00Z')), true);
+assert.equal(isPublished({...post, draft:true}, Date.parse('2026-09-11T00:00:00Z')), false);
+assert.equal(publicationTime(new Date('2026-09-10')), publicationTime(post.published));
+for (const published of ['', 'bad', '2026-02-30', new Date(NaN)]) assert.equal(isPublished({published}, Date.now()), false);
+console.log('Publication boundary checks passed');

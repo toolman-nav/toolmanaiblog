@@ -45,7 +45,7 @@ jobs:
 
       - name: Submit changed URLs to IndexNow
         if: steps.changes.outputs.mode == 'urls'
-        run: node scripts/submit-indexnow.cjs --urls-file "$RUNNER_TEMP/indexnow-plan.txt"
+        run: node scripts/submit-indexnow.cjs --remote
 
       - name: Submit production sitemap URLs to IndexNow
         if: steps.changes.outputs.mode == 'remote'
