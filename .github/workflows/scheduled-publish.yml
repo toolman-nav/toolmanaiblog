@@ -3,10 +3,11 @@ name: Publish scheduled posts
 on:
   push:
     branches: [website-h5]
-    paths: ['.github/workflows/scheduled-publish.yml']
+    paths: ['.github/workflows/scheduled-publish.yml', 'scripts/scheduled-publish.mjs']
   schedule:
-    # 00:00 UTC = 08:00 Asia/Shanghai. GitHub may start scheduled jobs late.
     - cron: '0 0 * * *'
+    # Retry off the hour, including catch-up after outages. UTC times.
+    - cron: '13,43 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -19,15 +20,33 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 25
     steps:
-      - name: Trigger production Pages build
+      - uses: actions/checkout@v6
+        with:
+          ref: website-h5
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check due articles against production
+        id: due
+        run: node scripts/scheduled-publish.mjs
+      - name: Trigger production Pages build only when articles are missing
+        if: steps.due.outputs.needed == 'true'
         env:
           DEPLOY_HOOK: ${{ secrets.CLOUDFLARE_PAGES_DEPLOY_HOOK }}
-        shell: bash
         run: |
           if [ -z "$DEPLOY_HOOK" ]; then
-            echo 'Configure CLOUDFLARE_PAGES_DEPLOY_HOOK for the website-h5 production branch.' >&2
+            echo 'Missing CLOUDFLARE_PAGES_DEPLOY_HOOK' >&2
             exit 1
           fi
-          curl --fail --silent --show-error --max-time 60 --retry 3 --output /dev/null --request POST "$DEPLOY_HOOK"
+          curl --fail --silent --show-error --max-time 60 --output /dev/null --request POST "$DEPLOY_HOOK"
+      - name: Verify articles are online after deployment
+        if: steps.due.outputs.needed == 'true'
+        run: node scripts/scheduled-publish.mjs --verify
+      - name: Report failure
+        if: failure()
+        run: |
+          echo '::error::Scheduled publication failed. Check the failing step; the next scheduled check will retry.'
+          echo 'Publication check or deployment failed. Enable GitHub Actions failure notifications to receive email.' >> "$GITHUB_STEP_SUMMARY"

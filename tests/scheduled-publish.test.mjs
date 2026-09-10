@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import { dueUrls, missingUrls } from '../scripts/scheduled-publish.mjs';
+const source = (date, draft = false) => `---\nslug: example\npublished: ${date}\ndraft: ${draft}\n---\n`;
+const now = Date.parse('2026-09-10T00:00:00Z');
+assert.deepEqual(dueUrls([source('2026-09-10')], now - 1), []);
+const urls = dueUrls([source('2026-09-10'), source('2026-09-11'), source('2026-09-09', true)], now);
+assert.deepEqual(urls, ['https://toolmanai.com/blog/example/']);
+assert.throws(() => dueUrls([source('invalid')], now));
+assert.deepEqual(await missingUrls(urls, async () => new Response('', {status:404})), urls);
+assert.deepEqual(await missingUrls(urls, async () => new Response(`<link rel="canonical" href="${urls[0]}">`)), []);
+await assert.rejects(missingUrls(urls, async () => new Response('error', {status:503})), /503/);
+await assert.rejects(missingUrls(urls, async () => new Response('soft 404')), /canonical/);
+await assert.rejects(missingUrls(urls, async () => {throw new Error('network');}), /network/);
+console.log('Scheduled publication recovery checks passed');
