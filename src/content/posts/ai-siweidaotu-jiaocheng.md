@@ -8,7 +8,7 @@ description: "还在为整理笔记头秃？教你用AI一键把文档转成思�
 image: ""
 tags: ["AI思维导图", "知识管理", "Markdown教程", "DeepSeek用法", "学习效率"]
 category: "AI实用工具"
-relatedTools: []
+relatedTools: ["deepseek","markmap","xmind","mapify","gitmind","wps-ai","kimi"]
 faq:
   - q: "两种 AI 思维导图方案怎么选？"
     a: "有现成文档想快速出图，选 Mapify、GitMind、WPS AI 等一键转换工具；想精确控制结构，用大模型生成 Markdown 再渲染成图。"

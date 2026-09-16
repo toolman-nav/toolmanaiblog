@@ -8,7 +8,7 @@ description: "解决安卓手机无法使用谷歌商店的痛点！详解三种
 image: "../../assets/images/googleplay-jiaocheng/google-play-jiaocheng-cover.webp"
 tags: ["谷歌三件套", "Google Play安装", "安卓教程", "GMS框架", "Gmail注册"]
 category: "海外工具使用教程"
-relatedTools: []
+relatedTools: ["google-play","gmail","apkmirror"]
 faq:
   - q: "所有安卓手机都能装 Google Play 吗？"
     a: "不一定。部分国产机型因系统限制装了也无法正常运行，低版本安卓可能闪退；小米、红米等机型可在设置里直接启用谷歌基础服务。"
@@ -144,6 +144,3 @@ faq:
 然后按指引，就可以申请一个海外的Google邮箱，然后再用Google邮箱登录Google play，你就可以在商店中下载各类的海外软件了。
 
 <blockquote class="affiliate-disclosure">本文部分链接含邀请码，注册可能为本站带来收益，不影响你的使用。</blockquote>
-
-
-

@@ -1,81 +1,96 @@
 ---
+import { getCollection } from "astro:content";
 import site from "../../data/site.mjs";
-import ToolSidebar from "../../components/ToolSidebar.astro";
-import ToolTile from "../../components/ToolTile.astro";
 import SiteLayout from "../../layouts/SiteLayout.astro";
-import { toolCategoryPath, toolDetailPath, toolSubcategoryPath } from "../../lib/routes.mjs";
+import { toolCategoryPath, toolDetailPath, toolSubcategoryPath, blogDetailPath } from "../../lib/routes.mjs";
 import { collectionPageSchema } from "../../lib/seo.mjs";
-
-const toolSections = site.getToolSections();
-const hotKeywords = ["AI 对话助手", "AI 音乐生成", "AI 编程工具", "流媒体娱乐"];
-const subcategoryLinks = new Map(
-  site.categories.flatMap((category) => category.subcategories.map((sub) => [sub, toolSubcategoryPath(category.name, sub)])),
-);
-const keywordHref = (keyword) => subcategoryLinks.get(keyword) || `/tools/?q=${encodeURIComponent(keyword)}`;
-const title = "AI导航 - 工具人AI导航";
-const description = "按 AI 工具与海外数字服务浏览常用工具，先从少量精选入口开始。";
-const structuredData = collectionPageSchema({
-  name: "AI工具导航",
-  description,
-  path: "/tools/",
-  items: site.tools.map((tool) => ({ name: tool.name, url: toolDetailPath(tool) })),
-});
+import { isPublished } from "../../lib/publication.mjs";
+import { postsToArticles } from "../../lib/posts.mjs";
+const sections = site.getToolSections();
+const articles = postsToArticles(await getCollection("posts", ({ data }) => isPublished(data)));
+const primaryGuides = { ...{"wild-ai":"chatgpt-plus-subscription-guide","nf-video":"chatgpt-plus-subscription-guide","universalbus":"chatgpt-plus-subscription-guide","account-planet":"telegram-account-guide","2233-ai":"claude-subscription-guide","sms-man":"telegram-account-guide"},  ...{"ollama":"deepseek-harness-install-guide","dsh-desktop":"deepseek-harness-install-guide","dsh-plugin-list":"deepseek-harness-install-guide","cherry-studio":"claude-china-guide-2026","nextchat":"claude-china-guide-2026","lobechat":"claude-china-guide-2026","doubao":"suno-ai-music-guide","gemini":"google-ai-studio-guide","apkmirror":"google-play-install-guide","ping0":"claude-subscription-guide","checkcc":"claude-china-guide-2026"},  ...{"codex":"codex-china-guide-2026","deepseek-harness":"deepseek-harness-install-guide","cc-switch":"codex-china-guide-2026","deepseek":"ai-mindmap-guide","kimi":"ai-ppt-tools-guide","z-ai":"ai-ppt-tools-guide","bigmodel":"claude-code-guide","napkin-ai":"ai-ppt-tools-guide","markmap":"ai-mindmap-guide","xmind":"ai-mindmap-guide","mapify":"ai-mindmap-guide","gitmind":"ai-mindmap-guide","wps-ai":"ai-mindmap-guide","openrouter":"claude-china-guide-2026","cursor":"claude-subscription-guide","telegram":"telegram-account-guide","proton-mail":"google-account-email-guide","tuta-mail":"google-account-email-guide","icloud-mail":"google-account-email-guide","gmail":"google-account-email-guide","google-play":"google-play-install-guide","apple-account":"us-apple-id-guide"},  claude: "claude-china-guide-2026", chatgpt: "chatgpt-plus-subscription-guide", "claude-code": "claude-code-guide", "google-ai": "google-ai-studio-guide" };
+const related = (tool) => articles.find((article) => article.slug === primaryGuides[tool.id] || article.id === primaryGuides[tool.id]) || articles.find((article) => article.relatedTools.includes(tool.slug || tool.id) || article.relatedTools.includes(tool.id));
+const description = "精选 AI 工具与中文上手教程，按用途发现工具，从了解走向实际使用。";
+const structuredData = collectionPageSchema({ name: "AI工具导航", description, path: "/tools/", items: site.tools.map((tool) => ({ name: tool.name, url: toolDetailPath(tool) })) });
+const tutorials = articles.filter((article) => article.relatedTools.some((id) => site.tools.some((tool) => (tool.slug || tool.id) === id))).slice(0, 3);
 ---
-
-<SiteLayout activeNav="tools" title={title} description={description} canonical="/tools/" structuredData={structuredData}>
-  <section class="directory-shell" aria-labelledby="toolsTitle">
-    <div class="tool-directory-layout">
-      <ToolSidebar categories={site.categories} />
-      <div class="tool-directory-main">
-        <h1 class="section-title">AI 工具导航</h1>
-        <div class="category-strip" role="tablist" aria-label="AI工具分类">
-          {
-            site.categories.map((category, index) => (
-              <a class={`category-button ${index === 0 ? "is-active" : ""}`} href={toolCategoryPath(category.name)} data-tool-category={category.name}>
-                {category.name}
-              </a>
-            ))
-          }
-        </div>
-        <label class="search-field tool-search-field">
-          <span class="field-search-icon" aria-hidden="true"></span>
-          <input id="toolSearch" type="search" placeholder="在「AI工具」中搜索" data-client-search="tools" />
-        </label>
-        <div class="chip-row">
-          {
-            hotKeywords.map((keyword, index) => (
-              <a class={`chip ${index === 0 ? "is-active" : ""}`} href={keywordHref(keyword)} data-tool-chip={keyword}>
-                {keyword}
-              </a>
-            ))
-          }
-        </div>
-
-        <div class="directory-sections" data-tool-sections>
-          {
-            toolSections.map((section) => (
-              <section id={section.id} class="directory-section" aria-labelledby={`${section.id}Title`} data-section-search-text={`${section.name} ${section.subcategories.join(" ")}`}>
-                <div class="section-head">
-                  <h2 id={`${section.id}Title`} class="section-title">{section.name}</h2>
-                </div>
-                <div class="subtab-row">
-                  {
-                    section.subcategories.map((sub) => (
-                      <a class={`subtab ${section.name === "AI 工具" && sub === "AI 对话助手" ? "is-active" : ""}`} href={toolSubcategoryPath(section.name, sub)} data-tool-subcategory={sub}>
-                        {sub}
-                      </a>
-                    ))
-                  }
-                </div>
-                <div class="tool-grid">
-                  {section.tools.map((tool) => <ToolTile tool={tool} />)}
-                </div>
-              </section>
-            ))
-          }
-        </div>
-        <div class="empty-state panel" data-empty-search hidden>没有找到匹配的 AI 工具</div>
-      </div>
-    </div>
-  </section>
+<SiteLayout activeNav="tools" title="AI导航 - 工具人AI导航" description={description} canonical="/tools/" structuredData={structuredData}>
+  <div class="curated-directory">
+    <section class="directory-intro" aria-labelledby="toolsTitle">
+      <div class="intro-copy"><span class="eyebrow">精选工具 · 中文教程</span><h1 id="toolsTitle">找到工具，<br />也找到用法<span>。</span></h1><p>从对话、编程到音乐创作，选一个适合你的工具开始。</p></div>
+      <div class="search-panel"><label for="directorySearch">你想用 AI 做什么？</label><input id="directorySearch" type="search" placeholder="搜索工具或用途，如 Claude、写作" /><p>按名称、用途或标签查找 · 共 {site.tools.length} 个工具</p></div>
+    </section>
+    <nav class="scenario-nav" aria-label="按用途浏览工具">
+      <a href="/tools/" class="selected" data-filter="" aria-current="true">全部工具 <span>{site.tools.length}</span></a>
+      {site.categories.flatMap((category) => category.subcategories.map((sub) => <a href={toolSubcategoryPath(category.name, sub)} data-filter={sub}>{sub}<span>{site.tools.filter((tool) => tool.subcategory === sub).length}</span></a>))}
+    </nav>
+    <p class="result-status" role="status" aria-live="polite" data-result-count>显示全部 {site.tools.length} 个工具</p>
+    {sections.map((section) => <section id={section.id} class="curated-section" data-directory-section aria-labelledby={`${section.id}Title`}>
+      <div class="section-heading"><div><h2 id={`${section.id}Title`}>{section.name}</h2><p>{section.name === "AI 工具" ? "找到适合当前任务的 AI 助手。" : "账号、订阅与日常数字生活。"}</p></div><a href={toolCategoryPath(section.name)}>浏览分类 <span aria-hidden="true">↗</span></a></div>
+      <div class="curated-grid">{section.tools.map((tool) => {
+        const tutorial = related(tool);
+        return <article class="curated-card" data-directory-card data-subcategory={tool.subcategory} data-search={[tool.name, tool.description, tool.category, tool.subcategory, ...tool.tags].join(" ")}>
+          <div class="card-heading"><div class="tool-mark" style={`--tool-accent:${tool.accent}`}>{tool.icon ? <img src={tool.icon} alt="" width="32" height="32" loading="lazy" /> : tool.iconText}</div><div><span class="card-category">{tool.subcategory}</span><h3><a href={toolDetailPath(tool)}>{tool.name}</a></h3></div></div>
+          <p class="card-description">{tool.description}</p><div class="tool-tags">{tool.tags.filter((tag) => tag !== tool.subcategory).slice(0, 2).map((tag) => <span>{tag}</span>)}</div>
+          {tool.affiliate && <p class="affiliate-note">推广链接 · 注册或购买可能为本站带来收益</p>}<div class="card-actions"><a class="guide-link" href={tutorial ? blogDetailPath(tutorial) : toolDetailPath(tool)} aria-label={`${tool.name}：${tutorial ? (tool.guideLabel || "查看使用教程") : "了解工具详情"}`}>{tutorial ? (tool.guideLabel || "查看使用教程") : "了解工具详情"} <span aria-hidden="true">→</span></a><a href={tool.externalUrl} target="_blank" rel={tool.affiliate ? "sponsored noopener noreferrer" : "noopener noreferrer"} aria-label={`访问 ${tool.name} ${tool.serviceType ? "服务网站" : "官网"}（新窗口）`}>{tool.serviceType ? "服务网站" : "官网"} ↗</a></div>
+        </article>;
+      })}</div>
+    </section>)}
+    <div class="no-results" data-directory-empty hidden><h2>暂时没有找到匹配工具</h2><p>试试工具名称或更简短的用途关键词。</p><button type="button" data-reset-directory>清除筛选</button></div>
+    {tutorials.length > 0 && <section class="tutorial-section" aria-labelledby="directoryTutorials"><div class="section-heading"><div><span class="eyebrow">从发现到上手</span><h2 id="directoryTutorials">接下来，跟着教程试一试</h2></div><a href="/blog/">全部教程 ↗</a></div><div class="tutorial-grid">{tutorials.map((article, index) => <a class="tutorial-entry" href={blogDetailPath(article)}><span class="tutorial-number">0{index + 1}</span><div><time datetime={article.date}>{article.date}</time><h3>{article.title}</h3></div><span aria-hidden="true">↗</span></a>)}</div></section>}
+  </div>
 </SiteLayout>
+<script>
+  const input = document.querySelector<HTMLInputElement>('#directorySearch');
+  const cards = Array.from(document.querySelectorAll<HTMLElement>('[data-directory-card]'));
+  const filters = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-filter]'));
+  let selected = '';
+  function filterDirectory() {
+    const query = (input?.value || '').trim().toLocaleLowerCase();
+    let count = 0;
+    cards.forEach(card => {
+      card.hidden = Boolean((selected && card.dataset.subcategory !== selected) || (query && !card.dataset.search?.toLocaleLowerCase().includes(query)));
+      if (!card.hidden) count++;
+    });
+    document.querySelectorAll<HTMLElement>('[data-directory-section]').forEach(section => { section.hidden = !section.querySelector('[data-directory-card]:not([hidden])'); });
+    const empty = document.querySelector<HTMLElement>('[data-directory-empty]');
+    if (empty) empty.hidden = count > 0;
+    const status = document.querySelector('[data-result-count]');
+    if (status) status.textContent = `显示 ${count} 个工具${selected ? ' · ' + selected : ''}`;
+    filters.forEach(link => {
+      const active = link.dataset.filter === selected;
+      link.classList.toggle('selected', active);
+      if (active) link.setAttribute('aria-current', 'true'); else link.removeAttribute('aria-current');
+    });
+  }
+  filters.forEach(link => link.addEventListener('click', event => {
+    if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button !== 0) return;
+    event.preventDefault(); selected = link.dataset.filter || ''; filterDirectory();
+  }));
+  input?.addEventListener('input', filterDirectory);
+  document.querySelector('[data-reset-directory]')?.addEventListener('click', () => { selected = ''; if (input) { input.value = ''; input.focus(); } filterDirectory(); });
+  if (input) input.value = new URLSearchParams(location.search).get('q') || '';
+  filterDirectory();
+</script>
+<style>
+  .affiliate-note{font-size:11px;color:var(--muted);margin:0 0 12px}
+  .curated-directory a{text-decoration:none}.curated-directory a:hover{text-decoration:underline}
+  .curated-directory{max-width:1160px;margin:0 auto;padding:24px 0 56px}
+  .directory-intro{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center;padding:36px 0 40px;border-bottom:1px solid var(--border)}
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:.13em;color:var(--primary)}
+  h1{font-size:clamp(32px,4vw,48px);line-height:1.25;letter-spacing:-.04em;margin:15px 0}h1 span{color:var(--primary)}
+  .intro-copy p,.search-panel p,.section-heading p{color:var(--muted);margin:8px 0;line-height:1.8}
+  .search-panel{padding:26px;background:var(--surface);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow)}
+  .search-panel label{display:block;font-weight:700;margin-bottom:14px;font-size:17px}
+  .search-panel input{width:100%;min-width:0;padding:16px;border:1px solid var(--border-strong);border-radius:8px;background:var(--bg);color:var(--text)}
+  .search-panel p{font-size:12px;margin:12px 0 0}
+  .scenario-nav{display:flex;flex-wrap:wrap;gap:10px;padding-top:26px}.scenario-nav a{display:flex;gap:10px;align-items:center;border:1px solid var(--border);border-radius:7px;padding:10px 15px;background:var(--surface);color:var(--muted);font-weight:600}.scenario-nav a.selected{background:var(--text);color:var(--bg);border-color:var(--text)}.scenario-nav span{font-size:11px;opacity:.65}
+  .result-status{font-size:12px;color:var(--muted);margin:18px 0 28px}.curated-section{margin-bottom:36px}.section-heading{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px}.section-heading h2{font-size:23px;margin:0}.section-heading p{font-size:13px;margin-bottom:0}.section-heading>a{font-size:13px;color:var(--muted);white-space:nowrap}
+  .curated-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.curated-card{display:flex;flex-direction:column;padding:23px;background:var(--surface);border:1px solid var(--border);border-radius:12px;transition:border-color .15s,box-shadow .15s}.curated-card:hover{border-color:var(--border-hover);box-shadow:var(--shadow)}
+  .card-heading{display:flex;align-items:center;gap:13px}.tool-mark{width:50px;height:50px;flex-shrink:0;display:grid;place-items:center;background:var(--surface-soft);border:1px solid var(--border);border-radius:12px;color:var(--tool-accent);font-weight:700}.tool-mark:has(img){background:#fff}.tool-mark img{object-fit:contain}.card-category{font-size:11px;color:var(--muted)}.card-heading h3{margin:2px 0 0;font-size:19px}.card-description{color:var(--muted);font-size:14px;line-height:1.85;margin:18px 0 14px}.tool-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-bottom:20px}.tool-tags span{font-size:11px;padding:3px 8px;border-radius:4px;background:var(--surface-soft);color:var(--muted)}.card-actions{border-top:1px solid var(--border);padding-top:15px;display:flex;justify-content:space-between;gap:8px;font-size:12px}.card-actions .guide-link{color:var(--primary);font-weight:650}.card-actions>a:last-child{color:var(--muted)}
+  .tutorial-section{padding-top:28px;border-top:1px solid var(--border)}.tutorial-section h2{margin-top:8px}.tutorial-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.tutorial-entry{display:flex;gap:12px;padding:18px 0;border-top:1px solid var(--border)}.tutorial-number{font-size:25px;color:var(--subtle);font-weight:700}.tutorial-entry time{font-size:11px;color:var(--muted)}.tutorial-entry h3{font-size:14px;line-height:1.8;margin:7px 0}.tutorial-entry>span:last-child{margin-left:auto;color:var(--primary)}.no-results{text-align:center;padding:48px 16px;background:var(--surface);border:1px dashed var(--border-strong);border-radius:12px;margin-bottom:30px}.no-results p{color:var(--muted)}.no-results button{padding:10px 18px;border:0;border-radius:6px;background:var(--primary);color:var(--bg);cursor:pointer}
+  [hidden]{display:none!important}a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--primary);outline-offset:4px}a:hover{color:var(--primary)}
+  @media(max-width:900px){.directory-intro{gap:24px}.curated-grid,.tutorial-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:600px){.curated-directory{padding-top:0}.directory-intro{grid-template-columns:1fr;gap:18px;padding:22px 0}.intro-copy h1 br{display:none}h1{font-size:32px}.search-panel{padding:18px}.curated-grid,.tutorial-grid{grid-template-columns:1fr}.scenario-nav{gap:7px}.scenario-nav a{padding:8px 10px;font-size:12px}.curated-card{padding:20px}.section-heading h2{font-size:20px}}
+  @media(prefers-reduced-motion:reduce){.curated-card{transition:none}}
+</style>

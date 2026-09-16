@@ -8,7 +8,7 @@ description: "详解Google AI Studio新版界面与7大进阶玩法。从模型�
 image: ""
 tags: ["Google AI Studio, Gemini 3, Nano Banana, AI开发, 免费AI工具"]
 category: "海外AI使用教程"
-relatedTools: ["google-ai"]
+relatedTools: ["google-ai","gemini"]
 faq:
   - q: "Google AI Studio 是免费的吗？"
     a: "是。登录谷歌账号即可免费使用，包括第一时间体验 Gemini 3 等最新模型，无需绑卡。"

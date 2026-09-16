@@ -8,7 +8,7 @@ description: "Telegram国内注册保姆级教程：+86为什么不行、虚拟�
 image: "../../assets/images/telegram-account-guide/00.webp"
 tags: ["Telegram", "TG注册", "接码", "教程"]
 category: "海外AI使用教程"
-relatedTools: ["telegram"]
+relatedTools: ["telegram","account-planet","sms-man"]
 faq:
   - q: "Telegram一直收不到验证码怎么办？"
     a: "九成是号码问题：+86大陆号基本收不到，虚拟号也可能因风控收码失败。换个冷门小众国家的接码号多试几次，登录前先卸载重装App或清缓存，排除旧缓存关联干扰。"

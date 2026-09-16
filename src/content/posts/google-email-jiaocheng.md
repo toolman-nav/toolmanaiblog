@@ -8,7 +8,7 @@ description: "手把手教你注册Proton Mail等海外邮箱和谷歌账号，+
 image: "../../assets/images/google-email-jiaocheng/00.webp"
 tags: ["Gmail", "Proton Mail", "谷歌账号", "海外邮箱", "教程"]
 category: "海外工具使用教程"
-relatedTools: []
+relatedTools: ["proton-mail","tuta-mail","icloud-mail","gmail"]
 faq:
   - q: "163、QQ邮箱能注册ChatGPT吗？"
     a: "基本不行。ChatGPT、Claude这类海外产品大多不支持国内邮箱，或者直接把国内邮箱列入风控。想顺利注册，用Proton Mail或Gmail这类海外邮箱。"

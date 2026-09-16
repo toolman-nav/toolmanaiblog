@@ -8,7 +8,7 @@ description: "手把手带你用国产模型丝滑替代，快速拿下这款当
 image: "../../assets/images/claudecode-jiaocheng/00.webp"
 tags: ["AI工具", "教程"]
 category: "AI教程"
-relatedTools: ["claude-code", "claude"]
+relatedTools: ["claude-code","claude","bigmodel","deepseek","kimi"]
 faq:
   - q: "接入国产模型后运行报错怎么排查？"
     a: "先在 Claude Code 里输入 /status 确认接口地址和模型名已生效，再检查 API Key 是否正确、账户额度是否充足；环境变量只对当前终端窗口有效。"

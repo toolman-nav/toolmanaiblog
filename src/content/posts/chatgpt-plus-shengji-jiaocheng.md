@@ -8,7 +8,7 @@ description: "教你3招轻松搞定ChatGPT Plus订阅！无需国外信用卡�
 image: "../../assets/images/chatgptplus-jiaocheng/chatgptplus-jiaocheng-cover.webp"
 tags: ["chatgpt", "chatgpt plus", "gpt", "教程"]
 category: "海外AI使用教程"
-relatedTools: ["chatgpt"]
+relatedTools: ["chatgpt","wild-ai","nf-video","universalbus"]
 faq:
   - q: "哪种 ChatGPT Plus 订阅方式最稳妥？"
     a: "苹果礼品卡最稳：在苹果官网买卡后兑换到美区 Apple ID，再在 App 内订阅，可避免第三方黑卡导致的充值失败或封号风险。"

@@ -8,7 +8,7 @@ description: "2026最新Codex国内使用教程：从0开始安装（Win/Mac）�
 image: "../../assets/images/codex-jiaocheng/00.webp"
 tags: ["Codex", "ChatGPT", "DeepSeek", "教程"]
 category: "海外AI使用教程"
-relatedTools: ["chatgpt"]
+relatedTools: ["chatgpt","codex","cc-switch","deepseek"]
 faq:
   - q: "不订阅ChatGPT Plus也能用Codex吗？"
     a: "可以。按本文方法把Codex接入DeepSeek等第三方模型即可使用，只需为API额度按量付费，成本比订阅Plus低不少。"

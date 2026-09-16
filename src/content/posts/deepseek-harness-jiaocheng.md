@@ -8,7 +8,7 @@ description: "DeepSeek Harness小白保姆级教程：命令行安装、第三�
 image: "../../assets/images/deepseek-harness-install-guide/00.webp"
 tags: ["DeepSeek", "DeepSeek Harness", "AI编程", "教程"]
 category: "AI工具使用教程"
-relatedTools: ["deepseek"]
+relatedTools: ["deepseek","deepseek-harness","kimi","bigmodel","ollama","dsh-desktop","dsh-plugin-list"]
 faq:
   - q: "DeepSeek Harness 打不开怎么办？"
     a: "先检查Node.js版本、终端报错和服务是否仍在运行。下载失败检查网络，端口冲突关闭重复实例，模型报错检查Key与余额；具体按正文排错表处理。"

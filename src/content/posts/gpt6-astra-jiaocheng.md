@@ -8,7 +8,7 @@ description: "GPT-6 Astra已向Plus用户全量开放，但普通Chat模式里�
 image: "../../assets/images/gpt6-astra-jiaocheng/00.webp"
 tags: ["GPT-6", "GPT-6 Astra", "ChatGPT", "教程"]
 category: "海外AI使用教程"
-relatedTools: ["chatgpt"]
+relatedTools: ["chatgpt","codex"]
 faq:
   - q: "为什么我的ChatGPT Plus看不到GPT-6？"
     a: "九成是入口问题：GPT-6 Astra不在普通Chat聊天模式里，要先切到Work工作模式或Codex，在模型选择器里选；App太旧也会看不到，先更新再完全退出重开。"

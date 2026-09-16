@@ -8,7 +8,7 @@ description: "Claude Pro国内充值订阅和使用教程，手把手教你如�
 image: "../../assets/images/claude-jiaocheng/claude-jiaocheng-cover.webp"
 tags: ["Claude", "Claude Pro", "教程"]
 category: "海外AI使用教程"
-relatedTools: ["claude"]
+relatedTools: ["claude","cursor","openrouter","ping0","2233-ai"]
 faq:
   - q: "注册 Claude 怎么降低封号概率？"
     a: "用干净的网络环境（可在 ping0.cc 查风控值，越低越好）、Gmail 等海外邮箱和海外手机号注册，避免频繁切换网络。"
@@ -185,4 +185,3 @@ Cursor是一个专为开发者设计的AI编程工具，集成了Claude，是写
 希望这份攻略能帮助到每一位想使用Claude的朋友，如果觉得内容有用，也请点个赞支持支持！
 
 <blockquote class="affiliate-disclosure">本文部分链接含邀请码，注册可能为本站带来收益，不影响你的使用。</blockquote>
-

@@ -8,7 +8,7 @@ description: "3款被低估的免费AI神器，无需付费，不限次数，一
 image: ""
 tags: ["AI PPT", "AI 工具", "PPT制作", "职场神器"]
 category: "AI实用工具"
-relatedTools: []
+relatedTools: ["kimi","z-ai","napkin-ai"]
 faq:
   - q: "这三款 AI PPT 工具真的免费吗？"
     a: "是的。Z.ai、Napkin AI 和 Kimi 目前的 PPT 生成功能均可免费使用，导出的 PPT 可编辑且无水印。"

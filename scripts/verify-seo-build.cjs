@@ -19,7 +19,7 @@ function walk(dir) {
 }
 
 function outputFileForUrl(url) {
-  const pathname = new URL(url, "https://toolmanai.com").pathname;
+  const pathname = decodeURI(new URL(url, "https://toolmanai.com").pathname);
   if (pathname === "/") return path.join(dist, "index.html");
   if (path.extname(pathname)) return path.join(dist, pathname.replace(/^\//, ""));
   return path.join(dist, pathname.replace(/^\//, ""), "index.html");

@@ -15,6 +15,8 @@ Toolman AI Navigation is a Chinese AI tools and tutorials directory focused on p
 
 ## 教程文章
 
+- [【2026最新】DeepSeek Harness保姆级安装教程：下载、桌面版、插件、模型接入，手把手教学！](https://toolmanai.com/blog/deepseek-harness-install-guide/): DeepSeek Harness小白保姆级教程：命令行安装、第三方桌面版下载、接入DeepSeek/Kimi/GLM等模型、装插件，一步步手把手教，附打不开的解决办法和插件推荐。
+- [【2026最新】Telegram注册教程！收不到验证码、SMS Fee收费、封号，一篇全解决（保姆级）](https://toolmanai.com/blog/telegram-account-guide/): Telegram国内注册保姆级教程：+86为什么不行、虚拟号接码怎么跳过SMS Fee、成品号怎么买怎么验收、日常使用怎么防封，一篇全讲清。
 - [GPT-6 Astra国内使用教程！从订阅到避坑，保姆级攻略，看完少走弯路](https://toolmanai.com/blog/gpt-6-astra-china-guide/): GPT-6 Astra已向Plus用户全量开放，但普通Chat模式里根本没有它！这篇讲清入口位置（Work模式/Codex）、各套餐额度、国内充值方法和避坑指南。
 - [【2026】真·保姆级教程！谷歌账号+海外邮箱国内注册全流程（+86手机号演示）](https://toolmanai.com/blog/google-account-email-guide/): 手把手教你注册Proton Mail等海外邮箱和谷歌账号，+86手机号演示全程可用，附Gmail注册失败解决方案和新号养号技巧，拿到海外AI通行证。
 - [OpenAI Codex国内保姆级教程：从安装、手机验证到接入DeepSeek，一篇全搞定！](https://toolmanai.com/blog/codex-china-guide-2026/): 2026最新Codex国内使用教程：从0开始安装（Win/Mac）、手机验证解决方案、Plus/Pro充值订阅、接入DeepSeek省钱方案、常见报错解决，一篇讲全，新手照做就能用。
@@ -35,11 +37,50 @@ Toolman AI Navigation is a Chinese AI tools and tutorials directory focused on p
 
 ## 工具目录
 
+- [2233 AI](https://toolmanai.com/tools/2233-ai/): 站内教程提及的第三方 AI 访问入口，不是模型厂商的官方服务。
+- [豆包](https://toolmanai.com/tools/doubao/): AI 对话与内容创作助手，站内 Suno 教程介绍了借助它构思歌词的方法。
+- [环球巴士](https://toolmanai.com/tools/universalbus/): 第三方数字订阅平台，站内教程列有相关订阅方式。
+- [银河录像局](https://toolmanai.com/tools/nf-video/): 第三方数字产品订阅服务，涉及 AI 产品与流媒体服务。
+- [账号星球](https://toolmanai.com/tools/account-planet/): 第三方账号与订阅服务，站内教程涉及 AI、通讯与数字服务账号。
+- [智谱开放平台 BigModel](https://toolmanai.com/tools/bigmodel/): 面向开发者的模型服务平台，可为编程助手和应用提供模型 API。
+- [APKMirror](https://toolmanai.com/tools/apkmirror/): 第三方安卓安装包下载网站，站内 Google Play 教程介绍了通过它查找安装包的方法。
+- [Apple Account（Apple ID）](https://toolmanai.com/tools/apple-account/): 用于管理 Apple 服务的账号，站内教程覆盖注册、地区设置与充值流程。
+- [CC Switch](https://toolmanai.com/tools/cc-switch/): 用于管理 AI 编程工具的模型服务配置，减少手动切换配置的操作。
 - [ChatGPT](https://toolmanai.com/tools/chatgpt/): OpenAI 推出的通用 AI 助手，适合问答、写作、代码、数据分析和多模态任务。
+- [CheckCC](https://toolmanai.com/tools/checkcc/): 站内 Claude 教程提及的环境检查入口，检测结果不代表账号使用保证。
+- [Cherry Studio](https://toolmanai.com/tools/cherry-studio/): 多模型 AI 客户端，站内 Claude 教程将其列为模型 API 的使用场景。
 - [Claude](https://toolmanai.com/tools/claude/): Anthropic 推出的对话式 AI 助手，适合长文本理解、写作、分析和代码协作。
 - [Claude Code](https://toolmanai.com/tools/claude-code/): 面向开发者的命令行 AI 编程助手，可在终端中理解项目并协助修改代码。
+- [Cursor](https://toolmanai.com/tools/cursor/): 集成 AI 辅助能力的代码编辑器，用于代码理解、编写与项目修改。
+- [DeepSeek](https://toolmanai.com/tools/deepseek/): 用于问答、内容整理与代码任务的 AI 服务，也提供模型 API 接入。
+- [DeepSeek Harness](https://toolmanai.com/tools/deepseek-harness/): 可接入模型服务的开发工具，站内教程覆盖安装、模型配置与扩展使用。
+- [DSH 插件导航站](https://toolmanai.com/tools/dsh-plugin-list/): 查找 DeepSeek Harness 扩展项目的导航入口，安装前需核对作者与兼容版本。
+- [dsh-desktop（第三方）](https://toolmanai.com/tools/dsh-desktop/): 第三方维护的 DeepSeek Harness 桌面客户端，并非 DeepSeek 官方桌面应用。
+- [Gemini](https://toolmanai.com/tools/gemini/): Google 的 AI 助手应用；与面向模型实验的 Google AI Studio 分别提供使用入口。
+- [GitMind](https://toolmanai.com/tools/gitmind/): 用于创建、编辑和整理思维导图，适合中文资料梳理与头脑风暴。
+- [Gmail / Google 账号](https://toolmanai.com/tools/gmail/): Google 的电子邮箱服务，可配合 Google 账号使用相关应用。
 - [Google AI Studio](https://toolmanai.com/tools/google-ai-studio/): Google 的模型实验与提示词调试平台，适合体验 Gemini 与构建原型。
+- [Google Play](https://toolmanai.com/tools/google-play/): Google 的应用商店，站内教程介绍安卓设备的安装准备与使用入口。
+- [iCloud Mail](https://toolmanai.com/tools/icloud-mail/): Apple 的电子邮箱服务，适合已有 Apple 账号的用户管理邮件。
+- [Kimi](https://toolmanai.com/tools/kimi/): 用于问答、资料阅读和内容创作的 AI 助手，站内教程包含演示文稿制作。
+- [LobeChat](https://toolmanai.com/tools/lobechat/): 开源 AI 对话项目，站内 Claude 教程中作为模型 API 的客户端举例。
+- [Mapify](https://toolmanai.com/tools/mapify/): 将资料整理为思维导图，适合快速梳理文档结构和学习重点。
+- [Markmap](https://toolmanai.com/tools/markmap/): 将 Markdown 层级大纲渲染成可交互的思维导图，适合整理 AI 生成的笔记。
+- [Napkin AI](https://toolmanai.com/tools/napkin-ai/): 将文字内容转为可视化图示，适合演示文稿中的概念说明与流程表达。
+- [NextChat](https://toolmanai.com/tools/nextchat/): 开源 AI 对话客户端，站内 Claude 教程中作为 API 客户端举例。
 - [NotebookLM](https://toolmanai.com/tools/notebooklm/): Google 的 AI 笔记与资料理解工具，适合基于文档做问答、摘要和音频概览。
+- [Ollama](https://toolmanai.com/tools/ollama/): 本地模型运行与接入工具，站内 Harness 教程列有本地接口配置示例。
+- [OpenAI Codex](https://toolmanai.com/tools/codex/): AI 编程助手，用于理解项目、编写代码和协助完成开发任务。
+- [OpenRouter](https://toolmanai.com/tools/openrouter/): 提供多家模型的聚合 API，适合为兼容客户端和应用配置模型服务。
+- [Ping0](https://toolmanai.com/tools/ping0/): IP 信息查询与网络环境检查入口，站内 Claude 教程中有提及。
 - [Poe](https://toolmanai.com/tools/poe/): Quora 推出的多模型 AI 对话平台，可在一个入口体验多种主流模型。
+- [Proton Mail](https://toolmanai.com/tools/proton-mail/): 提供电子邮件收发与账号管理，站内教程包含邮箱注册步骤。
+- [SMS-Man](https://toolmanai.com/tools/sms-man/): 第三方短信接收服务，站内注册教程中有相关使用说明。
 - [Spotify](https://toolmanai.com/tools/spotify/): 海外流媒体音乐服务，提供曲库播放、歌单管理和 Premium 订阅。
 - [Suno](https://toolmanai.com/tools/suno/): AI 音乐生成工具，可根据歌词、风格和描述生成歌曲草稿。
+- [Telegram](https://toolmanai.com/tools/telegram/): 支持聊天、群组和频道的通讯服务，站内教程介绍注册与账号设置。
+- [Tuta Mail](https://toolmanai.com/tools/tuta-mail/): 电子邮箱服务，是站内海外邮箱教程列出的候选邮箱之一。
+- [Wild AI](https://toolmanai.com/tools/wild-ai/): 第三方 AI 产品订阅服务，站内教程介绍了其订阅入口。
+- [WPS AI](https://toolmanai.com/tools/wps-ai/): WPS 办公场景中的 AI 助手，用于辅助处理文档、整理内容和生成大纲。
+- [XMind / XMind AI](https://toolmanai.com/tools/xmind/): 用于制作和编辑思维导图，站内教程介绍导入 Markdown 大纲的工作流。
+- [Z.ai](https://toolmanai.com/tools/z-ai/): 面向问答和内容创作的 AI 应用，站内教程介绍演示文稿的生成与编辑。

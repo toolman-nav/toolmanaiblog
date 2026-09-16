@@ -1,0 +1,251 @@
+[
+  {
+    "id": "deepseek",
+    "icon": "/tool-icons/deepseek.ico",
+    "source": "https://www.deepseek.com/favicon.ico"
+  },
+  {
+    "id": "bigmodel",
+    "icon": "/tool-icons/bigmodel.png",
+    "source": "https://www.bigmodel.cn/static/images/favicon.png",
+    "width": 90,
+    "height": 90
+  },
+  {
+    "id": "kimi",
+    "icon": "/tool-icons/kimi.png",
+    "source": "https://www.kimi.com/pwa-192.png",
+    "width": 192,
+    "height": 192
+  },
+  {
+    "id": "z-ai",
+    "icon": "/tool-icons/z-ai.png",
+    "source": "https://z-cdn.chatglm.cn/z-ai/static/logo.svg",
+    "width": 30,
+    "height": 30
+  },
+  {
+    "id": "napkin-ai",
+    "icon": "/tool-icons/napkin-ai.ico",
+    "source": "https://www.napkin.ai/favicon.ico"
+  },
+  {
+    "id": "gitmind",
+    "icon": "/tool-icons/gitmind.png",
+    "source": "Embedded favicon in https://gitmind.cn/",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "mapify",
+    "icon": "/tool-icons/mapify.png",
+    "source": "https://mapify.so/_nuxt/icons/512x512.ea3977d8.png",
+    "width": 512,
+    "height": 512
+  },
+  {
+    "id": "wps-ai",
+    "icon": "/tool-icons/wps-ai.ico",
+    "source": "https://personal-act.wpscdn.cn/operations-fe/wps-ai/favicon.ico"
+  },
+  {
+    "id": "deepseek-harness",
+    "icon": "/tool-icons/deepseek-harness.png",
+    "source": "https://raw.githubusercontent.com/deepseek-ai/deepseek-harness/master/apps/web/public/favicon.svg",
+    "width": 50,
+    "height": 50
+  },
+  {
+    "id": "cursor",
+    "icon": "/tool-icons/cursor.png",
+    "source": "https://cursor.com/marketing-static/apple-touch-icon-light.png",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "markmap",
+    "icon": "/tool-icons/markmap.png",
+    "source": "https://markmap.js.org/favicon.png",
+    "width": 128,
+    "height": 128
+  },
+  {
+    "id": "openrouter",
+    "icon": "/tool-icons/openrouter.png",
+    "source": "https://openrouter.ai/apple-touch-icon.png",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "icloud-mail",
+    "icon": "/tool-icons/icloud-mail.ico",
+    "source": "https://www.icloud.com/favicon.ico"
+  },
+  {
+    "id": "cc-switch",
+    "icon": "/tool-icons/cc-switch.png",
+    "source": "https://ccswitch.io/favicon.png",
+    "width": 128,
+    "height": 128
+  },
+  {
+    "id": "xmind",
+    "icon": "/tool-icons/xmind.png",
+    "source": "https://framerusercontent.com/images/8nhu9kTFx3RrJMaoWbJcNSY8hOI.png",
+    "width": 192,
+    "height": 192
+  },
+  {
+    "id": "apple-account",
+    "icon": "/tool-icons/apple-account.png",
+    "source": "https://appleid.cdn-apple.com/static/bin/cb3723681124/images/accountIcons/apple-touch-icon.png",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "ollama",
+    "icon": "/tool-icons/ollama.png",
+    "source": "https://ollama.com/public/apple-touch-icon.png",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "dsh-desktop",
+    "icon": "/tool-icons/dsh-desktop.png",
+    "source": "https://raw.githubusercontent.com/dataelement/dsh-desktop/main/build/app-icon.png",
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "id": "dsh-plugin-list",
+    "icon": "/tool-icons/dsh-plugin-list.png",
+    "source": "https://dshpluginlist.com/apple-touch-icon.png",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "cherry-studio",
+    "icon": "/tool-icons/cherry-studio.png",
+    "source": "https://www.cherryai.com.cn/assets/favicon-BmbgeFTf.png",
+    "width": 167,
+    "height": 171
+  },
+  {
+    "id": "nextchat",
+    "icon": "/tool-icons/nextchat.png",
+    "source": "https://raw.githubusercontent.com/ChatGPTNextWeb/NextChat/main/app/icons/logo.svg",
+    "width": 39,
+    "height": 42
+  },
+  {
+    "id": "telegram",
+    "icon": "/tool-icons/telegram.png",
+    "source": "https://api.github.com/repos/simple-icons/simple-icons/contents/icons/telegram.svg?ref=develop"
+  },
+  {
+    "id": "gmail",
+    "icon": "/tool-icons/gmail.png",
+    "source": "https://api.github.com/repos/simple-icons/simple-icons/contents/icons/gmail.svg?ref=develop"
+  },
+  {
+    "id": "doubao",
+    "icon": "/tool-icons/doubao.png",
+    "source": "https://lf-flow-web-cdn.doubao.com/obj/flow-doubao/favicon/new-doubao/76x76.png",
+    "width": 76,
+    "height": 76
+  },
+  {
+    "id": "ping0",
+    "icon": "/tool-icons/ping0.png",
+    "source": "https://ping0.cc/favicon.ico",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "checkcc",
+    "icon": "/tool-icons/checkcc.png",
+    "source": "https://checkcc.org/icon.svg",
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "id": "nf-video",
+    "icon": "/tool-icons/nf-video.ico",
+    "source": "https://nf.video/favicon.ico"
+  },
+  {
+    "id": "wild-ai",
+    "icon": "/tool-icons/wild-ai.png",
+    "source": "https://bewild.ai/apple-touch-icon.png",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "universalbus",
+    "icon": "/tool-icons/universalbus.png",
+    "source": "https://universalbus.cn/assets/images/Newicon.png",
+    "width": 509,
+    "height": 511
+  },
+  {
+    "id": "account-planet",
+    "icon": "/tool-icons/account-planet.png",
+    "source": "https://static-kk.acceboy.com/static/assets/logo.c6151425b0958dfd82fa.png"
+  },
+  {
+    "id": "sms-man",
+    "icon": "/tool-icons/sms-man.ico",
+    "source": "https://sms-man.com/favicon.ico"
+  },
+  {
+    "id": "2233-ai",
+    "icon": "/tool-icons/2233-ai.png",
+    "source": "https://2233.ai/logo192.png",
+    "width": 192,
+    "height": 192
+  },
+  {
+    "id": "gemini",
+    "icon": "/tool-icons/gemini.png",
+    "source": "https://api.github.com/repos/simple-icons/simple-icons/contents/icons/googlegemini.svg?ref=develop"
+  },
+  {
+    "id": "apkmirror",
+    "error": "fetch failed"
+  },
+  {
+    "id": "google-play",
+    "icon": "/tool-icons/google-play.png",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/googleplay.svg",
+    "provider": "Simple Icons"
+  },
+  {
+    "id": "proton-mail",
+    "icon": "/tool-icons/proton-mail.png",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/protonmail.svg",
+    "provider": "Simple Icons"
+  },
+  {
+    "id": "tuta-mail",
+    "icon": "/tool-icons/tuta-mail.png",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/tuta.svg",
+    "provider": "Simple Icons"
+  },
+  {
+    "id": "lobechat",
+    "icon": "/tool-icons/lobechat.png",
+    "source": "https://raw.githubusercontent.com/lobehub/lobe-chat/canary/apps/desktop/build/icon.png"
+  },
+  {
+    "id": "codex",
+    "icon": "/tool-icons/codex.svg",
+    "source": "Existing local OpenAI brand mark (shared with ChatGPT)"
+  },
+  {
+    "id": "claude",
+    "icon": "/tool-icons/claude.png",
+    "source": "https://api.github.com/repos/simple-icons/simple-icons/contents/icons/claude.svg?ref=develop",
+    "note": "Shared Claude brand mark for Claude and Claude Code"
+  }
+]

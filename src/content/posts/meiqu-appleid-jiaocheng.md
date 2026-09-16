@@ -8,7 +8,7 @@ description: "亲测有效！手把手教你注册美区苹果账号，只需国
 image: "../../assets/images/meiqu-appleid/meiqu-appleid-cover.webp"
 tags: ["appleid", "苹果账号", "美区appleid注册", "教程"]
 category: "海外工具使用教程"
-relatedTools: []
+relatedTools: ["apple-account"]
 faq:
   - q: "注册美区 Apple ID 需要海外信用卡吗？"
     a: "不需要。只需邮箱和国内手机号：先注册国区账号，再把国家或地区改成美国，账单地址用地址生成器填写即可。"

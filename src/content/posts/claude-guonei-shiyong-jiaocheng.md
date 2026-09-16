@@ -8,7 +8,7 @@ description: "2026最新Claude国内使用教程，详细介绍Claude官网、Po
 image: "../../assets/images/claude-jiaocheng/claude-jiaocheng-cover.webp"
 tags: ["Claude", "Claude Pro", "Claude Max", "Claude Code", "教程"]
 category: "海外AI使用教程"
-relatedTools: ["claude", "claude-code"]
+relatedTools: ["claude","claude-code","openrouter","proton-mail","cherry-studio","nextchat","lobechat","checkcc"]
 faq:
   - q: "Claude国内可以直接使用吗？"
     a: "Claude官方服务是否可用取决于Anthropic当前支持地区。若官网无法正常使用，也可以根据需求选择Poe、OpenRouter或国内第三方Claude服务。"
@@ -469,5 +469,3 @@ Claude Pro对魔法环境的要求更加严苛，而且现在封了不一定会�
 对于程序员来说，这一点还是挺香的。
 
 <blockquote class="affiliate-disclosure">本文部分链接含邀请码，注册可能为本站带来收益，不影响你的使用。</blockquote>
-
-

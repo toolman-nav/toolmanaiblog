@@ -13,7 +13,7 @@ const searchText = [tool.name, tool.description, tool.category, tool.subcategory
   aria-label={`查看 ${tool.name} 详情`}
 >
   <div class="tile-icon" style={`--accent:${tool.accent}`}>
-    {tool.icon ? <img src={tool.icon} alt="" loading="lazy" aria-hidden="true" /> : tool.iconText}
+    {tool.icon ? <img style="background:#fff;border-radius:6px;padding:3px" src={tool.icon} alt="" loading="lazy" aria-hidden="true" /> : tool.iconText}
   </div>
   <div>
     <h3>{tool.name}</h3>

@@ -8,7 +8,7 @@ description: "零基础也能用AI写歌！本文详解Suno AI的国内注册登
 image: ""
 tags: ["Suno", "Suno教程", "AI音乐生成", "AI写歌", "Suno充值"]
 category: "海外AI使用教程"
-relatedTools: ["suno"]
+relatedTools: ["suno","deepseek","doubao"]
 faq:
   - q: "Suno 免费版生成的歌曲能商用吗？"
     a: "不能。免费版每天 50 积分仅限个人使用；需要商用要订阅 Pro（10 美元/月）或 Premier（30 美元/月），订阅后的作品才可商用。"
@@ -328,5 +328,3 @@ Suno订阅界面显示支持银联/visa等，有双币卡的可以试试。
 虽然国内也有了豆包、海螺等可以创作ai音乐的工具，但是只要你对比过两者，你就能感受到明显的差异，不信大家可以试试。
 
 好了今天的分享就到这，觉得有用的话别忘收藏！
-
-
