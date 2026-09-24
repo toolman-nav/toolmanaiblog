@@ -15,6 +15,7 @@ Toolman AI Navigation is a Chinese AI tools and tutorials directory focused on p
 
 ## 教程文章
 
+- [【2026最新】Claude Opus 5.5国内使用教程：从注册到用上，用一篇文章带你搞定](https://toolmanai.com/blog/claude-opus-5-5-guide/): Claude Opus 5.5保姆级教程：新模型典型任务运行成本较Opus 5降低约40%，订阅额度上调。从0开始讲谷歌账号、Claude注册、充值订阅到选模型用上Opus 5.5，附国内避坑指南。
 - [【2026最新】DeepSeek Harness保姆级安装教程：下载、桌面版、插件、模型接入，手把手教学！](https://toolmanai.com/blog/deepseek-harness-install-guide/): DeepSeek Harness小白保姆级教程：命令行安装、第三方桌面版下载、接入DeepSeek/Kimi/GLM等模型、装插件，一步步手把手教，附打不开的解决办法和插件推荐。
 - [【2026最新】Telegram注册教程！收不到验证码、SMS Fee收费、封号，一篇全解决（保姆级）](https://toolmanai.com/blog/telegram-account-guide/): Telegram国内注册保姆级教程：+86为什么不行、虚拟号接码怎么跳过SMS Fee、成品号怎么买怎么验收、日常使用怎么防封，一篇全讲清。
 - [GPT-6 Astra国内使用教程！从订阅到避坑，保姆级攻略，看完少走弯路](https://toolmanai.com/blog/gpt-6-astra-china-guide/): GPT-6 Astra已向Plus用户全量开放，但普通Chat模式里根本没有它！这篇讲清入口位置（Work模式/Codex）、各套餐额度、国内充值方法和避坑指南。
