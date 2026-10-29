@@ -15,6 +15,9 @@ Toolman AI Navigation is a Chinese AI tools and tutorials directory focused on p
 
 ## 教程文章
 
+- [Grok Bot国内怎么用？从订阅到派第一个任务，新手小白也能上手（附避坑指南）](https://toolmanai.com/blog/grok-bot-guide/): Grok Bot国内保姆级教程：会员怎么选、怎么充，如何5步派第一个任务，一篇文章讲透！附职场和程序员的真实用法与4条避坑提醒。
+- [【2026最新】Google免费神器Gemini Notebook（原NotebookLM）国内使用教程，手把手教你快速上手！](https://toolmanai.com/blog/gemini-notebook-guide/): NotebookLM已更名Gemini Notebook！国内保姆级教程：为什么它比ChatGPT更可信、怎么注册、怎么上传资料、怎么把资料变成播客，附免费额度和4条避坑。
+- [【2026最新】AI圈爆火的"哑巴"模型Jev！送1.2亿token白嫖，注册到上手一篇搞定](https://toolmanai.com/blog/jev-model-guide/): Jev是什么？全网爆火的不会聊天的AI判断模型保姆级教程：三种判断玩法、注册领1.2亿token、装Skill用人话调用，附中文准确率和零幻觉的避坑说明。
 - [【2026最新】Claude Opus 5.5国内使用教程：从注册到用上，用一篇文章带你搞定](https://toolmanai.com/blog/claude-opus-5-5-guide/): Claude Opus 5.5保姆级教程：新模型典型任务运行成本较Opus 5降低约40%，订阅额度上调。从0开始讲谷歌账号、Claude注册、充值订阅到选模型用上Opus 5.5，附国内避坑指南。
 - [【2026最新】DeepSeek Harness保姆级安装教程：下载、桌面版、插件、模型接入，手把手教学！](https://toolmanai.com/blog/deepseek-harness-install-guide/): DeepSeek Harness小白保姆级教程：命令行安装、第三方桌面版下载、接入DeepSeek/Kimi/GLM等模型、装插件，一步步手把手教，附打不开的解决办法和插件推荐。
 - [【2026最新】Telegram注册教程！收不到验证码、SMS Fee收费、封号，一篇全解决（保姆级）](https://toolmanai.com/blog/telegram-account-guide/): Telegram国内注册保姆级教程：+86为什么不行、虚拟号接码怎么跳过SMS Fee、成品号怎么买怎么验收、日常使用怎么防封，一篇全讲清。
