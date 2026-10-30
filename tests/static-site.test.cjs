@@ -60,7 +60,6 @@ const astroConfig = read("astro.config.mjs");
 assert.ok(astroConfig.includes("@astrojs/sitemap"), "astro config should import sitemap integration");
 assert.ok(astroConfig.includes("sitemap("), "astro config should enable sitemap integration");
 assert.ok(astroConfig.includes('page !== "https://toolmanai.com/deployment.json"'), "sitemap should exclude the deployment marker");
-assert.ok(astroConfig.includes("defer-astro-images"), "build should defer hashed images so they do not block window.load");
 assert.ok(astroConfig.includes('output: "static"'), "Astro output must stay static");
 assert.ok(astroConfig.includes('trailingSlash: "always"'), "trailing slash should stay enabled");
 
@@ -138,9 +137,6 @@ assert.ok(layout.includes("<JsonLd"), "layout should use unified JSON-LD compone
 assert.ok(layout.includes('localStorage.getItem("toolman-theme")'), "layout should bootstrap saved theme before CSS loads");
 assert.ok(layout.includes('data-theme-toggle'), "layout should render the header theme toggle");
 assert.ok(layout.includes("`/site.js?v=${assetVersion}`"), "site script should be cache-busted");
-assert.ok(layout.includes('img[data-defer-src]'), "layout should hide deferred placeholders when JavaScript is disabled");
-assert.ok(layout.includes('querySelectorAll("img[data-defer-src]")'), "layout should hydrate deferred images without waiting on site.js");
-assert.ok(layout.includes('window.addEventListener("load", hydrateDeferredImages)'), "deferred images must wait for window.load so the tab spinner can stop");
 assert.ok(
   !layout.match(/<script[^>]+src=["']https:\/\/www\.googletagmanager\.com\/gtag\/js/),
   "layout must not parser-insert Google Analytics; a blocked gtag.js keeps the tab spinner spinning",
@@ -162,8 +158,6 @@ assert.ok(integrations.includes('window.addEventListener("load", inject)'), "Goo
 assert.ok(integrations.includes("document.createElement"), "analytics scripts should be injected dynamically");
 
 const deferredCover = read("src/components/DeferredCover.astro");
-assert.ok(deferredCover.includes("data-defer-src"), "cover images must not use a real src until after window.load");
-assert.ok(deferredCover.includes("<noscript>"), "cover images must remain visible when JavaScript is disabled");
 assert.ok(deferredCover.includes('format: "webp"'), "local covers should be resized to webp");
 assert.ok(read("src/components/TutorialCard.astro").includes("DeferredCover"), "tutorial cards should use deferred covers");
 assert.ok(read("src/components/ArticleVisual.astro").includes("DeferredCover"), "article visuals should use deferred covers");
@@ -228,7 +222,7 @@ assert.ok(blogDetail.includes("/about/authors/"), "article authorship should lin
 const toolDetail = read("src/pages/tools/[id].astro");
 assert.ok(toolDetail.includes("<RelatedTutorials"), "tool pages should render related tutorials");
 assert.ok(toolDetail.includes("<BackToTop"), "tool pages should render a back-to-top button");
-assert.ok(toolDetail.includes("SoftwareApplication"), "tool pages should include software JSON-LD data");
+assert.ok(toolDetail.includes("softwareApplicationSchema"), "tool pages should include software JSON-LD data");
 
 assert.ok(exists("src/components/JsonLd.astro"), "JSON-LD component should exist");
 assert.ok(exists("src/components/FAQBlock.astro"), "FAQ component should exist");
@@ -337,3 +331,7 @@ assert.ok(report.includes(robots.trim()), "report should include final robots.tx
 // Tutorials may all have verified tool associations; an empty association is not required.
 
 console.log("static-site v2 source assertions passed");
+
+assert.ok(!astroConfig.includes("deferAstroImages"), "build must not rewrite image src");
+assert.ok(!layout.includes("data-defer-src"), "images must not depend on load hydration");
+assert.ok(deferredCover.includes("src={imageSrc}"), "covers expose real image URLs");

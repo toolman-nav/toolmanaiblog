@@ -12,10 +12,10 @@ const className = compact ? "panel article-row" : "panel tutorial-card";
   {
     compact ? (
       <div class="thumb" data-cover={article.coverType}>
-        {article.image ? <DeferredCover src={article.image} alt={`${article.title} 封面`} width={640} /> : <span class="visual-label">{article.title}</span>}
+        {article.image ? <DeferredCover src={article.image} alt={`${article.title} 封面`} width={640} eager={article.featured} /> : <span class="visual-label">{article.title}</span>}
       </div>
     ) : (
-      <ArticleVisual article={article} />
+      <ArticleVisual article={article} eager={article.featured} />
     )
   }
   <ArticleInfoPanel article={article} />

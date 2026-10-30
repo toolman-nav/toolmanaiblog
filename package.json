@@ -12,7 +12,7 @@
     "images:check": "node scripts/optimize-images.cjs --check",
     "generate:llms": "node scripts/generate-llms.mjs",
     "check:tool-reviews": "node scripts/check-tool-reviews.cjs",
-    "verify:seo": "node scripts/verify-seo-build.cjs",
+    "verify:seo": "node scripts/verify-seo-build.cjs && node tests/audit-fixes.test.mjs",
     "indexnow": "node scripts/submit-indexnow.cjs",
     "indexnow:all": "node scripts/submit-indexnow.cjs --all",
     "indexnow:remote": "node scripts/submit-indexnow.cjs --remote"

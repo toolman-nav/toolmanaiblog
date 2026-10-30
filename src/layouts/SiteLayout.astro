@@ -17,7 +17,7 @@ const {
 const canonicalUrl = canonical === false ? null : absoluteUrl(canonical || Astro.url.pathname);
 const imageUrl = absoluteUrl(imageSrc(image) || "/og-default.png");
 const structuredDataItems = [websiteSchema(), organizationSchema(), ...(Array.isArray(structuredData) ? structuredData : [structuredData])];
-const assetVersion = "20260819-home-dark";
+const assetVersion = "20261030-audit-fixes";
 
 const navItems = [
   { id: "home", href: "/", label: "主页" },
@@ -85,10 +85,10 @@ const navItems = [
         </nav>
 
         <div class="header-actions">
-          <form class="global-search-form" data-global-search role="search" aria-label="全站搜索" action="/tools/" method="get">
+          <form class="global-search-form" data-global-search role="search" aria-label="工具搜索" action="/tools/" method="get">
             <label class="header-search">
               <span class="search-icon" aria-hidden="true"></span>
-              <input id="globalSearch" name="q" type="search" placeholder="搜索文章、工具和教程" />
+              <input id="globalSearch" name="q" type="search" placeholder="搜索工具" aria-label="搜索工具" />
             </label>
             <button class="search-submit-button" type="submit">搜索</button>
           </form>
@@ -104,28 +104,6 @@ const navItems = [
     </main>
 
     <Footer />
-    <noscript>
-      <style>
-        img[data-defer-src] {
-          display: none !important;
-        }
-      </style>
-    </noscript>
-    <script is:inline>
-      (() => {
-        const hydrateDeferredImages = () => {
-          document.querySelectorAll("img[data-defer-src]").forEach((img) => {
-            const src = img.getAttribute("data-defer-src");
-            if (!src) return;
-            img.removeAttribute("srcset");
-            img.src = src;
-            img.removeAttribute("data-defer-src");
-          });
-        };
-        if (document.readyState === "complete") hydrateDeferredImages();
-        else window.addEventListener("load", hydrateDeferredImages);
-      })();
-    </script>
     <script src={`/site.js?v=${assetVersion}`} defer></script>
   </body>
 </html>

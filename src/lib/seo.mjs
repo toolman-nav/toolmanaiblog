@@ -107,8 +107,8 @@ export function articleSchema(article) {
     datePublished: article.date,
     dateModified: article.dateModified || article.date,
     author: {
-      "@type": "Organization",
-      name: "工具人AI导航团队",
+      "@type": "Person",
+      name: "工具鸽",
       url: absoluteUrl("/about/authors/"),
     },
     publisher: organizationSchema(),
@@ -119,14 +119,12 @@ export function articleSchema(article) {
 export function softwareApplicationSchema(tool) {
   return {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
+    "@type": tool.serviceType ? "Service" : "SoftwareApplication",
     name: tool.name,
     description: tool.description,
     url: absoluteUrl(tool.url || tool.path || "/"),
     image: absoluteUrl(tool.icon || DEFAULT_OG_IMAGE),
-    applicationCategory: tool.subcategory || tool.category,
-    operatingSystem: "Web",
-    publisher: organizationSchema(),
+    ...(!tool.serviceType ? { applicationCategory: tool.subcategory || tool.category, operatingSystem: "Web" } : {}),
   };
 }
 

@@ -22,11 +22,11 @@ const tutorials = postsToArticles(posts);
 const tutorialCategories = [...new Set(tutorials.map((article) => article.category))];
 const activeCategory = matchRouteValue(Astro.params.categorySlug, tutorialCategories) || category;
 const matched = tutorials.filter((article) => article.category === activeCategory);
-const title = `${activeCategory}教程 - AI教程 - 工具人AI导航`;
+const title = `${activeCategory} - AI教程 - 工具人AI导航`;
 const description = `系统整理${activeCategory}相关 AI 教程，适合按主题持续学习和内容运营。`;
 const canonical = blogCategoryPath(activeCategory);
 const structuredData = collectionPageSchema({
-  name: `${activeCategory}教程`,
+  name: `${activeCategory}`,
   description,
   path: canonical,
   items: matched.map((article) => ({ name: article.title, url: blogDetailPath(article) })),
@@ -35,10 +35,10 @@ const structuredData = collectionPageSchema({
 
 <SiteLayout activeNav="tutorials" title={title} description={description} canonical={canonical} structuredData={structuredData}>
   <section class="tutorial-page" aria-labelledby="tutorialCategoryTitle">
-    <h1 id="tutorialCategoryTitle" class="section-title">{activeCategory}教程</h1>
+    <h1 id="tutorialCategoryTitle" class="section-title">{activeCategory}</h1>
     <label class="search-field tutorial-search-field">
       <span class="field-search-icon" aria-hidden="true"></span>
-      <input id="tutorialSearch" type="search" placeholder={`在「${activeCategory}」中搜索`} data-client-search="tutorials" />
+      <input id="tutorialSearch" type="search" aria-label="搜索教程" placeholder={`在「${activeCategory}」中搜索`} data-client-search="tutorials" />
     </label>
     <div class="chip-row tutorial-category-row" aria-label="教程分类">
       {

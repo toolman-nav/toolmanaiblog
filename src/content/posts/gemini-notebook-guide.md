@@ -3,7 +3,7 @@ title: "【2026最新】Google免费神器Gemini Notebook（原NotebookLM）国�
 seoTitle: "Gemini Notebook 国内使用教程 2026"
 slug: gemini-notebook-guide
 published: 2026-09-26
-dateModified: 2026-09-26
+dateModified: 2026-10-30
 description: "NotebookLM已更名Gemini Notebook！国内保姆级教程：为什么它比ChatGPT更可信、怎么注册、怎么上传资料、怎么把资料变成播客，附免费额度和4条避坑。"
 image: "../../assets/images/gemini-notebook-guide/00.webp"
 tags: ["Gemini Notebook", "NotebookLM", "谷歌", "AI笔记", "教程"]
@@ -22,7 +22,7 @@ faq:
 
 2026年7月16日，Google把NotebookLM正式更名为**Gemini Notebook**，网址也换到了notebook.google.com（旧地址会自动跳转，不用慌）。
 
-名字变了，东西没变——还是那个**只根据你上传的资料回答、每个结论都能溯源、查不到就说查不到**的免费神器。
+名字变了，东西没变——还是那个**基于笔记本中的来源回答，并提供引用供你核对**的免费神器。
 
 没看过的朋友正好，今天这篇从0开始，5分钟带你快速上手这款免费神器。
 
@@ -32,13 +32,13 @@ faq:
 
 一句话：**你喂资料，它干活。**
 
-普通AI是"啥都懂一点"，但来源不可控，容易一本正经地瞎编。Gemini Notebook反着来——**它只基于你上传的资料回答**，答案里每个关键句都带引用标注，点一下直接跳回原文对应位置，不会出现无事实瞎编的情况。
+Gemini Notebook 的特点是**基于笔记本中的来源回答，并提供引用**，方便回到原文核对。不过，有引用不代表结论一定正确：它仍可能误解资料、遗漏条件或总结出错。使用重要结论前，请检查引用是否真正支持回答。Google 也明确提醒产品可能犯错，见[官方说明](https://support.google.com/gemininotebook/answer/16164461?hl=zh-Hans)（此项核对于 2026-10-30）。
 
 | | ChatGPT这类通用AI | Gemini Notebook |
 | --- | --- | --- |
 | 知识来源 | 全网训练数据，不可控 | 只用你上传的资料 |
-| 幻觉问题 | 会编（尤其冷门细节） | 查不到就说查不到 |
-| 答案可验证 | 难溯源 | 每句话带引用，点击回原文 |
+| 准确性 | 可能出错，需要核验 | 同样可能出错，应结合来源核验 |
+| 答案可验证 | 取决于所用模式和是否提供来源 | 可通过引用回到来源检查 |
 | 适合场景 | 闲聊、创意、通用问答 | 论文、报告、长资料精读 |
 
 一句话总结：**要它"懂你给的资料"，用它；要它"啥都知道"，用ChatGPT。**

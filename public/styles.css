@@ -2965,3 +2965,11 @@ html[data-theme="dark"] .about-hero {
     font-size: 16px;
   }
 }
+
+/* Search filtering must override card grid/flex display declarations. */
+[hidden] { display: none !important; }
+.search-field, .site-toast { background: var(--surface); color: var(--text); }
+.header-search:focus-within, .search-field:focus-within, .search-panel input:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+}

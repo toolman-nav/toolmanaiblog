@@ -24,9 +24,8 @@ const title = `${tool.name} - AI工具详情 - 工具人AI导航`;
 const description = `${tool.name}：${tool.description}`;
 const detailVisual = tool.icon || tool.cover;
 const canonical = toolDetailPath(tool);
-const softwareType = "SoftwareApplication";
 const structuredData = [
-  { ...softwareApplicationSchema({ ...tool, url: canonical }), "@type": softwareType },
+  softwareApplicationSchema({ ...tool, url: canonical }),
   breadcrumbSchema([
     { name: "首页", url: "/" },
     { name: "AI导航", url: "/tools/" },

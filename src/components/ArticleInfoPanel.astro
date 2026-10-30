@@ -1,9 +1,8 @@
 ---
-import { articleReadingStats, articleTags } from "../lib/site-utils.mjs";
+import { articleTags } from "../lib/site-utils.mjs";
 
 const { article } = Astro.props;
 const tags = articleTags(article).join(", ");
-const stats = articleReadingStats(article);
 ---
 
 <div class="article-info-panel">
@@ -15,7 +14,7 @@ const stats = articleReadingStats(article);
     </span>
     <span class="article-info-chip">
       <span class="article-info-icon article-info-icon-book" aria-hidden="true"></span>
-      {article.category}教程
+      {article.category}
     </span>
     <span class="article-info-chip">
       <span class="article-info-icon article-info-icon-hash" aria-hidden="true"></span>
@@ -23,9 +22,5 @@ const stats = articleReadingStats(article);
     </span>
   </div>
   <p class="article-info-summary">{article.summary}</p>
-  <div class="article-info-stats">
-    <span>{stats.words} 字</span>
-    <span>|</span>
-    <span>{stats.minutes}分钟</span>
-  </div>
+
 </div>

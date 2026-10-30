@@ -52,7 +52,7 @@ const structuredData = [
     <article class="panel tutorial-detail" aria-labelledby="tutorialDetailTitle">
       <a class="detail-back" href="/blog/">‹ 返回教程列表</a>
       <div class="detail-hero">
-        <ArticleVisual article={article} />
+        <ArticleVisual article={article} eager />
         <div>
           <span class="badge">{article.category}</span>
           <h1 id="tutorialDetailTitle">{article.title}</h1>

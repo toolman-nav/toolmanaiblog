@@ -20,15 +20,6 @@ export function articleTags(article) {
   return [...new Set([article.category, ...(tagMap[article.category] || ["AI工具", "实战教程"])])].slice(0, 3);
 }
 
-export function articleReadingStats(article) {
-  const length = `${article.title}${article.summary}`.replace(/\s+/g, "").length;
-  const words = Math.max(860, Math.round(length * 14 + String(article.id).length * 3));
-  return {
-    words,
-    minutes: Math.max(4, Math.ceil(words / 220)),
-  };
-}
-
 export function renderInlineMarkdown(value) {
   return escapeHtml(value).replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
 }
