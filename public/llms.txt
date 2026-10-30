@@ -15,6 +15,7 @@ Toolman AI Navigation is a Chinese AI tools and tutorials directory focused on p
 
 ## 教程文章
 
+- [OpenAI 发福利了！每月最高 $500 的 API 额度免费领，你领了吗？（附领取方法）](https://toolmanai.com/blog/chatgpt-api-credits-guide/): OpenAI 给 ChatGPT Pro 和 Business 订阅用户发免费 API 额度，最高每月 500 美元，不用绑卡。这篇讲清额度多少、谁能领、三分钟怎么领，以及月底清零等 5 个坑。
 - [Grok Bot国内怎么用？从订阅到派第一个任务，新手小白也能上手（附避坑指南）](https://toolmanai.com/blog/grok-bot-guide/): Grok Bot国内保姆级教程：会员怎么选、怎么充，如何5步派第一个任务，一篇文章讲透！附职场和程序员的真实用法与4条避坑提醒。
 - [【2026最新】Google免费神器Gemini Notebook（原NotebookLM）国内使用教程，手把手教你快速上手！](https://toolmanai.com/blog/gemini-notebook-guide/): NotebookLM已更名Gemini Notebook！国内保姆级教程：为什么它比ChatGPT更可信、怎么注册、怎么上传资料、怎么把资料变成播客，附免费额度和4条避坑。
 - [【2026最新】AI圈爆火的"哑巴"模型Jev！送1.2亿token白嫖，注册到上手一篇搞定](https://toolmanai.com/blog/jev-model-guide/): Jev是什么？全网爆火的不会聊天的AI判断模型保姆级教程：三种判断玩法、注册领1.2亿token、装Skill用人话调用，附中文准确率和零幻觉的避坑说明。
